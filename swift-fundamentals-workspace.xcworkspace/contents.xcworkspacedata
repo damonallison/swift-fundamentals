@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Workspace
+   version = "1.0">
+   <Group
+      location = "group:"
+      name = "Playground">
+      <FileRef
+         location = "group:playground.playground">
+      </FileRef>
+   </Group>
+   <FileRef
+      location = "container:swift-fundamentals.xcodeproj">
+   </FileRef>
+</Workspace>
