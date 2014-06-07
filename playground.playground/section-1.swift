@@ -5,6 +5,26 @@
 
 import Foundation
 
+
+//
+// Constants
+//
+// Constants are assigned once. The value does not need to be known at compile time
+// (it can use a runtime generated value), however it can only be set once.
+//
+let kConstant = 10
+
+//
+// Type Inference
+//
+// swift will use 'Int' for all integers, 'Double' for all floating point values.
+// If you want to override the defaults, you must specify the type.
+//
+let kConstantUInt8: UInt8 = 1
+let kConstantFloat: Float = 4.0
+
+
+
 //
 // Types : all swift types have capitalized names.
 //
@@ -22,17 +42,16 @@ import Foundation
 //   Double (64 bit)
 //
 
-//
-// Implicit typing
-//
 var implicitInteger = 42
-var implicitFloat = 42.0
+var implicitDouble = 42.0
 
 //
-// No implicit type conversion allowed - all types must
-// be explicitly cast.
+// Type Casting
 //
-var explicitInteger: Int = Int(implicitFloat)
+// C's implicit type casting is not allowed. You must explicitly cast
+// to convert types
+//
+var explicitInteger: Int = Int(implicitDouble)
 
 //
 // String interpolation
@@ -76,6 +95,25 @@ var ageForKid = [
 ]
 ageForKid["grace"]
 
+// Iterating an array
+for kid in kids {
+    println(kid)
+}
+
+//
+// Dictionary
+//
+
+//
+// The following is equivalent to:
+// var allisons: Dictionary<String, Int>
+//
+var allisons = ["damon" : 37, "kari" : 37, "cole" : 7]
+for (name, age) in allisons {
+    println("\(name) is \(age) years old")
+}
+
+
 //
 // Empty initializer syntax
 //
@@ -87,8 +125,10 @@ let emptyDict = Dictionary<String, Float>()
 //
 var cond: Integer?
 
+//
 // Preferred way to determine if an optional var contains a value is with
-// "optional binding". This will bind myVar to cond if cond exists.
+// "optional binding". Here, if cond is not nil,
+//
 if let myVar = cond {
     var damon = "no"
 }
@@ -110,9 +150,15 @@ default:
     let ok = "nothing found"
 }
 
+
+
+
+
+
 //
-// Function declaration
+// Functions
 //
+
 func printName(first: String, last: String) -> String {
     return "\(first) \(last)"
 }
@@ -188,7 +234,11 @@ func greaterThanGenerator(num: Int) -> (Int -> Bool) {
 }
 
 var lst = [9,4,3,11]
-var match = firstIndex(lst, greaterThanGenerator(5))
+var match = firstIndex(lst, greaterThanGenerator(10))
+
+
+var sortedLst = sort(lst)
+
 
 //
 //class Superman : Person {
