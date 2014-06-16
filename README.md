@@ -16,4 +16,56 @@ has two top level elements:
 `swift-fundamentals` is a Mac command line target. Just run it.
 
 
+-------------
 
+# Swift Notes #
+
+## Overall Strategy ##
+
+* Purely Apple - controlled by Apple.
+* Interoperates with Objective-C - they don’t need to rebuild all Cocoa / Foundation libraries.
+* Removes a lot of objective-c legacy rough edges.
+
+
+Start on P.56 (Language Guide)
+Swift standard library
+Using Swift with Cocoa and Objective-C
+
+
+## Likes ##
+
+* Type safety / type inference. Explicit casting required.
+* Any type can be optional, even Int. Not objects, like Objective-C.
+* String interpolation
+* No header files
+* Tuple members can be given names - simple way to create a lightweight data structure.
+
+## Dislikes ##
+
+* Doesn’t take a stand (semicolons allowed, not required, if () allowed, not required).
+* typealias
+* Default indenting for switch, will/didLet, and other multi-nested control structures.
+
+## Undecided ##
+
+* Specifying a “second name” for a method parameter.
+
+
+
+
+## Next Steps ##
+
+* Protocols
+* Namespaces / packages
+* Concurrency (channels?)
+* Generics
+* Extensions
+* Structs
+
+## Additional Resources ##
+
+Using Swift with Cocoa and Objective-C
+https://developer.apple.com/library/prerelease/ios/documentation/swift/conceptual/buildingcocoaapps/index.html
+
+* WWDC : Integrating swift with objc
+* WWDC : Swift interoperability in depth

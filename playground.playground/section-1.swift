@@ -2,6 +2,8 @@
 // A scratchpad for testing ideas prior to committing them to
 // swift-fundamentals
 //
+// Damon Allison 2014/06/07
+//
 
 import Foundation
 
@@ -12,6 +14,12 @@ import Foundation
 // Constants are assigned once. The value does not need to be known at compile time
 // (it can use a runtime generated value), however it can only be set once.
 //
+// This will default to Int.
+//
+// It is recommended to use Int for all general-purpose integer constants in your code,
+// even if they will always be non-negative. This consistency allows your code to 
+// interoperate with framework code, which prefers Int.
+//
 let kConstant = 10
 
 //
@@ -20,17 +28,21 @@ let kConstant = 10
 // swift will use 'Int' for all integers, 'Double' for all floating point values.
 // If you want to override the defaults, you must specify the type.
 //
+// In practice you very rarely need to provide type annotations. Swift will 
+// infer the type.
+//
+//
 let kConstantUInt8: UInt8 = 1
+let kConstantInt8: Int8 = 1
 let kConstantFloat: Float = 4.0
-
-
 
 //
 // Types : all swift types have capitalized names.
 //
 // Integers
 //   signed / unsigned 8, 16, 32, 64
-//   Int8, UInt8, ...
+//   Int8, Int16, Int32, Int64
+//   UInt8, UInt16, UInt32, UInt64
 //
 // Int follows the platform's native word size:
 // Int == Int32 (32 bit platforms)
@@ -48,10 +60,25 @@ var implicitDouble = 42.0
 //
 // Type Casting
 //
-// C's implicit type casting is not allowed. You must explicitly cast
-// to convert types
+// C's implicit type casting is not allowed. You must explicitly create
+// a new value with the existing value to "convert" the type. In the 
+// assignment here, we are initializing a new Int value with implicitDouble.
+// 
+// If there is not an initializer for the type you are attempting
+// to convert, you could write an extension to create one.
+//
+// For example, if Int didn't provide an initializer for Double, you would
+// have to create one.
 //
 var explicitInteger: Int = Int(implicitDouble)
+
+//
+// Even with UInt8 and Int8, we need to cast. This is a good thing since
+// it prevents errors from hidden, implicit conversions.
+//
+if kConstantUInt8 == UInt8(kConstantInt8) {
+    println("Math works")
+}
 
 //
 // String interpolation
@@ -60,33 +87,48 @@ var name = "Damon Allison"
 var age  = 37
 let greeting = "Hello, I am \(name). I am \(age) years old"
 
+
+
 //
-// Tuple
+// Tuples
 //
 var myTuple: (Int, Int, Int) = (1, 2, 3)
 let httpError = (404, "Not Found")
 
-// Decomposing a tuple
+//
+// Decomposing a tuple into separate constants or variables.
+//
 let (retCode, strCode) = httpError
 println("return code \(retCode) means \(strCode)")
 
+//
 // Skip values you don't care about with _
+//
 let (retCode2, _) = httpError
 println("return code2 \(retCode2)")
 
+//
 // Accessing individual elements by position
+//
 println("return code3 \(httpError.0)")
 
-// Naming elements in a tuple when it is defined
+//
+// Naming elements in a tuple when it is defined. 
+//
+// This is great for creating simple, immutable data structures with named
+// members.
+//
 let httpError2 = (retCode: 404, strCode: "Not Found")
+println("httpError2 \(httpError2.retCode) str:\(httpError2.strCode)")
+
 
 //
 // Array
 //
 var kids = ["grace", "lily", "cole"]
-kids[0]
-kids[0..2]
-kids[0...2]
+kids[0]     // "grace"
+kids[0..2]  // ["grace", "lily"]
+kids[0...2] // ["grace", "lily", "cole"]
 
 var ageForKid = [
     "grace" : 10,
@@ -120,11 +162,11 @@ for (name, age) in allisons {
 let emptyArray = String[]()
 let emptyDict = Dictionary<String, Float>()
 
+
 //
 // Optional variables (defaults to nil)
 //
-var cond: Integer?
-
+var cond: Integer? = 10
 //
 // Preferred way to determine if an optional var contains a value is with
 // "optional binding". Here, if cond is not nil,
@@ -151,9 +193,20 @@ default:
 }
 
 
+class Person {
+    var firstName: String
+    var lastName:  String
 
+    init(firstName: String, lastName: String) {
+        self.firstName = firstName
+        self.lastName = lastName
+    }
+}
 
-
+var p1 = Person(firstName: "damon", lastName: "allison")
+var p2 = p1
+assert(p1 === p2)
+assert(Person(firstName: "damon", lastName:"allison") !== p1)
 
 //
 // Functions
@@ -170,10 +223,11 @@ for i in 0..100 {
 //
 // Use a tuple to return multiple types from a function
 //
-func nameInPieces() -> (String, String, String) {
+func nameInPieces() -> (firstName: String, middleName: String, lastName: String) {
     return ("Damon", "Ryan", "Allison")
 }
-nameInPieces()
+let myName = nameInPieces()
+println("\(myName.firstName) \(myName.middleName) \(myName.lastName)")
 
 //
 // Variable number of args (added to an array)
@@ -294,5 +348,7 @@ var sortedLst = sort(lst)
 //theAce == Rank.Ace
 //
 //
+
+
 
 

@@ -8,11 +8,14 @@
 
 class Person : Printable {
 
+    //
+    // Initialization
+    //
+    // Golden Rule : 
+    //   Every value must be initialized before it's used.
+    //
     init(first: String, last: String) {
-        //
-        // all properites must be declared with an initializer
-        // or be initialized before init completes
-        //
+
         firstName = first
         lastName = last
 
@@ -70,6 +73,53 @@ class Person : Printable {
     //
     func appendMultipleSurnames(surname: String, surname2 lastSurname: String) -> String {
         return "\(firstName) \(lastName) \(surname) \(lastSurname)"
+    }
+}
+
+class Superman : Person {
+
+    //
+    // This will be lazy-initialized (created when first accessed)
+    //
+    @lazy var child = Person(first: "super", last: "child")
+    var power: Int
+
+    init(power: Int, firstName: String, lastName: String) {
+        //
+        // When overriding a base class, there are three steps to perform
+        // in the initializer (in order):
+        // 
+        // 1. Initialize all variables in the derived class.
+        // 2. Call super.init() to initialize the base.
+        // 3. Do any custom initialization logic that you need to perform.
+        //    At this point, the entire class is initialized and you have
+        //    full access to the entire class data.
+        //
+        // ** Note this is backwards from Objective-C, where you [super init]
+        //    first. Swift requires all variables to be instantiated for safety.
+        //    You cannot access variables that have not been fully initialized.
+        //
+
+        //
+        // 1. Initialize all variables in the derived class.
+        //
+        self.power = power
+
+        //
+        // 2. super.init()
+        //
+        super.init(first: firstName, last: lastName)
+
+        //
+        // 3. Custom initialization logic
+        println("superman created with \(power)")
+    }
+
+    // 
+    // Convenience initializer (must call another initializer)
+    //
+    convenience init() {
+        self.init(power: 100, firstName: "super", lastName: "man")
     }
 
 }
