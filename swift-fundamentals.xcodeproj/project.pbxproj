@@ -12,10 +12,12 @@
 		216A0B36194359F8007155B2 /* Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = 216A0B34194359F8007155B2 /* Person.swift */; };
 		216A0B37194359F8007155B2 /* Printable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 216A0B35194359F8007155B2 /* Printable.swift */; };
 		21888B0B194E942D001C6CDB /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = 21888B0A194E942D001C6CDB /* README.md */; };
+		21ABC49E195CFBCA002F8AEB /* ObjectiveCInterop.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21ABC49D195CFBCA002F8AEB /* ObjectiveCInterop.swift */; };
 		21B49770194E8938000B3A26 /* Generics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21B4976F194E8938000B3A26 /* Generics.swift */; };
-		21B49772194E89B7000B3A26 /* README.markdown in Sources */ = {isa = PBXBuildFile; fileRef = 21B49771194E89B7000B3A26 /* README.markdown */; };
-		21B49774194E8A13000B3A26 /* 1-Basics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21B49773194E8A13000B3A26 /* 1-Basics.swift */; };
+		21B49774194E8A13000B3A26 /* 1-Types.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21B49773194E8A13000B3A26 /* 1-Types.swift */; };
 		21B49776194E8B5D000B3A26 /* Objects.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21B49775194E8B5D000B3A26 /* Objects.swift */; };
+		21CDFC0C1963B04100F7121D /* ObjcClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 21CDFC0B1963B04100F7121D /* ObjcClass.m */; };
+		21CDFC0E1963B3B600F7121D /* FuncQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21CDFC0D1963B3B600F7121D /* FuncQueue.swift */; };
 		21D86323194356D900374C60 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21D86322194356D900374C60 /* main.swift */; };
 		21E493D2194941D2000987D7 /* Closures.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21E493D1194941D2000987D7 /* Closures.swift */; };
 		21E493D419494686000987D7 /* Switch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21E493D319494686000987D7 /* Switch.swift */; };
@@ -39,10 +41,14 @@
 		216A0B34194359F8007155B2 /* Person.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Person.swift; sourceTree = "<group>"; };
 		216A0B35194359F8007155B2 /* Printable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Printable.swift; sourceTree = "<group>"; };
 		21888B0A194E942D001C6CDB /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		21ABC499195CFB6F002F8AEB /* swift-fundamentals-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "swift-fundamentals-Bridging-Header.h"; sourceTree = "<group>"; };
+		21ABC49D195CFBCA002F8AEB /* ObjectiveCInterop.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObjectiveCInterop.swift; sourceTree = "<group>"; };
 		21B4976F194E8938000B3A26 /* Generics.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Generics.swift; sourceTree = "<group>"; };
-		21B49771194E89B7000B3A26 /* README.markdown */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.markdown; sourceTree = "<group>"; };
-		21B49773194E8A13000B3A26 /* 1-Basics.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "1-Basics.swift"; sourceTree = "<group>"; };
+		21B49773194E8A13000B3A26 /* 1-Types.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "1-Types.swift"; sourceTree = "<group>"; };
 		21B49775194E8B5D000B3A26 /* Objects.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Objects.swift; sourceTree = "<group>"; };
+		21CDFC0A1963B04100F7121D /* ObjcClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ObjcClass.h; sourceTree = "<group>"; };
+		21CDFC0B1963B04100F7121D /* ObjcClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ObjcClass.m; sourceTree = "<group>"; };
+		21CDFC0D1963B3B600F7121D /* FuncQueue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FuncQueue.swift; sourceTree = "<group>"; };
 		21D8631F194356D900374C60 /* swift-fundamentals */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "swift-fundamentals"; sourceTree = BUILT_PRODUCTS_DIR; };
 		21D86322194356D900374C60 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = main.swift; path = "swift-fundamentals/main.swift"; sourceTree = "<group>"; };
 		21E493D1194941D2000987D7 /* Closures.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Closures.swift; sourceTree = "<group>"; };
@@ -65,26 +71,38 @@
 			children = (
 				216A0B34194359F8007155B2 /* Person.swift */,
 				216A0B35194359F8007155B2 /* Printable.swift */,
+				21CDFC0D1963B3B600F7121D /* FuncQueue.swift */,
 			);
 			name = Classes;
 			path = "swift-fundamentals/Classes";
+			sourceTree = "<group>";
+		};
+		21CDFC091963B02600F7121D /* Objective-C */ = {
+			isa = PBXGroup;
+			children = (
+				21CDFC0A1963B04100F7121D /* ObjcClass.h */,
+				21CDFC0B1963B04100F7121D /* ObjcClass.m */,
+			);
+			path = "Objective-C";
 			sourceTree = "<group>";
 		};
 		21D86316194356D900374C60 = {
 			isa = PBXGroup;
 			children = (
 				21888B0A194E942D001C6CDB /* README.md */,
-				21B49771194E89B7000B3A26 /* README.markdown */,
 				21D86322194356D900374C60 /* main.swift */,
-				21B49773194E8A13000B3A26 /* 1-Basics.swift */,
+				21B49773194E8A13000B3A26 /* 1-Types.swift */,
 				21207E0A194930EA00741939 /* 2-Optionals.swift */,
 				21E493D319494686000987D7 /* Switch.swift */,
 				21B4976F194E8938000B3A26 /* Generics.swift */,
 				21E493D1194941D2000987D7 /* Closures.swift */,
 				21207E0C1949379700741939 /* MemoryManagement.swift */,
 				21B49775194E8B5D000B3A26 /* Objects.swift */,
+				21ABC49D195CFBCA002F8AEB /* ObjectiveCInterop.swift */,
 				216A0B31194357D7007155B2 /* Classes */,
+				21CDFC091963B02600F7121D /* Objective-C */,
 				21D86320194356D900374C60 /* Products */,
+				21ABC499195CFB6F002F8AEB /* swift-fundamentals-Bridging-Header.h */,
 			);
 			sourceTree = "<group>";
 		};
@@ -153,16 +171,18 @@
 			buildActionMask = 2147483647;
 			files = (
 				21207E0D1949379700741939 /* MemoryManagement.swift in Sources */,
+				21CDFC0E1963B3B600F7121D /* FuncQueue.swift in Sources */,
 				21B49770194E8938000B3A26 /* Generics.swift in Sources */,
 				21B49776194E8B5D000B3A26 /* Objects.swift in Sources */,
-				21B49774194E8A13000B3A26 /* 1-Basics.swift in Sources */,
+				21B49774194E8A13000B3A26 /* 1-Types.swift in Sources */,
 				216A0B36194359F8007155B2 /* Person.swift in Sources */,
 				21D86323194356D900374C60 /* main.swift in Sources */,
 				21888B0B194E942D001C6CDB /* README.md in Sources */,
 				216A0B37194359F8007155B2 /* Printable.swift in Sources */,
-				21B49772194E89B7000B3A26 /* README.markdown in Sources */,
 				21207E0B194930EA00741939 /* 2-Optionals.swift in Sources */,
 				21E493D2194941D2000987D7 /* Closures.swift in Sources */,
+				21CDFC0C1963B04100F7121D /* ObjcClass.m in Sources */,
+				21ABC49E195CFBCA002F8AEB /* ObjectiveCInterop.swift in Sources */,
 				21E493D419494686000987D7 /* Switch.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -248,14 +268,23 @@
 		21D86327194356D900374C60 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "swift-fundamentals-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
 		21D86328194356D900374C60 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "swift-fundamentals-Bridging-Header.h";
 			};
 			name = Release;
 		};

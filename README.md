@@ -27,7 +27,6 @@ has two top level elements:
 * Removes a lot of objective-c legacy rough edges.
 
 
-Start on P.56 (Language Guide)
 Swift standard library
 Using Swift with Cocoa and Objective-C
 
@@ -39,6 +38,9 @@ Using Swift with Cocoa and Objective-C
 * String interpolation
 * No header files
 * Tuple members can be given names - simple way to create a lightweight data structure.
+* Strings are value types.
+* Strongly typed collections (array, dictionary)
+* Generics
 
 ## Dislikes ##
 
@@ -69,3 +71,19 @@ https://developer.apple.com/library/prerelease/ios/documentation/swift/conceptua
 
 * WWDC : Integrating swift with objc
 * WWDC : Swift interoperability in depth
+
+
+* * * *
+
+
+## Questions ##
+
+### Objects ###
+
+* How to hide local class vars from the class's public interface?
+* What is protocol composition?
+
+### TODO ###
+
+* The Swift Programming Language - Language Reference
+    https://developer.apple.com/library/prerelease/mac/documentation/Swift/Conceptual/Swift_Programming_Language/

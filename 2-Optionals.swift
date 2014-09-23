@@ -52,7 +52,6 @@ func testOptionals() {
     // If the optional does not have a value, the boolean expression returns false.
     // You can also use a binary == operator to compare the optional to nil.
     //
-    assert(!optionalInt)
     assert(optionalInt == nil)
 
     // 
@@ -98,7 +97,7 @@ func testOptionals() {
     //
     // This function returns an optional (Int?)
     //
-    func findIndexOfString(string: String, array: String[]) -> Int? {
+    func findIndexOfString(string: String, array: [String]) -> Int? {
         for (index, value) in enumerate(array) {
             if value == string {
                 return index
@@ -108,8 +107,8 @@ func testOptionals() {
     }
 
     assert(findIndexOfString("damon", ["this", "is", "my", "test", "damon"]) == 4)
-    assert(!findIndexOfString("notthere", []))
-    assert(!findIndexOfString("test", ["no"]))
+    assert(findIndexOfString("notthere", []) == nil)
+    assert(findIndexOfString("test", ["no"]) == nil)
 
 
     //

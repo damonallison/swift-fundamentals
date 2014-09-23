@@ -47,9 +47,9 @@ class Person : Printable {
     // Implementing a readonly property
     //
     var fullName: String {
-    get {
-        return "\(firstName) \(lastName)"
-    }
+        get {
+            return "\(firstName) \(lastName)"
+        }
     }
 
     // 
@@ -81,7 +81,7 @@ class Superman : Person {
     //
     // This will be lazy-initialized (created when first accessed)
     //
-    @lazy var child = Person(first: "super", last: "child")
+    lazy var child = Person(first: "super", last: "child")
     var power: Int
 
     init(power: Int, firstName: String, lastName: String) {

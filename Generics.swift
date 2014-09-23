@@ -6,26 +6,45 @@
 //  Copyright (c) 2014 Damon Allison. All rights reserved.
 //
 
-import Foundation
+// constraints
+//   * type inherits from a specific base
+//   * type conforms to a specific protocol
 
-//
-// generics example
-//
-// "where" forces T and U to be Sequences, Equatable, and be of the same type.
-//
-func anyCommonElements<T, U where
-    T: Sequence,
-    U: Sequence,
-    T.GeneratorType.Element: Equatable,
-    T.GeneratorType.Element == U.GeneratorType.Element>
-    (lhs: T, rhs: U) -> Bool {
-        for lhsItem in lhs {
-            for rhsItem in rhs {
-                if lhsItem == rhsItem {
-                    return true
+// where clauses
+//   * list of requirements where each type parameter:
+//        * inherits from a specific base or conforms to a specific protocol.
+
+class Generics<T: Comparable> {
+
+    // The type constraint requires `U` to conform to the `Printable`
+    // protocol and have a class hierarchy containing base `Superman`.
+    func sayHello<U where U: Printable, U: Superman>(obj: U) -> String {
+        return "Hello, \(obj.description())"
+    }
+
+    // You can overload a generic function. The compiler will determine
+    // which overload to invoke based on the types used when invoking
+    // the function.
+    func clause<T, U where T: Equatable, U: Comparable>(x: T, y: U) -> T {
+        return x
+    }
+    func clause<T, U where T: Comparable, U: Equatable>(x: T, y: U) -> T {
+        return x
+    }
+
+    // This generic function requires T and U to be sequence types,
+    // with their sequence element types being equal and equatable.
+    func anyCommonElements<T, U where T: SequenceType,
+        U: SequenceType,
+        T.Generator.Element: Equatable,
+        T.Generator.Element == U.Generator.Element>(lhs: T, rhs: U) -> Bool {
+            for lhsItem in lhs {
+                for rhsItem in rhs {
+                    if lhsItem == rhsItem {
+                        return true
+                    }
                 }
             }
-        }
-        return false
+            return false
+    }
 }
-
