@@ -10,4 +10,8 @@
 
 @implementation ObjcClass
 
+- (NSString *)description {
+    return [NSString stringWithFormat:@"ObjcClass <%p> %@ %@", self, _firstName, _lastName];
+}
+
 @end

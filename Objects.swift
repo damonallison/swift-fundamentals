@@ -20,7 +20,7 @@ func testObjects() {
     var family = Person(first: "Damon", last: "Allison")
     family.firstName = "Cole"
     family.lastName = "Allison"
-
+    
     println(family.fullName);
     println(family.description())
     println(family.appendSurname("Jr"))

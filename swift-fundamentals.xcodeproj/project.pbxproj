@@ -7,10 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		210D170B19D51ADF00F0A7D9 /* 3-ControlStructures.swift in Sources */ = {isa = PBXBuildFile; fileRef = 210D170A19D51ADF00F0A7D9 /* 3-ControlStructures.swift */; };
+		210D170D19D51FA600F0A7D9 /* 4-Functions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 210D170C19D51FA600F0A7D9 /* 4-Functions.swift */; };
 		21207E0B194930EA00741939 /* 2-Optionals.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21207E0A194930EA00741939 /* 2-Optionals.swift */; };
 		21207E0D1949379700741939 /* MemoryManagement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21207E0C1949379700741939 /* MemoryManagement.swift */; };
 		216A0B36194359F8007155B2 /* Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = 216A0B34194359F8007155B2 /* Person.swift */; };
 		216A0B37194359F8007155B2 /* Printable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 216A0B35194359F8007155B2 /* Printable.swift */; };
+		216AF3C619D514A2000FE3F3 /* Operators.swift in Sources */ = {isa = PBXBuildFile; fileRef = 216AF3C519D514A2000FE3F3 /* Operators.swift */; };
 		21888B0B194E942D001C6CDB /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = 21888B0A194E942D001C6CDB /* README.md */; };
 		21ABC49E195CFBCA002F8AEB /* ObjectiveCInterop.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21ABC49D195CFBCA002F8AEB /* ObjectiveCInterop.swift */; };
 		21B49770194E8938000B3A26 /* Generics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21B4976F194E8938000B3A26 /* Generics.swift */; };
@@ -36,10 +39,13 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		210D170A19D51ADF00F0A7D9 /* 3-ControlStructures.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "3-ControlStructures.swift"; sourceTree = "<group>"; };
+		210D170C19D51FA600F0A7D9 /* 4-Functions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "4-Functions.swift"; sourceTree = "<group>"; };
 		21207E0A194930EA00741939 /* 2-Optionals.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "2-Optionals.swift"; sourceTree = "<group>"; };
 		21207E0C1949379700741939 /* MemoryManagement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MemoryManagement.swift; sourceTree = "<group>"; };
 		216A0B34194359F8007155B2 /* Person.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Person.swift; sourceTree = "<group>"; };
 		216A0B35194359F8007155B2 /* Printable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Printable.swift; sourceTree = "<group>"; };
+		216AF3C519D514A2000FE3F3 /* Operators.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Operators.swift; sourceTree = "<group>"; };
 		21888B0A194E942D001C6CDB /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		21ABC499195CFB6F002F8AEB /* swift-fundamentals-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "swift-fundamentals-Bridging-Header.h"; sourceTree = "<group>"; };
 		21ABC49D195CFBCA002F8AEB /* ObjectiveCInterop.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObjectiveCInterop.swift; sourceTree = "<group>"; };
@@ -89,10 +95,13 @@
 		21D86316194356D900374C60 = {
 			isa = PBXGroup;
 			children = (
+				210D170C19D51FA600F0A7D9 /* 4-Functions.swift */,
+				216AF3C519D514A2000FE3F3 /* Operators.swift */,
 				21888B0A194E942D001C6CDB /* README.md */,
 				21D86322194356D900374C60 /* main.swift */,
 				21B49773194E8A13000B3A26 /* 1-Types.swift */,
 				21207E0A194930EA00741939 /* 2-Optionals.swift */,
+				210D170A19D51ADF00F0A7D9 /* 3-ControlStructures.swift */,
 				21E493D319494686000987D7 /* Switch.swift */,
 				21B4976F194E8938000B3A26 /* Generics.swift */,
 				21E493D1194941D2000987D7 /* Closures.swift */,
@@ -173,14 +182,17 @@
 				21207E0D1949379700741939 /* MemoryManagement.swift in Sources */,
 				21CDFC0E1963B3B600F7121D /* FuncQueue.swift in Sources */,
 				21B49770194E8938000B3A26 /* Generics.swift in Sources */,
+				210D170D19D51FA600F0A7D9 /* 4-Functions.swift in Sources */,
 				21B49776194E8B5D000B3A26 /* Objects.swift in Sources */,
 				21B49774194E8A13000B3A26 /* 1-Types.swift in Sources */,
 				216A0B36194359F8007155B2 /* Person.swift in Sources */,
 				21D86323194356D900374C60 /* main.swift in Sources */,
+				210D170B19D51ADF00F0A7D9 /* 3-ControlStructures.swift in Sources */,
 				21888B0B194E942D001C6CDB /* README.md in Sources */,
 				216A0B37194359F8007155B2 /* Printable.swift in Sources */,
 				21207E0B194930EA00741939 /* 2-Optionals.swift in Sources */,
 				21E493D2194941D2000987D7 /* Closures.swift in Sources */,
+				216AF3C619D514A2000FE3F3 /* Operators.swift in Sources */,
 				21CDFC0C1963B04100F7121D /* ObjcClass.m in Sources */,
 				21ABC49E195CFBCA002F8AEB /* ObjectiveCInterop.swift in Sources */,
 				21E493D419494686000987D7 /* Switch.swift in Sources */,
@@ -269,6 +281,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(USER_LIBRARY_DIR)/Developer/Xcode/DerivedData/swift-fundamentals-workspace-fkuumznwbrnscgamfrpeoklpdici/Build/Products/Debug",
+				);
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -281,6 +297,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(USER_LIBRARY_DIR)/Developer/Xcode/DerivedData/swift-fundamentals-workspace-fkuumznwbrnscgamfrpeoklpdici/Build/Products/Debug",
+				);
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				PRODUCT_NAME = "$(TARGET_NAME)";

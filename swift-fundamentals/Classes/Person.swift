@@ -6,8 +6,10 @@
 //  Copyright (c) 2014 Damon Allison. All rights reserved.
 //
 
-class Person : Printable {
+public class Person : Printable {
 
+    private var myName = "Damon"
+    
     //
     // Initialization
     //
@@ -104,15 +106,18 @@ class Superman : Person {
         // 1. Initialize all variables in the derived class.
         //
         self.power = power
-
         //
         // 2. super.init()
         //
+        
         super.init(first: firstName, last: lastName)
 
+        // derived classes have access to the base's private member
+        super.myName = "Damon R Allison"
         //
         // 3. Custom initialization logic
-        println("superman created with \(power)")
+        println("superman created with \(power) myName \(myName)")
+        
     }
 
     // 

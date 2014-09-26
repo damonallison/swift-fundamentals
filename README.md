@@ -33,9 +33,15 @@ Using Swift with Cocoa and Objective-C
 
 ## Likes ##
 
-* Type safety / type inference. Explicit casting required.
-* Any type can be optional, even Int. Not objects, like Objective-C.
-* String interpolation
+Cleaning up C's mess.   
+    * Type safety (Array<String> much better than NSArray).
+    * Type inference.
+    * Explicit casting required.
+    * Any type can be optional, even Int. Not objects, like Objective-C.
+    * Conditionals must be boolean expressions.
+
+* String interpolation, comparison.
+
 * No header files
 * Tuple members can be given names - simple way to create a lightweight data structure.
 * Strings are value types.
@@ -45,6 +51,8 @@ Using Swift with Cocoa and Objective-C
 ## Dislikes ##
 
 * Doesn’t take a stand (semicolons allowed, not required, if () allowed, not required).
+  At least {} around blocks are required.
+
 * typealias
 * Default indenting for switch, will/didLet, and other multi-nested control structures.
 
@@ -77,6 +85,11 @@ https://developer.apple.com/library/prerelease/ios/documentation/swift/conceptua
 
 
 ## Questions ##
+
+### Environment ###
+
+* Will swift be open sourced? If sao, would you write server software in it vs. say, go?
+
 
 ### Objects ###
 

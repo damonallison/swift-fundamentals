@@ -8,16 +8,26 @@
 
 import Foundation
 
+var names = Swift.Array<Swift.String>()
+names.append("Damon")
+names.append("Ryan")
+
+println("Hello, \(names)")
+
 //
 // Examples of basic swift types
 //
 Types.testIntegers()
+Types.testFloats()
 Types.testString()
 Types.testArray()
 Types.testDictionary()
 Types.testTuple()
-Types.testRangeOperator()
 
+Operators.testRangeOperator()
+
+ControlStructures.testIf()
+ControlStructures.testSwitch()
 
 //
 // Optionals
@@ -30,6 +40,17 @@ testOptionals()
 //
 var superman = Superman(power: 100, firstName: "cole", lastName: "allison")
 
+
+/** 
+Functions 
+*/
+var tuple = Functions.testFunctionVarArgs(1, 2, 3, 4)
+assert(tuple.0 == 4 && tuple.1 == 1)
+
+var fib = Functions.makeFibonacci()
+for i in 0..<10 {
+    println("fib \(i) == \(fib())")
+}
 
 // 
 // Closures
@@ -68,3 +89,9 @@ assert(g.anyCommonElements(lhs, rhs: rhs))
 //
 //println("sleeping for 11")
 //NSThread.sleepForTimeInterval(11.0)
+
+// Objective-C interop
+var d = ObjcClass()
+d.firstName = "damon"
+d.lastName = "allison"
+println(d)
