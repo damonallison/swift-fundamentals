@@ -10,6 +10,9 @@ import Foundation
 
 func testSwitch() {
 
+    /**
+        TrainStatus is an example of enum associated values.
+    */
     enum TrainStatus {
         case OnTime
         case Delayed(Int)

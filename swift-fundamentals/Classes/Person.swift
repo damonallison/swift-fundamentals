@@ -16,7 +16,7 @@ public class Person : Printable {
     // Golden Rule : 
     //   Every value must be initialized before it's used.
     //
-    init(first: String, last: String) {
+    public init(first: String, last: String) {
 
         firstName = first
         lastName = last
@@ -35,7 +35,7 @@ public class Person : Printable {
     //
     // use willSet / didSet to run code before and after property setting.
     //
-    var firstName: String {
+    public var firstName: String {
     willSet {
         println("willSet firstName to \(newValue)")
     }
@@ -43,12 +43,12 @@ public class Person : Printable {
         println("didSet firstName to \(firstName)")
     }
     }
-    var lastName: String
-
+    
+    public var lastName: String
     // 
     // Implementing a readonly property
     //
-    var fullName: String {
+    public var fullName: String {
         get {
             return "\(firstName) \(lastName)"
         }

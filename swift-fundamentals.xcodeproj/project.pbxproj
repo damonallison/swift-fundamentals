@@ -26,18 +26,6 @@
 		21E493D419494686000987D7 /* Switch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21E493D319494686000987D7 /* Switch.swift */; };
 /* End PBXBuildFile section */
 
-/* Begin PBXCopyFilesBuildPhase section */
-		21D8631D194356D900374C60 /* CopyFiles */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = /usr/share/man/man1/;
-			dstSubfolderSpec = 0;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 1;
-		};
-/* End PBXCopyFilesBuildPhase section */
-
 /* Begin PBXFileReference section */
 		210D170A19D51ADF00F0A7D9 /* 3-ControlStructures.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "3-ControlStructures.swift"; sourceTree = "<group>"; };
 		210D170C19D51FA600F0A7D9 /* 4-Functions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "4-Functions.swift"; sourceTree = "<group>"; };
@@ -95,13 +83,13 @@
 		21D86316194356D900374C60 = {
 			isa = PBXGroup;
 			children = (
-				210D170C19D51FA600F0A7D9 /* 4-Functions.swift */,
 				216AF3C519D514A2000FE3F3 /* Operators.swift */,
 				21888B0A194E942D001C6CDB /* README.md */,
 				21D86322194356D900374C60 /* main.swift */,
 				21B49773194E8A13000B3A26 /* 1-Types.swift */,
 				21207E0A194930EA00741939 /* 2-Optionals.swift */,
 				210D170A19D51ADF00F0A7D9 /* 3-ControlStructures.swift */,
+				210D170C19D51FA600F0A7D9 /* 4-Functions.swift */,
 				21E493D319494686000987D7 /* Switch.swift */,
 				21B4976F194E8938000B3A26 /* Generics.swift */,
 				21E493D1194941D2000987D7 /* Closures.swift */,
@@ -132,7 +120,6 @@
 			buildPhases = (
 				21D8631B194356D900374C60 /* Sources */,
 				21D8631C194356D900374C60 /* Frameworks */,
-				21D8631D194356D900374C60 /* CopyFiles */,
 			);
 			buildRules = (
 			);
@@ -284,6 +271,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(USER_LIBRARY_DIR)/Developer/Xcode/DerivedData/swift-fundamentals-workspace-fkuumznwbrnscgamfrpeoklpdici/Build/Products/Debug",
+					"$(PROJECT_DIR)/FundamentalsKit/build/Debug-iphoneos",
 				);
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.9;
@@ -300,6 +288,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(USER_LIBRARY_DIR)/Developer/Xcode/DerivedData/swift-fundamentals-workspace-fkuumznwbrnscgamfrpeoklpdici/Build/Products/Debug",
+					"$(PROJECT_DIR)/FundamentalsKit/build/Debug-iphoneos",
 				);
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.9;

@@ -14,15 +14,7 @@ names.append("Ryan")
 
 println("Hello, \(names)")
 
-//
-// Examples of basic swift types
-//
-Types.testIntegers()
-Types.testFloats()
-Types.testString()
-Types.testArray()
-Types.testDictionary()
-Types.testTuple()
+Types.runExamples()
 
 Operators.testRangeOperator()
 

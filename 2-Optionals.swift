@@ -29,11 +29,11 @@ import Foundation
 //
 // A tree data structure that allows us to illustrate optional chaining
 //
-class OptionalChaining {
-    var name: String?
-    var child: OptionalChaining?
+public class OptionalChaining {
+    public var name: String?
+    public var child: OptionalChaining?
 
-    init(name: String) {
+    public init(name: String) {
         self.name = name;
     }
 }
@@ -77,6 +77,13 @@ func testOptionals() {
         assert(1 == 0)
     }
 
+    // nil coalescing operator : unwraps the optional if it exists, otherwise it 
+    // returns the
+    optionalInt = nil
+    
+    let i: Int = optionalInt ?? 10
+    assert(i == 10)
+    
 
     //
     // Implicitly unwrapped optionals
