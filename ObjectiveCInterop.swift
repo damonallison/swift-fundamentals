@@ -9,9 +9,8 @@
 import Foundation
 
 func testObjCInterop() {
-    
-    //
-    // See swift-fundamentals-Bridging-Header.h
+
+    // See SwiftFundamentals-Bridging-Header.h
     var oc = ObjcClass()
     if let fName = oc.firstName? {
         println("we have a firstname : \(fName)")

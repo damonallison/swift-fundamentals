@@ -11,6 +11,7 @@
 		210D170D19D51FA600F0A7D9 /* 4-Functions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 210D170C19D51FA600F0A7D9 /* 4-Functions.swift */; };
 		21207E0B194930EA00741939 /* 2-Optionals.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21207E0A194930EA00741939 /* 2-Optionals.swift */; };
 		21207E0D1949379700741939 /* MemoryManagement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21207E0C1949379700741939 /* MemoryManagement.swift */; };
+		2149CA2919D8D5B6006E259C /* Types.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2149CA0A19D8D2F3006E259C /* Types.swift */; };
 		216A0B36194359F8007155B2 /* Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = 216A0B34194359F8007155B2 /* Person.swift */; };
 		216A0B37194359F8007155B2 /* Printable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 216A0B35194359F8007155B2 /* Printable.swift */; };
 		216AF3C619D514A2000FE3F3 /* Operators.swift in Sources */ = {isa = PBXBuildFile; fileRef = 216AF3C519D514A2000FE3F3 /* Operators.swift */; };
@@ -31,11 +32,14 @@
 		210D170C19D51FA600F0A7D9 /* 4-Functions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "4-Functions.swift"; sourceTree = "<group>"; };
 		21207E0A194930EA00741939 /* 2-Optionals.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "2-Optionals.swift"; sourceTree = "<group>"; };
 		21207E0C1949379700741939 /* MemoryManagement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MemoryManagement.swift; sourceTree = "<group>"; };
+		2149CA0919D8D2F3006E259C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2149CA0A19D8D2F3006E259C /* Types.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Types.swift; sourceTree = "<group>"; };
+		2149CA2019D8D533006E259C /* SwiftFundamentals-Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "SwiftFundamentals-Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		216A0B34194359F8007155B2 /* Person.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Person.swift; sourceTree = "<group>"; };
 		216A0B35194359F8007155B2 /* Printable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Printable.swift; sourceTree = "<group>"; };
 		216AF3C519D514A2000FE3F3 /* Operators.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Operators.swift; sourceTree = "<group>"; };
 		21888B0A194E942D001C6CDB /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
-		21ABC499195CFB6F002F8AEB /* swift-fundamentals-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "swift-fundamentals-Bridging-Header.h"; sourceTree = "<group>"; };
+		21ABC499195CFB6F002F8AEB /* SwiftFundamentals-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SwiftFundamentals-Bridging-Header.h"; sourceTree = "<group>"; };
 		21ABC49D195CFBCA002F8AEB /* ObjectiveCInterop.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObjectiveCInterop.swift; sourceTree = "<group>"; };
 		21B4976F194E8938000B3A26 /* Generics.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Generics.swift; sourceTree = "<group>"; };
 		21B49773194E8A13000B3A26 /* 1-Types.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "1-Types.swift"; sourceTree = "<group>"; };
@@ -43,13 +47,20 @@
 		21CDFC0A1963B04100F7121D /* ObjcClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ObjcClass.h; sourceTree = "<group>"; };
 		21CDFC0B1963B04100F7121D /* ObjcClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ObjcClass.m; sourceTree = "<group>"; };
 		21CDFC0D1963B3B600F7121D /* FuncQueue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FuncQueue.swift; sourceTree = "<group>"; };
-		21D8631F194356D900374C60 /* swift-fundamentals */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "swift-fundamentals"; sourceTree = BUILT_PRODUCTS_DIR; };
+		21D8631F194356D900374C60 /* SwiftFundamentals */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = SwiftFundamentals; sourceTree = BUILT_PRODUCTS_DIR; };
 		21D86322194356D900374C60 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = main.swift; path = "swift-fundamentals/main.swift"; sourceTree = "<group>"; };
 		21E493D1194941D2000987D7 /* Closures.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Closures.swift; sourceTree = "<group>"; };
 		21E493D319494686000987D7 /* Switch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Switch.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		2149CA1D19D8D533006E259C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		21D8631C194356D900374C60 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -60,6 +71,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2149CA0719D8D2F3006E259C /* SwiftFundamentals-Tests */ = {
+			isa = PBXGroup;
+			children = (
+				2149CA0A19D8D2F3006E259C /* Types.swift */,
+				2149CA0819D8D2F3006E259C /* Supporting Files */,
+			);
+			path = "SwiftFundamentals-Tests";
+			sourceTree = "<group>";
+		};
+		2149CA0819D8D2F3006E259C /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				2149CA0919D8D2F3006E259C /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
 		216A0B31194357D7007155B2 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
@@ -98,15 +126,17 @@
 				21ABC49D195CFBCA002F8AEB /* ObjectiveCInterop.swift */,
 				216A0B31194357D7007155B2 /* Classes */,
 				21CDFC091963B02600F7121D /* Objective-C */,
+				2149CA0719D8D2F3006E259C /* SwiftFundamentals-Tests */,
 				21D86320194356D900374C60 /* Products */,
-				21ABC499195CFB6F002F8AEB /* swift-fundamentals-Bridging-Header.h */,
+				21ABC499195CFB6F002F8AEB /* SwiftFundamentals-Bridging-Header.h */,
 			);
 			sourceTree = "<group>";
 		};
 		21D86320194356D900374C60 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				21D8631F194356D900374C60 /* swift-fundamentals */,
+				21D8631F194356D900374C60 /* SwiftFundamentals */,
+				2149CA2019D8D533006E259C /* SwiftFundamentals-Tests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -114,9 +144,26 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		21D8631E194356D900374C60 /* swift-fundamentals */ = {
+		2149CA1F19D8D533006E259C /* SwiftFundamentals-Tests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 21D86326194356D900374C60 /* Build configuration list for PBXNativeTarget "swift-fundamentals" */;
+			buildConfigurationList = 2149CA2619D8D533006E259C /* Build configuration list for PBXNativeTarget "SwiftFundamentals-Tests" */;
+			buildPhases = (
+				2149CA1C19D8D533006E259C /* Sources */,
+				2149CA1D19D8D533006E259C /* Frameworks */,
+				2149CA1E19D8D533006E259C /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "SwiftFundamentals-Tests";
+			productName = "SwiftFundamentals-Tests";
+			productReference = 2149CA2019D8D533006E259C /* SwiftFundamentals-Tests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		21D8631E194356D900374C60 /* SwiftFundamentals */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 21D86326194356D900374C60 /* Build configuration list for PBXNativeTarget "SwiftFundamentals" */;
 			buildPhases = (
 				21D8631B194356D900374C60 /* Sources */,
 				21D8631C194356D900374C60 /* Frameworks */,
@@ -125,9 +172,9 @@
 			);
 			dependencies = (
 			);
-			name = "swift-fundamentals";
+			name = SwiftFundamentals;
 			productName = "swift-fundamentals";
-			productReference = 21D8631F194356D900374C60 /* swift-fundamentals */;
+			productReference = 21D8631F194356D900374C60 /* SwiftFundamentals */;
 			productType = "com.apple.product-type.tool";
 		};
 /* End PBXNativeTarget section */
@@ -139,12 +186,15 @@
 				LastUpgradeCheck = 0600;
 				ORGANIZATIONNAME = "Damon Allison";
 				TargetAttributes = {
+					2149CA1F19D8D533006E259C = {
+						CreatedOnToolsVersion = 6.1;
+					};
 					21D8631E194356D900374C60 = {
 						CreatedOnToolsVersion = 6.0;
 					};
 				};
 			};
-			buildConfigurationList = 21D8631A194356D900374C60 /* Build configuration list for PBXProject "swift-fundamentals" */;
+			buildConfigurationList = 21D8631A194356D900374C60 /* Build configuration list for PBXProject "SwiftFundamentals" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -156,12 +206,31 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				21D8631E194356D900374C60 /* swift-fundamentals */,
+				21D8631E194356D900374C60 /* SwiftFundamentals */,
+				2149CA1F19D8D533006E259C /* SwiftFundamentals-Tests */,
 			);
 		};
 /* End PBXProject section */
 
+/* Begin PBXResourcesBuildPhase section */
+		2149CA1E19D8D533006E259C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
+		2149CA1C19D8D533006E259C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2149CA2919D8D5B6006E259C /* Types.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		21D8631B194356D900374C60 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -189,6 +258,40 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
+		2149CA2719D8D533006E259C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "SwiftFundamentals-Tests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		2149CA2819D8D533006E259C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "SwiftFundamentals-Tests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
 		21D86324194356D900374C60 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -268,15 +371,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(USER_LIBRARY_DIR)/Developer/Xcode/DerivedData/swift-fundamentals-workspace-fkuumznwbrnscgamfrpeoklpdici/Build/Products/Debug",
-					"$(PROJECT_DIR)/FundamentalsKit/build/Debug-iphoneos",
-				);
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.9;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "swift-fundamentals-Bridging-Header.h";
+				PRODUCT_NAME = SwiftFundamentals;
+				SWIFT_OBJC_BRIDGING_HEADER = "SwiftFundamentals-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
@@ -285,22 +384,26 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(USER_LIBRARY_DIR)/Developer/Xcode/DerivedData/swift-fundamentals-workspace-fkuumznwbrnscgamfrpeoklpdici/Build/Products/Debug",
-					"$(PROJECT_DIR)/FundamentalsKit/build/Debug-iphoneos",
-				);
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.9;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "swift-fundamentals-Bridging-Header.h";
+				PRODUCT_NAME = SwiftFundamentals;
+				SWIFT_OBJC_BRIDGING_HEADER = "SwiftFundamentals-Bridging-Header.h";
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		21D8631A194356D900374C60 /* Build configuration list for PBXProject "swift-fundamentals" */ = {
+		2149CA2619D8D533006E259C /* Build configuration list for PBXNativeTarget "SwiftFundamentals-Tests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2149CA2719D8D533006E259C /* Debug */,
+				2149CA2819D8D533006E259C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		21D8631A194356D900374C60 /* Build configuration list for PBXProject "SwiftFundamentals" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				21D86324194356D900374C60 /* Debug */,
@@ -309,7 +412,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		21D86326194356D900374C60 /* Build configuration list for PBXNativeTarget "swift-fundamentals" */ = {
+		21D86326194356D900374C60 /* Build configuration list for PBXNativeTarget "SwiftFundamentals" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				21D86327194356D900374C60 /* Debug */,
