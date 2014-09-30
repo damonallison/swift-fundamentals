@@ -6,7 +6,7 @@
 //  Copyright (c) 2014 Damon Allison. All rights reserved.
 //
 
-public class Person : Printable {
+class Person : Printable {
 
     private var myName = "Damon"
     

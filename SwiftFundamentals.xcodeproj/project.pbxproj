@@ -7,18 +7,18 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		210D170B19D51ADF00F0A7D9 /* 3-ControlStructures.swift in Sources */ = {isa = PBXBuildFile; fileRef = 210D170A19D51ADF00F0A7D9 /* 3-ControlStructures.swift */; };
-		210D170D19D51FA600F0A7D9 /* 4-Functions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 210D170C19D51FA600F0A7D9 /* 4-Functions.swift */; };
 		2110D3EC19DA50430099B0B8 /* ArrayTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2110D3E819DA50430099B0B8 /* ArrayTests.swift */; };
 		2110D3ED19DA50430099B0B8 /* DictionaryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2110D3E919DA50430099B0B8 /* DictionaryTests.swift */; };
 		2110D3EE19DA50430099B0B8 /* OptionalsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2110D3EA19DA50430099B0B8 /* OptionalsTests.swift */; };
 		2110D3EF19DA50430099B0B8 /* TypesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2110D3EB19DA50430099B0B8 /* TypesTests.swift */; };
 		2110D3F119DA50500099B0B8 /* SwitchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2110D3F019DA50500099B0B8 /* SwitchTests.swift */; };
+		2110D3F319DA59770099B0B8 /* FunctionsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2110D3F219DA59770099B0B8 /* FunctionsTests.swift */; };
 		21207E0D1949379700741939 /* MemoryManagement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21207E0C1949379700741939 /* MemoryManagement.swift */; };
 		216A0B36194359F8007155B2 /* Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = 216A0B34194359F8007155B2 /* Person.swift */; };
 		216A0B37194359F8007155B2 /* Printable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 216A0B35194359F8007155B2 /* Printable.swift */; };
-		216AF3C619D514A2000FE3F3 /* Operators.swift in Sources */ = {isa = PBXBuildFile; fileRef = 216AF3C519D514A2000FE3F3 /* Operators.swift */; };
 		21888B0B194E942D001C6CDB /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = 21888B0A194E942D001C6CDB /* README.md */; };
+		21A1EB9319DB895700D72436 /* EnumTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21A1EB9219DB895700D72436 /* EnumTests.swift */; };
+		21A1EB9519DBA6D100D72436 /* Classes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21A1EB9419DBA6D100D72436 /* Classes.swift */; };
 		21ABC49E195CFBCA002F8AEB /* ObjectiveCInterop.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21ABC49D195CFBCA002F8AEB /* ObjectiveCInterop.swift */; };
 		21B49770194E8938000B3A26 /* Generics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21B4976F194E8938000B3A26 /* Generics.swift */; };
 		21B49776194E8B5D000B3A26 /* Objects.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21B49775194E8B5D000B3A26 /* Objects.swift */; };
@@ -29,20 +29,20 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		210D170A19D51ADF00F0A7D9 /* 3-ControlStructures.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "3-ControlStructures.swift"; sourceTree = "<group>"; };
-		210D170C19D51FA600F0A7D9 /* 4-Functions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "4-Functions.swift"; sourceTree = "<group>"; };
 		2110D3E819DA50430099B0B8 /* ArrayTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ArrayTests.swift; path = Types/ArrayTests.swift; sourceTree = "<group>"; };
 		2110D3E919DA50430099B0B8 /* DictionaryTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DictionaryTests.swift; path = Types/DictionaryTests.swift; sourceTree = "<group>"; };
 		2110D3EA19DA50430099B0B8 /* OptionalsTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = OptionalsTests.swift; path = Types/OptionalsTests.swift; sourceTree = "<group>"; };
 		2110D3EB19DA50430099B0B8 /* TypesTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TypesTests.swift; path = Types/TypesTests.swift; sourceTree = "<group>"; };
 		2110D3F019DA50500099B0B8 /* SwitchTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwitchTests.swift; sourceTree = "<group>"; };
+		2110D3F219DA59770099B0B8 /* FunctionsTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FunctionsTests.swift; sourceTree = "<group>"; };
 		21207E0C1949379700741939 /* MemoryManagement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MemoryManagement.swift; sourceTree = "<group>"; };
 		2149CA0919D8D2F3006E259C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2149CA2019D8D533006E259C /* SwiftFundamentals-Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "SwiftFundamentals-Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		216A0B34194359F8007155B2 /* Person.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Person.swift; sourceTree = "<group>"; };
 		216A0B35194359F8007155B2 /* Printable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Printable.swift; sourceTree = "<group>"; };
-		216AF3C519D514A2000FE3F3 /* Operators.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Operators.swift; sourceTree = "<group>"; };
 		21888B0A194E942D001C6CDB /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		21A1EB9219DB895700D72436 /* EnumTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EnumTests.swift; path = Types/EnumTests.swift; sourceTree = "<group>"; };
+		21A1EB9419DBA6D100D72436 /* Classes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Classes.swift; sourceTree = "<group>"; };
 		21ABC499195CFB6F002F8AEB /* SwiftFundamentals-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SwiftFundamentals-Bridging-Header.h"; sourceTree = "<group>"; };
 		21ABC49D195CFBCA002F8AEB /* ObjectiveCInterop.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObjectiveCInterop.swift; sourceTree = "<group>"; };
 		21B4976F194E8938000B3A26 /* Generics.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Generics.swift; sourceTree = "<group>"; };
@@ -78,8 +78,10 @@
 			children = (
 				2110D3E819DA50430099B0B8 /* ArrayTests.swift */,
 				2110D3E919DA50430099B0B8 /* DictionaryTests.swift */,
+				21A1EB9219DB895700D72436 /* EnumTests.swift */,
 				2110D3EA19DA50430099B0B8 /* OptionalsTests.swift */,
 				2110D3EB19DA50430099B0B8 /* TypesTests.swift */,
+				21A1EB9419DBA6D100D72436 /* Classes.swift */,
 			);
 			name = Types;
 			sourceTree = "<group>";
@@ -87,6 +89,7 @@
 		2149CA0719D8D2F3006E259C /* SwiftFundamentals-Tests */ = {
 			isa = PBXGroup;
 			children = (
+				2110D3F219DA59770099B0B8 /* FunctionsTests.swift */,
 				2110D3F019DA50500099B0B8 /* SwitchTests.swift */,
 				2110D3E719DA50260099B0B8 /* Types */,
 				2149CA0819D8D2F3006E259C /* Supporting Files */,
@@ -125,11 +128,8 @@
 		21D86316194356D900374C60 = {
 			isa = PBXGroup;
 			children = (
-				216AF3C519D514A2000FE3F3 /* Operators.swift */,
 				21888B0A194E942D001C6CDB /* README.md */,
 				21D86322194356D900374C60 /* main.swift */,
-				210D170A19D51ADF00F0A7D9 /* 3-ControlStructures.swift */,
-				210D170C19D51FA600F0A7D9 /* 4-Functions.swift */,
 				21B4976F194E8938000B3A26 /* Generics.swift */,
 				21E493D1194941D2000987D7 /* Closures.swift */,
 				21207E0C1949379700741939 /* MemoryManagement.swift */,
@@ -240,8 +240,11 @@
 			files = (
 				2110D3F119DA50500099B0B8 /* SwitchTests.swift in Sources */,
 				2110D3EC19DA50430099B0B8 /* ArrayTests.swift in Sources */,
+				21A1EB9319DB895700D72436 /* EnumTests.swift in Sources */,
 				2110D3ED19DA50430099B0B8 /* DictionaryTests.swift in Sources */,
+				2110D3F319DA59770099B0B8 /* FunctionsTests.swift in Sources */,
 				2110D3EE19DA50430099B0B8 /* OptionalsTests.swift in Sources */,
+				21A1EB9519DBA6D100D72436 /* Classes.swift in Sources */,
 				2110D3EF19DA50430099B0B8 /* TypesTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -253,15 +256,12 @@
 				21207E0D1949379700741939 /* MemoryManagement.swift in Sources */,
 				21CDFC0E1963B3B600F7121D /* FuncQueue.swift in Sources */,
 				21B49770194E8938000B3A26 /* Generics.swift in Sources */,
-				210D170D19D51FA600F0A7D9 /* 4-Functions.swift in Sources */,
 				21B49776194E8B5D000B3A26 /* Objects.swift in Sources */,
 				216A0B36194359F8007155B2 /* Person.swift in Sources */,
 				21D86323194356D900374C60 /* main.swift in Sources */,
-				210D170B19D51ADF00F0A7D9 /* 3-ControlStructures.swift in Sources */,
 				21888B0B194E942D001C6CDB /* README.md in Sources */,
 				216A0B37194359F8007155B2 /* Printable.swift in Sources */,
 				21E493D2194941D2000987D7 /* Closures.swift in Sources */,
-				216AF3C619D514A2000FE3F3 /* Operators.swift in Sources */,
 				21CDFC0C1963B04100F7121D /* ObjcClass.m in Sources */,
 				21ABC49E195CFBCA002F8AEB /* ObjectiveCInterop.swift in Sources */,
 			);

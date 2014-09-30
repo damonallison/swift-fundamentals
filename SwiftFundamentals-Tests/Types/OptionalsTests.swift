@@ -31,7 +31,7 @@ types, even "primitives" like Int and Double can be optionals.
 /**
 A tree data structure that allows us to illustrate optional chaining
 */
-public class OptionalChaining {
+class OptionalChaining {
     public var name: String?
     public var child: OptionalChaining?
 

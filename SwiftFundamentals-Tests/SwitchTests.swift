@@ -12,7 +12,7 @@ import XCTest
 TrainStatus is an example of enum associated values.
 */
 
-public class SwitchTests : XCTestCase {
+class SwitchTests : XCTestCase {
     enum TrainStatus {
         case OnTime
         case Delayed(Int)

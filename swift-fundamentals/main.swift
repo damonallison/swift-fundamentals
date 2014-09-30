@@ -8,35 +8,6 @@
 
 import Foundation
 
-var names = Swift.Array<Swift.String>()
-names.append("Damon")
-names.append("Ryan")
-
-println("Hello, \(names)")
-
-Operators.testRangeOperator()
-
-ControlStructures.testIf()
-ControlStructures.testSwitch()
-
-
-//
-// Initializers
-//
-var superman = Superman(power: 100, firstName: "cole", lastName: "allison")
-
-
-/** 
-Functions 
-*/
-var tuple = Functions.testFunctionVarArgs(1, 2, 3, 4)
-assert(tuple.0 == 4 && tuple.1 == 1)
-
-var fib = Functions.makeFibonacci()
-for i in 0..<10 {
-    println("fib \(i) == \(fib())")
-}
-
 // 
 // Closures
 //
@@ -50,6 +21,7 @@ testMemoryManagement()
 testObjCInterop();
 
 // Generics
+var superman = Superman(power: 100, firstName: "cole", lastName: "allison")
 let g = Generics<String>()
 println(g.sayHello(superman))
 

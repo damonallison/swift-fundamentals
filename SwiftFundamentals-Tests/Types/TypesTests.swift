@@ -40,7 +40,7 @@ class TypesTests: XCTestCase {
     func testIntegers() {
 
         // Integers are structs and thus contain properties and methods.
-        XCTAssertEqual(UInt8.min, 0, "All unsigned integers must have a min == 0")
+        XCTAssertEqual(UInt8.min, UInt8(0), "All unsigned integers must have a min == 0")
 
         // Shows implicit type conversion is not allowed in swift.
         // Manual UInt8() conversion is required
@@ -48,7 +48,7 @@ class TypesTests: XCTestCase {
 
         // Shows that `Int` objects are `Structs` in their own right,
         // capable of having methods.
-        XCTAssertEqual(UInt8.min.advancedBy(10), 10, "advancedBy moves the receiver ahead.")
+        XCTAssertEqual(UInt8.min.advancedBy(10), UInt8(10), "advancedBy moves the receiver ahead.")
 
     }
 

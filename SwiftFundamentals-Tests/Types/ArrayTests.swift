@@ -17,7 +17,7 @@ Generic collections are much more safe than their NSSet/NSArray counterparts,
 which could contain elements of various types.
 
 */
-public class ArrayTests : XCTestCase {
+class ArrayTests : XCTestCase {
 
     enum MyEnum : Int {
         case One = 1

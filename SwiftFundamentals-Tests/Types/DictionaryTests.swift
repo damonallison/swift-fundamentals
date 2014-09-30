@@ -69,10 +69,14 @@ class DictionaryTests : XCTestCase {
         }
 
 
+        // TODO : is there a better way to array sort?
         let keys = sorted(words.keys)
         XCTAssertEqual(["allison", "damon"], keys, "Strings should be sorted")
-        let keysReversed = sorted([String](words.keys), { $0 > $1 })
-        XCTAssertEqual(["damon", "allison"], keysReversed)
+        var keys2 = [String](words.keys)
+        keys2.sort { (s1, s2) -> Bool in
+            return s1 > s2
+        }
+        XCTAssertEqual(["damon", "allison"], keys2)
         
     }
 
