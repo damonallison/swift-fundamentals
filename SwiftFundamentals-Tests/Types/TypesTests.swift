@@ -6,10 +6,15 @@
 //  Copyright (c) 2014 Damon Allison. All rights reserved.
 //
 
-import Cocoa
 import XCTest
 
-class Types: XCTestCase {
+/**
+Aliases allow you to provide another name for an existing type which
+can help increase code readability.
+*/
+typealias MyInt = Int
+
+class TypesTests: XCTestCase {
 
     // MARK: Integers
 
@@ -135,105 +140,35 @@ class Types: XCTestCase {
         XCTAssertTrue(components[4] == "path.txt")
     }
 
-    // MARK: Array
+    func testTuples() {
+        //
+        // Tuples are great for a lightweight data structure.
+        //
+        let props = ("Damon", 37)
+        assert(props.0 == "Damon")
 
-    /**
+        //
+        // Instead of using ordinal, each tuple value can be named.
+        //
+        let allNames = (first: "Damon", middle: "Ryan", last: "Allison")
+        assert(allNames.first == "Damon")
 
-    Arrays store collections of the same type. Under the covers, swift uses 
-    generic connections.
+        //
+        // Decomposing a tuple
+        //
+        let (name, age) = props
+        assert(name == "Damon")
+        assert(age == 37)
 
-    Explicitly typed collections is *much* better than Objective-C's collection
-    types.
-    */
-    func testArray() {
-
-        // empty array (inferred as `[String]`)
-        var shoppingList = ["Eggs", "Milk"]
-        XCTAssertEqual(["Eggs", "Milk"], shoppingList)
-        XCTAssertEqual(shoppingList.count, 2)
-
-        // Altering an array
-        shoppingList.append("Chocolate") // adding a single value
-        XCTAssertEqual(["Eggs", "Milk", "Chocolate"], shoppingList)
-
-        shoppingList += ["Bread"]                    // appening an array
-        shoppingList[0...1] = ["Water", "Carrots"]   // Replacing a slice of an array
-        XCTAssertEqual(["Water", "Carrots", "Chocolate", "Bread"], shoppingList)
-
-        // Iterating over an array - `in` just returns values.
-        for item in shoppingList {
-
-        }
-
-        // Iterating over an array - retrieving index and value.
-        for (index, item) in enumerate(shoppingList) {
-            switch index {
-            case shoppingList.startIndex:
-                XCTAssertEqual(item, "Water")
-            case shoppingList.endIndex:
-                XCTAssertEqual(item, "Bread")
-            default:
-                XCTAssertTrue(true)
-            }
-        }
-
-        // Determining if an array contains an item
-        var index = find(shoppingList, "Bread")
-        XCTAssertTrue(index == 3, "Couldn't find \"Bread\"!")
-
-        XCTAssertNil(find(shoppingList, "notthere"), "find() will return nil when an item does not exist")
+        //
+        // You can use the "wildcard" character "_" to ignore parts of the tuple
+        //
+        let (firstName, _) = props
+        assert(firstName == "Damon")
     }
 
-
-    
-    // MARK: Dictionary
-    
-    func testDictionary() {
-        
-        //
-        // Dictionaries
-        //
-        // KeyType must be Hashable
-        //
-        // var d = Dictionary<KeyType, ValueType> = [key1 : val1, key2 : val2]
-
-        // Initializing an empty array
-        var words: [String: Int] = [:]
-
-        // using `updateValue` as opposed to directly setting a key/value will
-        // allow you to capture the old value. If the key didn't exist in the 
-        // dictionary, `updateValue` returns `nil`
-        if let oldValue = words.updateValue(1, forKey:"the") {
-            XCTFail("\"the\" should not have existed in the dictionary")
-        }
-
-        // retrieving a value from the dictionary
-        if let the = words["a"] {
-            XCTFail("\"a\" should not exist in the dictionary")
-        }
-
-        // removing a value from the dictionary (setting the key to nil
-        words["the"] = nil
-        XCTAssertNil(words["the"])
-
-        // count
-        XCTAssertTrue(words.count == 0)
-
-        words["damon"] = 10
-        words["allison"] = 10
-
-        // iteration
-        for (key, val) in words {
-            XCTAssertTrue(find(["damon", "allison"], key) != nil)
-            XCTAssertTrue(val == 10)
-        }
-
-
-        let keys = sorted(words.keys)
-        XCTAssertEqual(["allison", "damon"], keys, "Strings should be sorted")
-        let keysReversed = sorted([String](words.keys), { $0 > $1 })
-        XCTAssertEqual(["damon", "allison"], keysReversed)
-
+    func testAliases() {
+        var x: MyInt = 2
+        XCTAssertTrue(x == 2)
     }
-    
 }

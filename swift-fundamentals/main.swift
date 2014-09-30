@@ -14,17 +14,10 @@ names.append("Ryan")
 
 println("Hello, \(names)")
 
-Types.runExamples()
-
 Operators.testRangeOperator()
 
 ControlStructures.testIf()
 ControlStructures.testSwitch()
-
-//
-// Optionals
-//
-testOptionals()
 
 
 //
@@ -48,11 +41,6 @@ for i in 0..<10 {
 // Closures
 //
 testClosures()
-
-// 
-// Switch
-//
-testSwitch()
 
 //
 // Memory Management
