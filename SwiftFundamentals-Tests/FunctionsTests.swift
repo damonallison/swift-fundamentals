@@ -20,8 +20,6 @@ Swift can express anything from a thunk to a complex function with:
 */
 class FunctionsTests : XCTestCase {
 
-
-
     func testFunctionsReturnMultiple() {
 
         /**
@@ -44,7 +42,6 @@ class FunctionsTests : XCTestCase {
             }
             return ((a + b), ((a + b) > 0))
         }
-
         if let bounds = retMult(0, 0) {
             XCTFail("(0, 0) should return nil")
         }
@@ -104,8 +101,12 @@ class FunctionsTests : XCTestCase {
             return (numbers.count, first)
         }
 
-        let (count, first) = varArgs(1, 2, 3, 4, 5)
+        var (count, first) = varArgs(1, 2, 3, 4, 5)
         XCTAssertTrue(count == 5 && first == 1)
+
+        (count, first) = varArgs()
+        XCTAssertTrue(count == 0)
+        XCTAssertTrue(first == 0)
     }
 
 
@@ -165,7 +166,7 @@ class FunctionsTests : XCTestCase {
     Tests the ability to pass functions around as variables. 
     
     Each function has a type. You can pass function `a` to any function
-    that accept's a function with type `a`
+    that has a parameter with type `a`
 
     */
     func testFunctionTypes() {
@@ -180,11 +181,14 @@ class FunctionsTests : XCTestCase {
             return ret
         }
 
-        func greaterThan10(val: Int) -> Bool {
-            return val > 10
+        func makeGreaterThan(val:Int) -> ((Int) -> Bool) {
+
+            // Example of an implicit return : in single line closures
+            // 'return' can be omitted.
+            return { x in x > val }
         }
 
-        let a = filter([1, 11, 2, 22, 3, 33], greaterThan10)
+        let a = filter([1, 11, 2, 22, 3, 33], makeGreaterThan(10))
         XCTAssertEqual(a, [11, 22, 33])
 
         // Show declaring a lambda inline.
@@ -279,5 +283,24 @@ class FunctionsTests : XCTestCase {
         // If the closure is short, it's cleaner to use typical parameter syntax.
         XCTAssertEqual(formatResult(100, 100, { $0 - $1 }), "Math computed : 0")
 
+        var numberMap = [0: "Zero", 1: "One", 2: "Two", 3: "Three", 4: "Four", 5 : "Five"]
+        var numbers = [0, 4, 2, 1, 3, 8]
+
+        // If a closure is the *only* parameter to a function, the () can be 
+        // omitted from the function call all together.
+        let strings = numbers.map { (let number) -> String in
+            if let str = numberMap[number] {
+                return str
+            }
+            else {
+                return "Unknown"
+            }
+        }
+
+        let strings2 = numbers.map() { (let number) -> String in
+            return "hi"
+        }
+        var expected = ["Zero", "Four", "Two", "One", "Three", "Unknown"];
+        XCTAssertEqual(strings, expected)
     }
 }

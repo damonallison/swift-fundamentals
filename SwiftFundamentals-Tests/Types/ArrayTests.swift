@@ -101,5 +101,18 @@ class ArrayTests : XCTestCase {
         XCTAssertEqual(arr, ["c", "b", "aa", "a"])
     }
 
+    func testArrayCopying() {
+        // Unshare will copy the array only if there are multiple references
+        // to the array. Thus, it's more efficient than copy if there isn't
+        // another reference.
+        var x = [0, 1, 2, 3]
+        var y = x
+        var z = y
+        y[0] = 10
+        z[0] = 100
+        XCTAssertTrue(x[0] == 0)
+        XCTAssertTrue(y[0] == 10)
+        XCTAssertTrue(z[0] == 100)
+    }
 
 }

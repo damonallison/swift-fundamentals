@@ -13,10 +13,12 @@ import XCTest
 Enums are vastly superior to C enums. In swift, enums are more types than values.
 
 Enum values can be of any type - not just int.
-Enums can have "associated values" - fields of state that are associated with the int.
+Enums can have "associated values" - fields of state that are associated with the value.
 Enums can contain computed (get) properties and methods.
-Enums can be extended
+Enums can be extended.
 Enums can conform to protocols.
+
+Enums differ from classes in that they *cannot* be inherited from.
 */
 class EnumTests : XCTestCase {
 
@@ -33,10 +35,9 @@ class EnumTests : XCTestCase {
         case West
     }
 
-    func enumTest() {
+    func testEnumNoRawValue() {
         let cp = CompassPoint.East
-        let cp2 = CompassPoint.East
-        XCTAssertEqual(cp, cp2)
+        XCTAssertEqual(cp, CompassPoint.East)
     }
 
     // Raw Values

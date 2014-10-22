@@ -9,14 +9,14 @@
 class Person : Printable {
 
     private var myName = "Damon"
-    
+
     //
     // Initialization
     //
-    // Golden Rule : 
+    // Golden Rule :
     //   Every value must be initialized before it's used.
     //
-    public init(first: String, last: String) {
+    init(first: String, last: String) {
 
         firstName = first
         lastName = last
@@ -35,26 +35,26 @@ class Person : Printable {
     //
     // use willSet / didSet to run code before and after property setting.
     //
-    public var firstName: String {
-    willSet {
-        println("willSet firstName to \(newValue)")
+    var firstName: String {
+        willSet {
+            println("willSet firstName to \(newValue)")
+        }
+        didSet {
+            println("didSet firstName to \(firstName)")
+        }
     }
-    didSet {
-        println("didSet firstName to \(firstName)")
-    }
-    }
-    
-    public var lastName: String
-    // 
+
+    var lastName: String
+    //
     // Implementing a readonly property
     //
-    public var fullName: String {
+    var fullName: String {
         get {
             return "\(firstName) \(lastName)"
         }
     }
 
-    // 
+    //
     // method declarations
     //
     func description() -> String {
@@ -65,11 +65,11 @@ class Person : Printable {
         return "\(firstName) \(lastName) \(surname)"
     }
 
-    // 
+    //
     // By default, a method name has the same name for it's parameter when you call it
     // and within the method itself.
     //
-    // You can specify a second name that can be used from within the method. In this 
+    // You can specify a second name that can be used from within the method. In this
     // method, the caller uses the parameter name "surname2", internally within the method
     // we use the name "lastSurname"
     //
@@ -90,7 +90,7 @@ class Superman : Person {
         //
         // When overriding a base class, there are three steps to perform
         // in the initializer (in order):
-        // 
+        //
         // 1. Initialize all variables in the derived class.
         // 2. Call super.init() to initialize the base.
         // 3. Do any custom initialization logic that you need to perform.
@@ -106,10 +106,10 @@ class Superman : Person {
         // 1. Initialize all variables in the derived class.
         //
         self.power = power
+
         //
         // 2. super.init()
         //
-        
         super.init(first: firstName, last: lastName)
 
         // derived classes have access to the base's private member
@@ -117,14 +117,14 @@ class Superman : Person {
         //
         // 3. Custom initialization logic
         println("superman created with \(power) myName \(myName)")
-        
+
     }
 
-    // 
+    //
     // Convenience initializer (must call another initializer)
     //
     convenience init() {
         self.init(power: 100, firstName: "super", lastName: "man")
     }
-
+    
 }

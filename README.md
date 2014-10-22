@@ -6,7 +6,7 @@
 
 * What functions (and objects) are available at the global scope?
 
-* iOS8 : Photos Framework - SamXx
+* iOS8 : Photos Framework.
 * Apple Versioning (Xcode 6.1)
 
 * Sorting / filtering / mapping
