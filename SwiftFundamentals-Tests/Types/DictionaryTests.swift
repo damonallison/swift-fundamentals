@@ -64,16 +64,16 @@ class DictionaryTests : XCTestCase {
 
         // iteration
         for (key, val) in words {
-            XCTAssertTrue(find(["damon", "allison"], key) != nil)
+            XCTAssertTrue(["damon", "allison"].indexOf(key) != nil)
             XCTAssertTrue(val == 10)
         }
 
 
         // TODO : is there a better way to array sort?
-        let keys = sorted(words.keys)
+        let keys = words.keys.sort()
         XCTAssertEqual(["allison", "damon"], keys, "Strings should be sorted")
         var keys2 = [String](words.keys)
-        keys2.sort { (s1, s2) -> Bool in
+        keys2.sortInPlace { (s1, s2) -> Bool in
             return s1 > s2
         }
         XCTAssertEqual(["damon", "allison"], keys2)

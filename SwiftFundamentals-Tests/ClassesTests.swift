@@ -11,10 +11,10 @@ import XCTest
 // Global properties can also have property observers.
 var myVar: Int = 0 {
     willSet {
-        println("setting myVal to \(newValue)")
+        print("setting myVal to \(newValue)")
     }
     didSet {
-        println("didSet myVal to \(myVar) from \(oldValue)")
+        print("didSet myVal to \(myVar) from \(oldValue)")
     }
 }
 
@@ -47,7 +47,7 @@ func testStructures() {
 
     // Structures are value types
     var p1 = Point(x: 10, y:20)
-    var p2 = p1 // value type - copied
+    let p2 = p1 // value type - copied
     p1.x = 20
 
     XCTAssertTrue(p1.x == 20)
@@ -89,7 +89,7 @@ class ClassesTests : XCTestCase {
 
         var origin : Point {
             willSet(newVal) {
-                println("willSet to \(newVal)")
+                print("willSet to \(newVal)")
             }
 //            didSet(oldVal) {
 //                println("didSet to \(internalOrigin) from \(oldVal)")
@@ -137,7 +137,7 @@ class ClassesTests : XCTestCase {
         r.origin = Point(x: 100, y: 100)
         r.internalOrigin = Point(x: 100, y:100)
         XCTAssertEqual(r.origin, Point(x: 100, y:100))
-        var r2 = r
+        let r2 = r
         r.length = 200
         XCTAssertTrue(r.length == 200 && r2.length == 200)
         XCTAssertTrue(r === r2, "r and r2 should refer to the same instance")

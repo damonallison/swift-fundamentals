@@ -28,8 +28,7 @@ class ArrayTests : XCTestCase {
     func testArrayCreation() {
 
         // Creation
-        var a1 = [String]()
-        XCTAssertTrue(countElements(a1) == 0)
+        let a1 = [String]()
         XCTAssertTrue(a1.count == 0)
         XCTAssertTrue(a1.isEmpty, "isEmpty is a convenience property to test count == 0")
         XCTAssertTrue(a1.capacity == 0, "capacity tells you how large the array can be without having to reallocate memory")
@@ -53,7 +52,7 @@ class ArrayTests : XCTestCase {
 
         // Appending an array
         shoppingList += ["Bread"]
-        shoppingList.extend(["OJ"])
+        shoppingList.appendContentsOf(["OJ"])
 
         // Replacing a slice of an array
         shoppingList[0...1] = ["Water", "Carrots"]
@@ -65,8 +64,8 @@ class ArrayTests : XCTestCase {
 
         // Checking existence
         // Determining if an array contains an item
-        XCTAssertTrue(find(shoppingList, "Bread") == 3, "find() will return the index of the object if it exists")
-        XCTAssertNil(find(shoppingList, "notthere"), "find() will return nil when an item does not exist")
+        XCTAssertTrue(shoppingList.indexOf("Bread") == 3, "find() will return the index of the object if it exists")
+        XCTAssertNil(shoppingList.indexOf("notthere"), "find() will return nil when an item does not exist")
 
         var shoppingList2 = [String]()
         for item in shoppingList {
@@ -75,7 +74,7 @@ class ArrayTests : XCTestCase {
         XCTAssertEqual(shoppingList, shoppingList2)
 
         // Iterating over an array - retrieving index and value.
-        for (index, item) in enumerate(shoppingList) {
+        for (index, item) in shoppingList.enumerate() {
             switch index {
             case shoppingList.startIndex:
                 XCTAssertEqual(item, "Water")
@@ -91,11 +90,11 @@ class ArrayTests : XCTestCase {
 
         // Sorting
         var arr = ["b", "a", "c", "aa"]
-        arr.sort { $0 < $1 } // Ascending
+        arr.sortInPlace { $0 < $1 } // Ascending
         XCTAssertEqual(arr, ["a", "aa", "b", "c"])
 
         // Using the longer closure syntax
-        arr.sort { (s1, s2) -> Bool in
+        arr.sortInPlace { (s1, s2) -> Bool in
             return s1 > s2 // Descending
         }
         XCTAssertEqual(arr, ["c", "b", "aa", "a"])

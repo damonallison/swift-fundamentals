@@ -1,3 +1,40 @@
+## iOS 9 / 2015 ##
+
+* iOS 9
+* Multitasking
+* Search : exposing app data to the OS. Universal links bring the user directly to the right spot in the app.
+* (Games) ReplayKit - record the screen - useful for customer debugging / error reporting?
+* Safari VC
+
+* Xcode7 :
+* What markdown syntax is supported for QuickLook documentation (links, images, headers, etc).
+* Crash Logs : automatically symbolicated / collected by the app store.
+* Xcode server to run bots / tests on checkin.
+
+* Testing
+* Record UI actions. Write code to drive UI.
+* Code Coverage : How?
+
+* Swift
+* Error handling
+* Protocol extensions
+* Testability - all methods exposed to tests - how?
+* LLDB REPL
+* Modules
+
+* Objective-C
+* Generics
+* Nullability
+
+* App Thinning
+* Bitcode - upload LLVM code to Apple. Apple compiles for device during distribution.
+* Slicing - only required assets are sent to device during distribution.
+* On-Demand resources - lazy load content (game levels, etc)
+
+* Free provisioning
+* Can anyone install any project on their own device? No profile required?
+
+
 # Questions #
 
 * How to make a swift module / framework?
@@ -6,40 +43,6 @@
 
 * What functions (and objects) are available at the global scope?
 
-* iOS8 : Photos Framework.
-* Apple Versioning (Xcode 6.1)
-
-* Sorting / filtering / mapping
-
-# Introduction to Swift #
-
-On June 2nd, 2014, Apple's World Wide Developer Conference ([WWDC][wwdc]), Apple shocked it's developer community by introducing a new programming language called Swift.
-
-
-## Swift, The Platform ##
-
-* Apple's platform control - removing all 3rd party dependencies:
-  * Java / Flash
-  * No python / ruby
-
-* Environment, history of Objective-C.
-* Messy / risky parts of Objective-C (when compared to VM languages)
-* Calls for Objective-C's end.
-* Comparisons to Microsoft's C++/VB -> .NET transition.
-* Apple preparing the way by modernizing Objective-C with ARC (others?)
-
-
-### Moderizing Objective-C ###
-
-Apple claims they "laid the foundation for swift" by modernizing Objective-C with ARC, blocks, modules, and standardizing Foundation and Cocoa APIs for uniformity, allowing Swift to play nice with Cocoa conventions.
-
-We don't know if the improvements to Objective-C were implemented because they were simply good ideas or if they were intentionally meant to pave the way for Swift. Whatever the motive, the end result is the underlying "modernization" of Objective-C provides the foundation for Swift to cleanly co-exist with Objective-C and interoperate with libraries written in Objective-C as far back as Objective-C's introduction in 1983.
-
-* Purely Apple - controlled by Apple.
-* Interoperates with Objective-C - they don’t need to rebuild all Cocoa / Foundation libraries.
-* Removes a lot of objective-c legacy rough edges.
-
-
 ## Swift, The Language ##
 
 * "Objective-C without the C"
@@ -47,11 +50,10 @@ We don't know if the improvements to Objective-C were implemented because they w
     * Pointers are hidden by default.
     * Type safety (generics : Array<String> > NSArray).
     * Explicit type casting required.
-    * Any type can be optional, even Int. Not objects, like Objective-C.
+    * Any type can be optional, even "primitives" like Int
     * Conditionals must be boolean expressions.
-    * No exception handling.
     * Switch automatically 'break's.
-    * Optionals : one true "empty" (sentinal?) value to rule them all (nil, NSNotFound, etc..)
+    * Optionals : one true "empty" (sentinal?) value to rule them all (nil, NSNotFound, 0, etc..)
 
   * Modern
     * No header files.
@@ -66,19 +68,11 @@ We don't know if the improvements to Objective-C were implemented because they w
 * Interoprable with Objective-C.
 * Based on ARC - still subject to retain cycles. Apple provides "capture lists" to allow developers to specify capture semantics.
 
-## Swift, The Standard Library ##
 
 ## Swift, The Tools ##
 
-* Playgrounds / REPL (Lattner's passion)
-  * Make programming more immediately accessible, approachable, and fun.
-  * Interactive documentation.
-
-
-
 9/9 - Swift 1.0.
 
-[wwdc]: https://developer.apple.com/wwdc/ "Apple - WWDC"
 [lattner]: http://www.nondot.org/sabre/ "Chris Lattner's Homepage"
 
 Swift is indeed a new programming language, however many of the "new features" have existed for years in other programming languages. Chris Lattner, swift's

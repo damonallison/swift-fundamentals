@@ -70,7 +70,7 @@ class TypesTests: XCTestCase {
         XCTAssertTrue(d is Double, "Literal floating points are inferred as Double(s).")
 
         // Implicit type conversion is not allowed.
-        XCTAssertEqual(d as Double, Double(Float(3.0)), "Implicit floating point type conversion is not allowed")
+        XCTAssertEqual(d as! Double, Double(Float(3.0)), "Implicit floating point type conversion is not allowed")
     }
 
     // MARK: Strings
@@ -168,7 +168,7 @@ class TypesTests: XCTestCase {
     }
 
     func testAliases() {
-        var x: MyInt = 2
+        let x: MyInt = 2
         XCTAssertTrue(x == 2)
     }
 }

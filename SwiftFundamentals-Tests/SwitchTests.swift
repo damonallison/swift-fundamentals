@@ -53,7 +53,7 @@ class SwitchTests : XCTestCase {
         class Superman : Person {
         }
 
-        var p: AnyObject = Superman()
+        let p: AnyObject = Superman()
         switch p {
         case let x as Superman:
             break

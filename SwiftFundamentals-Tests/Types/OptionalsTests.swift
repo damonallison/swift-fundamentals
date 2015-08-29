@@ -71,7 +71,7 @@ class OptionalsTests : XCTestCase {
         // The optional value will be bound to the constant or variable for the life
         // of the if (or while).
 
-        if var x = optionalInt {
+        if let x = optionalInt {
             // x is bound to the optional's value (and typed Int). There is no need
             // to "unwrap" the optional, so you don't have to use "x!"
             XCTAssertTrue(x == 10)
@@ -110,7 +110,7 @@ class OptionalsTests : XCTestCase {
         // This function returns an optional (Int?)
         //
         func findIndexOfString(string: String, array: [String]) -> Int? {
-            for (index, value) in enumerate(array) {
+            for (index, value) in array.enumerate() {
                 if value == string {
                     return index
                 }
@@ -118,15 +118,15 @@ class OptionalsTests : XCTestCase {
             return nil
         }
 
-        XCTAssertTrue(findIndexOfString("damon", ["this", "is", "my", "test", "damon"]) == 4)
-        XCTAssertTrue(findIndexOfString("notthere", []) == nil)
-        XCTAssertTrue(findIndexOfString("test", ["no"]) == nil)
+        XCTAssertTrue(findIndexOfString("damon", array: ["this", "is", "my", "test", "damon"]) == 4)
+        XCTAssertTrue(findIndexOfString("notthere", array: []) == nil)
+        XCTAssertTrue(findIndexOfString("test", array: ["no"]) == nil)
         //
         // Optional Binding
         // if/let binding allows us to unwrap the optional value into the
         // 'index' variable of type Int (*not* Int?)
         //
-        if let index = findIndexOfString("damon", ["damon", "allison"]) {
+        if let index = findIndexOfString("damon", array: ["damon", "allison"]) {
             XCTAssertTrue(index == 0, "oops")
         }
         else {
@@ -142,9 +142,9 @@ class OptionalsTests : XCTestCase {
         // return nil for the entire expression (the rest of the expression is ignored).
         //
 
-        var parent = OptionalChaining(name: "don")
-        var child = OptionalChaining(name: "damon")
-        var grandchild = OptionalChaining(name: "cole")
+        let parent = OptionalChaining(name: "don")
+        let child = OptionalChaining(name: "damon")
+        let grandchild = OptionalChaining(name: "cole")
 
         parent.child = child
         child.child = grandchild

@@ -42,10 +42,10 @@ class FunctionsTests : XCTestCase {
             }
             return ((a + b), ((a + b) > 0))
         }
-        if let bounds = retMult(0, 0) {
+        if let bounds = retMult(0, b: 0) {
             XCTFail("(0, 0) should return nil")
         }
-        var ret = retMult(2, 2)!
+        var ret = retMult(2, b: 2)!
         XCTAssertTrue(ret.total == 4 && ret.aboveZero)
     }
 
@@ -68,7 +68,7 @@ class FunctionsTests : XCTestCase {
         XCTAssertTrue(externalParamNames(extParam: 10) == "10")
 
         // Using `#` will tell swift to use the same name externally and internally
-        func shorthandExternalParamNames(#param: Int) -> String {
+        func shorthandExternalParamNames(param param: Int) -> String {
             return "\(param)"
         }
         XCTAssertTrue(shorthandExternalParamNames(param: 10) == "10")
@@ -97,7 +97,7 @@ class FunctionsTests : XCTestCase {
     func testFunctionsVarArgs() {
 
         func varArgs(numbers: Int...) -> (count: Int, first: Int) {
-            var first = numbers.first != nil ? numbers.first! : 0
+            let first = numbers.first != nil ? numbers.first! : 0
             return (numbers.count, first)
         }
 
@@ -128,7 +128,7 @@ class FunctionsTests : XCTestCase {
                 else if iter == 2 {
                     return second
                 }
-                var newSecond = first + second
+                let newSecond = first + second
                 first = second
                 second = newSecond
                 return newSecond
@@ -158,7 +158,7 @@ class FunctionsTests : XCTestCase {
         }
         var i1 = 10
         var i2 = 100
-        swap(&i1, &i2)
+        swap(&i1, b: &i2)
         XCTAssertTrue(i1 == 100 && i2 == 10)
     }
 
@@ -188,11 +188,11 @@ class FunctionsTests : XCTestCase {
             return { x in x > val }
         }
 
-        let a = filter([1, 11, 2, 22, 3, 33], makeGreaterThan(10))
+        let a = filter([1, 11, 2, 22, 3, 33], pred: makeGreaterThan(10))
         XCTAssertEqual(a, [11, 22, 33])
 
         // Show declaring a lambda inline.
-        let b = filter([1, 11, 2, 22, 3, 33], {(x: Int) -> Bool in
+        let b = filter([1, 11, 2, 22, 3, 33], pred: {(x: Int) -> Bool in
             return x > 20
         })
         XCTAssertEqual(b, [22, 33])
@@ -219,8 +219,8 @@ class FunctionsTests : XCTestCase {
         let reverseAlpha = ["Ryan", "Damon", "Allison"]
 
         // This does *not* use closure syntax. Passes named functions.
-        XCTAssertEqual(alpha, sorted(names, alphaSort))
-        XCTAssertEqual(reverseAlpha, sorted(names, reverseAlphaSort))
+        XCTAssertEqual(alpha, names.sort(alphaSort))
+        XCTAssertEqual(reverseAlpha, names.sort(reverseAlphaSort))
 
         // Closure syntax support inout, varadic params (must be last), 
         // tuples as a return type.
@@ -229,7 +229,7 @@ class FunctionsTests : XCTestCase {
         // when creating the closure. The only difference between this syntax
         // and function syntax is the `in`. `in` indicates the function declaration 
         // has finished and the body follows.
-        XCTAssertEqual(alpha, sorted(names, { (s1: String, s2: String) -> Bool in
+        XCTAssertEqual(alpha, names.sort({ (s1: String, s2: String) -> Bool in
             return s1 < s2
             }))
 
@@ -238,16 +238,16 @@ class FunctionsTests : XCTestCase {
         // It is *always* possible to infer param and return types, so the full
         // function definition above is never required when the closure is 
         // used as a function argument.
-        XCTAssertEqual(alpha, sorted(names, { s1, s2 in return s1 < s2 }))
+        XCTAssertEqual(alpha, names.sort({ s1, s2 in return s1 < s2 }))
 
         // Single expression closures will implicitly return the expression.
         // Therefore, "return" is not required.
-        XCTAssertEqual(alpha, sorted(names, { s1, s2 in s1 < s2 }))
+        XCTAssertEqual(alpha, names.sort({ s1, s2 in s1 < s2 }))
 
         // Shorthand argument names
         // Swift *automatically* provides shorthand argument names for inline closures.
         // The implicitly created argument names are $0, $1, and so on.
-        XCTAssertEqual(alpha, sorted(names, { return $0 < $1 }))
+        XCTAssertEqual(alpha, names.sort({ return $0 < $1 }))
 
         // Operator functions
         // If the type provides an operator function that matches the 
@@ -256,7 +256,7 @@ class FunctionsTests : XCTestCase {
         //  < = (s1: String, s2: String) -> Bool
         //  Because the operator function matches the function argument type
         // for `sorted`, `<` can be used.
-        XCTAssertEqual(alpha, sorted(names, <))
+        XCTAssertEqual(alpha, names.sort(<))
     }
 
     /**
@@ -267,21 +267,21 @@ class FunctionsTests : XCTestCase {
 
         // This function takes a trailing closure. When
         func formatResult(a: Int, b: Int, mathFunc: (i1: Int, i2: Int) -> Int) -> String {
-            var res = mathFunc(i1: a, i2: b)
+            let res = mathFunc(i1: a, i2: b)
             return "Math computed : \(res)"
         }
 
         // Notice here that `formatRules` takes a function as it's last param.
         // When we invoke format rules, we send the closure as an argument *outside*
         // the parentheses for the function arguments.
-        var result = formatResult(100, 100) {
+        var result = formatResult(100, b: 100) {
             $0 + $1
         }
         XCTAssertEqual(result, "Math computed : 200")
 
         // Trailing closures are only really beneficial when the closure is long.
         // If the closure is short, it's cleaner to use typical parameter syntax.
-        XCTAssertEqual(formatResult(100, 100, { $0 - $1 }), "Math computed : 0")
+        XCTAssertEqual(formatResult(100, b: 100, mathFunc: { $0 - $1 }), "Math computed : 0")
 
         var numberMap = [0: "Zero", 1: "One", 2: "Two", 3: "Three", 4: "Four", 5 : "Five"]
         var numbers = [0, 4, 2, 1, 3, 8]

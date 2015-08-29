@@ -13,7 +13,7 @@ class ObjectiveCTests : XCTestCase {
     func testObjCInterop() {
 
         // See SwiftFundamentals-Bridging-Header.h
-        var oc = ObjcClass()
+        let oc = ObjcClass()
         XCTAssertTrue(oc.firstName == nil)
         
     }
