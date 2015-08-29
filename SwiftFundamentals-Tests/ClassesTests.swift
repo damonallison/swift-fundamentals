@@ -73,8 +73,8 @@ class ClassesTests : XCTestCase {
 
     class Rectangle {
 
-        // TODO : `internalOrigin` is visible outside `Rectangle`. 
-        //        (see `testClasses` below) - WHY?
+        // "private" means "anyone in this file can access this member" - it is *not*
+        // tied to type hierarchy, rather by file.
         private var internalOrigin: Point
 
         var length: Int
@@ -142,5 +142,15 @@ class ClassesTests : XCTestCase {
         XCTAssertTrue(r.length == 200 && r2.length == 200)
         XCTAssertTrue(r === r2, "r and r2 should refer to the same instance")
 
+    }
+
+    func testPerson() {
+        let p = Person(first: "damon", last: "allison")
+        p.firstName = "Cole"
+        XCTAssertTrue(p.firstName == "Cole")
+        p.firstName = "SomethingTooLong"
+        XCTAssertTrue(p.firstName == "DAMON")
+
+        
     }
 }

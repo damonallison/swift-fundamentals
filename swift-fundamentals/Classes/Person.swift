@@ -8,7 +8,19 @@
 
 class Person : Printable {
 
-    private var myName = "Damon"
+    /*
+    
+    Access modifiers apply based on file and project structure, 
+    not type hierarchy.
+    
+    `private`   == all types in this *file* (not class) have access
+    `protected` == all types in this module (not derived classes) have access
+    `public`    == full access
+    
+    */
+    private lazy var initialName = String()
+    private var firstNameInternal: String
+    private var lastNameInternal: String
 
     //
     // Initialization
@@ -18,33 +30,53 @@ class Person : Printable {
     //
     init(first: String, last: String) {
 
-        firstName = first
-        lastName = last
+        firstNameInternal = first
+        lastNameInternal = last
+        address = "HERE"
+        initialName = "\(first) \(last)"
 
         // if you are overriding a base class, call super.init()
         // after super.init(), you can change the properties
         // defined in the superclass.
+
+        // Once all vars are set (and you have delegated up the chain)
+        // you have access to `self`
     }
 
     deinit {
         //
         // object is being deallocated. cleanup
         //
+        println("person dealloc")
     }
 
-    //
-    // use willSet / didSet to run code before and after property setting.
+    // 
+    // A "computed property" does not store a value. This can be used to 
+    // hide internal variable, provide validation, etc.
     //
     var firstName: String {
-        willSet {
-            println("willSet firstName to \(newValue)")
+        get {
+            return firstNameInternal
         }
-        didSet {
-            println("didSet firstName to \(firstName)")
+        set {
+            if countElements(newValue) > 5 {
+                firstNameInternal = "DAMON"
+            }
+            else {
+                firstNameInternal = newValue
+            }
         }
     }
 
-    var lastName: String
+    var lastName: String {
+        get {
+            return lastNameInternal
+        }
+        set {
+            lastNameInternal = newValue
+        }
+    }
+
     //
     // Implementing a readonly property
     //
@@ -54,6 +86,18 @@ class Person : Printable {
         }
     }
 
+    //
+    // Property observers: 
+    // willSet / didSet to run code before setting a property.
+    //
+    var address: String {
+        willSet {
+            println("willSet address to \(newValue)")
+        }
+        didSet {
+            println("didSet address to \(address) from \(oldValue)")
+        }
+    }
     //
     // method declarations
     //
@@ -113,10 +157,10 @@ class Superman : Person {
         super.init(first: firstName, last: lastName)
 
         // derived classes have access to the base's private member
-        super.myName = "Damon R Allison"
+        super.initialName = "Damon R Allison"
         //
         // 3. Custom initialization logic
-        println("superman created with \(power) myName \(myName)")
+        println("superman created with \(power) initialName \(initialName)")
 
     }
 

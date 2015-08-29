@@ -13,19 +13,16 @@
 		2110D3EF19DA50430099B0B8 /* TypesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2110D3EB19DA50430099B0B8 /* TypesTests.swift */; };
 		2110D3F119DA50500099B0B8 /* SwitchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2110D3F019DA50500099B0B8 /* SwitchTests.swift */; };
 		2110D3F319DA59770099B0B8 /* FunctionsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2110D3F219DA59770099B0B8 /* FunctionsTests.swift */; };
-		21207E0D1949379700741939 /* MemoryManagement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21207E0C1949379700741939 /* MemoryManagement.swift */; };
-		216A0B36194359F8007155B2 /* Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = 216A0B34194359F8007155B2 /* Person.swift */; };
-		216A0B37194359F8007155B2 /* Printable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 216A0B35194359F8007155B2 /* Printable.swift */; };
-		21888B0B194E942D001C6CDB /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = 21888B0A194E942D001C6CDB /* README.md */; };
+		213C3A731A004DA30099F2C8 /* MemoryManagementTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 213C3A721A004DA30099F2C8 /* MemoryManagementTests.swift */; };
+		213C3AE21A0050940099F2C8 /* ObjectiveCInteropTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 213C3AE11A0050940099F2C8 /* ObjectiveCInteropTests.swift */; };
+		213C3AE41A0050EA0099F2C8 /* GenericsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 213C3AE31A0050EA0099F2C8 /* GenericsTests.swift */; };
+		213C3AE51A00511E0099F2C8 /* ObjcClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 21CDFC0B1963B04100F7121D /* ObjcClass.m */; };
+		213C3AE61A0051320099F2C8 /* Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = 216A0B34194359F8007155B2 /* Person.swift */; };
+		213C3AE71A0051320099F2C8 /* Printable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 216A0B35194359F8007155B2 /* Printable.swift */; };
+		213C3AE81A0051320099F2C8 /* FuncQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21CDFC0D1963B3B600F7121D /* FuncQueue.swift */; };
+		213C3AEA1A0051550099F2C8 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 213C3AE91A0051550099F2C8 /* Cocoa.framework */; };
 		21A1EB9319DB895700D72436 /* EnumTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21A1EB9219DB895700D72436 /* EnumTests.swift */; };
-		21A1EB9519DBA6D100D72436 /* Classes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21A1EB9419DBA6D100D72436 /* Classes.swift */; };
-		21ABC49E195CFBCA002F8AEB /* ObjectiveCInterop.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21ABC49D195CFBCA002F8AEB /* ObjectiveCInterop.swift */; };
-		21B49770194E8938000B3A26 /* Generics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21B4976F194E8938000B3A26 /* Generics.swift */; };
-		21B49776194E8B5D000B3A26 /* Objects.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21B49775194E8B5D000B3A26 /* Objects.swift */; };
-		21CDFC0C1963B04100F7121D /* ObjcClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 21CDFC0B1963B04100F7121D /* ObjcClass.m */; };
-		21CDFC0E1963B3B600F7121D /* FuncQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21CDFC0D1963B3B600F7121D /* FuncQueue.swift */; };
-		21D86323194356D900374C60 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21D86322194356D900374C60 /* main.swift */; };
-		21E493D2194941D2000987D7 /* Closures.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21E493D1194941D2000987D7 /* Closures.swift */; };
+		21A1EB9519DBA6D100D72436 /* ClassesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21A1EB9419DBA6D100D72436 /* ClassesTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -35,24 +32,21 @@
 		2110D3EB19DA50430099B0B8 /* TypesTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TypesTests.swift; path = Types/TypesTests.swift; sourceTree = "<group>"; };
 		2110D3F019DA50500099B0B8 /* SwitchTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwitchTests.swift; sourceTree = "<group>"; };
 		2110D3F219DA59770099B0B8 /* FunctionsTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FunctionsTests.swift; sourceTree = "<group>"; };
-		21207E0C1949379700741939 /* MemoryManagement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MemoryManagement.swift; sourceTree = "<group>"; };
+		213C3A721A004DA30099F2C8 /* MemoryManagementTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MemoryManagementTests.swift; sourceTree = "<group>"; };
+		213C3AE11A0050940099F2C8 /* ObjectiveCInteropTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObjectiveCInteropTests.swift; sourceTree = "<group>"; };
+		213C3AE31A0050EA0099F2C8 /* GenericsTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GenericsTests.swift; sourceTree = "<group>"; };
+		213C3AE91A0051550099F2C8 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		2149CA0919D8D2F3006E259C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2149CA2019D8D533006E259C /* SwiftFundamentals-Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "SwiftFundamentals-Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		216A0B34194359F8007155B2 /* Person.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Person.swift; sourceTree = "<group>"; };
 		216A0B35194359F8007155B2 /* Printable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Printable.swift; sourceTree = "<group>"; };
 		21888B0A194E942D001C6CDB /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		21A1EB9219DB895700D72436 /* EnumTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EnumTests.swift; path = Types/EnumTests.swift; sourceTree = "<group>"; };
-		21A1EB9419DBA6D100D72436 /* Classes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Classes.swift; sourceTree = "<group>"; };
+		21A1EB9419DBA6D100D72436 /* ClassesTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClassesTests.swift; sourceTree = "<group>"; };
 		21ABC499195CFB6F002F8AEB /* SwiftFundamentals-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SwiftFundamentals-Bridging-Header.h"; sourceTree = "<group>"; };
-		21ABC49D195CFBCA002F8AEB /* ObjectiveCInterop.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObjectiveCInterop.swift; sourceTree = "<group>"; };
-		21B4976F194E8938000B3A26 /* Generics.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Generics.swift; sourceTree = "<group>"; };
-		21B49775194E8B5D000B3A26 /* Objects.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Objects.swift; sourceTree = "<group>"; };
 		21CDFC0A1963B04100F7121D /* ObjcClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ObjcClass.h; sourceTree = "<group>"; };
 		21CDFC0B1963B04100F7121D /* ObjcClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ObjcClass.m; sourceTree = "<group>"; };
 		21CDFC0D1963B3B600F7121D /* FuncQueue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FuncQueue.swift; sourceTree = "<group>"; };
-		21D8631F194356D900374C60 /* SwiftFundamentals */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = SwiftFundamentals; sourceTree = BUILT_PRODUCTS_DIR; };
-		21D86322194356D900374C60 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = main.swift; path = "swift-fundamentals/main.swift"; sourceTree = "<group>"; };
-		21E493D1194941D2000987D7 /* Closures.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Closures.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,13 +54,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		21D8631C194356D900374C60 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
+				213C3AEA1A0051550099F2C8 /* Cocoa.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -81,7 +69,7 @@
 				21A1EB9219DB895700D72436 /* EnumTests.swift */,
 				2110D3EA19DA50430099B0B8 /* OptionalsTests.swift */,
 				2110D3EB19DA50430099B0B8 /* TypesTests.swift */,
-				21A1EB9419DBA6D100D72436 /* Classes.swift */,
+				21A1EB9419DBA6D100D72436 /* ClassesTests.swift */,
 			);
 			name = Types;
 			sourceTree = "<group>";
@@ -90,6 +78,9 @@
 			isa = PBXGroup;
 			children = (
 				2110D3F219DA59770099B0B8 /* FunctionsTests.swift */,
+				213C3AE31A0050EA0099F2C8 /* GenericsTests.swift */,
+				213C3A721A004DA30099F2C8 /* MemoryManagementTests.swift */,
+				213C3AE11A0050940099F2C8 /* ObjectiveCInteropTests.swift */,
 				2110D3F019DA50500099B0B8 /* SwitchTests.swift */,
 				2110D3E719DA50260099B0B8 /* Types */,
 				2149CA0819D8D2F3006E259C /* Supporting Files */,
@@ -128,13 +119,8 @@
 		21D86316194356D900374C60 = {
 			isa = PBXGroup;
 			children = (
+				213C3AE91A0051550099F2C8 /* Cocoa.framework */,
 				21888B0A194E942D001C6CDB /* README.md */,
-				21D86322194356D900374C60 /* main.swift */,
-				21B4976F194E8938000B3A26 /* Generics.swift */,
-				21E493D1194941D2000987D7 /* Closures.swift */,
-				21207E0C1949379700741939 /* MemoryManagement.swift */,
-				21B49775194E8B5D000B3A26 /* Objects.swift */,
-				21ABC49D195CFBCA002F8AEB /* ObjectiveCInterop.swift */,
 				216A0B31194357D7007155B2 /* Classes */,
 				21CDFC091963B02600F7121D /* Objective-C */,
 				2149CA0719D8D2F3006E259C /* SwiftFundamentals-Tests */,
@@ -146,7 +132,6 @@
 		21D86320194356D900374C60 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				21D8631F194356D900374C60 /* SwiftFundamentals */,
 				2149CA2019D8D533006E259C /* SwiftFundamentals-Tests.xctest */,
 			);
 			name = Products;
@@ -172,22 +157,6 @@
 			productReference = 2149CA2019D8D533006E259C /* SwiftFundamentals-Tests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		21D8631E194356D900374C60 /* SwiftFundamentals */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 21D86326194356D900374C60 /* Build configuration list for PBXNativeTarget "SwiftFundamentals" */;
-			buildPhases = (
-				21D8631B194356D900374C60 /* Sources */,
-				21D8631C194356D900374C60 /* Frameworks */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = SwiftFundamentals;
-			productName = "swift-fundamentals";
-			productReference = 21D8631F194356D900374C60 /* SwiftFundamentals */;
-			productType = "com.apple.product-type.tool";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -199,9 +168,6 @@
 				TargetAttributes = {
 					2149CA1F19D8D533006E259C = {
 						CreatedOnToolsVersion = 6.1;
-					};
-					21D8631E194356D900374C60 = {
-						CreatedOnToolsVersion = 6.0;
 					};
 				};
 			};
@@ -217,7 +183,6 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				21D8631E194356D900374C60 /* SwiftFundamentals */,
 				2149CA1F19D8D533006E259C /* SwiftFundamentals-Tests */,
 			);
 		};
@@ -239,31 +204,20 @@
 			buildActionMask = 2147483647;
 			files = (
 				2110D3F119DA50500099B0B8 /* SwitchTests.swift in Sources */,
+				213C3AE21A0050940099F2C8 /* ObjectiveCInteropTests.swift in Sources */,
+				213C3AE41A0050EA0099F2C8 /* GenericsTests.swift in Sources */,
 				2110D3EC19DA50430099B0B8 /* ArrayTests.swift in Sources */,
 				21A1EB9319DB895700D72436 /* EnumTests.swift in Sources */,
+				213C3AE81A0051320099F2C8 /* FuncQueue.swift in Sources */,
+				213C3A731A004DA30099F2C8 /* MemoryManagementTests.swift in Sources */,
 				2110D3ED19DA50430099B0B8 /* DictionaryTests.swift in Sources */,
+				213C3AE71A0051320099F2C8 /* Printable.swift in Sources */,
 				2110D3F319DA59770099B0B8 /* FunctionsTests.swift in Sources */,
 				2110D3EE19DA50430099B0B8 /* OptionalsTests.swift in Sources */,
-				21A1EB9519DBA6D100D72436 /* Classes.swift in Sources */,
+				21A1EB9519DBA6D100D72436 /* ClassesTests.swift in Sources */,
+				213C3AE61A0051320099F2C8 /* Person.swift in Sources */,
+				213C3AE51A00511E0099F2C8 /* ObjcClass.m in Sources */,
 				2110D3EF19DA50430099B0B8 /* TypesTests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		21D8631B194356D900374C60 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				21207E0D1949379700741939 /* MemoryManagement.swift in Sources */,
-				21CDFC0E1963B3B600F7121D /* FuncQueue.swift in Sources */,
-				21B49770194E8938000B3A26 /* Generics.swift in Sources */,
-				21B49776194E8B5D000B3A26 /* Objects.swift in Sources */,
-				216A0B36194359F8007155B2 /* Person.swift in Sources */,
-				21D86323194356D900374C60 /* main.swift in Sources */,
-				21888B0B194E942D001C6CDB /* README.md in Sources */,
-				216A0B37194359F8007155B2 /* Printable.swift in Sources */,
-				21E493D2194941D2000987D7 /* Closures.swift in Sources */,
-				21CDFC0C1963B04100F7121D /* ObjcClass.m in Sources */,
-				21ABC49E195CFBCA002F8AEB /* ObjectiveCInterop.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -341,6 +295,7 @@
 				METAL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = macosx;
+				SWIFT_OBJC_BRIDGING_HEADER = "SwiftFundamentals-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
@@ -376,30 +331,6 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				METAL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = macosx;
-			};
-			name = Release;
-		};
-		21D86327194356D900374C60 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CLANG_ENABLE_MODULES = YES;
-				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.9;
-				PRODUCT_NAME = SwiftFundamentals;
-				SWIFT_OBJC_BRIDGING_HEADER = "SwiftFundamentals-Bridging-Header.h";
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-			};
-			name = Debug;
-		};
-		21D86328194356D900374C60 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CLANG_ENABLE_MODULES = YES;
-				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.9;
-				PRODUCT_NAME = SwiftFundamentals;
 				SWIFT_OBJC_BRIDGING_HEADER = "SwiftFundamentals-Bridging-Header.h";
 			};
 			name = Release;
@@ -421,15 +352,6 @@
 			buildConfigurations = (
 				21D86324194356D900374C60 /* Debug */,
 				21D86325194356D900374C60 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		21D86326194356D900374C60 /* Build configuration list for PBXNativeTarget "SwiftFundamentals" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				21D86327194356D900374C60 /* Debug */,
-				21D86328194356D900374C60 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

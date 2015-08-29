@@ -6,25 +6,21 @@
 //  Copyright (c) 2014 Damon Allison. All rights reserved.
 //
 
-import Foundation
+import XCTest
 
-
-
-//
-// Memory Management
-//
+/**
+ *  Swift does it's best to make memory management (and pointers) as 
+ *  transparent as possible. Under the covers, ARC provides the heavy
+ *  lifting for managing memory. ARC only needs help understanding 
+ *  reference cycles from the developer. In reality, there is very
+ *  little an engineer needs to do to manage memory in Swift.
+ */
 
 //
 // An apartment can have a tenant and a tenant can have an apartment.
 // If we are not careful with how we structure the Apartment / Tenant relationship,
 // the following will create a cycle between a tenant<->apartment.
 //
-
-func testMemoryManagement() {
-    var a = Apartment(aptNum: 100)
-    var t = Tenant(apartment: a)
-    t.firstName = "renter"
-}
 
 
 //

@@ -21,6 +21,7 @@ let kConstantUInt8: UInt8 = 1
 let kConstantInt8: Int8 = 1
 let kConstantFloat: Float = 4.0
 
+
 //
 // Types : all swift types have capitalized names.
 //
