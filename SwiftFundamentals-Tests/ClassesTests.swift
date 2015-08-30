@@ -11,10 +11,10 @@ import XCTest
 // Global properties can also have property observers.
 var myVar: Int = 0 {
     willSet {
-        print("setting myVal to \(newValue)")
+        print("setting myVal to \(newValue)", terminator: "")
     }
     didSet {
-        print("didSet myVal to \(myVar) from \(oldValue)")
+        print("didSet myVal to \(myVar) from \(oldValue)", terminator: "")
     }
 }
 
@@ -89,7 +89,7 @@ class ClassesTests : XCTestCase {
 
         var origin : Point {
             willSet(newVal) {
-                print("willSet to \(newVal)")
+                print("willSet to \(newVal)", terminator: "")
             }
 //            didSet(oldVal) {
 //                println("didSet to \(internalOrigin) from \(oldVal)")
@@ -144,13 +144,18 @@ class ClassesTests : XCTestCase {
 
     }
 
-    func testPerson() {
+
+    /**
+        The following shows how to use a "computedProperty". 
+        Person.firstName is a computed property. A computed property does not 
+        store a variable.
+     */
+    func testComputedProperty() {
         let p = Person(first: "damon", last: "allison")
         p.firstName = "Cole"
         XCTAssertTrue(p.firstName == "Cole")
         p.firstName = "SomethingTooLong"
-        XCTAssertTrue(p.firstName == "DAMON")
+        XCTAssertTrue(p.firstName == "Somet") // truncates at 5
 
-        
     }
 }

@@ -98,7 +98,8 @@ class TypesTests: XCTestCase {
 
         // Equality
         var s1 = "damon"
-        var s2 = "damon"
+        let s2 = "damon"
+
         XCTAssertEqual(s1, s2, "String equality is based on content, not pointer address")
 
         // Appending
@@ -116,7 +117,7 @@ class TypesTests: XCTestCase {
         // countElements will *not* be the same as NSString's [length] property since [NSString length]
         // uses 16 bit code units only, where unicode can use 32 bit characters.
         //
-        XCTAssertTrue(countElements("damon allison") == 13)
+        XCTAssertTrue("damon allison".utf16.count == 13)
 
         //
         // NSString bridging.
@@ -133,11 +134,13 @@ class TypesTests: XCTestCase {
         XCTAssertEqual(objcString.stringByAppendingPathComponent("allison"), "damon/allison",
             "Swift.String has full access to the NSString API")
 
-        var components = "/this/is/a/path.txt".pathComponents
-        XCTAssertTrue(components.count == 5)
-        XCTAssertTrue(components[0] == "/")
-        XCTAssertTrue(components[1] == "this")
-        XCTAssertTrue(components[4] == "path.txt")
+//        var components = NSURL(fileURLWithPath: "/this/is/a/path.txt").pathComponents
+
+        //TODO: - Show unwrapping an optional.
+//        XCTAssertTrue(components.count == 5)
+//        XCTAssertTrue(components[0] == "/")
+//        XCTAssertTrue(components[1] == "this")
+//        XCTAssertTrue(components[4] == "path.txt")
     }
 
     func testTuples() {

@@ -47,7 +47,7 @@ class Person : Printable {
         //
         // object is being deallocated. cleanup
         //
-        print("person dealloc")
+        print("person dealloc", terminator: "")
     }
 
     // 
@@ -59,13 +59,7 @@ class Person : Printable {
             return firstNameInternal
         }
         set {
-            firstNameInternal = newValue
-//            if countElements(newValue) > 5 {
-//                firstNameInternal = "DAMON"
-//            }
-//            else {
-//                firstNameInternal = newValue
-//            }
+            firstNameInternal = newValue.utf16.count > 5 ? (newValue as NSString).substringToIndex(5) : newValue;
         }
     }
 
@@ -93,10 +87,10 @@ class Person : Printable {
     //
     var address: String {
         willSet {
-            print("willSet address to \(newValue)")
+            print("willSet address to \(newValue)", terminator: "")
         }
         didSet {
-            print("didSet address to \(address) from \(oldValue)")
+            print("didSet address to \(address) from \(oldValue)", terminator: "")
         }
     }
     //
@@ -128,7 +122,8 @@ class Superman : Person {
     //
     // This will be lazy-initialized (created when first accessed)
     //
-    lazy var child = Person(first: "super", last: "child")
+    // TODO: - why is this failing?
+    // lazy var child = Person(first: "super", last: "child")
     var power: Int
 
     init(power: Int, firstName: String, lastName: String) {
@@ -161,7 +156,7 @@ class Superman : Person {
         super.initialName = "Damon R Allison"
         //
         // 3. Custom initialization logic
-        print("superman created with \(power) initialName \(initialName)")
+        print("superman created with \(power) initialName \(initialName)", terminator: "")
 
     }
 

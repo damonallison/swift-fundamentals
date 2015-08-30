@@ -161,6 +161,7 @@
 		213C3A751A004E0B0099F2C8 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftUpdateCheck = 0700;
 				LastUpgradeCheck = 0610;
 				ORGANIZATIONNAME = Code42;
 				TargetAttributes = {
@@ -404,6 +405,7 @@
 				213C3A961A004E0B0099F2C8 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		213C3A971A004E0B0099F2C8 /* Build configuration list for PBXNativeTarget "SwiftFWTests" */ = {
 			isa = XCConfigurationList;
@@ -412,6 +414,7 @@
 				213C3A991A004E0B0099F2C8 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

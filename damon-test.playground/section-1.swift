@@ -23,8 +23,6 @@ enum SimpleEnum: Int, ExampleProtocol {
                 return "Two"
             case .Three:
                 return "Three"
-            default:
-                return String(self.rawValue)
             }
         }
     }
@@ -45,6 +43,16 @@ sn?.simpleDescription
 // including adding protocol conformance to an existing type.
 
 extension Int : ExampleProtocol {
+
+    var simpleDescription: String {
+        get {
+            return "I am an int and my value is \(self)."
+        }
+    }
+
+    func adjust() {
+        // just here for protocol conformance
+    }
 
 }
 

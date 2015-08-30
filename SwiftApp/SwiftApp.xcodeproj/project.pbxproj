@@ -13,6 +13,7 @@
 		213C3ACA1A004EE10099F2C8 /* SwiftAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 213C3AC91A004EE10099F2C8 /* SwiftAppTests.swift */; };
 		213C3ADE1A004F030099F2C8 /* SwiftFW.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 213C3AD91A004EF40099F2C8 /* SwiftFW.framework */; };
 		213C3AE01A004F130099F2C8 /* SwiftFW.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 213C3AD91A004EF40099F2C8 /* SwiftFW.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		E50B83E61B929E5E00F4F78E /* Numbers.swift in Sources */ = {isa = PBXBuildFile; fileRef = E50B83E51B929E5E00F4F78E /* Numbers.swift */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -69,6 +70,7 @@
 		213C3AC81A004EE10099F2C8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		213C3AC91A004EE10099F2C8 /* SwiftAppTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftAppTests.swift; sourceTree = "<group>"; };
 		213C3AD31A004EF40099F2C8 /* SwiftFW.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SwiftFW.xcodeproj; path = ../SwiftFW/SwiftFW.xcodeproj; sourceTree = "<group>"; };
+		E50B83E51B929E5E00F4F78E /* Numbers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Numbers.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -133,6 +135,7 @@
 			children = (
 				213C3AC91A004EE10099F2C8 /* SwiftAppTests.swift */,
 				213C3AC71A004EE10099F2C8 /* Supporting Files */,
+				E50B83E51B929E5E00F4F78E /* Numbers.swift */,
 			);
 			path = SwiftAppTests;
 			sourceTree = "<group>";
@@ -200,6 +203,7 @@
 		213C3AAB1A004EE10099F2C8 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftUpdateCheck = 0700;
 				LastUpgradeCheck = 0610;
 				ORGANIZATIONNAME = Code42;
 				TargetAttributes = {
@@ -286,6 +290,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E50B83E61B929E5E00F4F78E /* Numbers.swift in Sources */,
 				213C3ACA1A004EE10099F2C8 /* SwiftAppTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

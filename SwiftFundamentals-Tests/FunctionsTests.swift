@@ -45,7 +45,7 @@ class FunctionsTests : XCTestCase {
         if let bounds = retMult(0, b: 0) {
             XCTFail("(0, 0) should return nil")
         }
-        var ret = retMult(2, b: 2)!
+        let ret = retMult(2, b: 2)!
         XCTAssertTrue(ret.total == 4 && ret.aboveZero)
     }
 
@@ -274,7 +274,7 @@ class FunctionsTests : XCTestCase {
         // Notice here that `formatRules` takes a function as it's last param.
         // When we invoke format rules, we send the closure as an argument *outside*
         // the parentheses for the function arguments.
-        var result = formatResult(100, b: 100) {
+        let result = formatResult(100, b: 100) {
             $0 + $1
         }
         XCTAssertEqual(result, "Math computed : 200")
@@ -284,7 +284,7 @@ class FunctionsTests : XCTestCase {
         XCTAssertEqual(formatResult(100, b: 100, mathFunc: { $0 - $1 }), "Math computed : 0")
 
         var numberMap = [0: "Zero", 1: "One", 2: "Two", 3: "Three", 4: "Four", 5 : "Five"]
-        var numbers = [0, 4, 2, 1, 3, 8]
+        let numbers = [0, 4, 2, 1, 3, 8]
 
         // If a closure is the *only* parameter to a function, the () can be 
         // omitted from the function call all together.
@@ -300,7 +300,7 @@ class FunctionsTests : XCTestCase {
         let strings2 = numbers.map() { (let number) -> String in
             return "hi"
         }
-        var expected = ["Zero", "Four", "Two", "One", "Three", "Unknown"];
+        let expected = ["Zero", "Four", "Two", "One", "Three", "Unknown"];
         XCTAssertEqual(strings, expected)
     }
 }
