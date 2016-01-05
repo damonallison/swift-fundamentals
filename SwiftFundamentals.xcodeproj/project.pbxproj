@@ -45,6 +45,7 @@
 		21CDFC0A1963B04100F7121D /* ObjcClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ObjcClass.h; sourceTree = "<group>"; };
 		21CDFC0B1963B04100F7121D /* ObjcClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ObjcClass.m; sourceTree = "<group>"; };
 		21CDFC0D1963B3B600F7121D /* FuncQueue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FuncQueue.swift; sourceTree = "<group>"; };
+		E5DD30321C3B4C4B00EAD144 /* Basics.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = Basics.playground; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -110,12 +111,14 @@
 				21CDFC0A1963B04100F7121D /* ObjcClass.h */,
 				21CDFC0B1963B04100F7121D /* ObjcClass.m */,
 			);
-			path = "Objective-C";
+			name = "Objective-C";
+			path = "swift-fundamentals/Objective-C";
 			sourceTree = "<group>";
 		};
 		21D86316194356D900374C60 = {
 			isa = PBXGroup;
 			children = (
+				E5DD30311C3B4C3E00EAD144 /* Playgrounds */,
 				21888B0A194E942D001C6CDB /* README.md */,
 				216A0B31194357D7007155B2 /* Classes */,
 				21CDFC091963B02600F7121D /* Objective-C */,
@@ -131,6 +134,14 @@
 				2149CA2019D8D533006E259C /* SwiftFundamentals-Tests.xctest */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		E5DD30311C3B4C3E00EAD144 /* Playgrounds */ = {
+			isa = PBXGroup;
+			children = (
+				E5DD30321C3B4C4B00EAD144 /* Basics.playground */,
+			);
+			name = Playgrounds;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -161,7 +172,7 @@
 			attributes = {
 				LastSwiftMigration = 0700;
 				LastSwiftUpdateCheck = 0700;
-				LastUpgradeCheck = 0600;
+				LastUpgradeCheck = 0720;
 				ORGANIZATIONNAME = "Damon Allison";
 				TargetAttributes = {
 					2149CA1F19D8D533006E259C = {
@@ -238,6 +249,7 @@
 				INFOPLIST_FILE = "SwiftFundamentals-Tests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				MTL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.damonallison.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -253,6 +265,7 @@
 				INFOPLIST_FILE = "SwiftFundamentals-Tests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.damonallison.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
@@ -276,6 +289,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;

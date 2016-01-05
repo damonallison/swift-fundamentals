@@ -8,11 +8,12 @@
 
 import XCTest
 
-/**
-TrainStatus is an example of enum associated values.
-*/
 
 class SwitchTests : XCTestCase {
+
+    /**
+     TrainStatus is an example of enum associated values.
+     */
     enum TrainStatus {
         case OnTime
         case Delayed(Int)
@@ -56,6 +57,7 @@ class SwitchTests : XCTestCase {
         let p: AnyObject = Superman()
         switch p {
         case let x as Superman:
+            print("matched superman \(x)")
             break
         default:
             XCTFail("Should have matched on Superman")
@@ -66,7 +68,10 @@ class SwitchTests : XCTestCase {
     Test switch's pattern matching on tuples
     */
     func testSwitchTuples() {
-        switch (1, 1) {
+        var x, y : Int
+        x = 1
+        y = 1
+        switch (x, y) {
         case (0, 0):
             XCTFail("Not 0,0")
         case (_, 0), (0, _):    // tests multiple patterns
@@ -84,7 +89,7 @@ class SwitchTests : XCTestCase {
     func testSwitchValueBindings() {
         switch(1, 1) {
         case (let x, 0):
-            XCTFail("Not 0,0")
+            XCTFail("\(x) is not 0,0")
         case (0, let y):
             XCTFail("Not 0,y")
         case (let x, let y): // matches everything (no default case needed)

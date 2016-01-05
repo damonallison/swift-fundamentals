@@ -1,11 +1,52 @@
-// 
+//
+// Basics.playground
+// Damon Allison 2014/06/07
+//
 // A scratchpad for testing ideas prior to committing them to
 // swift-fundamentals
 //
-// Damon Allison 2014/06/07
-//
 
-import Foundation
+// import Foundation
+
+print("hello, world!")
+
+
+// if-let syntax : binds the variable if the value is ! nil.
+
+let x : Int? = 10
+
+// binds "y" to "x" since x has a value.
+if let y = x {
+    print("y is \(y)")
+}
+
+let y : Int? = nil
+
+if let z = y {
+    print("y != nil")
+} else {
+    print("y == nil")
+}
+
+// Use ?? to provide a default value if the optional is nil.
+let z = y ?? 10
+print ("z is \(z)")
+
+
+// Write a function that calculates the average of it's arguments.
+
+func avg(numbers: Int...) -> Double {
+
+    var sum :Double = 0
+    numbers.forEach {x in
+        sum += Double(x)
+    }
+    return sum / Double(numbers.count)
+}
+
+print("Average = \(avg(1, 2, 3))")
+print("Average = \(avg(1, 2, 6))")
+
 
 //
 // Type Inference
@@ -13,7 +54,7 @@ import Foundation
 // swift will use 'Int' for all integers, 'Double' for all floating point values.
 // If you want to override the defaults, you must specify the type.
 //
-// In practice you very rarely need to provide type annotations. Swift will 
+// In practice you very rarely need to provide type annotations. Swift will
 // infer the type.
 //
 //
@@ -48,9 +89,9 @@ var implicitDouble = 42.0
 //// Type Casting
 ////
 //// C's implicit type casting is not allowed. You must explicitly create
-//// a new value with the existing value to "convert" the type. In the 
+//// a new value with the existing value to "convert" the type. In the
 //// assignment here, we are initializing a new Int value with implicitDouble.
-//// 
+////
 //// If there is not an initializer for the type you are attempting
 //// to convert, you could write an extension to create one.
 ////
@@ -100,7 +141,7 @@ var implicitDouble = 42.0
 //println("return code3 \(httpError.0)")
 //
 ////
-//// Naming elements in a tuple when it is defined. 
+//// Naming elements in a tuple when it is defined.
 ////
 //// This is great for creating simple, immutable data structures with named
 //// members.

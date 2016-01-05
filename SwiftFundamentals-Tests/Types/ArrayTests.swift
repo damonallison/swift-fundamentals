@@ -27,7 +27,15 @@ class ArrayTests : XCTestCase {
 
     func testArrayCreation() {
 
-        // Creation
+        //
+        // Creation. This creation syntax is called the "initializer syntax"
+        //
+        // The initializer syntax is:
+        //
+        // Empty Array      : [Type]()
+        // Empty Dictionary : [Type: Type]()
+        //
+
         let a1 = [String]()
         XCTAssertTrue(a1.count == 0)
         XCTAssertTrue(a1.isEmpty, "isEmpty is a convenience property to test count == 0")

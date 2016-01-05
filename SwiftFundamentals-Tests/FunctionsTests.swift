@@ -42,7 +42,7 @@ class FunctionsTests : XCTestCase {
             }
             return ((a + b), ((a + b) > 0))
         }
-        if let bounds = retMult(0, b: 0) {
+        if let _ = retMult(0, b: 0) {
             XCTFail("(0, 0) should return nil")
         }
         let ret = retMult(2, b: 2)!
@@ -67,7 +67,6 @@ class FunctionsTests : XCTestCase {
         }
         XCTAssertTrue(externalParamNames(extParam: 10) == "10")
 
-        // Using `#` will tell swift to use the same name externally and internally
         func shorthandExternalParamNames(param param: Int) -> String {
             return "\(param)"
         }
