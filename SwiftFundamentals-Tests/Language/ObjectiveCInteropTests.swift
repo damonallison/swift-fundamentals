@@ -8,14 +8,26 @@
 
 import XCTest
 
+/**
+    Tests for interoperating `Swift` and `Objective-C` together.
+ 
+*/
 class ObjectiveCTests : XCTestCase {
 
     func testObjCInterop() {
 
-        // See SwiftFundamentals-Bridging-Header.h
         let oc = ObjcClass()
         XCTAssertTrue(oc.firstName == nil)
-        
+        XCTAssertTrue(oc.lastName == nil)
+
+        oc.firstName = "Damon"
+        oc.lastName = "Allison"
+
+        XCTAssertEqual("Damon", oc.firstName)
+        XCTAssertEqual("Allison", oc.lastName)
+        XCTAssertEqual("Damon Allison", oc.fullName)
+
+
     }
 }
 

@@ -75,11 +75,19 @@ class ArrayTests : XCTestCase {
         XCTAssertTrue(shoppingList.indexOf("Bread") == 3, "find() will return the index of the object if it exists")
         XCTAssertNil(shoppingList.indexOf("notthere"), "find() will return nil when an item does not exist")
 
+        
         var shoppingList2 = [String]()
         for item in shoppingList {
             shoppingList2.append(item) // strings are value types - no need to copy
         }
         XCTAssertEqual(shoppingList, shoppingList2)
+
+        // Because `String` is a value type and arrays have value semantics, assignment will copy.
+        let shoppingList3 = shoppingList2
+        XCTAssertEqual(shoppingList2, shoppingList3)
+
+        shoppingList2.removeFirst() // Alter the original array, proves 3 is truly a copy, not a pointer assignment.
+        XCTAssertNotEqual(shoppingList2, shoppingList3)
 
         // Iterating over an array - retrieving index and value.
         for (index, item) in shoppingList.enumerate() {
@@ -109,12 +117,9 @@ class ArrayTests : XCTestCase {
     }
 
     func testArrayCopying() {
-        // Unshare will copy the array only if there are multiple references
-        // to the array. Thus, it's more efficient than copy if there isn't
-        // another reference.
         var x = [0, 1, 2, 3]
-        var y = x
-        var z = y
+        var y = x // copy!
+        var z = y // copy!
         y[0] = 10
         z[0] = 100
         XCTAssertTrue(x[0] == 0)

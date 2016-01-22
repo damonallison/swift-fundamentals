@@ -49,24 +49,20 @@ class OptionalsTests : XCTestCase {
         //
         var optionalInt: Int?
         XCTAssertNil(optionalInt)
-
-        //
-        // Optional values can be used in boolean expressions (e.g. if)
-        // If the optional does not have a value, the boolean expression returns false.
-        // You can also use a binary == operator to compare the optional to nil.
-        //
         XCTAssertTrue(optionalInt == nil)
 
         //
         // Retrieving a value from an optional requires you to "unwrap" the optional
-        // with the "!" operator. If the optional is nil, and you attempt to unwrap it,
-        // you'll get a runtime error.
+        // with the `!` operator. If the optional is nil, and you attempt to unwrap it,
+        // you'll get a runtime error. Only use `!` if you can guarantee that the 
+        // optional has a value.
         //
         optionalInt = 10
         XCTAssertTrue(optionalInt! == 10)
 
         //
         // Optional Binding
+        //
         // Allows you to test and extract an optional value.
         // The optional value will be bound to the constant or variable for the life
         // of the if (or while).
@@ -80,8 +76,8 @@ class OptionalsTests : XCTestCase {
             XCTFail("Optional int has a value")
         }
 
-        // nil coalescing operator : unwraps the optional if it exists, otherwise it
-        // returns the operand
+        // ?? is the nil coalescing operator.
+        // ?? unwraps the optional if it exists, otherwise it returns the operand:
         optionalInt = nil
 
         let i: Int = optionalInt ?? 10

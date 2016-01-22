@@ -8,29 +8,22 @@
 
 // import Foundation
 
+let x = ["damon", "ryan", "allison"]
 print("hello, world!")
+print(x)
+
+debugPrint("hello, world")
+debugPrint(x)
 
 
-// if-let syntax : binds the variable if the value is ! nil.
+/**
+    This is a test
+    ![img](https://developer.apple.com/library/ios/Resources/1163/Images/apple2.png)
+*/
+let fullName = "Damon Allison"
+let iq = 100
 
-let x : Int? = 10
-
-// binds "y" to "x" since x has a value.
-if let y = x {
-    print("y is \(y)")
-}
-
-let y : Int? = nil
-
-if let z = y {
-    print("y != nil")
-} else {
-    print("y == nil")
-}
-
-// Use ?? to provide a default value if the optional is nil.
-let z = y ?? 10
-print ("z is \(z)")
+print("I'm \(fullName) w/ iq of \(iq)")
 
 
 // Write a function that calculates the average of it's arguments.
@@ -43,6 +36,30 @@ func avg(numbers: Int...) -> Double {
     }
     return sum / Double(numbers.count)
 }
+
+func flip(fname: String, lname: String) -> (fname: String, lname: String) {
+    return (lname, fname)
+}
+
+func makeIncrementer(startValue: Int) -> (() -> Int) {
+    var count = startValue
+    return {
+        count += 1
+        return count
+    }
+}
+
+var increment = makeIncrementer(100)
+
+for _ in 0..<100 {
+    increment()
+}
+increment()
+
+
+var name = flip("damon", lname: "allison")
+
+name = flip("allison", lname: "damon")
 
 print("Average = \(avg(1, 2, 3))")
 print("Average = \(avg(1, 2, 6))")
@@ -84,6 +101,14 @@ let kConstantFloat: Float = 4.0
 var implicitInteger = 42
 var implicitDouble = 42.0
 
+
+var loop = 0
+for i in 0..<4 {
+    loop += 1
+}
+for i in 0...4 {
+    loop += 1
+}
 
 ////
 //// Type Casting

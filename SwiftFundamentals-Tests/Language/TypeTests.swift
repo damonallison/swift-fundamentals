@@ -14,7 +14,7 @@ can help increase code readability.
 */
 typealias MyInt = Int
 
-class TypesTests: XCTestCase {
+class TypeTests: XCTestCase {
 
     // MARK: Integers
 
@@ -39,16 +39,17 @@ class TypesTests: XCTestCase {
     */
     func testIntegers() {
 
-        // Integers are structs and thus contain properties and methods.
-        XCTAssertEqual(UInt8.min, UInt8(0), "All unsigned integers must have a min == 0")
+        // Integers are structs and thus contain properties,  methods, and 
+        // class methods.
+        let u10 :UInt8 = 10;
+        XCTAssertEqual("10", u10.description, "description is the textual representation of the struct.") // property
+        XCTAssertEqual(UInt8(9), u10.predecessor(), "Predecessor is the immediate value before the current value.")
+        XCTAssertEqual(UInt8.min.advancedBy(10), UInt8(10), "advancedBy moves the receiver ahead.")
+        XCTAssertEqual(UInt8.min, UInt8(0), "All unsigned integers must have a min == 0") // class method
 
-        // Shows implicit type conversion is not allowed in swift.
+        // Shows implicit type conversion is not allowed in swift!
         // Manual UInt8() conversion is required
         XCTAssertTrue(UInt8.min == UInt8(UInt16.min))
-
-        // Shows that `Int` objects are `Structs` in their own right,
-        // capable of having methods.
-        XCTAssertEqual(UInt8.min.advancedBy(10), UInt8(10), "advancedBy moves the receiver ahead.")
 
     }
 
