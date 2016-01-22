@@ -8,7 +8,7 @@
 
 import XCTest
 
-// Global properties can also have property observers.
+// Global properties can have property observers.
 var myVar: Int = 0 {
     willSet {
         print("setting myVal to \(newValue)", terminator: "")

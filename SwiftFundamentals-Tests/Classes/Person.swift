@@ -6,18 +6,31 @@
 //  Copyright (c) 2014 Damon Allison. All rights reserved.
 //
 
-class Person : Printable {
+/**
+    The `person` class shows various class features:
+
+    - Initialization and deinitialization.
+    - Property declaration (get / set).
+    - Property observers (willSet / didSet).
+    - Method declaration.
+    - Inheritance.
+    - Access modifiers (private / public).
+    - Subscripts.
+
+ */
+public class Person : Printable {
 
     /*
     
     Access modifiers apply based on file and project structure, 
     not type hierarchy.
     
-    `private`   == all types in this *file* (not class) have access
-    `protected` == all types in this module (not derived classes) have access
-    `public`    == full access
+    - `private` - all types in this *file* (not class) have access
+    - `protected` == all types in this module (not derived classes) have access
+    - `public`    == full access
     
     */
+
     private lazy var initialName = String()
     private var firstNameInternal: String
     private var lastNameInternal: String

@@ -50,9 +50,9 @@ system" - The Swift Programming Language
     * Pointers are hidden by default.
     * Type safety (generics : Array<String> > NSArray).
     * Explicit type casting required.
-    * Any type can be optional, even "primitives" like Int.
+    * Any type can be `optional`, even "primitives" like Int.
     * Conditionals must be boolean expressions.
-    * Switch automatically 'break's.
+    * Switch automatically `break`s.
     * Optionals : one true "empty" (sentinal?) value to rule them all (nil, NSNotFound, 0, etc..)
     * Object initialization : all properties must have a value or the object fails initialization.
 
@@ -77,6 +77,14 @@ system" - The Swift Programming Language
 * Objective-C and the underlying compiler infrastructure has been updated over 
   the years which has "paved the way" for swift.
 
+## Tools ##
+
+* [Jazzy](https://github.com/Realm/jazzy) : HTML Documentation generator for swift and objc. Outputs documentation files in HTML which mirror Apple's documentation look and feel.
+
+* [VVDocumenter](https://github.com/onevcat/VVDocumenter-Xcode) : An Xcode plugin that will generate comment templates based off a function definition.
+
+* [Alcataraz](http://alcatraz.io/) : Xcode package manager
+
 
 -------------
 
@@ -89,38 +97,42 @@ system" - The Swift Programming Language
 * Extensions
 * Structs
 
-## Additional Resources ##
+
+### Questions ###
+
+* Modules: How to create / import a module? 
+* Modules: What is an umbrella header?
+* Modules: What is a module.modulemap file?
 
 
-
-### Objects ###
+#### Objects ####
 
 * How to hide local class vars from the class's public interface?
 * What is protocol composition?
 
-
-### Questions ###
-
 * Primitive types : lists and API. (All value types?)
     * Swift style guide (formatting tools like godoc?)
-
-* Comments / formatting. 
-    * What is the syntax? How to comment in markdown? Any prior art - the stdlib?
-
-* Xcode keyboard shortcuts for comment syntax would be great. Code completion for comments.
-
-
-* Why can't Xcode organize files as they appear on the file system? They should
-  be sorted alphabetically. If you want to exclude a file from being included 
-  in the Xcode project, it should be manually excluded. 
 
 * How can we view playgrounds or write playgrounds that have rich comments / 
 documentation in them?
 
 * What are the Objc attributes for interoperating with swift (read the swift interop book)
 
+#### Tools ####
+
+* How can we generate a .docset from our swift documentation (like our old VVDocumenter)?
+
 ### Ideas
 
-* Xcode plugin for comment formatting (at least reflowing at 80).
+* Why can't Xcode organize files as they appear on the file system? They should be sorted alphabetically. If you want to exclude a file from being included  in the Xcode project, it should be manually excluded. 
 
-* 
+* Xcode plugin for comment generation and re-formatting (at least reflowing at 80).
+
+* Quick Help should show up anytime you are on a line with a function declaration, not just the name.
+
+* Swift : java annotations to add type metadata to type members. This would be nice for unit testing. Annotate with @Test rather than naming the method `testX`.
+
+* Xcode keyboard shortcuts for comment syntax would be great. Code completion for comments.
+
+* Is it possible to see all the // TODO: and // FIXME: for an entire project in one place?
+

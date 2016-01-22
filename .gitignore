@@ -22,20 +22,17 @@ build/*
 *.pbxuser
 *.mode1v3
 
-# old skool
-.svn
-
 # osx noise
 .DS_Store
 profile
+
+# Emacs
+*~
 
 # Xcode4 stuff (at least for now :)
 *.xcworkspace
 xcuserdata
 
-# Emacs
-*~
+# jazzy documentation directory
+docs
 
-# SharePlan
-SharePlan-Alpha.dmg
-SharePlan-Debug.dmg

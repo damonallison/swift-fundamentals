@@ -9,30 +9,25 @@
 import XCTest
 
 /**
+    Optionals represents a possible nil value.
+
+    Prior to optioanls, we had multiple sentinal values.
+    NSNotFound, -1, nil, 0, IntMax, etc.
+    Optionals simplifies code by having a "one true" sentinal value.
+
+    non-optional types *cannot* be nil. This makes your code safe
+    by knowing that you will have a value if you want it.
 
 
-Optionals
-
-Optionals represents a possible nil value.
-
-Prior to optioanls, we had multiple sentinal values.
-NSNotFound, -1, nil, 0, IntMax, etc.
-Optionals simplifies code by having a "one true" sentinal value.
-
-non-optional types *cannot* be nil. This makes your code safe
-by knowing that you will have a value if you want it.
-
-
-Optionals are like "nil" in objective-c. The difference in swift is *all*
-types, even "primitives" like Int and Double can be optionals.
-
+    Optionals are like "nil" in objective-c. The difference in swift is *all*
+    types, even "primitives" like Int and Double can be optionals.
 */
 
 /**
-A tree data structure that allows us to illustrate optional chaining
+    A tree data structure that allows us to illustrate optional chaining.
 */
 public class OptionalChaining {
-    public var name: String?
+    public var name: String
     public var child: OptionalChaining?
 
     public init(name: String) {
@@ -92,12 +87,21 @@ class OptionalsTests : XCTestCase {
         //
         // These are primarily used in class initialization.
 
-        let implicitlyUnwrapped: Int! = 20
+        var implicitlyUnwrapped: Int! = 20
         //
         // There is no need to unwrap this optional!
         //
         XCTAssertTrue(implicitlyUnwrapped == 20)
 
+        // Implicitly unwrapped optionals are still optional, they can be set to nil
+        // and used in if-let bindings.
+        implicitlyUnwrapped = nil
+
+        XCTAssertNil(implicitlyUnwrapped)
+
+        if let v = implicitlyUnwrapped {
+            XCTFail("We should not have a value \(v)")
+        }
     }
 
     func testOptionalFunc() {
@@ -145,25 +149,19 @@ class OptionalsTests : XCTestCase {
         parent.child = child
         child.child = grandchild
 
-        assert(parent.child?.child?.name == "cole")
-
-        //
-        // Here, the chain stops at parent.child?.child?.name
-        //
-        grandchild.name = nil
-        assert(parent.child?.child?.name == nil)
+        XCTAssertEqual(parent.child?.child?.name, "cole")
 
         //
         // Here, the chain stops at parent.child?.child?
         //
         child.child = nil
-        assert(parent.child?.child?.name == nil)
+        XCTAssertNil(parent.child?.child?.name)
 
         //
         // Here, the chain stops at parent.child?
         //
         parent.child = nil
-        assert(parent.child?.child?.name == nil)
+        XCTAssertNil(parent.child?.child?.name)
 
     }
 }
