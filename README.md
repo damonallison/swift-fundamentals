@@ -36,7 +36,7 @@ sources are "must reads" for every swift programmer.
   Language](https://developer.apple.com/library/ios/documentation/Swift/Conceptual/Swift_Programming_Language/)
   : The seminal book describing the swift language.
 
-* [Using Swift with Cocoa and Objective-C](https://developer.apple.com/library/prerelease/ios/documentation/swift/conceptual/buildingcocoaapps/index.html)
+* [Using Swift with Cocoa and Objective-C (Swift 2.1)](https://developer.apple.com/library/ios/documentation/Swift/Conceptual/BuildingCocoaApps/index.html#//apple_ref/doc/uid/TP40014216)
 
 
 ## Swift, The Language ##
@@ -55,6 +55,7 @@ system" - The Swift Programming Language
     * Switch automatically `break`s.
     * Optionals : one true "empty" (sentinal?) value to rule them all (nil, NSNotFound, 0, etc..)
     * Object initialization : all properties must have a value or the object fails initialization.
+    * Defer : better way to clean up resources.
 
   * Modern
     * No header files.
@@ -119,20 +120,3 @@ documentation in them?
 * What are the Objc attributes for interoperating with swift (read the swift interop book)
 
 #### Tools ####
-
-* How can we generate a .docset from our swift documentation (like our old VVDocumenter)?
-
-### Ideas
-
-* Why can't Xcode organize files as they appear on the file system? They should be sorted alphabetically. If you want to exclude a file from being included  in the Xcode project, it should be manually excluded. 
-
-* Xcode plugin for comment generation and re-formatting (at least reflowing at 80).
-
-* Quick Help should show up anytime you are on a line with a function declaration, not just the name.
-
-* Swift : java annotations to add type metadata to type members. This would be nice for unit testing. Annotate with @Test rather than naming the method `testX`.
-
-* Xcode keyboard shortcuts for comment syntax would be great. Code completion for comments.
-
-* Is it possible to see all the // TODO: and // FIXME: for an entire project in one place?
-

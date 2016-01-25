@@ -24,6 +24,7 @@
 		E52087A81C51CD59004AC9AF /* SwitchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E520879B1C51CD59004AC9AF /* SwitchTests.swift */; };
 		E52087A91C51CD59004AC9AF /* TypeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E520879C1C51CD59004AC9AF /* TypeTests.swift */; };
 		E52087AC1C51CD68004AC9AF /* ObjcClass.m in Sources */ = {isa = PBXBuildFile; fileRef = E52087AB1C51CD68004AC9AF /* ObjcClass.m */; };
+		E5C53CF11C5272BB0068C9EC /* ErrorHandlingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5C53CF01C5272BB0068C9EC /* ErrorHandlingTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -49,6 +50,7 @@
 		E520879C1C51CD59004AC9AF /* TypeTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TypeTests.swift; sourceTree = "<group>"; };
 		E52087AA1C51CD68004AC9AF /* ObjcClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ObjcClass.h; sourceTree = "<group>"; };
 		E52087AB1C51CD68004AC9AF /* ObjcClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ObjcClass.m; sourceTree = "<group>"; };
+		E5C53CF01C5272BB0068C9EC /* ErrorHandlingTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ErrorHandlingTests.swift; sourceTree = "<group>"; };
 		E5DD30321C3B4C4B00EAD144 /* Basics.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = Basics.playground; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -110,6 +112,7 @@
 				E52087911C51CD59004AC9AF /* ClassesTests.swift */,
 				E52087921C51CD59004AC9AF /* CommentTests.swift */,
 				E52087931C51CD59004AC9AF /* DictionaryTests.swift */,
+				E5C53CF01C5272BB0068C9EC /* ErrorHandlingTests.swift */,
 				E52087941C51CD59004AC9AF /* EnumTests.swift */,
 				E52087951C51CD59004AC9AF /* FunctionsTests.swift */,
 				E52087961C51CD59004AC9AF /* GenericsTests.swift */,
@@ -218,6 +221,7 @@
 				E520878F1C51CD4F004AC9AF /* Printable.swift in Sources */,
 				E52087AC1C51CD68004AC9AF /* ObjcClass.m in Sources */,
 				E52087A91C51CD59004AC9AF /* TypeTests.swift in Sources */,
+				E5C53CF11C5272BB0068C9EC /* ErrorHandlingTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
