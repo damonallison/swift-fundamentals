@@ -120,3 +120,8 @@ documentation in them?
 * What are the Objc attributes for interoperating with swift (read the swift interop book)
 
 #### Tools ####
+
+
+#### Start Here ####
+
+Chapter 2 : Basic Operators
