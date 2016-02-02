@@ -99,12 +99,16 @@ system" - The Swift Programming Language
 * Structs
 
 
-### Questions ###
+### Generic swift Questions ###
+
+* What is the global scope? Are all functions defined in the "global scope" in all files callable from all other files?
 
 * Modules: How to create / import a module? 
 * Modules: What is an umbrella header?
 * Modules: What is a module.modulemap file?
 
+
+* Functions : Why are functions written as `print(_:separator:delimiter)`. Why does the first parameter receive the wildcard name and type names are omitted?
 
 #### Objects ####
 
@@ -124,4 +128,4 @@ documentation in them?
 
 #### Start Here ####
 
-Chapter 2 : Basic Operators
+Chapter 7: Closures
