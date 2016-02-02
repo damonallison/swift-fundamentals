@@ -107,8 +107,14 @@ system" - The Swift Programming Language
 * Modules: What is an umbrella header?
 * Modules: What is a module.modulemap file?
 
+* Strong reference cycles and capture lists. If you store a closure on an instance. This needs to be broken (guard?)
 
 * Functions : Why are functions written as `print(_:separator:delimiter)`. Why does the first parameter receive the wildcard name and type names are omitted?
+
+* Closures : is it common to annotate *all* non-escaping closures with `@noescape`? 
+* "Marking a closure with `@noescape` lets you refer to `self` implicitly within the closure. What does this mean - couldn't you refer to `self` in all closures?
+
+
 
 #### Objects ####
 
@@ -125,7 +131,10 @@ documentation in them?
 
 #### Tools ####
 
+## Projects
 
-#### Start Here ####
+* Write Array.sort(isOrderedBefore:(String, String) -> Bool). Use bubble sort or merge sort.
 
-Chapter 7: Closures
+## Start here 
+
+Enumerations : https://developer.apple.com/library/ios/documentation/Swift/Conceptual/Swift_Programming_Language/Enumerations.html#//apple_ref/doc/uid/TP40014097-CH12-ID145

@@ -29,6 +29,8 @@ func == <T:Equatable> (tuple1:(T, T), tuple2:(T, T)) -> Bool {
 }
 
 class FunctionsTests : XCTestCase {
+
+    var myVar = 0
     
     /**
      This test shows how to overload operators. This function uses the overloaded operator above.
@@ -193,7 +195,7 @@ class FunctionsTests : XCTestCase {
             return from - x
         }
         
-        func mathPrinter(mathFunc: MathematicalOperation, x:Int, y:Int) -> String {
+        func mathPrinter(@noescape mathFunc: MathematicalOperation, x:Int, y:Int) -> String {
             return "Result == " + String(mathFunc(x, y))
         }
         
@@ -235,6 +237,12 @@ class FunctionsTests : XCTestCase {
         }
         XCTAssertTrue(fibValues == [0, 1, 1, 2, 3])
         
+        // Closures and functions are reference types!
+        let f2 = f
+        let f3 = f
+        XCTAssertEqual(f2(), 5)
+        XCTAssertEqual(f3(), 8)
+        
     }
     
     /**
@@ -259,12 +267,25 @@ class FunctionsTests : XCTestCase {
      Tests the ability to pass functions around as variables.
      
      Each function has a type. You can pass function `a` to any function
-     that has a parameter with type `a`
+     that has a parameter with type `a`. 
+     
+     For example, a function as the type `(Int, Int) -> Int`
      
      */
     func testFunctionTypes() {
         
-        func filter<T>(arr: [T], pred:(T -> Bool)) -> [T] {
+        /**
+         If you write a function that accepts a closure, you can annotate the parameter with `@noescape` when the function is not called after the function returns. That is, the closure doesn't "escape" the current function. 
+         
+         Examples of a closure "escaping" the current function:
+         
+         * The closure is added to an array or data structure.
+         * The closure is closed over by another function and that function is returned.
+         * The closure is passed to another function, which hangs on to a reference of it.
+
+         Annotating a closure with `@noescape` allows the compiler to make more aggressive optimizations because it knows more information about the closure
+        */
+        func filter<T>(arr: [T], @noescape pred:(T -> Bool)) -> [T] {
             var ret = [T]()
             for v in arr {
                 if pred(v) {
@@ -298,15 +319,48 @@ class FunctionsTests : XCTestCase {
             return x > 20
         })
         XCTAssertEqual(b, [22, 33])
+        
+        
+        // If you annotate a closure with `@noescape`, you can reference `self` within the closure (i.e., you can reference variables directly without using `self`.
+        
+        
+        class SomeClass {
+            var x = 10
+            var completionHandlers: [() -> Void] = []
+            private func someFunctionWithEscapingClosure(completionHandler: () -> Void) {
+                completionHandlers.append(completionHandler)
+            }
+            private func someFunctionWithNoEscapingClosure(@noescape completionHandler: () -> Void) {
+                completionHandler()
+            }
+            func doSomething() {
+                someFunctionWithEscapingClosure { self.x = 100 }
+                someFunctionWithNoEscapingClosure { x = 200 } // Implicitly references `self`.
+            }
+        }
+        let s = SomeClass()
+        s.doSomething()
+        XCTAssertEqual(200, s.x, "The second closure should have ran, setting x == 200")
+        s.completionHandlers.first?()
+        XCTAssertEqual(100, s.x, "The first closure should have ran, setting x == 100")
+        
     }
     
     /**
-     Closure expressions provide concise syntax for defining closures. They allow
-     you to write essentially functions without having to specify a full name and
-     declaration.
+     Closure expressions provide concise syntax for defining closures. They allow you to write essentially functions without having to specify a full name and declaration.
+     
+     Closure expressions are exactly the same as defining a nested function, however they do not require a name.
+     
+     Closure expressions include:
+     
+     * Type inference. Parameter and return types are inferred.
+     * Implicit returns from single-expression closures.
+     * Shorthand argument names ($0, $1, ...)
+     * Trailing closure syntax `obj.map { }`
+     
      
      */
-    func testClosures() {
+    func testClosureExpressions() {
         // Return true if first < second
         func alphaSort(s1: String, s2: String) -> Bool {
             return s1 < s2
@@ -324,58 +378,55 @@ class FunctionsTests : XCTestCase {
         XCTAssertEqual(alpha, names.sort(alphaSort))
         XCTAssertEqual(reverseAlpha, names.sort(reverseAlphaSort))
         
-        // Closure syntax support inout, varadic params (must be last),
-        // tuples as a return type.
+        // Closure expressions support inout, varadic params (must be last), tuples as a return type. Closure expressions do *not* support default values.
         //
-        // In this example, we are using standard function declaration syntax.
-        // when creating the closure. The only difference between this syntax
-        // and function syntax is the `in`. `in` indicates the function declaration
-        // has finished and the body follows.
+        // Here is the verbose syntax for closure expressions. Here, we are using standard function declaration syntax. when creating the closure. The only difference between this syntax and function syntax is the `in`. `in` indicates the function declaration has finished and the body follows.
         XCTAssertEqual(alpha, names.sort({ (s1: String, s2: String) -> Bool in
             return s1 < s2
         }))
         
-        // Closure syntax supports type inference. Both the parameters (String, String)
-        // and return type (-> Bool) is inferred and can be omitted.
-        // It is *always* possible to infer param and return types, so the full
-        // function definition above is never required when the closure is
-        // used as a function argument.
-        XCTAssertEqual(alpha, names.sort({ s1, s2 in return s1 < s2 }))
+        // Closure syntax supports type inference. Both the parameters (String, String) and return type (-> Bool) is inferred and can be omitted. It is *always* possible to infer param and return types, so the full function definition above is never required when the closure is used as a function argument.
+        //
+        // Because all of the types can be inferred, we can omit the types and the parens around the parameters.
+        XCTAssertEqual(alpha, names.sort { s1, s2 in return s1 < s2 })
         
-        // Single expression closures will implicitly return the expression.
-        // Therefore, "return" is not required.
-        XCTAssertEqual(alpha, names.sort({ s1, s2 in s1 < s2 }))
+        // Single expression closures will implicitly return the expression. Therefore, "return" is not required.
+        XCTAssertEqual(alpha, names.sort { s1, s2 in s1 < s2 })
         
-        // Shorthand argument names
-        // Swift *automatically* provides shorthand argument names for inline closures.
-        // The implicitly created argument names are $0, $1, and so on.
-        XCTAssertEqual(alpha, names.sort({ return $0 < $1 }))
+        // Shorthand argument names. Swift *automatically* provides shorthand argument names for inline closures. The implicitly created argument names are $0, $1, and so on.
+        XCTAssertEqual(alpha, names.sort { return $0 < $1 })
         
-        // Operator functions
-        // If the type provides an operator function that matches the
-        // required function type, the argument function can be used
+        // You can also omit the return operator 
+        XCTAssertEqual(alpha, names.sort { $0 < $1 })
+        
+        // Operator functions.
+        // If the type provides an operator function that matches the required function type, the argument function can be used.
+        //
         // `String` defines :
-        //  < = (s1: String, s2: String) -> Bool
+        //  String.< == (String, String) -> Bool
         //  Because the operator function matches the function argument type
         // for `sorted`, `<` can be used.
         XCTAssertEqual(alpha, names.sort(<))
     }
     
     /**
-     If the last parameter to a function is a function, the last parameter can be
-     passed to the function as a trailing closure.
+     If the last parameter to a function is a function, the last parameter can be passed to the function as a trailing closure.
+     
+     A trailing closure is a closure expression that is written outside (after) the parentheses of the function call it supports.
+     
+     Trailing closure syntax is useful when the closure is long and it's not possible to be written on a single line.
      */
     func testTrailingClosures() {
         
-        // This function takes a trailing closure. When
+        // This function takes a trailing closure for argument `mathFunc`
         func formatResult(a: Int, b: Int, mathFunc: (i1: Int, i2: Int) -> Int) -> String {
             let res = mathFunc(i1: a, i2: b)
             return "Math computed : \(res)"
         }
         
         // Notice here that `formatRules` takes a function as it's last param.
-        // When we invoke format rules, we send the closure as an argument *outside*
-        // the parentheses for the function arguments.
+        // When we invoke `formatRules`, we send the closure as an argument *outside*
+        // the parentheses for the function arguments. That argument is the trailing closure.
         let result = formatResult(100, b: 100) {
             $0 + $1
         }
@@ -386,23 +437,41 @@ class FunctionsTests : XCTestCase {
         XCTAssertEqual(formatResult(100, b: 100, mathFunc: { $0 - $1 }), "Math computed : 0")
         
         var numberMap = [0: "Zero", 1: "One", 2: "Two", 3: "Three", 4: "Four", 5 : "Five"]
-        let numbers = [0, 4, 2, 1, 3, 8]
+        let numbers = [0, 4, 2, 1, 3, /* unknown */ 8]
         
         // If a closure is the *only* parameter to a function, the () can be
         // omitted from the function call all together.
-        let strings = numbers.map { (let number) -> String in
-            if let str = numberMap[number] {
-                return str
-            }
-            else {
-                return "Unknown"
-            }
-        }
-        
-        let _ = numbers.map() { (let number) -> String in
-            return "hi"
-        }
+        let strings = numbers.map { number in numberMap[number] ?? "Unknown" }
         let expected = ["Zero", "Four", "Two", "One", "Three", "Unknown"];
         XCTAssertEqual(strings, expected)
+    }
+    
+    /**
+     Autoclosures are closures that are automatically created to wrap an expression that is being passed as an argument to a function. When the function is called, it returns the value of the expression inside it.
+     
+     Autoclosures allow you to delay evaluation because the the code inside isn't run until you call the closure. You may not need to run the closure, poetentially saving the long running operation. This is the exact same as if you'd pass in a normal closure. The difference between a standard closure and an autoclosure is that you don't have to wrap the expression in braces. 
+     
+     For example, in the function below, if `count` was not `@autoclosure`, you'd have to call `testAutoClosure(name, count: { name.chacters.count}
+     
+     Autoclosures take no arguments.
+     
+     "This syntactic convenience lets you omit braces around a function's parameter by writing a normal expression instead of an explicit closure.
+     
+     It's common to **call** functions that take autoclosures, but not common to implement that type of function.
+    */
+    func testAutoClosures() {
+        
+        // `@autoclosure` implies `@noescape`. Use `@autoclosure(escaping)` if it's escaping!
+        // This function is *not* escaping, but we'll throw it on there to show what it looks like.
+        func testAutoClosure(from: String, @autoclosure(escaping) count: () -> Int) -> String {
+            return "\(from) is \(count())"
+        }
+        func testClosure(from: String, count: () -> Int) -> String {
+            return "\(from) is \(count())"
+        }
+        
+        let name = "Damon"
+        XCTAssertEqual("Damon is 5", testAutoClosure(name, count: name.characters.count))
+        XCTAssertEqual("Damon is 5", testClosure(name, count: { name.characters.count }))
     }
 }
