@@ -63,7 +63,7 @@ system" - The Swift Programming Language
     * String interpolation.
     * Tuples allow for simple data structures and multiple return values.
 
-* Strongly Typed (this will upset the dynamic language people)
+* Strongly Typed (this will upset the dynamic language people, but it's the right way to build a language)
   * Generics
   * Type inference
   * No need for non-mutable and mutable versions of the same classes.
@@ -77,6 +77,13 @@ system" - The Swift Programming Language
 
 * Objective-C and the underlying compiler infrastructure has been updated over 
   the years which has "paved the way" for swift.
+
+* Dislikes
+    * Swift allows optional parens and semi-colons. It should force one or the other.
+    * There is no code-formatter (`go-fmt`). 
+        * No style consistency between projects.
+        * Requires each team to have unproductive "style wars".
+
 
 ## Tools ##
 
@@ -119,6 +126,8 @@ system" - The Swift Programming Language
 #### Objects ####
 
 * How to hide local class vars from the class's public interface?
+    * What are the access rules in swift? (private, public, etc..)
+
 * What is protocol composition?
 
 * Primitive types : lists and API. (All value types?)
@@ -130,6 +139,9 @@ documentation in them?
 * What are the Objc attributes for interoperating with swift (read the swift interop book)
 
 #### Tools ####
+
+* Need to master Xcode.
+    * Pane switching, closing, and navigation.
 
 ## Projects
 

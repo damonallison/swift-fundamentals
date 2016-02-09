@@ -42,12 +42,12 @@ class DictionaryTests : XCTestCase {
         // using `updateValue` as opposed to directly setting a key/value will
         // allow you to capture the old value. If the key didn't exist in the
         // dictionary, `updateValue` returns `nil`
-        if let oldValue = words.updateValue(1, forKey:"the") {
+        if let _ = words.updateValue(1, forKey:"the") {
             XCTFail("\"the\" should not have existed in the dictionary")
         }
 
         // retrieving a value from the dictionary
-        if let the = words["a"] {
+        if let _ = words["a"] {
             XCTFail("\"a\" should not exist in the dictionary")
         }
 

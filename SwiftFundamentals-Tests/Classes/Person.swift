@@ -7,75 +7,114 @@
 //
 
 /**
-    The `person` class shows various class features:
+The `person` class shows various class features:
 
-    - Initialization and deinitialization.
-    - Property declaration (get / set).
-    - Property observers (willSet / didSet).
-    - Method declaration.
-    - Inheritance.
-    - Access modifiers (private / public).
-    - Subscripts.
+- Initialization and deinitialization.
+- Property declaration (get / set).
+- Property observers (willSet / didSet).
+- Method declaration.
+- Inheritance.
+- Access modifiers (private / public).
+- Subscripts.
 
- */
+*/
 public class Person : Printable {
-
+    
     /*
     
-    Access modifiers apply based on file and project structure, 
+    Access modifiers apply based on file and project structure,
     not type hierarchy.
     
     - `private` - all types in this *file* (not class) have access
-    - `protected` == all types in this module (not derived classes) have access
+    - `protected` == all types in this module (not derived classes) have access (is this the default?)
     - `public`    == full access
-    
     */
-
+    
+    ///
+    /// A 'lazy' variable does not need to be set during initialization.
+    /// It will initialize itself when accessed. 
+    ///
+    /// Another way to do lazy initialization could be to use a computed property.
+    /// If you did use a computed property, you still may want to use a lazy var
+    /// to delay initialization.
+    ///
     private lazy var initialName = String()
+    
+    /// Internal properties. Marking these `private` will not
     private var firstNameInternal: String
     private var lastNameInternal: String
+    
+    ///
+    /// `address` is a property with observers attached.
+    ///
+    /// `address` is **not** a computed property. 
+    /// It stores an internal `address` backing variable.
+    /// A computed property does not have an internal backing variable.
+    ///
+    /// Property observers could be useful for :
+    ///
+    /// * Logging
+    /// * Mocking? - can we dynamically add observers to objects?
+    /// * Validation? - can we prevent a property from being set via an observer? 
+    ///   Or would we need to write acustom "computed" property which validates 
+    ///   and sets an internal property only when valid?
+    ///
+    public var address: String {
+        willSet {
+            print("willSet address to \(newValue)", terminator: "")
+        }
+        didSet {
+            print("didSet address to \(address) from \(oldValue)", terminator: "")
+        }
+    }
 
-    //
-    // Initialization
-    //
-    // Golden Rule :
-    //   Every value must be initialized before it's used.
-    //
+    ///
+    /// Initialization
+    ///
+    /// Golden Rule :
+    ///   * Every value must be initialized before the class can be used.
+    ///
+    ///
     init(first: String, last: String) {
-
+        
         firstNameInternal = first
         lastNameInternal = last
-        address = "HERE"
+        address = "default"
         initialName = "\(first) \(last)"
-
+        
         // if you are overriding a base class, call super.init()
         // after super.init(), you can change the properties
         // defined in the superclass.
-
+        
         // Once all vars are set (and you have delegated up the chain)
         // you have access to `self`
     }
 
+    
+    /// 
+    /// Deinitializer (destructor)
+    ///
     deinit {
         //
         // object is being deallocated. cleanup
         //
         print("person dealloc", terminator: "")
     }
-
-    // 
-    // A "computed property" does not store a value. This can be used to 
-    // hide internal variable, provide validation, etc.
-    //
+    
+    ///
+    /// A "computed property" (defined with get{} set{}) does not store a value. This can be used to
+    /// hide internal variable, provide validation, etc.
+    ///
     var firstName: String {
         get {
             return firstNameInternal
         }
         set {
+            // TODO: Is this the correct way to get a string length? This doesn't seem correct.
             firstNameInternal = newValue.utf16.count > 5 ? (newValue as NSString).substringToIndex(5) : newValue;
         }
     }
-
+    
     var lastName: String {
         get {
             return lastNameInternal
@@ -84,7 +123,7 @@ public class Person : Printable {
             lastNameInternal = newValue
         }
     }
-
+    
     //
     // Implementing a readonly property
     //
@@ -93,30 +132,18 @@ public class Person : Printable {
             return "\(firstName) \(lastName)"
         }
     }
-
-    //
-    // Property observers: 
-    // willSet / didSet to run code before setting a property.
-    //
-    var address: String {
-        willSet {
-            print("willSet address to \(newValue)", terminator: "")
-        }
-        didSet {
-            print("didSet address to \(address) from \(oldValue)", terminator: "")
-        }
-    }
+    
     //
     // method declarations
     //
     func description() -> String {
         return "\(firstName) \(lastName)"
     }
-
+    
     func appendSurname(surname: String) -> String {
         return "\(firstName) \(lastName) \(surname)"
     }
-
+    
     //
     // By default, a method name has the same name for it's parameter when you call it
     // and within the method itself.
@@ -131,14 +158,14 @@ public class Person : Printable {
 }
 
 class Superman : Person {
-
+    
     //
     // This will be lazy-initialized (created when first accessed)
     //
     // TODO: - why is this failing?
     // lazy var child = Person(first: "super", last: "child")
     var power: Int
-
+    
     init(power: Int, firstName: String, lastName: String) {
         //
         // When overriding a base class, there are three steps to perform
@@ -154,25 +181,25 @@ class Superman : Person {
         //    first. Swift requires all variables to be instantiated for safety.
         //    You cannot access variables that have not been fully initialized.
         //
-
+        
         //
         // 1. Initialize all variables in the derived class.
         //
         self.power = power
-
+        
         //
         // 2. super.init()
         //
         super.init(first: firstName, last: lastName)
-
+        
         // derived classes have access to the base's private member
         super.initialName = "Damon R Allison"
         //
         // 3. Custom initialization logic
         print("superman created with \(power) initialName \(initialName)", terminator: "")
-
+        
     }
-
+    
     //
     // Convenience initializer (must call another initializer)
     //

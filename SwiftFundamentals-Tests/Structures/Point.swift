@@ -10,8 +10,19 @@
 /// Example structure.
 ///
 /// * Structures should be kept small.
-/// * All values in the structure should themselves be structs.
+///
+/// * All values in the structure should themselves be value types.
+///
 /// * Don't put reference types into a structure - use a class.
+///   If you add reference types to a `struct` (which is possible)
+///   breaks the `copy` value type semantics of structures. 
+///
+/// * You don't need to inherit properties or behavior
+///   from another structure.
+///
+/// * `struct`s should be relatively small and used only for 
+///   small, value type data structures. Classes are the primary 
+///   data structure in swift.
 ///
 /// Structures are given a default "memberwise initializer". A memberwise initializer is a compiler-generated initializer that you can use to create a new instance of the struct, fully populated with initial values.
 ///
@@ -27,6 +38,23 @@ struct Point : Equatable  {
     
     var x: Int
     var y: Int
+    
+    
+    ///
+    /// A `convenience` initializer which creates a point with 
+    /// the same `x` and `y` values.
+    ///
+    /// Convenience initializers are not annoated with `convenience` 
+    /// in `struct`s like they are in classes.
+    ///
+    init(val : Int) {
+        self.init(x: val, y: val)
+    }
+    
+    init(x : Int, y: Int) {
+        self.x = x
+        self.y = y
+    }
     
     /// `mutating` allows you to mutate `var` struct members.
     mutating func offsetBy(x: Int, y: Int) {

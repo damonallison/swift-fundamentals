@@ -9,6 +9,10 @@
 import Foundation
 import XCTest
 
+///
+/// See `Point.swift` (`struct Point`) for documentation on 
+/// structures.
+///
 class StructuresTest : XCTestCase {
     
     /// Structures have value semantics.

@@ -25,14 +25,14 @@ import XCTest
  
  If you have a fixed set of values, use an enum. If you don't (or the fixed set of values is huge) use a class.
  
-        enum HttpReturnCode {
-            case Success(code: Int)
-            case Error(code: Int, message: String)
-        }
+ enum HttpReturnCode {
+ case Success(code: Int)
+ case Error(code: Int, message: String)
+ }
  
  */
 class EnumTests : XCTestCase {
-
+    
     private enum Compass {
         case North
         case East
@@ -45,18 +45,18 @@ class EnumTests : XCTestCase {
         XCTAssertEqual(x, Compass.North)
         XCTAssertTrue(x == Compass.North)
     }
-
+    
     /**
      Simple enum with a raw value.
-    */
+     */
     private enum MyEnum : Float {
         case Low = 0.0
         case Med = 0.5
         case High = 1.0
-
+        
         /**
          Overrides the failable initializer.
-        */
+         */
         init(value: Float) {
             if value < MyEnum.Med.rawValue {
                 self = .Low
@@ -91,7 +91,7 @@ class EnumTests : XCTestCase {
         case East  // Implicitly == 1
         case South // Implicitly == 2
         case West  // Implicitly == 3
-
+        
         // TODO: Possible to mutate the enum value?
         // We could provide an int rawValue and increase by 1 (mod 4 to reset 4 back to 0).
         func rotate90() -> CompassPoint {
@@ -107,7 +107,7 @@ class EnumTests : XCTestCase {
             }
         }
     }
-
+    
     func testEnumNoRawValue() {
         let cp = CompassPoint.East
         XCTAssertEqual(cp, CompassPoint.East)
@@ -149,24 +149,35 @@ class EnumTests : XCTestCase {
         case Redirect(NSURL)
     }
     
-        func testAssociatedValues() {
-            
-            let f = APIResponse.Failure("Oops")
-            switch f {
-            case .Success:
-                break
-            case let .Failure(error):
-                XCTAssertEqual(error, "Oops")
-            case .Redirect: // Does not capture NSURL
-                break
-            }
+    /// 
+    /// A test function to generate a mock response.
+    ///
+    private func generateMockResponse(err: String?) -> APIResponse {
+        if let e = err {
+            return APIResponse.Failure(e)
+        }
+        else {
+            return APIResponse.Success
+        }
     }
-
+    
+    func testAssociatedValues() {
+        
+        switch self.generateMockResponse("Oops") {
+        case .Success:
+            break
+        case let .Failure(error):
+            XCTAssertEqual(error, "Oops")
+        case .Redirect: // Does not capture NSURL
+            break
+        }
+    }
+    
     /**
      Recursive enumerations require the compiler to insert a layer of indirection when it works with recursive enumerations
-
+     
      TODO: Why can't the compiler infer "indirect" for each case that has an associated value of the same enum type?
-    */
+     */
     private indirect enum ArithmeticExpression {
         case Number(Int)
         case Addition(ArithmeticExpression, ArithmeticExpression)

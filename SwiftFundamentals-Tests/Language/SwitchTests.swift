@@ -31,8 +31,8 @@ class SwitchTests : XCTestCase {
                 return "on time!"
             case .Delayed(1...10):
                 return "not bad"
-            case .Delayed(_): // wildcard pattern
-                return "omg"
+            case .Delayed(let x): // wildcard pattern
+                return "omg \(x)"
             }
         }
     }
@@ -42,7 +42,7 @@ class SwitchTests : XCTestCase {
     func testSwitchEnum() {
         XCTAssertEqual(TrainStatus.OnTime.describe(), "on time!")
         XCTAssertEqual(TrainStatus.Delayed(5).describe(), "not bad")
-        XCTAssertEqual(TrainStatus.Delayed(100).describe(), "omg")
+        XCTAssertEqual(TrainStatus.Delayed(100).describe(), "omg 100")
     }
 
     /**
@@ -64,49 +64,40 @@ class SwitchTests : XCTestCase {
         }
     }
 
+    ///
+    /// Shows how to switch on a tuple, binding local consts
+    /// to variables in the tuple.
+    ///
+    /// This shows the power of swift's case statement:
+    ///
+    /// * Pattern matching allows you to match a case
+    ///   only when a boolean expression is passed (via `where`).
+    ///
+    /// * Tuple matching - allows you to match against multiple vars.
+    ///
+    /// * Local variable binding allows you to assign local consts 
+    ///   or vars to tuple values. In the example below, we bind
+    ///   `x` and `y` to test them in a `where` clause.
+    ///
+    func switchOnTupleExample(x: (lhs: Int, rhs: Int)) -> String {
+        switch x {
+        case (_, 0):
+            return "x axis"
+        case (0, _):
+            return "y axis"
+        case (let x, let y) where x > 0 && y > 0:
+            return "upper right"
+        default:
+            return "\(x.lhs):\(x.rhs)"
+        }
+    }
     /**
     Test switch's pattern matching on tuples
     */
     func testSwitchTuples() {
-        var x, y : Int
-        x = 1
-        y = 1
-        switch (x, y) {
-        case (0, 0):
-            XCTFail("Not 0,0")
-        case (_, 0), (0, _):    // tests multiple patterns
-            XCTFail("Not (x, 0) or (0, y)")
-        case (10...20, 100...200):  // tests pattern w/ range
-            XCTFail("Out of range")
-        case (_, _):
-            break; // matches both values in typle
-        }
-    }
-
-    /**
-    Test `switch`'s ability to bind values
-    */
-    func testSwitchValueBindings() {
-        switch(1, 1) {
-        case (let x, 0):
-            XCTFail("\(x) is not 0,0")
-        case (0, let y):
-            XCTFail("Not 0,y")
-        case (let x, let y): // matches everything (no default case needed)
-            XCTAssertTrue(x == 1 && y == 1);
-        }
-    }
-    /**
-    Test `switch`'s ability to specify a `where` clause in pattern matching.
-    */
-    func testSwitchWhereClauser() {
-        switch(1, 1) {
-        case let (x, y) where y == 0 && x == 0: // could be simplified to `case (0, 0):`
-            XCTFail("Not 0,0")
-        case let (x, y) where y == 1 && x == 1:
-            XCTAssertTrue(x == 1 && y == 1)
-        case (let x, let y): // matches everything (no default case needed)
-            XCTFail("Should have matched (1, 1)")
-        }
+        XCTAssertEqual("x axis", switchOnTupleExample((10, 0)))
+        XCTAssertEqual("y axis", switchOnTupleExample((0, 10)))
+        XCTAssertEqual("upper right", switchOnTupleExample((1, 1)))
+        XCTAssertEqual("-1:-1", switchOnTupleExample((-1, -1)))
     }
 }
