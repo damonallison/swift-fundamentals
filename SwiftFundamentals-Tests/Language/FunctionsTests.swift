@@ -29,7 +29,7 @@ func == <T:Equatable> (tuple1:(T, T), tuple2:(T, T)) -> Bool {
 }
 
 class FunctionsTests : XCTestCase {
-
+    
     var myVar = 0
     
     /**
@@ -267,7 +267,7 @@ class FunctionsTests : XCTestCase {
      Tests the ability to pass functions around as variables.
      
      Each function has a type. You can pass function `a` to any function
-     that has a parameter with type `a`. 
+     that has a parameter with type `a`.
      
      For example, a function as the type `(Int, Int) -> Int`
      
@@ -275,16 +275,16 @@ class FunctionsTests : XCTestCase {
     func testFunctionTypes() {
         
         /**
-         If you write a function that accepts a closure, you can annotate the parameter with `@noescape` when the function is not called after the function returns. That is, the closure doesn't "escape" the current function. 
+         If you write a function that accepts a closure, you can annotate the parameter with `@noescape` when the function is not called after the function returns. That is, the closure doesn't "escape" the current function.
          
          Examples of a closure "escaping" the current function:
          
          * The closure is added to an array or data structure.
          * The closure is closed over by another function and that function is returned.
          * The closure is passed to another function, which hangs on to a reference of it.
-
+         
          Annotating a closure with `@noescape` allows the compiler to make more aggressive optimizations because it knows more information about the closure
-        */
+         */
         func filter<T>(arr: [T], @noescape pred:(T -> Bool)) -> [T] {
             var ret = [T]()
             for v in arr {
@@ -396,7 +396,7 @@ class FunctionsTests : XCTestCase {
         // Shorthand argument names. Swift *automatically* provides shorthand argument names for inline closures. The implicitly created argument names are $0, $1, and so on.
         XCTAssertEqual(alpha, names.sort { return $0 < $1 })
         
-        // You can also omit the return operator 
+        // You can also omit the return operator
         XCTAssertEqual(alpha, names.sort { $0 < $1 })
         
         // Operator functions.
@@ -449,7 +449,7 @@ class FunctionsTests : XCTestCase {
     /**
      Autoclosures are closures that are automatically created to wrap an expression that is being passed as an argument to a function. When the function is called, it returns the value of the expression inside it.
      
-     Autoclosures allow you to delay evaluation because the the code inside isn't run until you call the closure. You may not need to run the closure, poetentially saving the long running operation. This is the exact same as if you'd pass in a normal closure. The difference between a standard closure and an autoclosure is that you don't have to wrap the expression in braces. 
+     Autoclosures allow you to delay evaluation because the the code inside isn't run until you call the closure. You may not need to run the closure, poetentially saving the long running operation. This is the exact same as if you'd pass in a normal closure. The difference between a standard closure and an autoclosure is that you don't have to wrap the expression in braces.
      
      For example, in the function below, if `count` was not `@autoclosure`, you'd have to call `testAutoClosure(name, count: { name.chacters.count}
      
@@ -458,7 +458,7 @@ class FunctionsTests : XCTestCase {
      "This syntactic convenience lets you omit braces around a function's parameter by writing a normal expression instead of an explicit closure.
      
      It's common to **call** functions that take autoclosures, but not common to implement that type of function.
-    */
+     */
     func testAutoClosures() {
         
         // `@autoclosure` implies `@noescape`. Use `@autoclosure(escaping)` if it's escaping!
