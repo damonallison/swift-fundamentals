@@ -39,6 +39,13 @@ struct Point : Equatable  {
     var x: Int
     var y: Int
     
+    /// 
+    /// `type methods` can be declared with the `static` keyword. 
+    /// Type methods annotated with `static` cannot be overridden by subclasses.
+    /// Type methods annotated with `class` can be overridden by subclasses.
+    static func copy(point: Point) -> Point {
+        return Point(x: point.x, y: point.y)
+    }
     
     ///
     /// A `convenience` initializer which creates a point with 
@@ -56,10 +63,20 @@ struct Point : Equatable  {
         self.y = y
     }
     
+    /// 
+    /// By default, structs and enums are immutable. 
+    /// You can opt into allowing your struct / enum value type to be modified.
+    ///
     /// `mutating` allows you to mutate `var` struct members.
+    ///
     mutating func offsetBy(x: Int, y: Int) {
+        // mutating functions could also assign an entirely new instance to `self`
+        self = Point(x: self.x + x, y: self.y + y)
+        
+        // mutating functions could also update `var` properties.
         self.x += x
         self.y += y
+        
     }
 }
 

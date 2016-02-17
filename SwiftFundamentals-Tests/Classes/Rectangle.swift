@@ -19,6 +19,7 @@ func ==(lhs: Rectangle, rhs: Rectangle) -> Bool {
 class Rectangle : Equatable {
     
     /// Type properties are associated with the type itself.
+    static let defaultSize =  4
     
     // TODO: add a type property here
     
@@ -35,6 +36,9 @@ class Rectangle : Equatable {
         self.width = width
     }
     
+    /// 
+    /// `origin` is a "computed property". A computed property does not have a backing variable.
+    ///
     var origin : Point {
         get {
             return self.internalOrigin

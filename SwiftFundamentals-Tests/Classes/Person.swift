@@ -6,37 +6,85 @@
 //  Copyright (c) 2014 Damon Allison. All rights reserved.
 //
 
-/**
-The `person` class shows various class features:
-
-- Initialization and deinitialization.
-- Property declaration (get / set).
-- Property observers (willSet / didSet).
-- Method declaration.
-- Inheritance.
-- Access modifiers (private / public).
-- Subscripts.
-
-*/
+///
+/// The `person` class shows various class features:
+///
+///- Initialization and deinitialization.
+///- Property declaration (get / set).
+///- Property observers (willSet / didSet).
+///- Method declaration.
+///- Inheritance.
+///- Access modifiers (private / public).
+///- Subscripts.
+///
+///
+/// Properties
+///
+/// * Stored properties - store a value on an instance (or type).
+/// * Computed properties - do **not** store a value. Computed properties provide
+///   a getter (and optional setter) and set other values or properties indirectly.
+/// * Type properties - stored or computed properties on a type, not an instance.
+///
+/// Property observers:
+///
+/// * Montiors changes to a property's value.
+/// * Can be added to stored properties or properties inherited from a superclass.
+///
+/// Property Initialization
+/// 
+/// * `let` and `var` properties both can be assigned during initialization.
+/// Access modifiers apply based on file and project structure,
+/// not type hierarchy.
+///
+/// Access Control
+///
+/// // TODO: is `protected` the default?
+///
+/// * `private` - all types in this *file* (not class) have access
+/// * `protected` == all types in this module (not derived classes) have access
+/// * `public`    == full access
+///
 public class Person : Printable {
     
-    /*
+    /// Stored type properties must have a default value.
+    public static let defaultName = "Damon"
     
-    Access modifiers apply based on file and project structure,
-    not type hierarchy.
+    // Stored type properties can also have observers.
+    public static var defaultLastName : String = "Allison" {
+        didSet {
+            print("Set Person.defaultLastName = \(defaultLastName)")
+        }
+    }
     
-    - `private` - all types in this *file* (not class) have access
-    - `protected` == all types in this module (not derived classes) have access (is this the default?)
-    - `public`    == full access
-    */
+    /// Computed type properties must be declared with `var`, even if they are read only.
+    /// You can define computed properties with the `class` modifier to allow subclasses
+    /// to override the superclass implementation.
+    public class var defaultFullName : String {
+        get {
+            return "\(defaultName) \(defaultLastName)"
+        }
+    }
     
     ///
-    /// A 'lazy' variable does not need to be set during initialization.
+    /// A 'lazy' property does not need to be set during initialization.
     /// It will initialize itself when accessed. 
     ///
     /// Another way to do lazy initialization could be to use a computed property.
     /// If you did use a computed property, you still may want to use a lazy var
     /// to delay initialization.
+    ///
+    /// `lazy` properties must be `var`s. They cannot be `let` because
+    /// all constants must have a value before initialization completes.
+    /// 
+    /// `lazy` properties may not have observers. Why!?
+    ///
+    /// When to use `lazy` properties?
+    ///
+    /// * The value is dependent on external factors which are not
+    ///   known until after initialization.
+    ///
+    /// * Computing the value is expensive and you want to delay 
+    ///   computation until it's absolutely needed.
     ///
     private lazy var initialName = String()
     
@@ -44,6 +92,26 @@ public class Person : Printable {
     private var firstNameInternal: String
     private var lastNameInternal: String
     
+    /// Constant properties can be set during initialization
+    private let createDate: NSDate
+    
+    /// You **could** use the `didSet` property observer to override the 
+    /// value that was just set. This is a hack, but it could be done.
+    var iq: Int {
+        willSet {
+            print("Setting iq to \(iq)")
+        }
+        didSet {
+            if self.iq > 200 {
+                print("IQ max is 200. Replacing \(self.iq) with 200")
+                self.iq = 200
+            }
+            else if self.iq < 0 {
+                print("IQ min is 0. Replacing \(self.iq) with 0")
+                self.iq = 0
+            }
+        }
+    }
     ///
     /// `address` is a property with observers attached.
     ///
@@ -77,10 +145,12 @@ public class Person : Printable {
     ///
     init(first: String, last: String) {
         
-        firstNameInternal = first
-        lastNameInternal = last
-        address = "default"
-        initialName = "\(first) \(last)"
+        self.firstNameInternal = first
+        self.lastNameInternal = last
+        self.address = "default"
+        self.createDate = NSDate()
+        self.iq = 0
+        self.initialName = "\(first) \(last)"
         
         // if you are overriding a base class, call super.init()
         // after super.init(), you can change the properties
@@ -102,8 +172,13 @@ public class Person : Printable {
     }
     
     ///
+    /// Computed Properties
+    ///
     /// A "computed property" (defined with get{} set{}) does not store a value. This can be used to
     /// hide internal variable, provide validation, etc.
+    ///
+    /// You cannot define property observers on computed properties. 
+    /// You can observe property changes in the property `set { }`
     ///
     var firstName: String {
         get {
@@ -124,13 +199,23 @@ public class Person : Printable {
         }
     }
     
-    //
-    // Implementing a readonly property
-    //
+    ///
+    /// Implementing a readonly computed property.
+    ///
+    /// All computed properties (even read only) must be declared as `var` because their values 
+    /// are not fixed. Only constant stored properties can be defined with `let.
+    ///
     var fullName: String {
         get {
             return "\(firstName) \(lastName)"
         }
+    }
+    
+    /// 
+    /// Readonly computed properties can remove the get { } scope.
+    ///
+    var fullName2: String {
+        return "\(firstName) \(lastName)"
     }
     
     //
@@ -144,16 +229,36 @@ public class Person : Printable {
         return "\(firstName) \(lastName) \(surname)"
     }
     
-    //
-    // By default, a method name has the same name for it's parameter when you call it
-    // and within the method itself.
-    //
-    // You can specify a second name that can be used from within the method. In this
-    // method, the caller uses the parameter name "surname2", internally within the method
-    // we use the name "lastSurname"
-    //
+    ///
+    /// By default, a method name has the same name for it's parameter when you call it
+    /// and within the method itself.
+    ///
+    /// You can specify a second name that can be used locally within the method. In this
+    /// method, the caller uses the parameter name `surname2` when calling the method.
+    /// Internally within the method we use the name "lastSurname"
+    ///
     func appendMultipleSurnames(surname: String, surname2 lastSurname: String) -> String {
         return "\(firstName) \(lastName) \(surname) \(lastSurname)"
+    }
+    
+    /// Subscripts allow you to access an object with array-like accessor syntax.
+    subscript(index: Int) -> String {
+        get {
+            if index == 0 {
+                return firstName
+            }
+            else {
+                return lastName
+            }
+        }
+        set(newValue) {
+            if index == 0 {
+                firstName = newValue
+            }
+            else {
+                lastName = newValue
+            }
+        }
     }
 }
 

@@ -40,9 +40,10 @@ class ClassesTests : XCTestCase {
         
         p.firstName = "cole"
         XCTAssertEqual(p2.firstName, "cole",
-            "Both p and p2, which are the same reference, should be updated")
+            "Both p and p2, which are the same reference, should be identical.")
         
     }
+    
     ///
     /// The following shows how to use a "computedProperty".
     /// Person.firstName is a computed property. A computed
@@ -59,6 +60,37 @@ class ClassesTests : XCTestCase {
         p.firstName = "SomethingTooLong"
         XCTAssertTrue(p.firstName == "Somet") // truncates at 5
         
+        // IQ contains property observers which enforces that IQ >= 0 && IQ <= 200
+        p.iq = 100
+        XCTAssertEqual(100, p.iq)
+        p.iq = 300
+        XCTAssertEqual(200, p.iq)
+        p.iq = -100
+        XCTAssertEqual(0, p.iq)
+        
+    }
+    
+    ///
+    /// * Local (and global) variables can have property observers.
+    /// * Local (and global) variables can also be computed (not hold a value).
+    ///
+    func testLocalProperties() {
+        
+        var changes = [String]()
+        var x = String() {
+            willSet {
+                changes.append("\(newValue)")
+            }
+        }
+        
+        /// A computed local variable.
+        var firstValue: String? {
+            return changes.first
+        }
+        
+        x = "damon"
+        XCTAssertEqual(["damon"], changes)
+        XCTAssertEqual("damon", firstValue)
     }
 
     

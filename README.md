@@ -62,6 +62,7 @@ system" - The Swift Programming Language
     * Functions are first class.
     * String interpolation.
     * Tuples allow for simple data structures and multiple return values.
+    * ivars are removed. You cannot define or access a property's ivar directly. Much less error prone.
 
 * Strongly Typed (this will upset the dynamic language people, but it's the right way to build a language)
   * Generics
