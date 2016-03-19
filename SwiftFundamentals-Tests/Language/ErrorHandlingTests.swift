@@ -43,13 +43,13 @@ public class ErrorHandlingTests : XCTestCase {
      
      If you want to propogate errors to the caller, declare the function with the `throws` keyword. You don't specify the type of error that will be thrown, which is different from Java. The caller must know
 
-     This enum shows how to declare an error type that will be thrown from our `UInt8` conversion function.
+     This enum shows how to declare an error type that will be thrown from our `Int8` conversion function.
 
-     - OutOfBounds:         The value is out of bounds for a `UInt8`
+     - OutOfBounds:         The value is out of bounds for an `Int8`
      - NotANumber:          The value is not a valid number.
-     - Unknown:             The value could not be converted to a `UInt8`.
+     - Unknown:             The value could not be converted to an `Int8`.
      */
-    public enum UInt8ConversionError : ErrorType {
+    public enum Int8ConversionError : ErrorType {
         case OutOfBounds
         case NotANumber
         case Unknown
@@ -59,55 +59,54 @@ public class ErrorHandlingTests : XCTestCase {
 
      This is just an example. This could be done as an extension to `Int8` or you could just use Int8(String)
 
-     - parameter name: The value to convert into a `UInt8`
+     - parameter name: The value to convert into a `Int8`
 
-     - throws: `UInt8ConversionError` if something goes wrong.
+     - throws: `Int8ConversionError` if something goes wrong.
 
-     - returns: A `UInt8` corresponding to the value of `name`.
+     - returns: An `Int8` corresponding to the value of `name`.
     */
 
-    private func toUInt8(name: String) throws -> Int8  {
+    private func toInt8(name: String) throws -> Int8  {
 
         // One or more digits or we don't have a number.
         guard let _ = name.rangeOfString("^\\d+$", options: .RegularExpressionSearch) else {
-            throw UInt8ConversionError.NotANumber
+            throw Int8ConversionError.NotANumber
         }
 
-        // It must be < UInt8.max
+        // It must be < Int8.max
         guard name.compare("\(Int8.max)", options: [.NumericSearch]) != NSComparisonResult.OrderedDescending else {
             // name is greater than Int8.max
-            throw UInt8ConversionError.OutOfBounds
+            throw Int8ConversionError.OutOfBounds
         }
 
         // We must be able to convert it! 
-        // NOTE : UInt8 has a (we could have just used this UInt8() initializer
         guard let value = Int8(name) else {
-            throw UInt8ConversionError.Unknown
+            throw Int8ConversionError.Unknown
         }
         return value
     }
 
     public func testErrorHandling() {
-
+        
         // Handling errors method 1 : `do-catch`
         do {
-            try self.toUInt8("no")
-        } catch UInt8ConversionError.NotANumber {
+            try self.toInt8("no")
+        } catch Int8ConversionError.NotANumber {
             // expected!
         } catch {
             // Catches any other error. When the `catch` clause does not contain 
             // a pattern, the error is bound to a local constant named `error`.
-            XCTAssertTrue(error is UInt8ConversionError, "Error was not a UInt8ConversionError")
+            XCTAssertTrue(error is Int8ConversionError, "Error was not a UInt8ConversionError")
             XCTFail("Unexpected error caught \(error)")
         }
 
         // Handling errors method 2 : handle the error as an optional value (`try?`)
-        let u = try? self.toUInt8("no")
-        XCTAssertNil(u)
-
+        XCTAssertNil(try? self.toInt8("no"))
+        XCTAssertEqual(try? self.toInt8("1"), 1)
+        
         // Handling errors method 3 : Runtime assertions. If an error is thrown,
         // you'll get a runtime error.
-        XCTAssertNotNil(try! self.toUInt8("100"))
+        XCTAssertNotNil(try! self.toInt8("100"))
 
     }
 }

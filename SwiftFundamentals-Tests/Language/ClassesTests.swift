@@ -106,6 +106,17 @@ class ClassesTests : XCTestCase {
         XCTAssertEqual(81, timesThree[9, 9])
         
     }
+    
+    func testIneritance() {
+    
+        guard let _ = Superman(power: 100, firstName: "cole", lastName: "allison") else {
+            XCTFail("Expected Superman!")
+            return
+        }
+        
+        
+        
+    }
 
     // TODO: Equality
     // TODO: Comparison

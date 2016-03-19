@@ -120,13 +120,37 @@ class EnumTests : XCTestCase {
     // Raw values can be char, string, int, float
     // If values are not specified, they will auto-increment
     private enum IQRank : Int {
+        
         case Novice     = 10
         case Apprentice = 20
         case Master     = 50
         case Expert     = 100
         case Genius  // auto-increments to 101
+
+        init?(value: String) {
+            switch value {
+            case "10":
+                self = .Novice
+            case "20":
+                self = .Apprentice
+            case "50":
+                self = .Master
+            case "100":
+                self = .Expert
+            case "101":
+                self = .Genius
+            default:
+                return nil
+            }
+        }
     }
     
+    /**
+    Enums with raw values automatically receive a failable initializer `init?(rawValue:)`.
+    */
+    func testInitialization() {
+        XCTAssertEqual(IQRank(rawValue: 50), .Master)
+    }
     func testRawValues() {
         let iq = IQRank.Genius
         

@@ -2,7 +2,7 @@
 
 Every programming language has an idomatic style and set of library
 features that are "core" to its understanding. To become truly
-proficient in any language, you must understand it's idioms and core
+proficient in any language, you must understand these idioms and core
 libaries.
 
 This repo will show you this "core" set of swift features. This
@@ -55,7 +55,10 @@ system" - The Swift Programming Language
     * Switch automatically `break`s.
     * Optionals : one true "empty" (sentinal?) value to rule them all (nil, NSNotFound, 0, etc..)
     * Object initialization : all properties must have a value or the object fails initialization.
+        * Much better than Objective-C's `if (self = [super init])` initializer.
+        * Also much safer and strict. Objective-C was more confusing, especially around when you could use `self`.
     * Defer : better way to clean up resources.
+    * Error handling is clean, performant in that it doesn't unwind the stack.
 
   * Modern
     * No header files.
@@ -79,6 +82,16 @@ system" - The Swift Programming Language
 * Objective-C and the underlying compiler infrastructure has been updated over 
   the years which has "paved the way" for swift.
 
+* Access Control
+  * The swift compiler won't allow you to violate it's access control rules.
+  * Swift's general rule on access control is: access control will be the most restrictive it can be. 
+  * Nothing is `public` unless specifically marked as such. Swift defaults all members to internal, requires you to opt into declaring things `public`.
+  * The only time a member can become **more** visible is in subclassing. A subclass can override a `private` function with an `internal` function, for example, as long as the superclass's function is accessible within the context where it is being overridden. The compiler must enforce these rules, so you won't be able to violate these rules.
+  * If your type is `private`, all members will be private by default.
+  * If your type is `public`, all members will be internal by default. Swift requires you specifically mark members as `public` to require the engineer to make things public - there is **nothing** public unless it's specifically marked as such.
+  * The access level of a tuple type is the most restrictive of it's members.
+  * The access level for a function is the most restrictive access level of it's parameter and return types. You must specify the access level explicitly if the function's calculated access level doesn't match the contextual default. (The compiler **requires** you to explicitly mark the function if it's not the default (private or internal).
+  
 * Dislikes
     * Swift allows optional parens and semi-colons. It should force one or the other.
     * There is no code-formatter (`go-fmt`). 
@@ -93,61 +106,3 @@ system" - The Swift Programming Language
 * [VVDocumenter](https://github.com/onevcat/VVDocumenter-Xcode) : An Xcode plugin that will generate comment templates based off a function definition.
 
 * [Alcataraz](http://alcatraz.io/) : Xcode package manager
-
-
--------------
-
-## Next Steps ##
-
-* Protocols
-* Namespaces / packages
-* Concurrency (channels?)
-* Generics
-* Extensions
-* Structs
-
-
-### Generic swift Questions ###
-
-* What is the global scope? Are all functions defined in the "global scope" in all files callable from all other files?
-
-* Modules: How to create / import a module? 
-* Modules: What is an umbrella header?
-* Modules: What is a module.modulemap file?
-
-* Strong reference cycles and capture lists. If you store a closure on an instance. This needs to be broken (guard?)
-
-* Functions : Why are functions written as `print(_:separator:delimiter)`. Why does the first parameter receive the wildcard name and type names are omitted?
-
-* Closures : is it common to annotate *all* non-escaping closures with `@noescape`? 
-* "Marking a closure with `@noescape` lets you refer to `self` implicitly within the closure. What does this mean - couldn't you refer to `self` in all closures?
-
-
-
-#### Objects ####
-
-* How to hide local class vars from the class's public interface?
-    * What are the access rules in swift? (private, public, etc..)
-
-* What is protocol composition?
-
-* Primitive types : lists and API. (All value types?)
-    * Swift style guide (formatting tools like godoc?)
-
-* How can we view playgrounds or write playgrounds that have rich comments / 
-documentation in them?
-
-* What are the Objc attributes for interoperating with swift (read the swift interop book)
-
-#### Tools ####
-
-* Need to master Xcode.
-    * Pane switching, closing, and navigation.
-
-## Projects
-
-* Write Array.sort(isOrderedBefore:(String, String) -> Bool). Use bubble sort or merge sort.
-
-## Start here 
-
-Enumerations : https://developer.apple.com/library/ios/documentation/Swift/Conceptual/Swift_Programming_Language/Enumerations.html#//apple_ref/doc/uid/TP40014097-CH12-ID145

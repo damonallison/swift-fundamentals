@@ -18,14 +18,16 @@
 ///- Subscripts.
 ///
 ///
-/// Properties
+/// Properties:
 ///
 /// * Stored properties - store a value on an instance (or type).
+///
 /// * Computed properties - do **not** store a value. Computed properties provide
 ///   a getter (and optional setter) and set other values or properties indirectly.
+///
 /// * Type properties - stored or computed properties on a type, not an instance.
 ///
-/// Property observers:
+/// Property observers (willSet / didSet):
 ///
 /// * Montiors changes to a property's value.
 /// * Can be added to stored properties or properties inherited from a superclass.
@@ -36,13 +38,19 @@
 /// Access modifiers apply based on file and project structure,
 /// not type hierarchy.
 ///
-/// Access Control
+/// * The swift compiler enforces that *all* classes must have values assigned
+///   for all properties?
 ///
-/// // TODO: is `protected` the default?
+/// Access Control:
 ///
-/// * `private` - all types in this *file* (not class) have access
-/// * `protected` == all types in this module (not derived classes) have access
-/// * `public`    == full access
+/// Access control is based on modules and source files.
+///
+/// * Each Xcode target is a `module`.
+/// * Each source code file can contain multiple types.
+///
+/// * `private`  - all types in this *file* have access. This is the "lowest" access level.
+/// * `internal` - (default) all types in this module have access
+/// * `public`   - visible outside the module. This is the "highest" access level.
 ///
 public class Person : Printable {
     
@@ -64,6 +72,15 @@ public class Person : Printable {
             return "\(defaultName) \(defaultLastName)"
         }
     }
+
+    /// Swift creates getters and setters for each property. 
+    /// You can lower the access level of the setter. In this case,
+    /// the getter is `internal` and the setter is `private`.
+    private(set) var lastAccessed = NSDate()
+    
+    /// Here, the getter has `internal` access, the setter is `private`.
+    /// This highlights the ability to specifically differ getter / setter access levels. 
+    internal private(set) var lastAccessed2 = NSDate()
     
     ///
     /// A 'lazy' property does not need to be set during initialization.
@@ -96,10 +113,11 @@ public class Person : Printable {
     private let createDate: NSDate
     
     /// You **could** use the `didSet` property observer to override the 
-    /// value that was just set. This is a hack, but it could be done.
+    /// value that was just set. In this example, we are limiting
+    /// the property's max and min.
     var iq: Int {
         willSet {
-            print("Setting iq to \(iq)")
+            print("Setting iq to \(newValue)")
         }
         didSet {
             if self.iq > 200 {
@@ -142,7 +160,32 @@ public class Person : Printable {
     /// Golden Rule :
     ///   * Every value must be initialized before the class can be used.
     ///
+    /// There are two types of initializers:
     ///
+    /// * Designated initializers. Initializes all properties on a class and calls a superclass' initializer.
+    ///   Every class must have one designated initializer.
+    /// * Convenience initializer. Supporting initializer. Calls a designated initializer with default values. 
+    ///   You do not need to define convenience initializers. Only do it if it makes your class clearer in intent.
+    ///
+    ///
+    /// Initializer rules:
+    ///
+    /// * Rule 1 : A designated initializer must call a designated initializer from it's immediate superclass.
+    /// * Rule 2 : A convenience initializer must call another initializer from the same class.
+    /// * Rule 3 : A convenience initializer must ultimately call a designated initializer.
+    ///
+    /// "A designed initializer must always delegate up. A convenience initializer must always delegate across."
+    ///
+    ///
+    /// Initialization is a 2-phase process:
+    ///
+    /// * Phase 1 : Each stored property is assigned an initial value.
+    /// * Phase 2 : Each class is given the opportunity to customize it's stored properties further.
+    ///
+    /// The 2-phase initialization process prevents property values from being accessed before values are assigned.
+    /// and prevents property values from being set to a different value by another initializer unexpectedly.
+    ///
+    /// 
     init(first: String, last: String) {
         
         self.firstNameInternal = first
@@ -260,56 +303,4 @@ public class Person : Printable {
             }
         }
     }
-}
-
-class Superman : Person {
-    
-    //
-    // This will be lazy-initialized (created when first accessed)
-    //
-    // TODO: - why is this failing?
-    // lazy var child = Person(first: "super", last: "child")
-    var power: Int
-    
-    init(power: Int, firstName: String, lastName: String) {
-        //
-        // When overriding a base class, there are three steps to perform
-        // in the initializer (in order):
-        //
-        // 1. Initialize all variables in the derived class.
-        // 2. Call super.init() to initialize the base.
-        // 3. Do any custom initialization logic that you need to perform.
-        //    At this point, the entire class is initialized and you have
-        //    full access to the entire class data.
-        //
-        // ** Note this is backwards from Objective-C, where you [super init]
-        //    first. Swift requires all variables to be instantiated for safety.
-        //    You cannot access variables that have not been fully initialized.
-        //
-        
-        //
-        // 1. Initialize all variables in the derived class.
-        //
-        self.power = power
-        
-        //
-        // 2. super.init()
-        //
-        super.init(first: firstName, last: lastName)
-        
-        // derived classes have access to the base's private member
-        super.initialName = "Damon R Allison"
-        //
-        // 3. Custom initialization logic
-        print("superman created with \(power) initialName \(initialName)", terminator: "")
-        
-    }
-    
-    //
-    // Convenience initializer (must call another initializer)
-    //
-    convenience init() {
-        self.init(power: 100, firstName: "super", lastName: "man")
-    }
-    
 }

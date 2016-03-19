@@ -70,8 +70,9 @@ struct Point : Equatable  {
     /// `mutating` allows you to mutate `var` struct members.
     ///
     mutating func offsetBy(x: Int, y: Int) {
+        
         // mutating functions could also assign an entirely new instance to `self`
-        self = Point(x: self.x + x, y: self.y + y)
+        // self = Point(x: self.x + x, y: self.y + y)
         
         // mutating functions could also update `var` properties.
         self.x += x
