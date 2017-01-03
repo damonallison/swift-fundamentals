@@ -36,7 +36,11 @@ class Square : Rectangle {
         willSet {
             setSide(newValue)
         }
+        didSet {
+            print("Set side to \(height) from \(oldValue)")
+        }
     }
+    
     override internal var width: Int {
         willSet {
             setSide(newValue)

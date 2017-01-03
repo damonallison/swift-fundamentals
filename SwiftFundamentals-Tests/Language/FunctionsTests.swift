@@ -30,8 +30,6 @@ func == <T:Equatable> (tuple1:(T, T), tuple2:(T, T)) -> Bool {
 
 class FunctionsTests : XCTestCase {
     
-    var myVar = 0
-    
     /**
      This test shows how to overload operators. This function uses the overloaded operator above.
      */
@@ -353,9 +351,13 @@ class FunctionsTests : XCTestCase {
         XCTAssertEqual(alpha, names.sort(alphaSort))
         XCTAssertEqual(reverseAlpha, names.sort(reverseAlphaSort))
         
-        // Closure expressions support inout, varadic params (must be last), tuples as a return type. Closure expressions do *not* support default values.
+        // Closure expressions support inout, varadic params (must be last), tuples as a return type.
+        // Closure expressions do *not* support default values.
         //
-        // Here is the verbose syntax for closure expressions. Here, we are using standard function declaration syntax. when creating the closure. The only difference between this syntax and function syntax is the `in`. `in` indicates the function declaration has finished and the body follows.
+        // Here is the verbose syntax for closure expressions. 
+        // Here, we are using standard function declaration syntax when creating the closure. 
+        // The only difference between this syntax and function syntax is the `in`. 
+        // `in` indicates the function declaration has finished and the body follows.
         XCTAssertEqual(alpha, names.sort({ (s1: String, s2: String) -> Bool in
             return s1 < s2
         }))
@@ -368,7 +370,8 @@ class FunctionsTests : XCTestCase {
         // Single expression closures will implicitly return the expression. Therefore, "return" is not required.
         XCTAssertEqual(alpha, names.sort { s1, s2 in s1 < s2 })
         
-        // Shorthand argument names. Swift *automatically* provides shorthand argument names for inline closures. The implicitly created argument names are $0, $1, and so on.
+        // Shorthand argument names. Swift *automatically* provides shorthand argument names for inline closures. 
+        // The implicitly created argument names are $0, $1, and so on.
         XCTAssertEqual(alpha, names.sort { return $0 < $1 })
         
         // You can also omit the return operator

@@ -16,18 +16,22 @@ import XCTest
  * Unlike C, cases do not need to have a value.
  * Enums can have "associated values" - fields of state that are associated with the each case.
  * Enums can contain computed (get) properties and methods.
+ * Enums can contain functions.
  * Enums can be extended.
  * Enums can conform to protocols.
  
  - important: Enums differ from classes in that they *cannot* be inherited from.
  
- Does having enums with associated values change the way you think about data structures? For example, if you had an HTTP error code (which has a distinct set of values), would you use an enum as opposed to a class?
+ Does having enums with associated values change the way you think about data structures? 
+ For example, if you had an HTTP error code (which has a distinct set of values), 
+ would you use an enum as opposed to a class?
  
- If you have a fixed set of values, use an enum. If you don't (or the fixed set of values is huge) use a class.
+ If you have a fixed set of values, use an enum. 
+ If you don't (or the fixed set of values is huge) use a class.
  
  enum HttpReturnCode {
- case Success(code: Int)
- case Error(code: Int, message: String)
+    case Success(code: Int)
+    case Error(code: Int, message: String)
  }
  
  */
@@ -91,18 +95,17 @@ class EnumTests : XCTestCase {
         case South // Implicitly == 2
         case West  // Implicitly == 3
         
-        // TODO: Possible to mutate the enum value?
-        // We could provide an int rawValue and increase by 1 (mod 4 to reset 4 back to 0).
-        func rotate90() -> CompassPoint {
+        /// Any function that mutates data on a struct must be declared with the `mutating` attribute.
+        mutating func rotate90() -> Void {
             switch self {
             case .North:
-                return .East
+                self = .East
             case .East:
-                return .South
+                self = .South
             case .South:
-                return .West
+                self = .West
             case .West:
-                return .North
+                self = .North
             }
         }
     }
@@ -113,6 +116,10 @@ class EnumTests : XCTestCase {
         
         XCTAssertNil(CompassPoint(rawValue: 5),
             "Failable initializer should return nil for an invalid value")
+        
+        var x = CompassPoint.East
+        x.rotate90()
+        XCTAssertEqual(CompassPoint.South, x)
     }
     
     // Raw Values
