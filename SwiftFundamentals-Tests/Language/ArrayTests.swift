@@ -37,6 +37,7 @@ class ArrayTests : XCTestCase {
         //
 
         let a1 = [String]()
+        
         XCTAssertTrue(a1.count == 0)
         XCTAssertTrue(a1.isEmpty, "isEmpty is a convenience property to test count == 0")
         XCTAssertTrue(a1.capacity == 0, "capacity tells you how large the array can be without having to reallocate memory")

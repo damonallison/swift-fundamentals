@@ -39,7 +39,7 @@
 /// not type hierarchy.
 ///
 /// * The swift compiler enforces that *all* classes must have values assigned
-///   for all properties?
+///   for all properties.
 ///
 /// Access Control:
 ///
@@ -48,7 +48,8 @@
 /// * Each Xcode target is a `module`.
 /// * Each source code file can contain multiple types.
 ///
-/// * `private`  - all types in this *file* have access. This is the "lowest" access level.
+/// * `private` - only accessable within the lexical scope where it's declared (
+/// * `fileprivate`  - all types in this *file* have access. This is the "lowest" access level.
 /// * `internal` - (default) all types in this module have access
 /// * `public`   - visible outside the module. This is the "highest" access level.
 ///
@@ -59,8 +60,11 @@ public class Person : Printable {
     
     // Stored type properties can also have observers.
     public static var defaultLastName : String = "Allison" {
+        willSet {
+            print("Set Person.`defaultLastName to \(newValue) from \(defaultLastName)")
+        }
         didSet {
-            print("Set Person.defaultLastName = \(defaultLastName)")
+            print("Set Person.defaultLastName = \(defaultLastName) from \(oldValue)")
         }
     }
     

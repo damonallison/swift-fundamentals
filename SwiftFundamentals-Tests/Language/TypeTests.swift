@@ -9,12 +9,6 @@
 import XCTest
 
 /**
-    Aliases allow you to provide another name for an existing type which
-    can help increase code readability.
-*/
-typealias MyInt = Int
-
-/**
     Shows usage of "primitive" swift types
  */
 public class TypeTests: XCTestCase {
@@ -30,7 +24,7 @@ public class TypeTests: XCTestCase {
         The default Int type is just `Int`.
 
         `Int` and `Uint` conform to the platform's native word size
-        (32 on 32 bit systems, 64 on 64 bit systems)./
+        (32 on 32 bit systems, 64 on 64 bit systems).
 
         Apple's guidance is to use `Int` even if the known values are
         going to be non-negative. Reasons include:
@@ -52,7 +46,7 @@ public class TypeTests: XCTestCase {
         XCTAssertEqual(UInt8.min, UInt8(0), "All unsigned integers must have a min == 0") // class method
 
         // Shows implicit type conversion is not allowed in swift!
-        // Manual UInt8() conversion is required
+        // Manual UInt8() conversion is required!
         XCTAssertTrue(UInt8.min == UInt8(UInt16.min))
 
     }
@@ -71,7 +65,8 @@ public class TypeTests: XCTestCase {
         // Double is the default inferred floating point type.
         let d: AnyObject = 3.0
         XCTAssertTrue(d is Double, "Literal floating points are inferred as Double(s).")
-
+        XCTAssertNotNil(d as? Double)
+        
         // Implicit type conversion is not allowed.
         let f = Float(3.0)
         XCTAssertEqual(d as? Double, Double(f), "Implicit floating point type conversion is not allowed - float must be casted")
@@ -111,8 +106,15 @@ public class TypeTests: XCTestCase {
         assert(firstName == "Damon")
     }
 
+    /**
+     Aliases allow you to provide another name for an existing type which
+     can help increase code readability.
+     */
+    typealias MyInt = Int
+
     func testAliases() {
         let x: MyInt = 2
         XCTAssertTrue(x == 2)
     }
+    
 }

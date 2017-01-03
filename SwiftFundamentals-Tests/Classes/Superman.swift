@@ -8,8 +8,6 @@
 
 /**
  Superman derives from `Person` and illustrates how inheritance works in Swift.
-
-
 */
 class Superman : Person {
     

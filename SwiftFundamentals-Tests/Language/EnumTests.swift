@@ -43,7 +43,6 @@ class EnumTests : XCTestCase {
     func testCompass() {
         let x = Compass.North
         XCTAssertEqual(x, Compass.North)
-        XCTAssertTrue(x == Compass.North)
     }
     
     /**

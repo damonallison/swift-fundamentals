@@ -6,7 +6,7 @@
 // swift-fundamentals
 //
 
-// import Foundation
+import Foundation
 
 let x = ["damon", "ryan", "allison"]
 print("hello, world!")
@@ -16,100 +16,100 @@ debugPrint("hello, world")
 debugPrint(x)
 
 
-/**
-    This is a test
-    ![img](https://developer.apple.com/library/ios/Resources/1163/Images/apple2.png)
-*/
-let fullName = "Damon Allison"
-let iq = 100
-
-print("I'm \(fullName) w/ iq of \(iq)")
-
-
-// Write a function that calculates the average of it's arguments.
-
-func avg(numbers: Int...) -> Double {
-
-    var sum :Double = 0
-    numbers.forEach {x in
-        sum += Double(x)
-    }
-    return sum / Double(numbers.count)
-}
-
-func flip(fname: String, lname: String) -> (fname: String, lname: String) {
-    return (lname, fname)
-}
-
-func makeIncrementer(startValue: Int) -> (() -> Int) {
-    var count = startValue
-    return {
-        count += 1
-        return count
-    }
-}
-
-var increment = makeIncrementer(100)
-
-for _ in 0..<100 {
-    increment()
-}
-increment()
-
-
-var name = flip("damon", lname: "allison")
-
-name = flip("allison", lname: "damon")
-
-print("Average = \(avg(1, 2, 3))")
-print("Average = \(avg(1, 2, 6))")
-
-
+///**
+//    This is a test
+//    ![img](https://developer.apple.com/library/ios/Resources/1163/Images/apple2.png)
+//*/
+//let fullName = "Damon Allison"
+//let iq = 100
 //
-// Type Inference
-//
-// swift will use 'Int' for all integers, 'Double' for all floating point values.
-// If you want to override the defaults, you must specify the type.
-//
-// In practice you very rarely need to provide type annotations. Swift will
-// infer the type.
+//print("I'm \(fullName) w/ iq of \(iq)")
 //
 //
-let kConstantUInt8: UInt8 = 1
-let kConstantInt8: Int8 = 1
-let kConstantFloat: Float = 4.0
-
-
+//// Write a function that calculates the average of it's arguments.
 //
-// Types : all swift types have capitalized names.
+//func avg(numbers: Int...) -> Double {
 //
-// Integers
-//   signed / unsigned 8, 16, 32, 64
-//   Int8, Int16, Int32, Int64
-//   UInt8, UInt16, UInt32, UInt64
+//    var sum :Double = 0
+//    numbers.forEach {x in
+//        sum += Double(x)
+//    }
+//    return sum / Double(numbers.count)
+//}
 //
-// Int follows the platform's native word size:
-// Int == Int32 (32 bit platforms)
-// Int == Int64 (64 bit platforms)
+//func flip(fname: String, lname: String) -> (fname: String, lname: String) {
+//    return (lname, fname)
+//}
 //
-// Float
+//func makeIncrementer(startValue: Int) -> (() -> Int) {
+//    var count = startValue
+//    return {
+//        count += 1
+//        return count
+//    }
+//}
 //
-//   Float  (32 bit)
-//   Double (64 bit)
+//var increment = makeIncrementer(100)
 //
-
-var implicitInteger = 42
-var implicitDouble = 42.0
-
-
-var loop = 0
-for i in 0..<4 {
-    loop += 1
-}
-for i in 0...4 {
-    loop += 1
-}
-
+//for _ in 0..<100 {
+//    increment()
+//}
+//increment()
+//
+//
+//var name = flip("damon", lname: "allison")
+//
+//name = flip("allison", lname: "damon")
+//
+//print("Average = \(avg(1, 2, 3))")
+//print("Average = \(avg(1, 2, 6))")
+//
+//
+////
+//// Type Inference
+////
+//// swift will use 'Int' for all integers, 'Double' for all floating point values.
+//// If you want to override the defaults, you must specify the type.
+////
+//// In practice you very rarely need to provide type annotations. Swift will
+//// infer the type.
+////
+////
+//let kConstantUInt8: UInt8 = 1
+//let kConstantInt8: Int8 = 1
+//let kConstantFloat: Float = 4.0
+//
+//
+////
+//// Types : all swift types have capitalized names.
+////
+//// Integers
+////   signed / unsigned 8, 16, 32, 64
+////   Int8, Int16, Int32, Int64
+////   UInt8, UInt16, UInt32, UInt64
+////
+//// Int follows the platform's native word size:
+//// Int == Int32 (32 bit platforms)
+//// Int == Int64 (64 bit platforms)
+////
+//// Float
+////
+////   Float  (32 bit)
+////   Double (64 bit)
+////
+//
+//var implicitInteger = 42
+//var implicitDouble = 42.0
+//
+//
+//var loop = 0
+//for i in 0..<4 {
+//    loop += 1
+//}
+//for i in 0...4 {
+//    loop += 1
+//}
+//
 ////
 //// Type Casting
 ////

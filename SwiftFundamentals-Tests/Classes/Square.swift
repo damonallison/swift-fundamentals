@@ -20,8 +20,28 @@ class Square : Rectangle {
     init (origin: Point, side: Int) {
         super.init(origin: origin, height: side, width: side)
     }
+
+    /// Swift does not support throwing from a computer property 
+    /// setter.
+    func setSide(x: Int) {
+        var sanitized = x;
+        if (x < 0) {
+            sanitized = 0
+        }
+        super.height = sanitized
+        super.width = sanitized
+    }
     
-    // TODO: override `height` and `width` to enforce a side must be >= 0 && height == width
-    
+    override internal var height: Int {
+        willSet {
+            setSide(newValue)
+        }
+    }
+    override internal var width: Int {
+        willSet {
+            setSide(newValue)
+        }
+    }
+
 }
 

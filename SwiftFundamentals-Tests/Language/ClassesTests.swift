@@ -41,7 +41,6 @@ class ClassesTests : XCTestCase {
         p.firstName = "cole"
         XCTAssertEqual(p2.firstName, "cole",
             "Both p and p2, which are the same reference, should be identical.")
-        
     }
     
     ///
@@ -104,20 +103,62 @@ class ClassesTests : XCTestCase {
         // Uses the two parameter subscript
         XCTAssertEqual(9, timesThree[3, 3])
         XCTAssertEqual(81, timesThree[9, 9])
-        
-    }
-    
-    func testIneritance() {
-    
-        guard let _ = Superman(power: 100, firstName: "cole", lastName: "allison") else {
-            XCTFail("Expected Superman!")
-            return
-        }
-        
-        
-        
     }
 
+    //MARK: - Type Casting
+    
+    /**
+     Type casting is implemented with `is` and `as` operators.
+     
+     Downcasting (getting more specific) with `as` comes in three forms:
+     * `as`  : use when the downcast will *always* succeed.
+     * `as?` : this conditional form returns `nil` if the downcast fails.
+     * `as!` : this forced form runtime traps if the downcast fails.
+     */
+    func testTypeCasting() {
+        class MediaItem {
+            let name: String
+            init(name: String) {
+                self.name = name
+            }
+        }
+        class Song : MediaItem {
+            var artist = "Unknown"
+            init (name: String, artist: String) {
+                super.init(name: name)
+                self.artist = artist
+            }
+        }
+        
+        let s1 = Song(name: "Get Lucky", artist: "Daft Punk")
+        
+        // as : use `as` when the cast is guaranteed to succeed (upcasting)
+        let m1 = s1 as MediaItem
+        
+        // is
+        XCTAssertTrue(m1 is Song)
+        
+        // as? : use `as?` when the cast is **not** guaranteed to succeed (downcasting)
+        XCTAssertNotNil(m1 as? Song)
+        XCTAssertNotNil(m1 as! Song, "Since we know this cast will succeed, we can use the forced as operator.")
+    }
+    
+    /**
+     `AnyObject` can represent an instance of any **class** type.
+     `Any` can represent an instance of any type at all, including functions.
+     
+     `AnyObject` is used with Objective-C quite a bit since `NSArray` and other collection
+     types did not have typed (generic) versions until quite recently.
+     */
+    func testAny() {
+        
+        let objs: [AnyObject] = ["damon", NSDate()]
+        XCTAssertTrue(objs is [AnyObject])
+        XCTAssertTrue(objs[0] is NSString)
+        XCTAssertTrue(objs[1] is NSDate)
+        
+    }
+    
     // TODO: Equality
     // TODO: Comparison
     // TODO: Sort

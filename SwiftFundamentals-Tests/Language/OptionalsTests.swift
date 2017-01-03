@@ -24,14 +24,14 @@ import XCTest
 */
 
 /**
-    A tree data structure that allows us to illustrate optional chaining.
+    A list-like data structure that allows us to illustrate optional chaining.
 */
-public class OptionalChaining {
-    public var name: String
-    public var child: OptionalChaining?
+public class Node<T> {
+    public var value: T
+    public var child: Node?
 
-    public init(name: String) {
-        self.name = name;
+    public init(value: T) {
+        self.value = value;
     }
 }
 
@@ -45,7 +45,7 @@ class OptionalsTests : XCTestCase {
         var optionalInt: Int?
         XCTAssertNil(optionalInt)
         XCTAssertTrue(optionalInt == nil)
-
+        
         //
         // Retrieving a value from an optional requires you to "unwrap" the optional
         // with the `!` operator. If the optional is nil, and you attempt to unwrap it,
@@ -53,7 +53,7 @@ class OptionalsTests : XCTestCase {
         // optional has a value.
         //
         optionalInt = 10
-        XCTAssertTrue(optionalInt! == 10)
+        XCTAssertTrue(optionalInt == 10)
 
         //
         // Optional Binding
@@ -142,26 +142,28 @@ class OptionalsTests : XCTestCase {
         // return nil for the entire expression (the rest of the expression is ignored).
         //
 
-        let parent = OptionalChaining(name: "don")
-        let child = OptionalChaining(name: "damon")
-        let grandchild = OptionalChaining(name: "cole")
+        // NOTE: The compiler can infer <T> here as <String>. While not required, 
+        //       you can specify the type used as a type param.
+        let parent = Node<String>(value: "don")
+        let child = Node(value: "damon")
+        let grandchild = Node(value: "cole")
 
         parent.child = child
         child.child = grandchild
 
-        XCTAssertEqual(parent.child?.child?.name, "cole")
+        XCTAssertEqual(parent.child?.child?.value, "cole")
 
         //
         // Here, the chain stops at parent.child?.child?
         //
         child.child = nil
-        XCTAssertNil(parent.child?.child?.name)
+        XCTAssertNil(parent.child?.child?.value)
 
         //
         // Here, the chain stops at parent.child?
         //
         parent.child = nil
-        XCTAssertNil(parent.child?.child?.name)
+        XCTAssertNil(parent.child?.child?.value)
 
     }
 }

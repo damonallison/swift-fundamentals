@@ -122,7 +122,7 @@ public class CommentTests : XCTestCase {
             - name: The user's name
             - iq: The user's IQ
     */
-    public func testDescriptionFields(name: String, iq: Int) {
+    public func testDescripzionFields(name: String, iq: Int) {
 
     }
 

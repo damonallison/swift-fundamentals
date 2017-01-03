@@ -10,7 +10,8 @@
 /// A global function to make `Rectangle` conform to `Equatable`
 ///
 func ==(lhs: Rectangle, rhs: Rectangle) -> Bool {
-    return lhs.height == rhs.height &&
+    return
+        lhs.height == rhs.height &&
         lhs.width == rhs.width &&
         lhs.origin == rhs.origin
 }
@@ -21,14 +22,13 @@ class Rectangle : Equatable {
     /// Type properties are associated with the type itself.
     static let defaultSize =  4
     
-    // TODO: add a type property here
-    
-    // "private" means "anyone in this file can access this member" - it is *not*
-    // tied to type hierarchy, rather by file.
+    // "private" makes this member available only to the immediate lexical scope (the class).
     private var internalOrigin: Point
     
-    var height: Int
-    var width: Int
+    // "internal" makes this member available to the "Module" - the entire application or framework.
+    // "internal" is the default and can be omitted.
+    internal var height: Int
+    /* internal */ var width: Int
     
     init(origin: Point, height: Int, width: Int) {
         self.internalOrigin = origin

@@ -6,6 +6,7 @@
 //  Copyright (c) 2014 Damon Allison. All rights reserved.
 //
 
+import Dispatch
 
 //class FuncQueue {
 //

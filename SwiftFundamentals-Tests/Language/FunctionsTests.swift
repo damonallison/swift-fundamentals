@@ -149,31 +149,6 @@ class FunctionsTests : XCTestCase {
     }
     
     /**
-     Parameters marked with the `var` keyword are modifiable within the function.
-     */
-    func testFunctionWithVariableParams() {
-        func increment(var x:Int, by:Int) -> Int {
-            for _ in 0..<by {
-                x++ // Yes, we could simply `return x + by` but then we can't see variable params, can we?
-            }
-            return x
-        }
-        XCTAssertEqual(increment(10, by: 5), 15)
-    }
-    
-    /**
-     */
-    func testFunctionWithInOutParams() {
-        func modMe(inout x:Int) {
-            x++
-        }
-        var x = 10
-        modMe(&x) // `inout` requires that you specifiy C's "address of" operator to make it clear you are passing a value as an `inout`. (Good choice of operator (&) to use for this!)
-        XCTAssertEqual(x, 11)
-    }
-    
-    
-    /**
      Functions are first class and can be returned from other functions,
      passed in as parameters, etc.
      */
@@ -216,7 +191,7 @@ class FunctionsTests : XCTestCase {
             var second = 1
             var iter = 0
             return {
-                iter++
+                iter += 1
                 if iter == 1 {
                     return first
                 }

@@ -20,6 +20,11 @@ public class ErrorHandlingTests : XCTestCase {
      `ErrorType` is an empty protocol. `enum`s are well suited for modeling a group of related
      error conditions with associated values used to add additional information about the error.
      
+            public enum ParsingErrors : ErrorType {
+                InvalidRootNode
+                ElementContainsNull(path: String) // define associated values to include with the error type.
+            }
+     
      Conventions used when declaring `ErrorType` enums:
      
      * The `enum` name ends in "Error".
@@ -108,5 +113,28 @@ public class ErrorHandlingTests : XCTestCase {
         // you'll get a runtime error.
         XCTAssertNotNil(try! self.toInt8("100"))
 
+    }
+    
+    /**
+     `defer` blocks are called before a block is exited (via return, an error, or break).
+     
+     `defer` blocks are invoked in reverse order in which they are defined (LIFO).
+     
+     - important: The scope doesn't need to be a function! `defer`s will execute after any scope (if, let, do)
+    */
+    
+    public func testDefer() {
+        
+        var deferred = [String]()
+        // Adds a scope. The `defer`s will execute after the `do` scope.
+        do {
+            defer {
+                deferred.append("one")
+            }
+            defer {
+                deferred.append("two")
+            }
+        }
+        XCTAssertEqual(["two", "one"], deferred)
     }
 }
