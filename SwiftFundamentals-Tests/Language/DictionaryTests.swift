@@ -57,23 +57,23 @@ class DictionaryTests : XCTestCase {
 
         words["the"] = 100
         // removeValueForKey will return the previous value, or nil if one didn't exist
-        XCTAssertTrue(words.removeValueForKey("the") == 100)
+        XCTAssertTrue(words.removeValue(forKey: "the") == 100)
 
         words["damon"] = 10
         words["allison"] = 10
 
         // iteration
         for (key, val) in words {
-            XCTAssertTrue(["damon", "allison"].indexOf(key) != nil)
+            XCTAssertTrue(["damon", "allison"].index(of: key) != nil)
             XCTAssertTrue(val == 10)
         }
 
 
         // TODO : is there a better way to array sort?
-        let keys = words.keys.sort()
+        let keys = words.keys.sorted()
         XCTAssertEqual(["allison", "damon"], keys, "Strings should be sorted")
         var keys2 = [String](words.keys)
-        keys2.sortInPlace { (s1, s2) -> Bool in
+        keys2.sort { (s1, s2) -> Bool in
             return s1 > s2
         }
         XCTAssertEqual(["damon", "allison"], keys2)

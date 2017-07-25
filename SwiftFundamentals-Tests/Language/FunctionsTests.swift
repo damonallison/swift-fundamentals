@@ -47,7 +47,7 @@ class FunctionsTests : XCTestCase {
          
          - important The function definition is written as `retMultipleUnnamedTuple(_:b:)`
          */
-        func retMultUnnamedTuple(a a: Int, b: Int) -> (Int, Int) {
+        func retMultUnnamedTuple(a: Int, b: Int) -> (Int, Int) {
             return (a, b)
         }
         XCTAssertTrue(retMultUnnamedTuple(a: 2, b: 2) == (2, 2))
@@ -61,7 +61,7 @@ class FunctionsTests : XCTestCase {
          
          - important: Tuples can be optional. This function adds a rather lame hack to return a nil value for all 0's to show how to declare an optional tuple return type.
          */
-        func retMult(a: Int, b: Int) -> (total: Int, aboveZero: Bool)? {
+        func retMult(_ a: Int, b: Int) -> (total: Int, aboveZero: Bool)? {
             if a == 0 && b == 0 {
                 return nil
             }
@@ -98,13 +98,13 @@ class FunctionsTests : XCTestCase {
         XCTAssertTrue(externalParamNames(extParam: 10) == "10")
         
         /// If you provide an external name for any parameter (even the first), it *must* always be used when calling the function.
-        func shorthandExternalParamNames(param param: Int) -> String {
+        func shorthandExternalParamNames(param: Int) -> String {
             return "\(param)"
         }
         XCTAssertTrue(shorthandExternalParamNames(param: 10) == "10")
         
         /// If you want to avoid using external parameter names for 2nd and subsequent parameters, use a wildcard `_` char for the external name.
-        func noExternalNames(a: Int, _ b:Int) -> Int {
+        func noExternalNames(_ a: Int, _ b:Int) -> Int {
             return a + b
         }
         XCTAssertEqual(noExternalNames(2, 2), 4)
@@ -120,7 +120,7 @@ class FunctionsTests : XCTestCase {
         // To help, swift will auto-generate an external name for any param with a default
         // value.
         // In this example, `withPrefix` has an auto-generated external name
-        func addAndEcho(i1: Int, toInt i2: Int, withPrefix: String = "Total is:") -> String {
+        func addAndEcho(_ i1: Int, toInt i2: Int, withPrefix: String = "Total is:") -> String {
             return "\(withPrefix)\(i1 + i2)"
         }
         XCTAssertEqual(addAndEcho(2, toInt: 2), "Total is:4")
@@ -132,7 +132,7 @@ class FunctionsTests : XCTestCase {
      */
     func testFunctionsVarArgs() {
         
-        func varArgs(numbers: Int...) -> (count: Int, first: Int) {
+        func varArgs(_ numbers: Int...) -> (count: Int, first: Int) {
             let first = numbers.first != nil ? numbers.first! : 0
             return (numbers.count, first)
         }
@@ -160,15 +160,15 @@ class FunctionsTests : XCTestCase {
          */
         typealias MathematicalOperation = (Int, Int) -> Int
         
-        func add(x: Int, to: Int) -> Int {
+        func add(_ x: Int, to: Int) -> Int {
             return to + x
         }
         
-        func subtract(x: Int, from:Int) -> Int {
+        func subtract(_ x: Int, from:Int) -> Int {
             return from - x
         }
         
-        func mathPrinter(@noescape mathFunc: MathematicalOperation, x:Int, y:Int) -> String {
+        func mathPrinter(_ mathFunc: MathematicalOperation, x:Int, y:Int) -> String {
             return "Result == " + String(mathFunc(x, y))
         }
         
@@ -183,7 +183,7 @@ class FunctionsTests : XCTestCase {
         XCTAssertEqual(op(2, 2), 0)
         XCTAssertEqual("Result == 0", mathPrinter(op, x:2, y:2))
         
-        func makeFibonacci() -> (Void -> Int) {
+        func makeFibonacci() -> ((Void) -> Int) {
             // this is a hack job. It should work, however.
             var first = 0
             var second = 1
@@ -225,7 +225,7 @@ class FunctionsTests : XCTestCase {
      functions stateless.
      */
     func testFunctionsInOutParams() {
-        func swap(inout a: Int, inout b: Int) {
+        func swap(_ a: inout Int, b: inout Int) {
             let i = a
             a = b
             b = i
@@ -258,7 +258,7 @@ class FunctionsTests : XCTestCase {
          
          Annotating a closure with `@noescape` allows the compiler to make more aggressive optimizations because it knows more information about the closure
          */
-        func filter<T>(arr: [T], @noescape pred:(T -> Bool)) -> [T] {
+        func filter<T>(_ arr: [T], pred: ((T) -> Bool)) -> [T] {
             var ret = [T]()
             for v in arr {
                 if pred(v) {
@@ -271,7 +271,7 @@ class FunctionsTests : XCTestCase {
         /**
          Returns a function that accepts an `Int` and evaluates if that `Int` is greater than `val`.
          */
-        func makeGreaterThan(val:Int) -> ((Int) -> Bool) {
+        func makeGreaterThan(_ val:Int) -> ((Int) -> Bool) {
             
             // Example of an implicit return : in single line closures
             // 'return' can be omitted.
@@ -300,10 +300,10 @@ class FunctionsTests : XCTestCase {
         class SomeClass {
             var x = 10
             var completionHandlers: [() -> Void] = []
-            private func someFunctionWithEscapingClosure(completionHandler: () -> Void) {
+            fileprivate func someFunctionWithEscapingClosure(_ completionHandler: @escaping () -> Void) {
                 completionHandlers.append(completionHandler)
             }
-            private func someFunctionWithNoEscapingClosure(@noescape completionHandler: () -> Void) {
+            fileprivate func someFunctionWithNoEscapingClosure(_ completionHandler: () -> Void) {
                 completionHandler()
             }
             func doSomething() {
@@ -335,10 +335,10 @@ class FunctionsTests : XCTestCase {
      */
     func testClosureExpressions() {
         // Return true if first < second
-        func alphaSort(s1: String, s2: String) -> Bool {
+        func alphaSort(_ s1: String, s2: String) -> Bool {
             return s1 < s2
         }
-        func reverseAlphaSort(s1: String, s2: String) -> Bool {
+        func reverseAlphaSort(_ s1: String, s2: String) -> Bool {
             return s1 > s2
         }
         
@@ -348,8 +348,8 @@ class FunctionsTests : XCTestCase {
         let reverseAlpha = ["Ryan", "Damon", "Allison"]
         
         // This does *not* use closure syntax. Passes named functions.
-        XCTAssertEqual(alpha, names.sort(alphaSort))
-        XCTAssertEqual(reverseAlpha, names.sort(reverseAlphaSort))
+        XCTAssertEqual(alpha, names.sorted(by: alphaSort))
+        XCTAssertEqual(reverseAlpha, names.sorted(by: reverseAlphaSort))
         
         // Closure expressions support inout, varadic params (must be last), tuples as a return type.
         // Closure expressions do *not* support default values.
@@ -358,24 +358,24 @@ class FunctionsTests : XCTestCase {
         // Here, we are using standard function declaration syntax when creating the closure. 
         // The only difference between this syntax and function syntax is the `in`. 
         // `in` indicates the function declaration has finished and the body follows.
-        XCTAssertEqual(alpha, names.sort({ (s1: String, s2: String) -> Bool in
+        XCTAssertEqual(alpha, names.sorted(by: { (s1: String, s2: String) -> Bool in
             return s1 < s2
         }))
         
         // Closure syntax supports type inference. Both the parameters (String, String) and return type (-> Bool) is inferred and can be omitted. It is *always* possible to infer param and return types, so the full function definition above is never required when the closure is used as a function argument.
         //
         // Because all of the types can be inferred, we can omit the types and the parens around the parameters.
-        XCTAssertEqual(alpha, names.sort { s1, s2 in return s1 < s2 })
+        XCTAssertEqual(alpha, names.sorted { s1, s2 in return s1 < s2 })
         
         // Single expression closures will implicitly return the expression. Therefore, "return" is not required.
-        XCTAssertEqual(alpha, names.sort { s1, s2 in s1 < s2 })
+        XCTAssertEqual(alpha, names.sorted { s1, s2 in s1 < s2 })
         
         // Shorthand argument names. Swift *automatically* provides shorthand argument names for inline closures. 
         // The implicitly created argument names are $0, $1, and so on.
-        XCTAssertEqual(alpha, names.sort { return $0 < $1 })
+        XCTAssertEqual(alpha, names.sorted { return $0 < $1 })
         
         // You can also omit the return operator
-        XCTAssertEqual(alpha, names.sort { $0 < $1 })
+        XCTAssertEqual(alpha, names.sorted { $0 < $1 })
         
         // Operator functions.
         // If the type provides an operator function that matches the required function type, the argument function can be used.
@@ -384,7 +384,7 @@ class FunctionsTests : XCTestCase {
         //  String.< == (String, String) -> Bool
         //  Because the operator function matches the function argument type
         // for `sorted`, `<` can be used.
-        XCTAssertEqual(alpha, names.sort(<))
+        XCTAssertEqual(alpha, names.sorted(by: <))
     }
     
     /**
@@ -397,8 +397,8 @@ class FunctionsTests : XCTestCase {
     func testTrailingClosures() {
         
         // This function takes a trailing closure for argument `mathFunc`
-        func formatResult(a: Int, b: Int, mathFunc: (i1: Int, i2: Int) -> Int) -> String {
-            let res = mathFunc(i1: a, i2: b)
+        func formatResult(_ a: Int, b: Int, mathFunc: (_ i1: Int, _ i2: Int) -> Int) -> String {
+            let res = mathFunc(a, b)
             return "Math computed : \(res)"
         }
         
@@ -441,10 +441,10 @@ class FunctionsTests : XCTestCase {
         
         // `@autoclosure` implies `@noescape`. Use `@autoclosure(escaping)` if it's escaping!
         // This function is *not* escaping, but we'll throw it on there to show what it looks like.
-        func testAutoClosure(from: String, @autoclosure(escaping) count: () -> Int) -> String {
+        func testAutoClosure(_ from: String, count: @autoclosure @escaping () -> Int) -> String {
             return "\(from) is \(count())"
         }
-        func testClosure(from: String, count: () -> Int) -> String {
+        func testClosure(_ from: String, count: () -> Int) -> String {
             return "\(from) is \(count())"
         }
         

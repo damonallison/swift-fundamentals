@@ -37,48 +37,48 @@ import XCTest
  */
 class EnumTests : XCTestCase {
     
-    private enum Compass {
-        case North
-        case East
-        case South
-        case West
+    fileprivate enum Compass {
+        case north
+        case east
+        case south
+        case west
     }
     
     func testCompass() {
-        let x = Compass.North
-        XCTAssertEqual(x, Compass.North)
+        let x = Compass.north
+        XCTAssertEqual(x, Compass.north)
     }
     
     /**
      Simple enum with a raw value.
      */
-    private enum MyEnum : Float {
-        case Low = 0.0
-        case Med = 0.5
-        case High = 1.0
+    fileprivate enum MyEnum : Float {
+        case low = 0.0
+        case med = 0.5
+        case high = 1.0
         
         /**
          Overrides the failable initializer.
          */
         init(value: Float) {
-            if value < MyEnum.Med.rawValue {
-                self = .Low
+            if value < MyEnum.med.rawValue {
+                self = .low
             }
-            else if value < MyEnum.High.rawValue {
-                self = .Med
+            else if value < MyEnum.high.rawValue {
+                self = .med
             }
             else {
-                self = .High
+                self = .high
             }
         }
     }
     
     func testMyEnum() {
-        let x = MyEnum.High
+        let x = MyEnum.high
         XCTAssertEqual(x.rawValue, 1.0)
         
         let x2 = MyEnum(value: 1.0)
-        XCTAssertEqual(x2, MyEnum.High)
+        XCTAssertEqual(x2, MyEnum.high)
     }
     /**
      
@@ -89,62 +89,62 @@ class EnumTests : XCTestCase {
      * These enum members do not have values
      
      */
-    private enum CompassPoint: Int {
-        case North // Implicitly == 0
-        case East  // Implicitly == 1
-        case South // Implicitly == 2
-        case West  // Implicitly == 3
+    fileprivate enum CompassPoint: Int {
+        case north // Implicitly == 0
+        case east  // Implicitly == 1
+        case south // Implicitly == 2
+        case west  // Implicitly == 3
         
         /// Any function that mutates data on a struct must be declared with the `mutating` attribute.
         mutating func rotate90() -> Void {
             switch self {
-            case .North:
-                self = .East
-            case .East:
-                self = .South
-            case .South:
-                self = .West
-            case .West:
-                self = .North
+            case .north:
+                self = .east
+            case .east:
+                self = .south
+            case .south:
+                self = .west
+            case .west:
+                self = .north
             }
         }
     }
     
     func testEnumNoRawValue() {
-        let cp = CompassPoint.East
-        XCTAssertEqual(cp, CompassPoint.East)
+        let cp = CompassPoint.east
+        XCTAssertEqual(cp, CompassPoint.east)
         
         XCTAssertNil(CompassPoint(rawValue: 5),
             "Failable initializer should return nil for an invalid value")
         
-        var x = CompassPoint.East
+        var x = CompassPoint.east
         x.rotate90()
-        XCTAssertEqual(CompassPoint.South, x)
+        XCTAssertEqual(CompassPoint.south, x)
     }
     
     // Raw Values
     // Raw values can be char, string, int, float
     // If values are not specified, they will auto-increment
-    private enum IQRank : Int {
+    fileprivate enum IQRank : Int {
         
-        case Novice     = 10
-        case Apprentice = 20
-        case Master     = 50
-        case Expert     = 100
-        case Genius  // auto-increments to 101
+        case novice     = 10
+        case apprentice = 20
+        case master     = 50
+        case expert     = 100
+        case genius  // auto-increments to 101
 
         init?(value: String) {
             switch value {
             case "10":
-                self = .Novice
+                self = .novice
             case "20":
-                self = .Apprentice
+                self = .apprentice
             case "50":
-                self = .Master
+                self = .master
             case "100":
-                self = .Expert
+                self = .expert
             case "101":
-                self = .Genius
+                self = .genius
             default:
                 return nil
             }
@@ -155,16 +155,16 @@ class EnumTests : XCTestCase {
     Enums with raw values automatically receive a failable initializer `init?(rawValue:)`.
     */
     func testInitialization() {
-        XCTAssertEqual(IQRank(rawValue: 50), .Master)
+        XCTAssertEqual(IQRank(rawValue: 50), .master)
     }
     func testRawValues() {
-        let iq = IQRank.Genius
+        let iq = IQRank.genius
         
-        XCTAssertTrue(iq == IQRank.Genius)
+        XCTAssertTrue(iq == IQRank.genius)
         XCTAssertTrue(iq.rawValue == 101) // test auto-incrementer
         
         
-        XCTAssertTrue(IQRank(rawValue: 20) == IQRank.Apprentice)
+        XCTAssertTrue(IQRank(rawValue: 20) == IQRank.apprentice)
         XCTAssertTrue(IQRank(rawValue: 0) == nil)
         
     }
@@ -173,32 +173,32 @@ class EnumTests : XCTestCase {
     // Associated values allow you to store state in addition
     // to the enum value.
     // Each enum value can have different associated values.
-    private enum APIResponse {
-        case Success
-        case Failure(String)
-        case Redirect(NSURL)
+    fileprivate enum APIResponse {
+        case success
+        case failure(String)
+        case redirect(URL)
     }
     
     /// 
     /// A test function to generate a mock response.
     ///
-    private func generateMockResponse(err: String?) -> APIResponse {
+    fileprivate func generateMockResponse(_ err: String?) -> APIResponse {
         if let e = err {
-            return APIResponse.Failure(e)
+            return APIResponse.failure(e)
         }
         else {
-            return APIResponse.Success
+            return APIResponse.success
         }
     }
     
     func testAssociatedValues() {
         
         switch self.generateMockResponse("Oops") {
-        case .Success:
+        case .success:
             break
-        case let .Failure(error):
+        case let .failure(error):
             XCTAssertEqual(error, "Oops")
-        case .Redirect: // Does not capture NSURL
+        case .redirect: // Does not capture NSURL
             break
         }
     }
@@ -208,31 +208,31 @@ class EnumTests : XCTestCase {
      
      TODO: Why can't the compiler infer "indirect" for each case that has an associated value of the same enum type?
      */
-    private indirect enum ArithmeticExpression {
-        case Number(Int)
-        case Addition(ArithmeticExpression, ArithmeticExpression)
-        case Multiplication(ArithmeticExpression, ArithmeticExpression)
+    fileprivate indirect enum ArithmeticExpression {
+        case number(Int)
+        case addition(ArithmeticExpression, ArithmeticExpression)
+        case multiplication(ArithmeticExpression, ArithmeticExpression)
         
-        static func eval(exp: ArithmeticExpression) -> Int {
+        static func eval(_ exp: ArithmeticExpression) -> Int {
             switch exp {
-            case Number(let value):
+            case number(let value):
                 return value
-            case let .Addition(left, right):
+            case let .addition(left, right):
                 return eval(left) + eval(right)
-            case let .Multiplication(left, right):
+            case let .multiplication(left, right):
                 return eval(left) * eval(right)
             }
         }
     }
     func testRecursiveEnums() {
         
-        let lhs = ArithmeticExpression.Addition(ArithmeticExpression.Number(2), ArithmeticExpression.Number(2))
+        let lhs = ArithmeticExpression.addition(ArithmeticExpression.number(2), ArithmeticExpression.number(2))
         XCTAssertEqual(ArithmeticExpression.eval(lhs), 4)
         
-        let rhs = ArithmeticExpression.Multiplication(ArithmeticExpression.Number(3), ArithmeticExpression.Number(3))
+        let rhs = ArithmeticExpression.multiplication(ArithmeticExpression.number(3), ArithmeticExpression.number(3))
         XCTAssertEqual(ArithmeticExpression.eval(rhs), 9)
         
-        let answer = ArithmeticExpression.eval(ArithmeticExpression.Addition(lhs, rhs))
+        let answer = ArithmeticExpression.eval(ArithmeticExpression.addition(lhs, rhs))
         XCTAssertEqual(answer, 13)
     }
     

@@ -20,9 +20,9 @@ which could contain elements of various types.
 class ArrayTests : XCTestCase {
 
     enum MyEnum : Int {
-        case One = 1
-        case Two = 2
-        case Three = 3
+        case one = 1
+        case two = 2
+        case three = 3
     }
 
     func testArrayCreation() {
@@ -48,12 +48,12 @@ class ArrayTests : XCTestCase {
         XCTAssertNotEqual(["Milk", "Eggs"], shoppingList, "Arrays should not be equal - they are out of order");
 
         // Array - [MyEnum]
-        var enumList: [MyEnum] = [.One, .Two, .Three]
+        var enumList: [MyEnum] = [.one, .two, .three]
 
         // Accessing
-        XCTAssertTrue(enumList[2] == .Three, "Type inference understands what scope you are in. Prevents you from having to type MyEnum. for each member")
-        XCTAssertTrue(enumList.first! == .One, "First is a convenience accessor. nil when .isEmpty")
-        XCTAssertTrue(enumList.last! == .Three, "Last is a convenience accessor. nil when .isEmpty")
+        XCTAssertTrue(enumList[2] == .three, "Type inference understands what scope you are in. Prevents you from having to type MyEnum. for each member")
+        XCTAssertTrue(enumList.first! == .one, "First is a convenience accessor. nil when .isEmpty")
+        XCTAssertTrue(enumList.last! == .three, "Last is a convenience accessor. nil when .isEmpty")
 //
         // Adding
         shoppingList.append("Chocolate")
@@ -61,7 +61,7 @@ class ArrayTests : XCTestCase {
 
         // Appending an array
         shoppingList += ["Bread"]
-        shoppingList.appendContentsOf(["OJ"])
+        shoppingList.append(contentsOf: ["OJ"])
 
         // Replacing a slice of an array
         shoppingList[0...1] = ["Water", "Carrots"]
@@ -73,8 +73,8 @@ class ArrayTests : XCTestCase {
 
         // Checking existence
         // Determining if an array contains an item
-        XCTAssertTrue(shoppingList.indexOf("Bread") == 3, "find() will return the index of the object if it exists")
-        XCTAssertNil(shoppingList.indexOf("notthere"), "find() will return nil when an item does not exist")
+        XCTAssertTrue(shoppingList.index(of: "Bread") == 3, "find() will return the index of the object if it exists")
+        XCTAssertNil(shoppingList.index(of: "notthere"), "find() will return nil when an item does not exist")
 
         
         var shoppingList2 = [String]()
@@ -91,7 +91,7 @@ class ArrayTests : XCTestCase {
         XCTAssertNotEqual(shoppingList2, shoppingList3)
 
         // Iterating over an array - retrieving index and value.
-        for (index, item) in shoppingList.enumerate() {
+        for (index, item) in shoppingList.enumerated() {
             switch index {
             case shoppingList.startIndex:
                 XCTAssertEqual(item, "Water")
@@ -107,11 +107,11 @@ class ArrayTests : XCTestCase {
 
         // Sorting
         var arr = ["b", "a", "c", "aa"]
-        arr.sortInPlace { $0 < $1 } // Ascending
+        arr.sort { $0 < $1 } // Ascending
         XCTAssertEqual(arr, ["a", "aa", "b", "c"])
 
         // Using the longer closure syntax
-        arr.sortInPlace { (s1, s2) -> Bool in
+        arr.sort { (s1, s2) -> Bool in
             return s1 > s2 // Descending
         }
         XCTAssertEqual(arr, ["c", "b", "aa", "a"])

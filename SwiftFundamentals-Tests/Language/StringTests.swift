@@ -58,7 +58,7 @@ class StringTests : XCTestCase {
 
         // Appending
         s1 += " ryan"
-        s1 = s1.stringByAppendingString(" allison")
+        s1 = s1 + " allison"
         XCTAssertEqual(s1, "damon ryan allison")
 
         // Interopolation
@@ -85,7 +85,7 @@ class StringTests : XCTestCase {
 
         let objcString = NSString(format: "%@", "damon")
         XCTAssertEqual(objcString, "damon", "NSString and Swift.String can be used interchangably")
-        XCTAssertEqual(objcString.stringByAppendingPathComponent("allison"), "damon/allison",
+        XCTAssertEqual(objcString.appendingPathComponent("allison"), "damon/allison",
             "Swift.String has full access to the NSString API")
 
         //        var components = NSURL(fileURLWithPath: "/this/is/a/path.txt").pathComponents

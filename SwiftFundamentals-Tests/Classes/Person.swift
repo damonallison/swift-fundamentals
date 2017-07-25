@@ -53,13 +53,13 @@
 /// * `internal` - (default) all types in this module have access
 /// * `public`   - visible outside the module. This is the "highest" access level.
 ///
-public class Person : Printable {
+open class Person : Printable {
     
     /// Stored type properties must have a default value.
-    public static let defaultName = "Damon"
+    open static let defaultName = "Damon"
     
     // Stored type properties can also have observers.
-    public static var defaultLastName : String = "Allison" {
+    open static var defaultLastName : String = "Allison" {
         willSet {
             print("Set Person.`defaultLastName to \(newValue) from \(defaultLastName)")
         }
@@ -71,7 +71,7 @@ public class Person : Printable {
     /// Computed type properties must be declared with `var`, even if they are read only.
     /// You can define computed properties with the `class` modifier to allow subclasses
     /// to override the superclass implementation.
-    public class var defaultFullName : String {
+    open class var defaultFullName : String {
         get {
             return "\(defaultName) \(defaultLastName)"
         }
@@ -80,11 +80,11 @@ public class Person : Printable {
     /// Swift creates getters and setters for each property. 
     /// You can lower the access level of the setter. In this case,
     /// the getter is `internal` and the setter is `private`.
-    private(set) var lastAccessed = NSDate()
+    fileprivate(set) var lastAccessed = Date()
     
     /// Here, the getter has `internal` access, the setter is `private`.
     /// This highlights the ability to specifically differ getter / setter access levels. 
-    internal private(set) var lastAccessed2 = NSDate()
+    internal fileprivate(set) var lastAccessed2 = Date()
     
     ///
     /// A 'lazy' property does not need to be set during initialization.
@@ -107,14 +107,14 @@ public class Person : Printable {
     /// * Computing the value is expensive and you want to delay 
     ///   computation until it's absolutely needed.
     ///
-    private lazy var initialName = String()
+    fileprivate lazy var initialName = String()
     
     /// Internal properties. Marking these `private` will not
-    private var firstNameInternal: String
-    private var lastNameInternal: String
+    fileprivate var firstNameInternal: String
+    fileprivate var lastNameInternal: String
     
     /// Constant properties can be set during initialization
-    private let createDate: NSDate
+    fileprivate let createDate: Date
     
     /// You **could** use the `didSet` property observer to override the 
     /// value that was just set. In this example, we are limiting
@@ -149,7 +149,7 @@ public class Person : Printable {
     ///   Or would we need to write acustom "computed" property which validates 
     ///   and sets an internal property only when valid?
     ///
-    public var address: String {
+    open var address: String {
         willSet {
             print("willSet address to \(newValue)", terminator: "")
         }
@@ -195,7 +195,7 @@ public class Person : Printable {
         self.firstNameInternal = first
         self.lastNameInternal = last
         self.address = "default"
-        self.createDate = NSDate()
+        self.createDate = Date()
         self.iq = 0
         self.initialName = "\(first) \(last)"
         
@@ -233,7 +233,7 @@ public class Person : Printable {
         }
         set {
             // TODO: Is this the correct way to get a string length? This doesn't seem correct.
-            firstNameInternal = newValue.utf16.count > 5 ? (newValue as NSString).substringToIndex(5) : newValue;
+            firstNameInternal = newValue.utf16.count > 5 ? (newValue as NSString).substring(to: 5) : newValue;
         }
     }
     
@@ -272,7 +272,7 @@ public class Person : Printable {
         return "\(firstName) \(lastName)"
     }
     
-    func appendSurname(surname: String) -> String {
+    func appendSurname(_ surname: String) -> String {
         return "\(firstName) \(lastName) \(surname)"
     }
     
@@ -284,7 +284,7 @@ public class Person : Printable {
     /// method, the caller uses the parameter name `surname2` when calling the method.
     /// Internally within the method we use the name "lastSurname"
     ///
-    func appendMultipleSurnames(surname: String, surname2 lastSurname: String) -> String {
+    func appendMultipleSurnames(_ surname: String, surname2 lastSurname: String) -> String {
         return "\(firstName) \(lastName) \(surname) \(lastSurname)"
     }
     

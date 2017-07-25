@@ -1,9 +1,9 @@
 # Swift Fundamentals #
 
-Every programming language has an idomatic style and set of library
+Every programming language has an idiomatic style and set of library
 features that are "core" to its understanding. To become truly
 proficient in any language, you must understand these idioms and core
-libaries.
+libraries.
 
 This repo will show you this "core" set of swift features. This
 `README` describes at a very high level the highlights and main points
@@ -79,22 +79,22 @@ system" - The Swift Programming Language
 * Based on ARC - still subject to retain cycles. Apple provides
   "capture lists" to allow developers to specify capture semantics.
 
-* Objective-C and the underlying compiler infrastructure has been updated over 
+* Objective-C and the underlying compiler infrastructure has been updated over
   the years which has "paved the way" for swift.
 
 * Access Control
   * The swift compiler won't allow you to violate it's access control rules.
-  * Swift's general rule on access control is: access control will be the most restrictive it can be. 
+  * Swift's general rule on access control is: access control will be the most restrictive it can be.
   * Nothing is `public` unless specifically marked as such. Swift defaults all members to internal, requires you to opt into declaring things `public`.
   * The only time a member can become **more** visible is in subclassing. A subclass can override a `private` function with an `internal` function, for example, as long as the superclass's function is accessible within the context where it is being overridden. The compiler must enforce these rules, so you won't be able to violate these rules.
   * If your type is `private`, all members will be private by default.
   * If your type is `public`, all members will be internal by default. Swift requires you specifically mark members as `public` to require the engineer to make things public - there is **nothing** public unless it's specifically marked as such.
   * The access level of a tuple type is the most restrictive of it's members.
   * The access level for a function is the most restrictive access level of it's parameter and return types. You must specify the access level explicitly if the function's calculated access level doesn't match the contextual default. (The compiler **requires** you to explicitly mark the function if it's not the default (private or internal).
-  
+
 * Dislikes
     * Swift allows optional parens and semi-colons. It should force one or the other.
-    * There is no code-formatter (`go-fmt`). 
+    * There is no code-formatter (`go-fmt`).
         * No style consistency between projects.
         * Requires each team to have unproductive "style wars".
 

@@ -152,10 +152,10 @@ class ClassesTests : XCTestCase {
      */
     func testAny() {
         
-        let objs: [AnyObject] = ["damon", NSDate()]
+        let objs: [AnyObject] = ["damon" as AnyObject, Date() as AnyObject]
         XCTAssertTrue(objs is [AnyObject])
         XCTAssertTrue(objs[0] is NSString)
-        XCTAssertTrue(objs[1] is NSDate)
+        XCTAssertTrue(objs[1] is Date)
         
     }
     

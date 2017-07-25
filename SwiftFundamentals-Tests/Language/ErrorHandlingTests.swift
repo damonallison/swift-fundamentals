@@ -8,7 +8,7 @@
 
 import XCTest
 
-public class ErrorHandlingTests : XCTestCase {
+open class ErrorHandlingTests : XCTestCase {
 
 
     /**
@@ -54,10 +54,10 @@ public class ErrorHandlingTests : XCTestCase {
      - NotANumber:          The value is not a valid number.
      - Unknown:             The value could not be converted to an `Int8`.
      */
-    public enum Int8ConversionError : ErrorType {
-        case OutOfBounds
-        case NotANumber
-        case Unknown
+    public enum Int8ConversionError : Error {
+        case outOfBounds
+        case notANumber
+        case unknown
     }
 
     /**
@@ -71,33 +71,33 @@ public class ErrorHandlingTests : XCTestCase {
      - returns: An `Int8` corresponding to the value of `name`.
     */
 
-    private func toInt8(name: String) throws -> Int8  {
+    fileprivate func toInt8(_ name: String) throws -> Int8  {
 
         // One or more digits or we don't have a number.
-        guard let _ = name.rangeOfString("^\\d+$", options: .RegularExpressionSearch) else {
-            throw Int8ConversionError.NotANumber
+        guard let _ = name.range(of: "^\\d+$", options: .regularExpression) else {
+            throw Int8ConversionError.notANumber
         }
 
         // It must be < Int8.max
-        guard name.compare("\(Int8.max)", options: [.NumericSearch]) != NSComparisonResult.OrderedDescending else {
+        guard name.compare("\(Int8.max)", options: [.numeric]) != ComparisonResult.orderedDescending else {
             // name is greater than Int8.max
-            throw Int8ConversionError.OutOfBounds
+            throw Int8ConversionError.outOfBounds
         }
 
         // We must be able to convert it! 
         guard let value = Int8(name) else {
-            throw Int8ConversionError.Unknown
+            throw Int8ConversionError.unknown
         }
         return value
     }
 
-    public func testErrorHandling() {
+    open func testErrorHandling() {
         
         // Handling errors method 1 : `do-catch`
         do {
             try self.toInt8("no")
             XCTFail("toInt8 should have thrown. `no` is not parsable.")
-        } catch Int8ConversionError.NotANumber {
+        } catch Int8ConversionError.notANumber {
             // expected!
         } catch {
             // Catches any other error. When the `catch` clause does not contain 
@@ -124,7 +124,7 @@ public class ErrorHandlingTests : XCTestCase {
      - important: The scope doesn't need to be a function! `defer`s will execute after any scope (if, let, do)
     */
     
-    public func testDefer() {
+    open func testDefer() {
         
         var deferred = [String]()
         // Adds a scope. The `defer`s will execute after the `do` scope.

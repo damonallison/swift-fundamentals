@@ -26,9 +26,9 @@ import XCTest
 /**
     A list-like data structure that allows us to illustrate optional chaining.
 */
-public class Node<T> {
-    public var value: T
-    public var child: Node?
+open class Node<T> {
+    open var value: T
+    open var child: Node?
 
     public init(value: T) {
         self.value = value;
@@ -109,8 +109,8 @@ class OptionalsTests : XCTestCase {
         //
         // This function returns an optional (Int?)
         //
-        func findIndexOfString(string: String, array: [String]) -> Int? {
-            for (index, value) in array.enumerate() {
+        func findIndexOfString(_ string: String, array: [String]) -> Int? {
+            for (index, value) in array.enumerated() {
                 if value == string {
                     return index
                 }

@@ -21,16 +21,31 @@ import XCTest
  
  There are three types of references in swift:
  
- * Strong  - Default - use most of the time (most objects own others)
+ * Strong: The default - use most of the time (most objects own others).
  
  * Weak - Use a `weak` reference when when it is valid for that reference
- to become `nil` at some point. Weak references must be optionals (since
- they can become `nil`).
- 
+   to become `nil` at some point. Weak references must be optionals (since
+   they can become `nil`). 
+   
+   Typically, you'll use a `weak` reference when the refrenced object can be 
+   has a shorter lifetime than the current object.`nil`
+   
+   For example, if a `Job` object references a `Person`, make the `person` reference
+   `weak` on the `Job` object. It's appropriate for a job to have no person at 
+   some point in it's lifetime.
+   
  * Unowned - Use an `unowned` reference when you know the reference will
- never be `nil` once it has been set during initialization.
+   never be `nil` once it has been set during initialization. 
+ 
+   If the other object has the same or longer lifetime, use `unowned`.
  
  */
+
+var logs: [String] = []
+
+func log(_ s: String) -> Void {
+  logs.append(s)
+}
 
 class Tenant {
     var firstName: String?
@@ -49,7 +64,7 @@ class Tenant {
     }
     
     deinit {
-        print("Tenant is being deinitialized: \(firstName) \(lastName)")
+      log("Tenant is being deinitialized \(String(describing: firstName)) \(String(describing: lastName))")
     }
 }
 
@@ -63,7 +78,7 @@ class Apartment {
     }
     
     deinit {
-        print("Apartment is being deinitialized: \(aptNum)")
+        log("Apartment is being deinitialized: \(aptNum)")
     }
 }
 
@@ -71,7 +86,10 @@ class Apartment {
 class MemoryManagementTests : XCTestCase {
     
     func testUnownedReference() {
-        
+      let a = Apartment(aptNum: 1)
+      let t = Tenant(apartment: a)
+
+      XCAssertTrue(true)
     }
     
 }

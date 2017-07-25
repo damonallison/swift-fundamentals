@@ -45,7 +45,7 @@ import XCTest
     - [Swift Documentation - NSHipster](http://nshipster.com/swift-documentation)
 
  */
-public class CommentTests : XCTestCase {
+open class CommentTests : XCTestCase {
 
     /**
         This is a one-liner that describes the main description of the function.
@@ -80,7 +80,7 @@ public class CommentTests : XCTestCase {
         - throws: Nothing again!
         - returns: Nothing!
     */
-    public func testBasics(name: String, iq: Int) {
+    open func testBasics(_ name: String, iq: Int) {
         print("\(name) and \(iq)")
     }
 
@@ -122,7 +122,7 @@ public class CommentTests : XCTestCase {
             - name: The user's name
             - iq: The user's IQ
     */
-    public func testDescripzionFields(name: String, iq: Int) {
+    open func testDescripzionFields(_ name: String, iq: Int) {
 
     }
 
@@ -139,7 +139,7 @@ public class CommentTests : XCTestCase {
         1. List item 2
         1. List item 3
     */
-    public func testMarkdownLists() {
+    open func testMarkdownLists() {
 
     }
 }

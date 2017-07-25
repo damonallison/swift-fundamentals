@@ -43,7 +43,7 @@ struct Point : Equatable  {
     /// `type methods` can be declared with the `static` keyword. 
     /// Type methods annotated with `static` cannot be overridden by subclasses.
     /// Type methods annotated with `class` can be overridden by subclasses.
-    static func copy(point: Point) -> Point {
+    static func copy(_ point: Point) -> Point {
         return Point(x: point.x, y: point.y)
     }
     
@@ -69,7 +69,7 @@ struct Point : Equatable  {
     ///
     /// `mutating` allows you to mutate `var` struct members.
     ///
-    mutating func offsetBy(x: Int, y: Int) {
+    mutating func offsetBy(_ x: Int, y: Int) {
         
         // mutating functions could also assign an entirely new instance to `self`
         // self = Point(x: self.x + x, y: self.y + y)

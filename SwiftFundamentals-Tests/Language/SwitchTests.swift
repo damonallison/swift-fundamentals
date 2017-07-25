@@ -15,8 +15,8 @@ class SwitchTests : XCTestCase {
      TrainStatus is an example of enum associated values.
      */
     enum TrainStatus {
-        case OnTime
-        case Delayed(Int)
+        case onTime
+        case delayed(Int)
 
         /**
         `describe` shows `switch`'s ability to pattern match.
@@ -27,11 +27,11 @@ class SwitchTests : XCTestCase {
         */
         func describe() -> String {
             switch self {
-            case .OnTime:
+            case .onTime:
                 return "on time!"
-            case .Delayed(1...10):
+            case .delayed(1...10):
                 return "not bad"
-            case .Delayed(let x): // wildcard pattern
+            case .delayed(let x): // wildcard pattern
                 return "omg \(x)"
             }
         }
@@ -40,9 +40,9 @@ class SwitchTests : XCTestCase {
     Test pattern matching with `switch`
      */
     func testSwitchEnum() {
-        XCTAssertEqual(TrainStatus.OnTime.describe(), "on time!")
-        XCTAssertEqual(TrainStatus.Delayed(5).describe(), "not bad")
-        XCTAssertEqual(TrainStatus.Delayed(100).describe(), "omg 100")
+        XCTAssertEqual(TrainStatus.onTime.describe(), "on time!")
+        XCTAssertEqual(TrainStatus.delayed(5).describe(), "not bad")
+        XCTAssertEqual(TrainStatus.delayed(100).describe(), "omg 100")
     }
 
     /**
@@ -79,7 +79,7 @@ class SwitchTests : XCTestCase {
     ///   or vars to tuple values. In the example below, we bind
     ///   `x` and `y` to test them in a `where` clause.
     ///
-    func switchOnTupleExample(x: (lhs: Int, rhs: Int)) -> String {
+    func switchOnTupleExample(_ x: (lhs: Int, rhs: Int)) -> String {
         switch x {
         case (_, 0):
             return "x axis"

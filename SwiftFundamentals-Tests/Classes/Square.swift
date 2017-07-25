@@ -23,7 +23,7 @@ class Square : Rectangle {
 
     /// Swift does not support throwing from a computer property 
     /// setter.
-    func setSide(x: Int) {
+    func setSide(_ x: Int) {
         var sanitized = x;
         if (x < 0) {
             sanitized = 0

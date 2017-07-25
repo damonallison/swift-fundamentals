@@ -23,7 +23,7 @@ class Rectangle : Equatable {
     static let defaultSize =  4
     
     // "private" makes this member available only to the immediate lexical scope (the class).
-    private var internalOrigin: Point
+    fileprivate var internalOrigin: Point
     
     // "internal" makes this member available to the "Module" - the entire application or framework.
     // "internal" is the default and can be omitted.
