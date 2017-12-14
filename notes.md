@@ -28,7 +28,6 @@
 ```
 	public private(set) var numberOfEdits = 0
 ```
-
 ## Attributes (declaration modifiers)
 
 * `dynamic` : use dynamic dispatch for this member. Implies `objc`.
