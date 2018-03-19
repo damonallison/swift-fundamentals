@@ -86,10 +86,13 @@ class Apartment {
 class MemoryManagementTests : XCTestCase {
 
 
+  /// We need to fix this test. The original goal was to show that deallocating
+  /// 
   func fixmeTestUnownedReference() {
     let a = Apartment(aptNum: 1)
     let t = Tenant(apartment: a)
 
+    XCTAssertEqual(t.firstName, t.apartment.tenant!.firstName)
     
     XCTAssertTrue(true, "What are we doing here")
   }

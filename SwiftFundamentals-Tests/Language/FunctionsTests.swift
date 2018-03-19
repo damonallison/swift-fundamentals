@@ -449,7 +449,7 @@ class FunctionsTests : XCTestCase {
         }
         
         let name = "Damon"
-        XCTAssertEqual("Damon is 5", testAutoClosure(name, count: name.characters.count))
-        XCTAssertEqual("Damon is 5", testClosure(name, count: { name.characters.count }))
+        XCTAssertEqual("Damon is 5", testAutoClosure(name, count: name.count))
+        XCTAssertEqual("Damon is 5", testClosure(name, count: { name.count }))
     }
 }
