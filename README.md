@@ -1,48 +1,45 @@
-# Swift Fundamentals #
+# Swift Fundamentals
 
-Every programming language has an idiomatic style and set of library
-features that are "core" to its understanding. To become truly
-proficient in any language, you must understand these idioms and core
-libraries.
+Every programming language has an idiomatic style and set of library features
+that are "core" to its understanding. To become truly proficient in any
+language, you must understand these idioms and core libraries.
 
-This repo will show you this "core" set of swift features. This
-`README` describes at a very high level the highlights and main points
-of swift. The source code is laid out in a way that will show a single
-feature, pattern, or library by itself.
+This repo will show you this "core" set of swift features. This `README`
+describes at a very high level the highlights and main points of swift. The
+source code is laid out in a way that will show a single feature, pattern, or
+library by itself.
 
-## Start here ##
+## Start here
 
-* `Basics.playground` contains a brief overview of swift's main
-  features. For example : classes, generics, optionals, lambdas, and
-  functions.
+* `Basics.playground` contains a brief overview of swift's main features. For
+  example : classes, generics, optionals, lambdas, and functions.
 
-* Run the tests (Cmd-U) to execute a suite of tests which show various
-  lauguage and library features.
+* Run the tests (Cmd-U) to execute a suite of tests which show various lauguage
+  and library features.
 
-## Required reading ##
+## Required reading
 
-Just like every language has its idioms, it also has its bibles - the
-sources of truth that all programmers agree are seminal. The following
-sources are "must reads" for every swift programmer.
+Just like every language has its idioms, it also has its bibles - the sources of
+truth that all programmers agree are seminal. The following sources are "must
+reads" for every swift programmer.
 
-* [swift.org](http://swift.org) : Home of the swift open source
-  project. Start here.
 
-* [Chris Lattner's Homepage](http://www.nondot.org/sabre/): Chris
-  started swift as well as the vast majority of the modern Apple
-  toolchain, including LLVM and the compiler infrastructure.
+* [swift.org](http://swift.org) : Home of the swift open source project. Start here.
 
-* [The Swift Programming
-  Language](https://developer.apple.com/library/ios/documentation/Swift/Conceptual/Swift_Programming_Language/)
-  : The seminal book describing the swift language.
+* [Chris Lattner's Homepage](http://www.nondot.org/sabre/): Chris started swift
+  as well as the vast majority of the modern Apple toolchain, including LLVM and
+  the compiler infrastructure.
+
+* [The Swift Programming Language](https://developer.apple.com/library/ios/documentation/Swift/Conceptual/Swift_Programming_Language/) :
+  The seminal book describing the swift language.
 
 * [Using Swift with Cocoa and Objective-C (Swift 2.1)](https://developer.apple.com/library/ios/documentation/Swift/Conceptual/BuildingCocoaApps/index.html#//apple_ref/doc/uid/TP40014216)
 
 
 ## Swift, The Language ##
 
-"It's designed to scale from "hello, world" to an entire operating
-system" - The Swift Programming Language
+> "It's designed to scale from "hello, world" to an entire operating system"
+> - The Swift Programming Language
 
 
 * "Objective-C without the C"
@@ -50,13 +47,17 @@ system" - The Swift Programming Language
     * Pointers are hidden by default.
     * Type safety (generics : Array<String> > NSArray).
     * Explicit type casting required.
-    * Any type can be `optional`, even "primitives" like Int.
     * Conditionals must be boolean expressions.
     * Switch automatically `break`s.
-    * Optionals : one true "empty" (sentinal?) value to rule them all (nil, NSNotFound, 0, etc..)
+	
+    * Optionals : 
+	  * One true "empty" (sentinal?) value to rule them all (nil, NSNotFound, 0, etc..)
+      * Any type can be `optional`, even "primitives" like Int.
+	  
     * Object initialization : all properties must have a value or the object fails initialization.
         * Much better than Objective-C's `if (self = [super init])` initializer.
         * Also much safer and strict. Objective-C was more confusing, especially around when you could use `self`.
+		
     * Defer : better way to clean up resources.
     * Error handling is clean, performant in that it doesn't unwind the stack.
 
@@ -73,18 +74,18 @@ system" - The Swift Programming Language
   * No need for non-mutable and mutable versions of the same classes.
 
 * Interoprable with Objective-C. Swift was built to interoperate with
-  Objective-C. Apple could not simply update the entire cocoa library,
-  therefore swift bridges with Objective-C nicely.
+  Objective-C. Apple could not simply update the entire cocoa library, therefore
+  swift bridges with Objective-C nicely.
 
-* Based on ARC - still subject to retain cycles. Apple provides
-  "capture lists" to allow developers to specify capture semantics.
+* Based on ARC - still subject to retain cycles. Apple provides "capture lists"
+  to allow developers to specify capture semantics.
 
 * Objective-C and the underlying compiler infrastructure has been updated over
   the years which has "paved the way" for swift.
 
 * Access Control
+  * Safe by default. Swift's general rule on access control is: access control will be the most restrictive it can be.
   * The swift compiler won't allow you to violate it's access control rules.
-  * Swift's general rule on access control is: access control will be the most restrictive it can be.
   * Nothing is `public` unless specifically marked as such. Swift defaults all members to internal, requires you to opt into declaring things `public`.
   * The only time a member can become **more** visible is in subclassing. A subclass can override a `private` function with an `internal` function, for example, as long as the superclass's function is accessible within the context where it is being overridden. The compiler must enforce these rules, so you won't be able to violate these rules.
   * If your type is `private`, all members will be private by default.

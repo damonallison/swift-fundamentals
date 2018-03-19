@@ -122,7 +122,7 @@ open class CommentTests : XCTestCase {
             - name: The user's name
             - iq: The user's IQ
     */
-    open func testDescripzionFields(_ name: String, iq: Int) {
+    func testDescriptionFields(_ name: String, iq: Int) {
 
     }
 
@@ -139,7 +139,7 @@ open class CommentTests : XCTestCase {
         1. List item 2
         1. List item 3
     */
-    open func testMarkdownLists() {
+    func testMarkdownLists() {
 
     }
 }
