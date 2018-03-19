@@ -183,7 +183,7 @@ class FunctionsTests : XCTestCase {
         XCTAssertEqual(op(2, 2), 0)
         XCTAssertEqual("Result == 0", mathPrinter(op, x:2, y:2))
         
-        func makeFibonacci() -> ((Void) -> Int) {
+        func makeFibonacci() -> (() -> Int) {
             // this is a hack job. It should work, however.
             var first = 0
             var second = 1
