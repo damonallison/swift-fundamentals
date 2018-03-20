@@ -9,6 +9,7 @@
 import Foundation
 
 let x = ["damon", "ryan", "allison"]
+
 print("hello, world!")
 print(x)
 
@@ -16,26 +17,28 @@ debugPrint("hello, world")
 debugPrint(x)
 
 
-///**
-//    This is a test
-//    ![img](https://developer.apple.com/library/ios/Resources/1163/Images/apple2.png)
-//*/
-//let fullName = "Damon Allison"
-//let iq = 100
-//
-//print("I'm \(fullName) w/ iq of \(iq)")
-//
-//
-//// Write a function that calculates the average of it's arguments.
-//
-//func avg(numbers: Int...) -> Double {
-//
-//    var sum :Double = 0
-//    numbers.forEach {x in
-//        sum += Double(x)
-//    }
-//    return sum / Double(numbers.count)
-//}
+/**
+    This is a test
+    ![img](https://developer.apple.com/library/ios/Resources/1163/Images/apple2.png)
+*/
+let fullName = "Damon Allison"
+let iq = 100
+
+print("I'm \(fullName) w/ iq of \(iq)")
+
+
+// Write a function that calculates the average of it's arguments.
+
+func avg(numbers: Int...) -> Double {
+
+    var sum :Double = 0
+    numbers.forEach {x in
+        sum += Double(x)
+    }
+    return sum / Double(numbers.count)
+}
+avg(numbers: 10)
+
 //
 //func flip(fname: String, lname: String) -> (fname: String, lname: String) {
 //    return (lname, fname)
