@@ -95,7 +95,7 @@ open class ErrorHandlingTests : XCTestCase {
         
         // Handling errors method 1 : `do-catch`
         do {
-            try self.toInt8("no")
+          let _ = try self.toInt8("no")
             XCTFail("toInt8 should have thrown. `no` is not parsable.")
         } catch Int8ConversionError.notANumber {
             // expected!

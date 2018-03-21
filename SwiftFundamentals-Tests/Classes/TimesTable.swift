@@ -26,7 +26,7 @@ class TimesTable {
     init(multiplier: Int) {
         self.multiplier = multiplier
     }
-    
+
      /// An example of a readonly subscript
     subscript(amt: Int) -> Int {
         // get {
@@ -36,7 +36,7 @@ class TimesTable {
         //    internalVal[amt] = newValue
         // }
     }
-    
+
     ///
     /// Provides a subscript syntax for 2 digit multiplication.
     /// There is no limit to the amount of parameters on a subscript.

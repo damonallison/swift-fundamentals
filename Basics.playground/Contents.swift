@@ -1,6 +1,6 @@
 //
 // Basics.playground
-// Damon Allison 2014/06/07
+// Damon Allison 06/07/2014
 //
 // A scratchpad for testing ideas prior to committing them to
 // swift-fundamentals

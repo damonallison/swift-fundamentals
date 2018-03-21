@@ -1,13 +1,12 @@
-# Swift Fundamentals
+# Swift
 
-Every programming language has an idiomatic style and set of library features
-that are "core" to its understanding. To become truly proficient in any
-language, you must understand these idioms and core libraries.
+> "Swift is the first industrial-quality systems programming language that is as expressive and enjoyable as a scripting language." - Apple
+> "The syntax and standard library have been designed based on the guiding principle that the obvious way to write your code should also perform the best." - Apple
+> "Its combination of safety and speed make Swift an excellent choice for everything from “Hello, world!” to an entire operating system." - Apple
 
-This repo will show you this "core" set of swift features. This `README`
-describes at a very high level the highlights and main points of swift. The
-source code is laid out in a way that will show a single feature, pattern, or
-library by itself.
+Every programming language has an idiomatic style and set of library features that are "core" to its understanding. To become truly proficient in any language, you must understand these idioms and core libraries.
+
+This repo will show you this "core" set of swift features. This `README` describes at a very high level the highlights and main points of swift. The source code is laid out in a way that will show a single feature, pattern, or library by itself.
 
 ## Start here
 
@@ -100,6 +99,38 @@ reads" for every swift programmer.
 * The access level of a tuple type is the most restrictive of it's members.
 * The access level for a function is the most restrictive access level of it's parameter and return types. You must specify the access level explicitly if the function's calculated access level doesn't match the contextual default. (The compiler **requires** you to explicitly mark the function if it's not the default (private or internal).
 
+#### Open
+* `open`
+  * Open grants anyone inside or outside the module the ability to subclass the
+    `open` class.
+  * Marking a class as `open` says:
+
+    > I've considered the impact of code from other modules subclassing this class.
+
+  * Applies to classes and class members only.
+  * Allows classes to be subclassed from any module.
+
+### Public
+* `public`
+  * The public API for the framework.
+  * Swift requires you to mark public API as `public` to force you to think
+    about what you are doing.
+
+* `@testable` allows a unit test target to access any internal entity within the
+  module being imported.
+
+* You can specify the access level of the getter and setter for a property:
+
+```
+	public private(set) var numberOfEdits = 0
+```
+
+-------
+
+### Attributes (declaration modifiers)
+
+* `dynamic` : use dynamic dispatch for this member. Implies `objc`.
+* `objc` : make the declaration available to Objective-C.
 
 
 ## Tools

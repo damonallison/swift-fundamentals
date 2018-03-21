@@ -151,12 +151,9 @@ class ClassesTests : XCTestCase {
      types did not have typed (generic) versions until quite recently.
      */
     func testAny() {
-        
         let objs: [AnyObject] = ["damon" as AnyObject, Date() as AnyObject]
-        XCTAssertTrue(objs is [AnyObject])
         XCTAssertTrue(objs[0] is NSString)
         XCTAssertTrue(objs[1] is Date)
-        
     }
     
     // TODO: Equality

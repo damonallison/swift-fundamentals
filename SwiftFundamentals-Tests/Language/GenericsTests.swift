@@ -16,9 +16,9 @@
 
 class Generics<T: Comparable> {
 
-    // The type constraint requires `U` to conform to the `Printable`
-    // protocol and have a class hierarchy containing base `Superman`.
-    func sayHello<U>(_ obj: U) -> String where U: Printable, U: Superman {
+    /// The type constraint requires `U` to conform to the `Printable`
+    /// protocol and have a class hierarchy containing base `Superman`.
+    func sayHello<U>(_ obj: U) -> String where U: Superman {
         return "Hello, \(obj.description())"
     }
 
