@@ -137,7 +137,6 @@ class OptionalsTests : XCTestCase {
         let a = ["this", "is", "my", "test", "damon"];
         XCTAssertEqual(4, findIndexOfString("damon", array: a))
         XCTAssertNil(findIndexOfString("notthere", array:a))
-        XCTAssertTrue(findIndexOfString("test", array: a) == nil)
 
         //
         // Optional Binding

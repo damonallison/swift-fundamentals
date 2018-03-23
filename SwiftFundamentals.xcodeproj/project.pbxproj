@@ -17,6 +17,7 @@
 		7AEC82801C69677800F1DCE3 /* Point.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AEC827F1C69677800F1DCE3 /* Point.swift */; };
 		7AEC82821C696C2100F1DCE3 /* StructuresTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AEC82811C696C2100F1DCE3 /* StructuresTests.swift */; };
 		7AF000AE20656BC7006E99EB /* TODO.md in Resources */ = {isa = PBXBuildFile; fileRef = 7AF000AD20656BC6006E99EB /* TODO.md */; };
+		7AF000B02065872C006E99EB /* SetTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AF000AF2065872C006E99EB /* SetTests.swift */; };
 		E520878E1C51CD4F004AC9AF /* Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = E520878B1C51CD4F004AC9AF /* Person.swift */; };
 		E520878F1C51CD4F004AC9AF /* Printable.swift in Sources */ = {isa = PBXBuildFile; fileRef = E520878C1C51CD4F004AC9AF /* Printable.swift */; };
 		E520879E1C51CD59004AC9AF /* ClassesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E52087911C51CD59004AC9AF /* ClassesTests.swift */; };
@@ -64,6 +65,7 @@
 		7AEC827F1C69677800F1DCE3 /* Point.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Point.swift; sourceTree = "<group>"; };
 		7AEC82811C696C2100F1DCE3 /* StructuresTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StructuresTests.swift; sourceTree = "<group>"; };
 		7AF000AD20656BC6006E99EB /* TODO.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = TODO.md; sourceTree = "<group>"; };
+		7AF000AF2065872C006E99EB /* SetTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetTests.swift; sourceTree = "<group>"; };
 		E520878B1C51CD4F004AC9AF /* Person.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Person.swift; sourceTree = "<group>"; };
 		E520878C1C51CD4F004AC9AF /* Printable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Printable.swift; sourceTree = "<group>"; };
 		E52087911C51CD59004AC9AF /* ClassesTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClassesTests.swift; sourceTree = "<group>"; };
@@ -142,8 +144,9 @@
 		7A56DAE5206300D2005EB9D8 /* StandardLibrary */ = {
 			isa = PBXGroup;
 			children = (
-				E52087931C51CD59004AC9AF /* DictionaryTests.swift */,
 				7A56DAE6206300FD005EB9D8 /* ArrayTests.swift */,
+				E52087931C51CD59004AC9AF /* DictionaryTests.swift */,
+				7AF000AF2065872C006E99EB /* SetTests.swift */,
 			);
 			path = StandardLibrary;
 			sourceTree = "<group>";
@@ -309,6 +312,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7AEC77971D2FE69D0076DFE1 /* FuncQueue.swift in Sources */,
+				7AF000B02065872C006E99EB /* SetTests.swift in Sources */,
 				E52087A21C51CD59004AC9AF /* FunctionsTests.swift in Sources */,
 				E52087A41C51CD59004AC9AF /* MemoryManagementTests.swift in Sources */,
 				E52087A61C51CD59004AC9AF /* OptionalsTests.swift in Sources */,
