@@ -5,6 +5,9 @@
 
 ## Language
 
+* Type system
+    * What is `Any` and `AnyObject`?
+    
 * Memory management
     * Parent -> Child relationships typically uses a strong reference.
     * Child -> Parent relationships use `weak` or `unowned`.
@@ -29,6 +32,7 @@
 
 * Interoperability with Objective-C
     * Bridging header : Exposes Objective-C code to Swift.
+    * What is the relationship between Swift and Objective-C libraries like `Foundation`?
 
 * Error Handling
 
