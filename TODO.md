@@ -43,20 +43,16 @@
 
 ## Libraries
 
-* GCD
-
 * Swift standard library
-    * Strings
-
+  * Strings
+* GCD
+* XCTest
 * Serialization
 
 ## Tools
 
 * Comments (doxygen? `CLANG_WARN_DOCUMENTATION_COMMENTS`)
-
 * AppCode
-
 * LLVM
-
 * LLDB
-    * Swift REPL
+* `swift` REPL
