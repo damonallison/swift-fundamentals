@@ -6,6 +6,12 @@
 //  Copyright © 2016 Damon Allison. All rights reserved.
 //
 
+/// Structures are value types. In Swift, structures are very similar to classes.
+/// Structures support:
+///
+/// * Methods
+/// * Initializers
+/// * Protocol conformance.
 ///
 /// Example structure.
 ///
@@ -24,10 +30,13 @@
 ///   small, value type data structures. Classes are the primary 
 ///   data structure in swift.
 ///
-/// Structures are given a default "memberwise initializer". A memberwise initializer is a compiler-generated initializer that you can use to create a new instance of the struct, fully populated with initial values.
+/// Structures are given a default "memberwise initializer".
+/// A memberwise initializer is a compiler-generated initializer that you can use to create
+/// a new instance of the struct, fully populated with initial values.
 ///
-/// - important: Memberwise initializers are created with parameters which match the order in which properties are declared. For example, the generated memberwise initializer for `point` is:
-
+/// - important: Memberwise initializers are created with parameters which match the order
+///              in which properties are declared. For example, the generated memberwise
+///              initializer for `point` is:
 ///
 ///         Point p = Point(x: 1, y: 2)
 ///
@@ -43,6 +52,7 @@ struct Point : Equatable  {
     /// `type methods` can be declared with the `static` keyword. 
     /// Type methods annotated with `static` cannot be overridden by subclasses.
     /// Type methods annotated with `class` can be overridden by subclasses.
+  ///
     static func copy(_ point: Point) -> Point {
         return Point(x: point.x, y: point.y)
     }

@@ -9,37 +9,41 @@
 import XCTest
 
 /**
-    Shows usage of "primitive" swift types
+ Shows usage of "primitive" swift types
  */
-open class TypeTests: XCTestCase {
+class TypeTests: XCTestCase {
 
     // MARK: Integers
 
     /**
 
-        Swift provides fixed width variations for all integer sizes.
+     Swift provides fixed width variations for all integer sizes.
 
-        [U]Int[8|16|32|64]
+     [U]Int[8|16|32|64]
 
-        The default Int type is just `Int`.
+     The default Int type is just `Int`.
 
-        `Int` and `Uint` conform to the platform's native word size
-        (32 on 32 bit systems, 64 on 64 bit systems).
+     `Int` and `Uint` conform to the platform's native word size
+     (32 on 32 bit systems, 64 on 64 bit systems).
 
-        Apple's guidance is to use `Int` even if the known values are
-        going to be non-negative. Reasons include:
+     Apple's guidance is to use `Int` even if the known values are
+     going to be non-negative. Reasons include:
 
-        * Aids interoperability with other libraries.
-        * Avoids the need to perform type conversion.
-        * Matches `Int` default inferred type for inferred integer values.
+     * Aids interoperability with other libraries.
+     * Avoids the need to perform type conversion.
+     * Matches `Int` default inferred type for inferred integer values.
 
-    */
+     */
     func testIntegers() {
 
         // Integers are structs and thus contain properties, methods, and
         // class methods.
 
         let u10: UInt8 = 10;
+        let s = String(u10)
+        XCTAssertEqual("10", s)
+
+
         XCTAssertEqual("10", u10.description, "description is the textual representation of the struct.") // property.
         // XCTAssertEqual(UInt8(9), (u10.), "Predecessor is the immediate value before the current value.") // method (predecessor())
         XCTAssertEqual(UInt8.min.advanced(by: 10), UInt8(10), "advancedBy moves the receiver ahead.") // method (advancedBy())
@@ -55,15 +59,15 @@ open class TypeTests: XCTestCase {
     // MARK: Floating Points
 
     /**
-        Swift's default floating point type is Double.
+     Swift's default floating point type is Double.
 
-        * Double == 64 bit (not machine dependent)
-        * Float  == 32 bit (not machine dependent)
-    */
+     * Double == 64 bit (not machine dependent)
+     * Float  == 32 bit (not machine dependent)
+     */
     func testFloats() {
 
         // Double is the default inferred floating point type.
-        let d: AnyObject = 3.0 as AnyObject
+        let d: Any = 3.0 as Any
         XCTAssertTrue(d is Double, "Literal floating points are inferred as Double(s).")
         XCTAssertNotNil(d as? Double)
         
@@ -74,10 +78,10 @@ open class TypeTests: XCTestCase {
 
 
     /**
-        Tuples are small, flexible, lightweight data structures.
-        
-        Elements of tuples can be named when declared or accessed by ordinal.
-    */
+     Tuples are small, flexible, lightweight data structures.
+
+     Elements of tuples can be named when declared or accessed by ordinal.
+     */
     func testTuples() {
 
         // 

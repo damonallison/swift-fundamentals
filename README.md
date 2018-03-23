@@ -47,9 +47,9 @@ reads" for every swift programmer.
 * Switch automatically `break`s.
 
 * Strongly Typed (this will upset the dynamic language people, but it's the right way to build a language)
-* Explicit type casting required.
-* Generics
-* Type inference
+  * Explicit type casting required.
+  * Generics.
+  * Type inference.
 
 * Optionals :
   * One true "empty" (sentinal?) value to rule them all (nil, NSNotFound, 0, etc..)

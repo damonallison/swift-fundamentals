@@ -8,24 +8,23 @@
 
 import XCTest
 
-open class ErrorHandlingTests : XCTestCase {
-
+class ErrorHandlingTests : XCTestCase {
 
     /**
 
      ### Defining Errors ###
 
-     Errors in swift are represented by values that conform to the `ErrorType` protocol.
+     Errors in swift are represented by values that conform to the `Error` protocol.
      
-     `ErrorType` is an empty protocol. `enum`s are well suited for modeling a group of related
+     `Error` is an empty protocol. `enum`s are well suited for modeling a group of related
      error conditions with associated values used to add additional information about the error.
      
-            public enum ParsingErrors : ErrorType {
+            public enum ParsingErrors : Error {
                 InvalidRootNode
                 ElementContainsNull(path: String) // define associated values to include with the error type.
             }
      
-     Conventions used when declaring `ErrorType` enums:
+     Conventions used when declaring `Error` enums:
      
      * The `enum` name ends in "Error".
      * The cases do **not** contain "Error".
@@ -46,7 +45,7 @@ open class ErrorHandlingTests : XCTestCase {
      
      ### Propogating Errors using `throw` functions. ###
      
-     If you want to propogate errors to the caller, declare the function with the `throws` keyword. You don't specify the type of error that will be thrown, which is different from Java. The caller must know
+     If you want to propogate errors to the caller, declare the function with the `throws` keyword. You don't specify the type of error that will be thrown, which is different from Java. The caller must know.
 
      This enum shows how to declare an error type that will be thrown from our `Int8` conversion function.
 
@@ -54,7 +53,7 @@ open class ErrorHandlingTests : XCTestCase {
      - NotANumber:          The value is not a valid number.
      - Unknown:             The value could not be converted to an `Int8`.
      */
-    public enum Int8ConversionError : Error {
+    enum Int8ConversionError : Error {
         case outOfBounds
         case notANumber
         case unknown
@@ -71,7 +70,7 @@ open class ErrorHandlingTests : XCTestCase {
      - returns: An `Int8` corresponding to the value of `name`.
     */
 
-    fileprivate func toInt8(_ name: String) throws -> Int8  {
+    func toInt8(_ name: String) throws -> Int8  {
 
         // One or more digits or we don't have a number.
         guard let _ = name.range(of: "^\\d+$", options: .regularExpression) else {
@@ -91,7 +90,8 @@ open class ErrorHandlingTests : XCTestCase {
         return value
     }
 
-    open func testErrorHandling() {
+    /// Shows the three ways of handling errors. do/catch, try? and try!
+    func testErrorHandling() {
         
         // Handling errors method 1 : `do-catch`
         do {
@@ -114,28 +114,5 @@ open class ErrorHandlingTests : XCTestCase {
         // you'll get a runtime error.
         XCTAssertNotNil(try! self.toInt8("100"))
 
-    }
-    
-    /**
-     `defer` blocks are called before a block is exited (via return, an error, or break).
-     
-     `defer` blocks are invoked in reverse order in which they are defined (LIFO).
-     
-     - important: The scope doesn't need to be a function! `defer`s will execute after any scope (if, let, do)
-    */
-    
-    open func testDefer() {
-        
-        var deferred = [String]()
-        // Adds a scope. The `defer`s will execute after the `do` scope.
-        do {
-            defer {
-                deferred.append("one")
-            }
-            defer {
-                deferred.append("two")
-            }
-        }
-        XCTAssertEqual(["two", "one"], deferred)
     }
 }

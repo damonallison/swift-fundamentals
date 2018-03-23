@@ -18,7 +18,6 @@
 		7AEC82821C696C2100F1DCE3 /* StructuresTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AEC82811C696C2100F1DCE3 /* StructuresTests.swift */; };
 		E520878E1C51CD4F004AC9AF /* Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = E520878B1C51CD4F004AC9AF /* Person.swift */; };
 		E520878F1C51CD4F004AC9AF /* Printable.swift in Sources */ = {isa = PBXBuildFile; fileRef = E520878C1C51CD4F004AC9AF /* Printable.swift */; };
-		E520879D1C51CD59004AC9AF /* ArrayTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E52087901C51CD59004AC9AF /* ArrayTests.swift */; };
 		E520879E1C51CD59004AC9AF /* ClassesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E52087911C51CD59004AC9AF /* ClassesTests.swift */; };
 		E520879F1C51CD59004AC9AF /* CommentTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E52087921C51CD59004AC9AF /* CommentTests.swift */; };
 		E52087A01C51CD59004AC9AF /* DictionaryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E52087931C51CD59004AC9AF /* DictionaryTests.swift */; };
@@ -55,6 +54,7 @@
 		7A07444C1C6A9DDB00D64D50 /* Square.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Square.swift; sourceTree = "<group>"; };
 		7A07444E1C6A9EB300D64D50 /* TimesTable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimesTable.swift; sourceTree = "<group>"; };
 		7A3085001C6A9B0700F35E22 /* Rectangle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Rectangle.swift; sourceTree = "<group>"; };
+		7A56DAE6206300FD005EB9D8 /* ArrayTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrayTests.swift; sourceTree = "<group>"; };
 		7A81F8F31C83CD07008D7F09 /* Superman.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Superman.swift; sourceTree = "<group>"; };
 		7A8A3B9C1C740E2C005ADEB1 /* Globals.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Globals.swift; sourceTree = "<group>"; };
 		7AEBF7B9205F3D4400A88D92 /* SwiftFundamentals */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = SwiftFundamentals; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -64,7 +64,6 @@
 		7AEC82811C696C2100F1DCE3 /* StructuresTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StructuresTests.swift; sourceTree = "<group>"; };
 		E520878B1C51CD4F004AC9AF /* Person.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Person.swift; sourceTree = "<group>"; };
 		E520878C1C51CD4F004AC9AF /* Printable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Printable.swift; sourceTree = "<group>"; };
-		E52087901C51CD59004AC9AF /* ArrayTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArrayTests.swift; sourceTree = "<group>"; };
 		E52087911C51CD59004AC9AF /* ClassesTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClassesTests.swift; sourceTree = "<group>"; };
 		E52087921C51CD59004AC9AF /* CommentTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommentTests.swift; sourceTree = "<group>"; };
 		E52087931C51CD59004AC9AF /* DictionaryTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DictionaryTests.swift; sourceTree = "<group>"; };
@@ -105,9 +104,10 @@
 			isa = PBXGroup;
 			children = (
 				7AEC77951D2FE6320076DFE1 /* Concurrency */,
-				E52087871C51CD0B004AC9AF /* Classes */,
 				E52087881C51CD1A004AC9AF /* Language */,
 				E52087891C51CD1F004AC9AF /* Objective-C */,
+				E52087871C51CD0B004AC9AF /* Objects */,
+				7A56DAE5206300D2005EB9D8 /* StandardLibrary */,
 				7AEC827E1C69670600F1DCE3 /* Structures */,
 				2149CA0919D8D2F3006E259C /* Info.plist */,
 				7A8A3B9C1C740E2C005ADEB1 /* Globals.swift */,
@@ -136,6 +136,15 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		7A56DAE5206300D2005EB9D8 /* StandardLibrary */ = {
+			isa = PBXGroup;
+			children = (
+				E52087931C51CD59004AC9AF /* DictionaryTests.swift */,
+				7A56DAE6206300FD005EB9D8 /* ArrayTests.swift */,
+			);
+			path = StandardLibrary;
+			sourceTree = "<group>";
+		};
 		7AEBF7BA205F3D4400A88D92 /* SwiftFundamentals */ = {
 			isa = PBXGroup;
 			children = (
@@ -160,36 +169,33 @@
 			path = Structures;
 			sourceTree = "<group>";
 		};
-		E52087871C51CD0B004AC9AF /* Classes */ = {
+		E52087871C51CD0B004AC9AF /* Objects */ = {
 			isa = PBXGroup;
 			children = (
+				E52087911C51CD59004AC9AF /* ClassesTests.swift */,
+				E52087961C51CD59004AC9AF /* GenericsTests.swift */,
 				E520878B1C51CD4F004AC9AF /* Person.swift */,
 				E520878C1C51CD4F004AC9AF /* Printable.swift */,
 				7A3085001C6A9B0700F35E22 /* Rectangle.swift */,
 				7A07444C1C6A9DDB00D64D50 /* Square.swift */,
-				7A07444E1C6A9EB300D64D50 /* TimesTable.swift */,
 				7A81F8F31C83CD07008D7F09 /* Superman.swift */,
+				7A07444E1C6A9EB300D64D50 /* TimesTable.swift */,
 			);
-			path = Classes;
+			path = Objects;
 			sourceTree = "<group>";
 		};
 		E52087881C51CD1A004AC9AF /* Language */ = {
 			isa = PBXGroup;
 			children = (
-				E52087901C51CD59004AC9AF /* ArrayTests.swift */,
-				E52087911C51CD59004AC9AF /* ClassesTests.swift */,
 				E52087921C51CD59004AC9AF /* CommentTests.swift */,
-				E52087931C51CD59004AC9AF /* DictionaryTests.swift */,
+				E520879B1C51CD59004AC9AF /* ControlFlow.swift */,
 				E5C53CF01C5272BB0068C9EC /* ErrorHandlingTests.swift */,
 				E52087941C51CD59004AC9AF /* EnumTests.swift */,
 				E52087951C51CD59004AC9AF /* FunctionsTests.swift */,
-				E52087961C51CD59004AC9AF /* GenericsTests.swift */,
 				E52087971C51CD59004AC9AF /* MemoryManagementTests.swift */,
-				E52087981C51CD59004AC9AF /* ObjectiveCInteropTests.swift */,
 				E52087991C51CD59004AC9AF /* OptionalsTests.swift */,
 				E520879A1C51CD59004AC9AF /* StringTests.swift */,
 				7AEC82811C696C2100F1DCE3 /* StructuresTests.swift */,
-				E520879B1C51CD59004AC9AF /* ControlFlow.swift */,
 				E520879C1C51CD59004AC9AF /* TypeTests.swift */,
 			);
 			path = Language;
@@ -198,6 +204,7 @@
 		E52087891C51CD1F004AC9AF /* Objective-C */ = {
 			isa = PBXGroup;
 			children = (
+				E52087981C51CD59004AC9AF /* ObjectiveCInteropTests.swift */,
 				E52087AA1C51CD68004AC9AF /* ObjcClass.h */,
 				E52087AB1C51CD68004AC9AF /* ObjcClass.m */,
 			);
@@ -313,7 +320,6 @@
 				7AEC82801C69677800F1DCE3 /* Point.swift in Sources */,
 				7A07444F1C6A9EB300D64D50 /* TimesTable.swift in Sources */,
 				E520878E1C51CD4F004AC9AF /* Person.swift in Sources */,
-				E520879D1C51CD59004AC9AF /* ArrayTests.swift in Sources */,
 				E52087A81C51CD59004AC9AF /* ControlFlow.swift in Sources */,
 				E52087A71C51CD59004AC9AF /* StringTests.swift in Sources */,
 				E52087A51C51CD59004AC9AF /* ObjectiveCInteropTests.swift in Sources */,
