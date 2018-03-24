@@ -120,9 +120,9 @@ class ArrayTests : XCTestCase {
         var z = y // copy!
         y[0] = 10
         z[0] = 100
+        
         XCTAssertTrue(x[0] == 0)
         XCTAssertTrue(y[0] == 10)
         XCTAssertTrue(z[0] == 100)
     }
-
 }

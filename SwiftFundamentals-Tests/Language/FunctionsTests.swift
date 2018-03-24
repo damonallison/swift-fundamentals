@@ -8,118 +8,153 @@
 
 import XCTest
 
-/**
- Swift can express anything from a thunk to a complex function with:
- 
- * external / local parameter names
- * variable argument support with ...
- * parameters with default values
- * parameters can be marked as in/out
- * functions can return multiple values in a tuple
- 
- */
- 
- /**
- Example operator overload.
- 
- Operator overloads are only allowed at a global scope.
- */
-func == <T:Equatable> (tuple1:(T, T), tuple2:(T, T)) -> Bool {
-    return (tuple1.0 == tuple2.0 && tuple1.1 == tuple2.1)
+/// Swift can express anything from a thunk to a complex function with:
+///
+/// * external / local parameter names
+/// * varadic arguments with ...
+/// * default parameter values
+/// * arguments passed by reference with inout
+/// * multiple return values with tuples
+
+func ==<T: Equatable>(_ lhs: (T, T), _ rhs: (T, T)) -> Bool {
+    return lhs.0 == rhs.0 && lhs.1 == rhs.1
 }
 
 class FunctionsTests : XCTestCase {
-    
-    /**
-     This test shows how to overload operators. This function uses the overloaded operator above.
-     */
-    func testOperatorOverload() -> Void {
-        XCTAssertTrue((2, 2) == (2, 2))
+
+    /// Uses the `==` equality function defined above.
+    func testOperatorOverload() {
+        let x = (2, 2)
+        let y = (2, 2)
+        XCTAssertTrue(x == y)
     }
-    
+
+    /// A function that returns nothing can omit the return type.
+    /// This is equivalent to retuning `-> Void` or `-> ()`
+    ///
+    /// func thunk() -> Void
+    ///  func thunk() -> ()
+    func thunk() {
+        print("I'm useless")
+    }
+
+    func addOne(to: Int) -> Int {
+        return to + 1
+    }
+
+    /// To ignore a return value, use a let binding
+    /// to bind the result to a wildcard variable.
+    func testIgnoreReturnValue() {
+        thunk()
+        let _ = addOne(to: 1)
+    }
+
     func testFunctionsReturnMultiple() {
         
-        /**
-         Returns a tuple with unnamed values.
-         
-         If you are going to return a tuple, why not name each
-         value in the tuple?
-         
-         - important The function definition is written as `retMultipleUnnamedTuple(_:b:)`
-         */
+        /// Returns a tuple with unnamed values.
+        ///
+        /// If you are going to return a tuple, why not name each
+        /// value in the tuple?
+        ///
+        /// - important The function definition is written as `retMultipleUnnamedTuple(a:b:)`
         func retMultUnnamedTuple(a: Int, b: Int) -> (Int, Int) {
             return (a, b)
         }
         XCTAssertTrue(retMultUnnamedTuple(a: 2, b: 2) == (2, 2))
         
-        /**
-         retMult illustrates returning multiple values via a tuple.
-         
-         It can be helpful (recommended, even ;) to name each tuple value, which allows the caller the ability to access values by name rather than the rather meaningless ordinal position. If the function does not name a tuple's member variables, they can only be accessed by ordinal. The caller cannot define the tuple's names. They could assign the result to another tuple with names, however.
-         
-         - important: Notice that we are embedding this function within another function. This allows us to "hide" functions from outside scopes.
-         
-         - important: Tuples can be optional. This function adds a rather lame hack to return a nil value for all 0's to show how to declare an optional tuple return type.
-         */
-        func retMult(_ a: Int, b: Int) -> (total: Int, aboveZero: Bool)? {
+        /// It can be helpful (recommended, even ;) to name each tuple value,
+        /// which allows the caller the ability to access values by name rather
+        /// than the rather meaningless ordinal position. If the function does
+        /// not name a tuple's member variables, they can only be accessed by ordinal.
+        ///
+        /// The caller cannot define the tuple's names.
+        /// They could assign the result to another tuple with names, however.
+        ///
+        /// - important: Notice that we are embedding this function within another function.
+        ///              This allows us to "hide" functions from outside scopes.
+
+        /// - important: Tuples can be optional. This function adds a rather lame hack
+        ///              to return a nil value for all 0's to show how to declare an
+        ///              optional tuple return type.
+        func retMult(a: Int, b: Int) -> (total: Int, aboveZero: Bool)? {
             if a == 0 && b == 0 {
                 return nil
             }
             return ((a + b), ((a + b) > 0))
         }
-        if let _ = retMult(0, b: 0) {
-            XCTFail("(0, 0) should return nil")
-        }
-        let ret = retMult(2, b: 2)!
+
+        XCTAssertNil(retMult(a: 0, b: 0))
+
+        let ret = retMult(a: 2, b: 2)!
         XCTAssertTrue(ret.total == 4 && ret.aboveZero)
-        
-        XCTAssertNil(retMult(0, b:0), "Test optional tuple return type")
-        
-        /// Shows unpacking the tuple into a tuple with different names ((first, second) rather than (total, aboveZero).
-        guard let (first, second) = retMult(2, b:2) else {
-            XCTFail("Expected a non-nil tuple")
+
+        if let x = retMult(a: 2, b: 2), let y = retMult(a: 2, b: 2) {
+            XCTAssertTrue(x == y)
+        }
+
+        // Shows unpacking the tuple into a tuple with different names ((first, second) rather than (total, aboveZero).
+        guard let (first, second) = retMult(a: 2, b:2) else {
             return
         }
-        XCTAssertTrue(first == 4 && second == true)
+        XCTAssertEqual(4, first)
+        XCTAssertTrue(second)
     }
-    
-    func testFunctionsExternalParameterNames() {
+
+    /// Parameters can have two names:
+    ///
+    /// 1. Argument label : The name which the caller uses when calling the function.
+    /// 2. Parameter name : The name which is used within the function.
+    ///
+    /// func add(arg1 name1:Int, arg2 name2:Int) -> Int {
+    ///     return label1 + label2
+    /// }
+    ///
+    /// XCTAssertEqual(4, add(arg1: 2, arg2: 2)))
+    ///
+    /// Argument labels are optional. If there are no argument labels specified, the
+    /// parameter names are used.
+    func testArgumentLabels() {
         
-        /**
-         In this example, the function is invoked with: `externalParamNames(extParam:10)`
-         
-         `internalParam` is the name used locally within the function to access the var. I'm not quite sure *why* this is handy, but I guess it could be nice to expose something different externally than what can be used internally.
-         
-         This *must* have been done to accommodate Objective-C sentence-like function definitions. Not sure.
-         */
-        func externalParamNames(extParam internalParam: Int) -> String {
-            return "\(internalParam)"
+        // In this example, the function is invoked with: `externalParamNames(extParam:10)`
+        //
+        // `internalParam` is the name used locally within the function to access the var.
+        //
+        // I'm not quite sure *why* this is handy, but I guess it could be nice to expose
+        // something different externally than what can be used internally.
+        //
+        //
+        // "The use of argument labels can allow a function to be called in an expressive,
+        // sentence-like manner, while still providing a function body that is readable and clear in intent."
+        //
+        // - The Swift Programming Language
+        func argumentName(extParam internalParam: Int) -> Int {
+            return internalParam
         }
-        XCTAssertTrue(externalParamNames(extParam: 10) == "10")
-        
-        /// If you provide an external name for any parameter (even the first), it *must* always be used when calling the function.
-        func shorthandExternalParamNames(param: Int) -> String {
-            return "\(param)"
+        // If the argument name is defined, specify the argument name
+        // when invoking the function.
+        XCTAssertEqual(10, argumentName(extParam: 10))
+
+        /// If there is no argument name defined, the parameter name
+        /// is used for both the argument name and parameter name.
+        func parameterName(param: Int) -> Int {
+            return param
         }
-        XCTAssertTrue(shorthandExternalParamNames(param: 10) == "10")
+        XCTAssertEqual(parameterName(param: 10), 10)
         
-        /// If you want to avoid using external parameter names for 2nd and subsequent parameters, use a wildcard `_` char for the external name.
-        func noExternalNames(_ a: Int, _ b:Int) -> Int {
+        /// If you want to avoid parameter names all together,
+        /// use a wildcard `_` char for the external name.
+        func noParameterNames(_ a: Int, _ b:Int) -> Int {
             return a + b
         }
-        XCTAssertEqual(noExternalNames(2, 2), 4)
+        XCTAssertEqual(noParameterNames(2, 2), 4)
     }
     
-    /**
-     All parameters with default functions must be delcared at the end of the function definition.
-     */
+    /// Parameters can have default values.
+    ///
+    /// All parameters with default values must be delcared at the end of the function definition.
     func testFunctionsDefaultValues() {
-        
-        // Pretty contrived example. The goal is to show default params.
-        // Apple's guidance is to require an external name on all parameters w/ defaults.
-        // To help, swift will auto-generate an external name for any param with a default
-        // value.
-        // In this example, `withPrefix` has an auto-generated external name
+
+        /// withPrefix is an optional parameter since it includes a default value.
         func addAndEcho(_ i1: Int, toInt i2: Int, withPrefix: String = "Total is:") -> String {
             return "\(withPrefix)\(i1 + i2)"
         }
@@ -127,23 +162,33 @@ class FunctionsTests : XCTestCase {
         XCTAssertEqual(addAndEcho(2, toInt: 2, withPrefix: "2+2="), "2+2=4")
     }
     
-    /**
-     Functions can have at most 1 varadic param and it must be the last param.
-     */
+    /// Functions can have at most 1 varadic param and it must be the last param.
+    /// Specify a variadic parameter by including `...` after tha last parameter's type.
     func testFunctionsVarArgs() {
         
         func varArgs(_ numbers: Int...) -> (count: Int, first: Int) {
-            let first = numbers.first != nil ? numbers.first! : 0
-            return (numbers.count, first)
+            return (numbers.count, numbers.first ?? 0)
         }
         
-        var (count, first) = varArgs(1, 2, 3, 4, 5)
-        XCTAssertTrue(count == 5 && first == 1)
-        
-        (count, first) = varArgs()
-        XCTAssertTrue(count == 0)
-        XCTAssertTrue(first == 0)
-        
+        XCTAssertTrue((5, 1) == varArgs(1, 2, 3, 4, 5))
+        XCTAssertTrue((0, 0) == varArgs())
+    }
+
+    /// By default, parameters are passed by value and are immutable.
+    ///
+    /// To pass a value by reference, use an `inout` parameter.
+    ///
+    /// Please don't do this. Don't mutate state.
+    func testInOutParameters() {
+
+        func increment(a: inout Int) {
+            a = a + 1
+        }
+        // Values passed to inout parameters must be `var`.
+        /// Constants can't be passed as inout parameters.
+        var x = 10
+        increment(a: &x)
+        XCTAssertEqual(11, x)
     }
     
     /**

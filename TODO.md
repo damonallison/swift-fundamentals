@@ -2,12 +2,13 @@
 
 * Remove `open` from tests.
 * Review tests for optionals (chaining).
+* Why did swift decide to use both argument labels and parameter names for function parameters?
 
 ## Language
 
 * Type system
     * What is `Any` and `AnyObject`?
-    
+
 * Memory management
     * Parent -> Child relationships typically uses a strong reference.
     * Child -> Parent relationships use `weak` or `unowned`.
