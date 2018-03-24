@@ -3,11 +3,13 @@
 * Remove `open` from tests.
 * Review tests for optionals (chaining).
 * Why did swift decide to use both argument labels and parameter names for function parameters?
+* How to analyze swift for dead code?
 
 ## Language
 
 * Type system
     * What is `Any` and `AnyObject`?
+    * `Self` type keyword.
 
 * Memory management
     * Parent -> Child relationships typically uses a strong reference.
@@ -55,6 +57,9 @@
 * Serialization
 
 ## Tools
+
+* Xcode
+    * What is the difference between `xcodeproj` and `xcworkspace`?
 
 * Comments (doxygen? `CLANG_WARN_DOCUMENTATION_COMMENTS`)
 * AppCode
