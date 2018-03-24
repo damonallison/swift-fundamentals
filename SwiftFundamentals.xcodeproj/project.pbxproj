@@ -31,7 +31,7 @@
 		E52087A61C51CD59004AC9AF /* OptionalsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E52087991C51CD59004AC9AF /* OptionalsTests.swift */; };
 		E52087A71C51CD59004AC9AF /* StringTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E520879A1C51CD59004AC9AF /* StringTests.swift */; };
 		E52087A81C51CD59004AC9AF /* ControlFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = E520879B1C51CD59004AC9AF /* ControlFlow.swift */; };
-		E52087A91C51CD59004AC9AF /* TypeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E520879C1C51CD59004AC9AF /* TypeTests.swift */; };
+		E52087A91C51CD59004AC9AF /* PrimitiveTypeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E520879C1C51CD59004AC9AF /* PrimitiveTypeTests.swift */; };
 		E52087AC1C51CD68004AC9AF /* ObjcClass.m in Sources */ = {isa = PBXBuildFile; fileRef = E52087AB1C51CD68004AC9AF /* ObjcClass.m */; };
 		E5C53CF11C5272BB0068C9EC /* ErrorHandlingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5C53CF01C5272BB0068C9EC /* ErrorHandlingTests.swift */; };
 /* End PBXBuildFile section */
@@ -79,7 +79,7 @@
 		E52087991C51CD59004AC9AF /* OptionalsTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OptionalsTests.swift; sourceTree = "<group>"; };
 		E520879A1C51CD59004AC9AF /* StringTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringTests.swift; sourceTree = "<group>"; };
 		E520879B1C51CD59004AC9AF /* ControlFlow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ControlFlow.swift; sourceTree = "<group>"; };
-		E520879C1C51CD59004AC9AF /* TypeTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TypeTests.swift; sourceTree = "<group>"; };
+		E520879C1C51CD59004AC9AF /* PrimitiveTypeTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrimitiveTypeTests.swift; sourceTree = "<group>"; };
 		E52087AA1C51CD68004AC9AF /* ObjcClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ObjcClass.h; sourceTree = "<group>"; };
 		E52087AB1C51CD68004AC9AF /* ObjcClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ObjcClass.m; sourceTree = "<group>"; };
 		E5C53CF01C5272BB0068C9EC /* ErrorHandlingTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ErrorHandlingTests.swift; sourceTree = "<group>"; };
@@ -200,9 +200,9 @@
 				E52087951C51CD59004AC9AF /* FunctionsTests.swift */,
 				E52087971C51CD59004AC9AF /* MemoryManagementTests.swift */,
 				E52087991C51CD59004AC9AF /* OptionalsTests.swift */,
+				E520879C1C51CD59004AC9AF /* PrimitiveTypeTests.swift */,
 				E520879A1C51CD59004AC9AF /* StringTests.swift */,
 				7AEC82811C696C2100F1DCE3 /* StructuresTests.swift */,
-				E520879C1C51CD59004AC9AF /* TypeTests.swift */,
 			);
 			path = Language;
 			sourceTree = "<group>";
@@ -334,7 +334,7 @@
 				E520878F1C51CD4F004AC9AF /* Printable.swift in Sources */,
 				7A8A3B9D1C740E2C005ADEB1 /* Globals.swift in Sources */,
 				E52087AC1C51CD68004AC9AF /* ObjcClass.m in Sources */,
-				E52087A91C51CD59004AC9AF /* TypeTests.swift in Sources */,
+				E52087A91C51CD59004AC9AF /* PrimitiveTypeTests.swift in Sources */,
 				E5C53CF11C5272BB0068C9EC /* ErrorHandlingTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

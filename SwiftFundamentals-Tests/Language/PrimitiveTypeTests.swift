@@ -8,46 +8,38 @@
 
 import XCTest
 
-/**
- Shows usage of "primitive" swift types
- */
-class TypeTests: XCTestCase {
+/// Shows usage of "primitive" swift types
+class PrimitiveTypeTests: XCTestCase {
 
     // MARK: Integers
 
-    /**
-
-     Swift provides fixed width variations for all integer sizes.
-
-     [U]Int[8|16|32|64]
-
-     The default Int type is just `Int`.
-
-     `Int` and `Uint` conform to the platform's native word size
-     (32 on 32 bit systems, 64 on 64 bit systems).
-
-     Apple's guidance is to use `Int` even if the known values are
-     going to be non-negative. Reasons include:
-
-     * Aids interoperability with other libraries.
-     * Avoids the need to perform type conversion.
-     * Matches `Int` default inferred type for inferred integer values.
-
-     */
+    /// Swift provides fixed width variations for all integer sizes.
+    ///
+    /// [U]Int[8|16|32|64]
+    ///
+    /// The default Int type is just `Int`.
+    ///
+    /// `Int` and `Uint` conform to the platform's native word size
+    /// (32 on 32 bit systems, 64 on 64 bit systems).
+    ///
+    /// Apple's guidance is to use `Int` even if the known values are
+    /// going to be non-negative. Reasons include:
+    ///
+    /// * Aids interoperability with other libraries.
+    /// * Avoids the need to perform type conversion.
+    /// * Matches `Int` default inferred type for inferred integer values.
     func testIntegers() {
 
-        // Integers are structs and thus contain properties, methods, and
-        // class methods.
-
+        // Swift does not allow implicit type conversion.
+        // To convert between types, you must have an initializer which handles converting the type.
         let u10: UInt8 = 10;
-        let s = String(u10)
-        XCTAssertEqual("10", s)
+        XCTAssertEqual("10", String(u10))
 
+        // Integers in swift are structs. Structs have properties, methods, and class methods.
 
-        XCTAssertEqual("10", u10.description, "description is the textual representation of the struct.") // property.
-        // XCTAssertEqual(UInt8(9), (u10.), "Predecessor is the immediate value before the current value.") // method (predecessor())
-        XCTAssertEqual(UInt8.min.advanced(by: 10), UInt8(10), "advancedBy moves the receiver ahead.") // method (advancedBy())
-        XCTAssertEqual(UInt8.min, UInt8(0), "All unsigned integers must have a min == 0") // class method
+        XCTAssertEqual("10", u10.description) // property
+        XCTAssertEqual(UInt8(11), u10.unsafeAdding(1)) // method
+        XCTAssertEqual(UInt8.min.advanced(by: 10), UInt8(10)) // class methods
 
         // Shows implicit type conversion is not allowed in swift!
         // Manual UInt8() conversion is required!
