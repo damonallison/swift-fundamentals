@@ -1,10 +1,11 @@
 # Swift TODO
 
-* Remove `open` from tests.
 * Review tests for optionals (chaining).
 * Why did swift decide to use both argument labels and parameter names for function parameters?
 * How to analyze swift for dead code?
 * Person.swift - verify access modifier explanation.
+* Point.swift - verify access modifier explanation.
+
 
 ## Language
 
