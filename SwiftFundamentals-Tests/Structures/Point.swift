@@ -7,15 +7,29 @@
 //
 
 /// Structures are value types. In Swift, structures are very similar to classes.
-/// Structures support:
+////
+/// Structures (and classes) support:
 ///
+/// * Properties
 /// * Methods
 /// * Initializers
+/// * Subscripts
+/// * Extensions
 /// * Protocol conformance.
 ///
-/// Example structure.
+/// Structures do **not** support:
 ///
-/// * Structures should be kept small.
+/// * Inheritance
+/// * Type casting
+/// * Deinitializers (since structs are not put on the heap).
+/// * Reference counting. Only one reference per struct.
+///
+///
+/// When to use a struct vs. class?
+///
+/// * Structures should be relatively small and used only for
+///   small, value type data structures. Classes are the primary
+///   data structure in swift.
 ///
 /// * All values in the structure should themselves be value types.
 ///
@@ -26,9 +40,6 @@
 /// * You don't need to inherit properties or behavior
 ///   from another structure.
 ///
-/// * `struct`s should be relatively small and used only for 
-///   small, value type data structures. Classes are the primary 
-///   data structure in swift.
 ///
 /// Structures are given a default "memberwise initializer".
 /// A memberwise initializer is a compiler-generated initializer that you can use to create
@@ -41,18 +52,15 @@
 ///         Point p = Point(x: 1, y: 2)
 ///
 ///
-/// - important: Changing the order of a structures properties will break callers of the memberwise initializers.
+/// - important: Changing the order of a structures properties will break callers of the default memberwise initializer.
+///              It's probably better for you to define your own initializers rather than relying on the compiler default.
 ///
 struct Point : Equatable  {
     
     var x: Int
     var y: Int
     
-    /// 
-    /// `type methods` can be declared with the `static` keyword. 
-    /// Type methods annotated with `static` cannot be overridden by subclasses.
-    /// Type methods annotated with `class` can be overridden by subclasses.
-  ///
+    /// `type methods` can be declared with the `static` keyword.
     static func copy(_ point: Point) -> Point {
         return Point(x: point.x, y: point.y)
     }
@@ -67,7 +75,9 @@ struct Point : Equatable  {
     init(val : Int) {
         self.init(x: val, y: val)
     }
-    
+
+    /// Because we provide an initializer above, the compiler will
+    /// not generate a default memberwise initializer.
     init(x : Int, y: Int) {
         self.x = x
         self.y = y
@@ -87,15 +97,13 @@ struct Point : Equatable  {
         // mutating functions could also update `var` properties.
         self.x += x
         self.y += y
-        
     }
+
+    /// Conform to the equatable protocol.
+    static func ==(lhs: Point, rhs: Point) -> Bool {
+        return lhs.x == rhs.x && lhs.y == rhs.y
+    }
+
 }
 
-///
-/// Conform to the equatable protocol. 
-/// 
-/// It seems that this function needs to be declared in the global scope (yuk!).
-///
-func ==(lhs: Point, rhs: Point) -> Bool {
-    return lhs.x == rhs.x && lhs.y == rhs.y
-}
+

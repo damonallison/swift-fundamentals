@@ -11,7 +11,7 @@ import XCTest
 /// Shows usage of "primitive" swift types
 class PrimitiveTypeTests: XCTestCase {
 
-    // MARK: Integers
+    // MARK:- Integers
 
     /// Swift provides fixed width variations for all integer sizes.
     ///
@@ -36,7 +36,6 @@ class PrimitiveTypeTests: XCTestCase {
         XCTAssertEqual("10", String(u10))
 
         // Integers in swift are structs. Structs have properties, methods, and class methods.
-
         XCTAssertEqual("10", u10.description) // property
         XCTAssertEqual(UInt8(11), u10.unsafeAdding(1)) // method
         XCTAssertEqual(UInt8.min.advanced(by: 10), UInt8(10)) // class methods
@@ -44,36 +43,31 @@ class PrimitiveTypeTests: XCTestCase {
         // Shows implicit type conversion is not allowed in swift!
         // Manual UInt8() conversion is required!
         XCTAssertTrue(UInt8.min == UInt8(UInt16.min))
-
     }
 
+    // MARK:- Floating Points
 
-    // MARK: Floating Points
+     /// Swift's default floating point type is Double.
 
-    /**
-     Swift's default floating point type is Double.
-
-     * Double == 64 bit (not machine dependent)
-     * Float  == 32 bit (not machine dependent)
-     */
+     /// * Double == 64 bit (not machine dependent)
+     /// * Float  == 32 bit (not machine dependent)
     func testFloats() {
 
         // Double is the default inferred floating point type.
-        let d: Any = 3.0 as Any
+        let d: Any = 3.0
         XCTAssertTrue(d is Double, "Literal floating points are inferred as Double(s).")
-        XCTAssertNotNil(d as? Double)
+        XCTAssertNotNil(d as! Double)
         
-        // Implicit type conversion is not allowed.
+        // Again, implicit type conversion is not allowed.
+        // Here, we must cast f to a double to assert equality
         let f = Float(3.0)
-        XCTAssertEqual(d as? Double, Double(f), "Implicit floating point type conversion is not allowed - float must be casted")
+        XCTAssertEqual(d as! Double, Double(f), "Implicit floating point type conversion is not allowed - float must be casted")
     }
 
 
-    /**
-     Tuples are small, flexible, lightweight data structures.
-
-     Elements of tuples can be named when declared or accessed by ordinal.
-     */
+    /// Tuples are small, flexible, lightweight data structures.
+    ///
+    /// Elements of tuples can be named when declared or accessed by ordinal.
     func testTuples() {
 
         // 

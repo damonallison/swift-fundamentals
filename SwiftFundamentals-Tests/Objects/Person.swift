@@ -9,13 +9,13 @@
 ///
 /// The `person` class shows various class features:
 ///
-///- Initialization and deinitialization.
-///- Property declaration (get / set).
-///- Property observers (willSet / didSet).
-///- Method declaration.
-///- Inheritance.
-///- Access modifiers (private / public).
-///- Subscripts.
+/// - Initialization and deinitialization.
+/// - Property declaration (get / set).
+/// - Property observers (willSet / didSet).
+/// - Method declaration.
+/// - Inheritance.
+/// - Access modifiers (private / public).
+/// - Subscripts.
 ///
 ///
 /// Properties:
@@ -37,6 +37,15 @@
 ///   Type properties are `static`
 ///
 ///
+/// * Lazy
+///
+///   Lazy stored properties (annotated with `lazy`) do not calculate their value until
+///   the first time it is used.
+///
+///   Mark properties lazy if you don't know their value during initialization
+///   or they are expensive to create and you want to defer that cost as long
+///   as possible.
+///
 /// * Property observers (willSet / didSet):
 ///
 ///   Property observers montior changes to a property's value.
@@ -46,7 +55,6 @@
 /// * Property Initialization
 /// 
 ///   `let` and `var` properties both can be assigned during initialization.
-///    Access modifiers apply based on file and project structure, not type hierarchy.
 ///
 /// * The swift compiler enforces that *all* classes must have values assigned
 ///   for all non-optional properties.
@@ -54,7 +62,8 @@
 ///
 /// * Access Control:
 ///
-/// Access control is based on modules and source files.
+/// TODO:- Determine if this is still true or not.
+///
 ///
 /// * Each Xcode target is a `module`.
 /// * Each source code file can contain multiple types.

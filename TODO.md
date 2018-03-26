@@ -4,6 +4,7 @@
 * Review tests for optionals (chaining).
 * Why did swift decide to use both argument labels and parameter names for function parameters?
 * How to analyze swift for dead code?
+* Person.swift - verify access modifier explanation.
 
 ## Language
 
@@ -33,7 +34,7 @@
     * `extension`s can be used to add protocol conformance.
     * `Equatable` and `Hashable`
 
-* Interoperability with Objective-C
+* Objective-C / Swift Interoperability
     * Bridging header : Exposes Objective-C code to Swift.
     * What is the relationship between Swift and Objective-C libraries like `Foundation`?
 

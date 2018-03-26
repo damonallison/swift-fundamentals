@@ -10,6 +10,20 @@
 
 @implementation ObjcClass
 
+- (instancetype) init {
+    if (self = [super init]) {
+
+    }
+    return self;
+}
+- (instancetype) initWithFirstName:(NSString *)firstName lastName:(NSString *)lastName {
+    if (self = [super init]) {
+        self.firstName = firstName;
+        self.lastName = lastName;
+    }
+    return self;
+}
+
 - (NSString *)fullName {
     return [NSString stringWithFormat:@"%@ %@", _firstName, _lastName];
 }

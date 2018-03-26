@@ -51,7 +51,7 @@ reads" for every swift programmer.
   * Generics.
   * Type inference.
 
-* Optionals :
+* Optionals
   * One true "empty" (sentinal?) value to rule them all (nil, NSNotFound, 0, etc..)
   * Any type can be `optional`, even "primitives" like Int.
 
@@ -59,8 +59,10 @@ reads" for every swift programmer.
     * Much better than Objective-C's `if (self = [super init])` initializer.
     * Also much safer and strict. Objective-C was more confusing, especially around when you could use `self`.
 
-* Defer : better way to clean up resources.
-* Error handling is clean, performant in that it doesn't unwind the stack.
+* Defer
+  * A better way to clean up resources.
+* Error handling
+  * Clean, performant in that it doesn't unwind the stack.
 
 ### Modern
 

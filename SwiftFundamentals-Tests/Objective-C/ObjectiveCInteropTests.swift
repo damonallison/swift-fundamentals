@@ -8,10 +8,8 @@
 
 import XCTest
 
-/**
-    Tests for interoperating `Swift` and `Objective-C` together.
- 
-*/
+/// ObjcClass.h is added to the bridging header, making it available
+/// to swift.
 class ObjectiveCTests : XCTestCase {
 
     func testObjCInterop() {
@@ -20,14 +18,13 @@ class ObjectiveCTests : XCTestCase {
         XCTAssertTrue(oc.firstName == nil)
         XCTAssertTrue(oc.lastName == nil)
 
+        // Notice that firstName and lastName (NSString) are bridged to String.
         oc.firstName = "Damon"
         oc.lastName = "Allison"
 
         XCTAssertEqual("Damon", oc.firstName)
         XCTAssertEqual("Allison", oc.lastName)
         XCTAssertEqual("Damon Allison", oc.fullName)
-
-
     }
 }
 
