@@ -78,7 +78,7 @@ class Person : Printable {
     /// Stored type properties must have a default value.
     static let defaultName = "Damon"
 
-    // Stored type properties can also have observers.
+    /// Stored type properties can also have observers.
     static var defaultLastName : String = "Allison" {
         willSet {
             print("Set Person.`defaultLastName to \(newValue) from \(defaultLastName)")
@@ -88,13 +88,15 @@ class Person : Printable {
         }
     }
 
-    /// Computed type properties must be declared with `var`, even if they are read only.
-    /// You can define computed properties with the `class` modifier to allow subclasses
-    /// to override the superclass implementation.
+    /// Like instance properties, omputed type properties must be declared with `var`,
+    /// even if they are read only.
+    ///
+    /// Computed type properties can be defined with "static" or "class".
+    /// * static : Cannot be overridden by sublcasses.
+    /// * class : Can be overridden by subclasses.
+
     class var defaultFullName : String {
-        get {
-            return "\(defaultName) \(defaultLastName)"
-        }
+        return "\(defaultName) \(defaultLastName)"
     }
 
     /// Swift creates getters and setters for each property.
@@ -125,12 +127,11 @@ class Person : Printable {
     ///
     fileprivate lazy var initialName = String()
 
-    /// Internal properties. Marking these `private` will not
-    fileprivate var firstNameInternal: String
-    fileprivate var lastNameInternal: String
+    private var firstNameInternal: String
+    private var lastNameInternal: String
 
     /// Constant properties can be set during initialization
-    fileprivate let createDate: Date
+    let createDate: Date
 
     /// You **could** use the `didSet` property observer to override the
     /// value that was just set. In this example, we are limiting
@@ -288,31 +289,14 @@ class Person : Printable {
         return "\(firstName) \(lastName)"
     }
 
-    func appendSurname(_ surname: String) -> String {
-        return "\(firstName) \(lastName) \(surname)"
-    }
-
-    ///
-    /// By default, a method name has the same name for it's parameter when you call it
-    /// and within the method itself.
-    ///
-    /// You can specify a second name that can be used locally within the method. In this
-    /// method, the caller uses the parameter name `surname2` when calling the method.
-    /// Internally within the method we use the name "lastSurname"
-    ///
-    func appendMultipleSurnames(_ surname: String, surname2 lastSurname: String) -> String {
-        return "\(firstName) \(lastName) \(surname) \(lastSurname)"
+    func appendNickname(_ nickName: String) -> String {
+        return "\(firstName) \(lastName) \(nickName)"
     }
 
     /// Subscripts allow you to access an object with array-like accessor syntax.
     subscript(index: Int) -> String {
         get {
-            if index == 0 {
-                return firstName
-            }
-            else {
-                return lastName
-            }
+            return index == 0 ? firstName : lastName
         }
         set(newValue) {
             if index == 0 {

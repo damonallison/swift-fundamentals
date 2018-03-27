@@ -58,7 +58,7 @@ class ClassesTests : XCTestCase {
         y.x = 100;
         XCTAssertEqual(100, y.x)
         XCTAssertEqual(2, y.log.count)
-        XCTAssertEqual(["Setting x to 100", "Set x to 100"], y.log)
+        XCTAssertEqual(["Setting x to: 100", "Set x to: 100"], y.log)
     }
 
     /// Classes are reference types.
