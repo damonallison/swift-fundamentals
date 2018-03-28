@@ -47,10 +47,11 @@ class PrimitiveTypeTests: XCTestCase {
 
     // MARK:- Floating Points
 
-     /// Swift's default floating point type is Double.
-
-     /// * Double == 64 bit (not machine dependent)
-     /// * Float  == 32 bit (not machine dependent)
+    ///
+    /// Swift's default floating point type is Double.
+    ///
+    /// * Double == 64 bit (not machine dependent)
+    /// * Float  == 32 bit (not machine dependent)
     func testFloats() {
 
         // Double is the default inferred floating point type.
@@ -105,6 +106,5 @@ class PrimitiveTypeTests: XCTestCase {
     func testAliases() {
         let x: MyInt = 2
         XCTAssertTrue(x == 2)
-    }
-    
+    }    
 }

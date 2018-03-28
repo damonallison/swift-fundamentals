@@ -206,7 +206,6 @@ class Person : Printable {
     /// The 2-phase initialization process prevents property values from being accessed before values are assigned.
     /// and prevents property values from being set to a different value by another initializer unexpectedly.
     ///
-    ///
     init(first: String, last: String) {
 
         self.firstNameInternal = first

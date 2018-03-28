@@ -5,6 +5,7 @@
 * How to analyze swift for dead code?
 * Person.swift - verify access modifier explanation.
 * Point.swift - verify access modifier explanation.
+* Why does a new Swift file include `import Foundation`?
 
 
 ## Language

@@ -213,16 +213,15 @@ class ControlFlowTests : XCTestCase {
     func testSwitchTypes() {
         class Person {
         }
-        class Superman : Person {
+        class Employee : Person {
         }
 
-        let p: AnyObject = Superman()
+        let p: AnyObject = Employee()
         switch p {
-        case let x as Superman:
-            print("matched superman \(x)")
+        case _ as Employee:
             break
         default:
-            XCTFail("Should have matched on Superman")
+            XCTFail("Should have matched on Employee")
         }
     }
 

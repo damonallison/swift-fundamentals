@@ -6,32 +6,55 @@
 //  Copyright © 2016 Damon Allison. All rights reserved.
 //
 
-/**
- Superman derives from `Person` and illustrates how inheritance works in Swift.
-*/
-class Superman : Person {
-    
-    //
-    // This will be lazy-initialized (created when first accessed)
-    //
+/// Superman derives from `Person` and illustrates how inheritance works in Swift.
+///
+/// Classes, methods, properties, and subscripts can be marked "final"
+/// to prevent being overridden.
+final class Superman : Person {
+
+    private var internalActions = [String]()
+
+    var actions: [String] {
+            return internalActions
+    }
+
+    /// Example of overriding a property, calling into the parent to get / set
+    /// the actual property value.
+    override var lastName: String {
+        get {
+            let lastName = super.lastName
+            internalActions.append("Get lastName \(lastName)")
+            return lastName
+        }
+        set {
+            internalActions.append("Set lastName \(newValue)")
+            super.lastName = newValue
+        }
+    }
+
+    /// This will be lazy-initialized (created when first accessed)
     lazy var child = Person(first: "super", last: "child")
     
-    /**
-     Superman's strength.
-     */
-    var power: Int
+    /// Superman's strength.
+    final var power: Int
     
-    /**
-     Failable initialzers
-    */
-    init?(power: Int, firstName: String, lastName: String) {
+    /// Failable initialzers can return `nil`
+    ///
+    /// An initializer can contain a `required` modifier to indicate that
+    /// every subclass must implement the initializer.
+    ///
+    /// Important: This class is marked `final`. Therefore, the `required` modifier
+    ///            is not needed. This class cannot be subclassed.
+    required init?(power: Int, firstName: String, lastName: String) {
         
         //
         // When overriding a base class, there are three steps to perform
         // in the initializer (in order):
         //
         // 1. Initialize all variables in the derived class.
+        //
         // 2. Call super.init() to initialize the base.
+        //
         // 3. Do any custom initialization logic that you need to perform.
         //    At this point, the entire class is initialized and you have
         //    full access to all properties of the class (including the base class).
@@ -61,26 +84,20 @@ class Superman : Person {
         if firstName.isEmpty || lastName.isEmpty {
             return nil
         }
-
-        print("superman created with \(power) fullName \(super.fullName)", terminator: "")
-        
     }
     
-    /**
-     Convenience initializers must call a designated initializer first.
-     
-     After the designated initializer is called, `self` can be accessed.
-     */
-    convenience init?() {
-        self.init(power: 100, firstName: "super", lastName: "man")
+    /// Convenience initializers must call a designated initializer first.
+    /// After the designated initializer is called, `self` can be accessed.
+    required convenience init() {
+        self.init(power: 100, firstName: "super", lastName: "man")!
     }
 
     override var iq: Int {
         willSet {
-            print("Superman willSet iq to \(newValue)")
+            internalActions.append("Superman willSet iq to \(newValue)")
         }
         didSet {
-            print("Sumerman didSet iq to \(self.iq) from \(oldValue)")
+            internalActions.append("Superman didSet iq to \(self.iq) from \(oldValue)")
         }
     }
     

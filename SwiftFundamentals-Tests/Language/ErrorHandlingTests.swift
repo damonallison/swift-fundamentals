@@ -10,66 +10,60 @@ import XCTest
 
 class ErrorHandlingTests : XCTestCase {
 
-    /**
-
-     ### Defining Errors ###
-
-     Errors in swift are represented by values that conform to the `Error` protocol.
-     
-     `Error` is an empty protocol. `enum`s are well suited for modeling a group of related
-     error conditions with associated values used to add additional information about the error.
-     
-            public enum ParsingErrors : Error {
-                InvalidRootNode
-                ElementContainsNull(path: String) // define associated values to include with the error type.
-            }
-     
-     Conventions used when declaring `Error` enums:
-     
-     * The `enum` name ends in "Error".
-     * The cases do **not** contain "Error".
-     * The term `Exception` (a.la. Java or C#) is not used in swift at all.
-
-     ### Handling Errors ###
-     
-     There are four ways to handle errors in swift:
-     
-     * Propogate the error to the caller.
-     * Handle the error with a `do-catch` statement.
-     * Handle the error as an optional value (`try?`). If an error is thrown while evaluating
-       the `try?` expression, the value of the expression is `nil`. Using `try?` lets you write
-       concise error handling error handling code when you want to handle all errors the same way.
-     * Assert that the error will not occur (`try!`). Use `try!` when you **know** a function will
-       not throw an error at runtime. `try!` wraps the error in a runtime assertion that no error 
-       will be thrown. If an error is thrown, you'll get a runtime error.
-     
-     ### Propogating Errors using `throw` functions. ###
-     
-     If you want to propogate errors to the caller, declare the function with the `throws` keyword. You don't specify the type of error that will be thrown, which is different from Java. The caller must know.
-
-     This enum shows how to declare an error type that will be thrown from our `Int8` conversion function.
-
-     - OutOfBounds:         The value is out of bounds for an `Int8`
-     - NotANumber:          The value is not a valid number.
-     - Unknown:             The value could not be converted to an `Int8`.
-     */
+    /// ### Defining Errors ###
+    ///
+    /// Errors in swift are represented by values that conform to the `Error` protocol.
+    ///
+    /// `Error` is an empty protocol. `enum`s are well suited for modeling a group of related
+    /// error conditions with associated values used to add additional information about the error.
+    ///
+    ///    public enum ParsingErrors : Error {
+    ///        InvalidRootNode
+    ///        ElementContainsNull(path: String) // define associated values to include with the error type.
+    ///    }
+    ///
+    /// Conventions used when declaring `Error` enums:
+    ///
+    /// * The `enum` name ends in "Error".
+    /// * The cases do **not** contain "Error".
+    /// * The term `Exception` (a.la. Java or C#) is not used in swift at all.
+    ///
+    /// ### Handling Errors ###
+    ///
+    /// There are four ways to handle errors in swift:
+    ///
+    /// * Propogate the error to the caller.
+    /// * Handle the error with a `do-catch` statement.
+    /// * Handle the error as an optional value (`try?`). If an error is thrown while evaluating
+    ///   the `try?` expression, the value of the expression is `nil`. Using `try?` lets you write
+    ///   concise error handling error handling code when you want to handle all errors the same way.
+    /// * Assert that the error will not occur (`try!`). Use `try!` when you **know** a function will
+    ///   not throw an error at runtime. `try!` wraps the error in a runtime assertion that no error
+    ///   will be thrown. If an error is thrown, you'll get a runtime error.
+    ///
+    /// ### Propogating Errors using `throw` functions. ###
+    ///
+    /// If you want to propogate errors to the caller, declare the function with the `throws` keyword.
+    /// You don't specify the type of error that will be thrown, which is different from Java.
+    /// The caller must know what errors to handle.
+    ///
+    /// This enum shows how to declare an error type that will be thrown from our `Int8` conversion function.
+    ///
+    /// - OutOfBounds:         The value is out of bounds for an `Int8`
+    /// - NotANumber:          The value is not a valid number.
+    /// - Unknown:             The value could not be converted to an `Int8`.
     enum Int8ConversionError : Error {
         case outOfBounds
         case notANumber
         case unknown
     }
 
-    /**
 
-     This is just an example. This could be done as an extension to `Int8` or you could just use Int8(String)
-
-     - parameter name: The value to convert into a `Int8`
-
-     - throws: `Int8ConversionError` if something goes wrong.
-
-     - returns: An `Int8` corresponding to the value of `name`.
-    */
-
+    /// This is just an example. This could be done as an extension to `Int8` or you could just use Int8(String)
+    ///
+    /// - parameter name: The value to convert into a `Int8`
+    /// - throws: `Int8ConversionError` if something goes wrong.
+    /// - returns: An `Int8` corresponding to the value of `name`.
     func toInt8(_ name: String) throws -> Int8  {
 
         // One or more digits or we don't have a number.

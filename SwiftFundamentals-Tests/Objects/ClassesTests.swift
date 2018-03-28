@@ -18,31 +18,28 @@ var myVar: Int = 0 {
     }
 }
 
-/**
- Classes and structures are very similar in swift.
- 
- /// Structures (and classes) support:
- ///
- /// * Properties
- /// * Methods
- /// * Initializers
- /// * Subscripts
- /// * Extensions
- /// * Protocol conformance.
- ///
- /// Structures do **not** support:
- ///
- /// * Inheritance
- /// * Type casting
- /// * Deinitializers (since structs are not put on the heap).
- /// * Reference counting. Only one reference per struct.
-
- */
+/// Classes and structures are very similar in swift.
+///
+/// Structures (and classes) support:
+///
+/// * Properties
+/// * Methods
+/// * Initializers
+/// * Subscripts
+/// * Extensions
+/// * Protocol conformance.
+///
+/// Structures do **not** support:
+///
+/// * Inheritance
+/// * Type casting
+/// * Deinitializers (since structs are not put on the heap).
+/// * Reference counting. Only one reference per struct.
 class ClassesTests : XCTestCase {
 
     func testClassCreation() {
 
-        /// A nested class scped to the testClassCreation function.
+        /// A nested class scoped to the testClassCreation function.
         class MyTest {
             var log: [String] = []
             var x = 10 {
@@ -69,8 +66,7 @@ class ClassesTests : XCTestCase {
         XCTAssertTrue(p === p2, "=== is used for reference equality")
 
         p.firstName = "cole"
-        XCTAssertEqual(p2.firstName, "cole",
-                       "Both p and p2, which are the same reference, should be identical.")
+        XCTAssertEqual(p2.firstName, "cole")
     }
 
     ///
@@ -83,7 +79,7 @@ class ClassesTests : XCTestCase {
     func testComputedProperty() {
 
         let p = Person(first: "damon", last: "allison")
-
+    
         p.firstName = "Cole"
         XCTAssertTrue(p.firstName == "Cole")
         p.firstName = "SomethingTooLong"
@@ -99,10 +95,8 @@ class ClassesTests : XCTestCase {
 
     }
 
-    ///
     /// * Local (and global) variables can have property observers.
     /// * Local (and global) variables can also be computed (not hold a value).
-    ///
     func testLocalProperties() {
 
         var changes = [String]()
@@ -186,6 +180,32 @@ class ClassesTests : XCTestCase {
         XCTAssertTrue(objs[1] is Date)
     }
 
+    func testInheritance() {
+
+        guard let s = Superman(power: 100, firstName: "test", lastName: "user") else {
+            XCTFail("Unable to create Superman.")
+            return
+        }
+
+        // Verify property overrides
+        s.lastName = "Allison"
+        XCTAssertEqual("Allison", s.lastName)
+
+        s.iq = 120
+        XCTAssertEqual(120, s.iq)
+
+        let actions = s.actions
+        XCTAssertEqual(["Set lastName Allison",
+                        "Get lastName Allison",
+                        "Superman willSet iq to 120",
+                        "Superman didSet iq to 120 from 0"], actions)
+
+        // Subscripts are inherited
+        s[0] = "Test"
+        s[1] = "User"
+        XCTAssertEqual("Test", s[0])
+        XCTAssertEqual("User", s[1])
+    }
     // TODO: Equality
     // TODO: Comparison
     // TODO: Sort
