@@ -45,6 +45,15 @@ class ProtocolTests: XCTestCase {
         var hashValue: Int {
             return name.hashValue
         }
+        var textDescription: String {
+            return "Person: \(self.name)"
+        }
+
+        /// The Named protocol has an extension which defines nameAndVersion.
+        /// Here, we override the default implementation specified in the protocol.
+        func nameAndVersion() -> String {
+            return "Person with name \(self.name) version \(type(of: self).version)"
+        }
     }
 
     func testProtocols() {
@@ -66,6 +75,10 @@ class ProtocolTests: XCTestCase {
 
         let people = [p2, p3] // [Person]
         XCTAssertEqual(["damon", "cole"], getNames(named:people))
+
+        // Test protocol extensions. Notice that "Named" is extended below to
+        // include a nameAndVersion func.
+        XCTAssertEqual("Person with name damon version 1", p2.nameAndVersion())
     }
 
     /// You can require a type to conform to multiple protocols by using
@@ -77,7 +90,7 @@ class ProtocolTests: XCTestCase {
         ///
         /// Note this is redundant. Named implements Hashable. But this is
         /// for illustration purposes only.
-        func printHashAndName<T: Named & Hashable>(param: T) -> String {
+        func printHashAndName<T: Named & Hashable & TextRepresentable>(param: T) -> String {
             return "\(param.name): \(param.hashValue)"
         }
         let p = Person(firstName: "damon", lastName: "allison")
@@ -87,9 +100,45 @@ class ProtocolTests: XCTestCase {
 
     #if swift(>=4.1)
     func testConditionalConformance() {
+        let a = [Person(name: "damon"), Person(name: "cole")]
 
+        // Because Person conforms to TextRepresentable,
+        // Array<Person> also conforms to TextRepresentable.
+        XCTAssertEqual("Person: damon, Person: cole", a.textDescription)
     }
     #endif
+
+    /// Optional protocol requirements allow you to define "optional" interface
+    /// elements as you could in Objective-C. Optional protocol requirements are
+    /// available so you can interoperate with Objective-C.
+    func testOptionalProtocolRequirements() {
+
+        class Counter: NSObject, CounterDataSource {
+            private var count: Int = 0
+
+            var currentCount: Int {
+                return count
+            }
+            override init() {
+                super.init()
+            }
+
+            @discardableResult
+            func increment() -> Int {
+                count += 1
+                return count
+            }
+
+            /// NOTE: We do *not* implement fixedIncrement in this class!
+            /// Set the increment step.
+            /// @objc optional var fixedIncrement: Int { get }
+        }
+
+        let c = Counter() as CounterDataSource
+        XCTAssertNotNil(c.increment?())
+        XCTAssertEqual(1, c.currentCount)
+        XCTAssertNil(c.fixedIncrement)
+    }
 
 }
 
@@ -105,7 +154,7 @@ class ProtocolTests: XCTestCase {
 /// protocol Names: Equatable, AnyObject
 ///
 /// AnyObject should be used for delegates, which should be a class type.
-protocol Named: Hashable {
+protocol Named: Hashable, TextRepresentable {
 
     /// Protocols can require initializers.
     ///
@@ -129,6 +178,17 @@ protocol Named: Hashable {
     mutating func appendSurname(surname: String)
 }
 
+/// Protocols can be extended.
+///
+/// If the conforming type provides it's own implementation of the extension
+/// functions, that implementation will be used rather than the default
+/// specified here.
+extension Named {
+    func nameAndVersion() -> String {
+        return "\(self.name) \(type(of: self).version)"
+    }
+}
+
 
 /// Conditional conformance (Swift 4.1)
 ///
@@ -136,19 +196,34 @@ protocol Named: Hashable {
 /// like when the type of its generic parameter conforms to the protocol.
 
 #if swift(>=4.1)
+
 protocol TextRepresentable {
     var textDescription: String { get }
 }
 
+/// Array conditionally conforms to TextRepresentable.
+///
+/// Only when Element conforms to TextRepresentable will Array
+/// conform to TextRepresentable.
 extension Array: TextRepresentable where Element: TextRepresentable {
     var textDescription: String {
         return self.map({ $0.textDescription }).joined(separator: ", ")
     }
 }
+
 #endif
 
 /// When dealing with Objective-C classes, you can define protocol members
 /// as optional.
+///
+/// Note that when a protocol member is "optional", the return type is
+/// always optional.
 @objc protocol CounterDataSource {
+
+    var currentCount: Int { get }
+
     @objc optional func increment() -> Int
+
+    /// Set the increment step.
+    @objc optional var fixedIncrement: Int { get }
 }
