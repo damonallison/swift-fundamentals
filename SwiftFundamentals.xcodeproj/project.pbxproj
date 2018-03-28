@@ -10,6 +10,9 @@
 		7A07444D1C6A9DDB00D64D50 /* Square.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A07444C1C6A9DDB00D64D50 /* Square.swift */; };
 		7A07444F1C6A9EB300D64D50 /* TimesTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A07444E1C6A9EB300D64D50 /* TimesTable.swift */; };
 		7A3085011C6A9B0700F35E22 /* Rectangle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A3085001C6A9B0700F35E22 /* Rectangle.swift */; };
+		7A6AD720206BAD2A0033FE2E /* ArrayTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A56DAE6206300FD005EB9D8 /* ArrayTests.swift */; };
+		7A6AD722206BB4D80033FE2E /* NestedTypesTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A6AD721206BB4D80033FE2E /* NestedTypesTest.swift */; };
+		7A7DD29B206BB8AE0024A0B2 /* ExtensionsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A7DD29A206BB8AE0024A0B2 /* ExtensionsTests.swift */; };
 		7A81F8F41C83CD07008D7F09 /* Superman.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A81F8F31C83CD07008D7F09 /* Superman.swift */; };
 		7A8A3B9D1C740E2C005ADEB1 /* Globals.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A8A3B9C1C740E2C005ADEB1 /* Globals.swift */; };
 		7ADBC0E9206B326800D4BEEB /* TypeCastingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ADBC0E8206B326800D4BEEB /* TypeCastingTests.swift */; };
@@ -58,6 +61,8 @@
 		7A07444E1C6A9EB300D64D50 /* TimesTable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimesTable.swift; sourceTree = "<group>"; };
 		7A3085001C6A9B0700F35E22 /* Rectangle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Rectangle.swift; sourceTree = "<group>"; };
 		7A56DAE6206300FD005EB9D8 /* ArrayTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrayTests.swift; sourceTree = "<group>"; };
+		7A6AD721206BB4D80033FE2E /* NestedTypesTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NestedTypesTest.swift; sourceTree = "<group>"; };
+		7A7DD29A206BB8AE0024A0B2 /* ExtensionsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionsTests.swift; sourceTree = "<group>"; };
 		7A81F8F31C83CD07008D7F09 /* Superman.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Superman.swift; sourceTree = "<group>"; };
 		7A8A3B9C1C740E2C005ADEB1 /* Globals.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Globals.swift; sourceTree = "<group>"; };
 		7ADBC0E8206B326800D4BEEB /* TypeCastingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypeCastingTests.swift; sourceTree = "<group>"; };
@@ -199,8 +204,10 @@
 				E520879B1C51CD59004AC9AF /* ControlFlow.swift */,
 				E5C53CF01C5272BB0068C9EC /* ErrorHandlingTests.swift */,
 				E52087941C51CD59004AC9AF /* EnumTests.swift */,
+				7A7DD29A206BB8AE0024A0B2 /* ExtensionsTests.swift */,
 				E52087951C51CD59004AC9AF /* FunctionsTests.swift */,
 				E52087971C51CD59004AC9AF /* MemoryManagementTests.swift */,
+				7A6AD721206BB4D80033FE2E /* NestedTypesTest.swift */,
 				E52087991C51CD59004AC9AF /* OptionalsTests.swift */,
 				E520879C1C51CD59004AC9AF /* PrimitiveTypeTests.swift */,
 				E520879A1C51CD59004AC9AF /* StringTests.swift */,
@@ -315,6 +322,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7AEC77971D2FE69D0076DFE1 /* FuncQueue.swift in Sources */,
+				7A7DD29B206BB8AE0024A0B2 /* ExtensionsTests.swift in Sources */,
 				7AF000B02065872C006E99EB /* SetTests.swift in Sources */,
 				E52087A21C51CD59004AC9AF /* FunctionsTests.swift in Sources */,
 				E52087A41C51CD59004AC9AF /* MemoryManagementTests.swift in Sources */,
@@ -323,6 +331,7 @@
 				7A07444D1C6A9DDB00D64D50 /* Square.swift in Sources */,
 				E520879F1C51CD59004AC9AF /* CommentTests.swift in Sources */,
 				E52087A31C51CD59004AC9AF /* GenericsTests.swift in Sources */,
+				7A6AD720206BAD2A0033FE2E /* ArrayTests.swift in Sources */,
 				7A3085011C6A9B0700F35E22 /* Rectangle.swift in Sources */,
 				E52087A11C51CD59004AC9AF /* EnumTests.swift in Sources */,
 				7A81F8F41C83CD07008D7F09 /* Superman.swift in Sources */,
@@ -333,6 +342,7 @@
 				E520878E1C51CD4F004AC9AF /* Person.swift in Sources */,
 				E52087A81C51CD59004AC9AF /* ControlFlow.swift in Sources */,
 				E52087A71C51CD59004AC9AF /* StringTests.swift in Sources */,
+				7A6AD722206BB4D80033FE2E /* NestedTypesTest.swift in Sources */,
 				E52087A51C51CD59004AC9AF /* ObjectiveCInteropTests.swift in Sources */,
 				E520878F1C51CD4F004AC9AF /* Printable.swift in Sources */,
 				7A8A3B9D1C740E2C005ADEB1 /* Globals.swift in Sources */,

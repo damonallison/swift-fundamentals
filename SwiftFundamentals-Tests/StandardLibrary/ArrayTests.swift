@@ -32,7 +32,9 @@ class ArrayTests : XCTestCase {
         // Empty Dictionary : [Type: Type]()
         //
 
-        let a1 = [String]()
+        // [Type] is shorthand for Array<Type>
+        
+        let a1 = Array<String>()
         
         XCTAssertTrue(a1.count == 0)
         XCTAssertTrue(a1.isEmpty, "isEmpty is a convenience property to test count == 0")
@@ -114,6 +116,7 @@ class ArrayTests : XCTestCase {
         XCTAssertEqual(arr, ["c", "b", "aa", "a"])
     }
 
+    /// Arrays in swift are value types. 
     func testArrayCopying() {
         var x = [0, 1, 2, 3]
         var y = x // copy!
@@ -124,5 +127,27 @@ class ArrayTests : XCTestCase {
         XCTAssertTrue(x[0] == 0)
         XCTAssertTrue(y[0] == 10)
         XCTAssertTrue(z[0] == 100)
+    }
+
+    func testArrayEquality() {
+        let a1 = ["test", "array"]
+        let a2 = ["test", "array"]
+        XCTAssertEqual(a1, a2)
+        XCTAssertTrue(a1 == a2)
+
+        let a3 = [a1]
+        let a4 = [a2]
+
+        // NOTE: In Swift 4.1, The standard library types Optional, Array, Dictionary, and Set
+        //       will conform to Equatable when their element types conform to Equatable.
+        //       This is part of Swift's Conditional Conformance.
+        //
+        // XCTAssertTrue([a3] == [a4])
+
+        XCTAssertTrue(a3.elementsEqual(a4) { (s1, s2) -> Bool in
+
+            print("\(s1) == \(s2) \(s1 == s2)")
+            return s1 == s2
+        })
     }
 }
