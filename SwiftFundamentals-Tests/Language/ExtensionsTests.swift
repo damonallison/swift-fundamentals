@@ -48,6 +48,7 @@ class ExtensionsTests: XCTestCase {
         XCTAssertEqual("damon allison", damon.name)
         XCTAssertEqual(["Created damon allison"], damon.log)
     }
+
 }
 
 /// Add protocol conformance to Person
@@ -66,4 +67,3 @@ extension ExtensionsTests.Person {
         self.internalOperations.append("Created \(self.name)")
     }
 }
-
