@@ -8,93 +8,211 @@
 
 import XCTest
 
-/**
- Swift does it's best to make memory management (and pointers) as
- transparent as possible. Under the covers, ARC provides the heavy
- lifting for managing memory. ARC needs help understanding
- reference cycles from the developer. In reality, there is very
- little an engineer needs to do to manage memory in Swift.
-
- In this example, an apartment can have a tenant and a tenant can have an apartment.
- If we are not careful with how we structure the Apartment / Tenant relationship,
- the following will create a cycle between a tenant<->apartment.
-
- There are three types of references in swift:
-
- * Strong: The default - use most of the time (most objects own others).
-
- * Weak - Use a `weak` reference when when it is valid for that reference
- to become `nil` at some point. Weak references must be optionals (since
- they can become `nil`).
-
- Typically, you'll use a `weak` reference when the refrenced object can be
- has a shorter lifetime than the current object.`nil`
-
- For example, if a `Job` object references a `Person`, make the `person` reference
- `weak` on the `Job` object. It's appropriate for a job to have no person at
- some point in it's lifetime.
-
- * Unowned - Use an `unowned` reference when you know the reference will
- never be `nil` once it has been set during initialization.
-
- If the other object has the same or longer lifetime, use `unowned`.
-
- */
-
-var logs: [String] = []
-
-func log(_ s: String) -> Void {
-  logs.append(s)
-}
-
-class Tenant {
-  var firstName: String?
-  var lastName: String?
-
-  //
-  // A tenant *requires* an apartment, therefore it cannot be a weak
-  // reference. When this tenant and the associated apartment are
-  // set to nil, both objects will be deallocated (unowned broke the
-  // cycle).
-  //
-  unowned var apartment: Apartment
-
-  init(apartment: Apartment) {
-    self.apartment = apartment
-  }
-
-  deinit {
-    log("Tenant is being deinitialized \(String(describing: firstName)) \(String(describing: lastName))")
-  }
-}
-
-
-class Apartment {
-  var aptNum: Int
-  var tenant: Tenant?
-
-  init(aptNum: Int) {
-    self.aptNum = aptNum
-  }
-
-  deinit {
-    log("Apartment is being deinitialized: \(aptNum)")
-  }
-}
-
-
+/// Swift does it's best to make memory management (and pointers) as
+/// transparent as possible. Under the covers, memory management is based on ARC.
+///
+/// ARC needs help understanding reference cycles from the developer.
+/// In reality, there is very little an engineer needs to do to manage memory in Swift.
+///
+/// In this example, an apartment can have a tenant and a tenant can have an apartment.
+/// If we are not careful with how we structure the Apartment / Tenant relationship,
+/// the following will create a reference cycle between a Tenant <-> Apartment.
+///
+/// Weak and unowned references allow you to refer to an object without keeping a
+/// strong hold on it.
+///
+///
+/// There are three types of references in swift:
+///
+/// ## Strong
+///
+/// Keeps a strong reference to an object. Increases the object's reference count.
+///
+/// ## Weak
+///
+/// Use a `weak` reference when the other object has a shorter lifespan. Delegates
+/// should use a `weak` reference. Weak references are *always* `var`s and always optional.
+///
+///         weak var delegate: TableViewDelegate?
+///
+///
+/// ## Unowned
+///
+/// Use an `unowned` reference when the other object has a longer lifespan. The other
+/// object should never be `nil`
 class MemoryManagementTests : XCTestCase {
 
+    class Logger {
+        /// Not sure how this is going to work. If XCTest runs tests in parallel,
+        /// these tests will fail.
+        static var logs: [String] = []
+    }
 
-  /// We need to fix this test. The original goal was to show that deallocating
-  /// 
-  func fixmeTestUnownedReference() {
-    let a = Apartment(aptNum: 1)
-    let t = Tenant(apartment: a)
+    class Tenant {
+        var firstName: String
+        var lastName: String
+        var apartment: Apartment
 
-    XCTAssertEqual(t.firstName, t.apartment.tenant!.firstName)
-    
-    XCTAssertTrue(true, "What are we doing here")
-  }
+        init(firstName: String, lastName: String, apartment: Apartment) {
+            self.firstName = firstName
+            self.lastName = lastName
+            self.apartment = apartment
+        }
 
+        deinit {
+            MemoryManagementTests.Logger.logs.append("Tenant is being deinitialized \(String(describing: firstName)) \(String(describing: lastName))")
+        }
+    }
+
+
+    class Apartment {
+        var aptNum: Int
+        weak var tenant: Tenant?
+
+        init(aptNum: Int) {
+            self.aptNum = aptNum
+        }
+
+        deinit {
+            MemoryManagementTests.Logger.logs.append("Apartment is being deinitialized: \(aptNum)")
+        }
+    }
+
+
+    func testWeakReferences() {
+        MemoryManagementTests.Logger.logs.removeAll()
+        var a: Apartment? = Apartment(aptNum: 1)
+        var t: Tenant? = Tenant(firstName: "test", lastName: "user", apartment: a!)
+        a?.tenant = t
+
+        // At this point, we have a reference cycle. The apartment has a strong reference to the tenant
+        // and the Tenant has a strong reference to the apartment.
+        //
+        // When the tenant leaves, the apartment should not have it's tenant.
+        // Because the apartment has a `weak` reference to it's tenant, when the tenant leaves, the tenant
+        // is deallocated. If Apartment had a strong reference to it's tenant, when t = nil, the Apartment
+        // reference would still exist.
+        t = nil
+        XCTAssertNil(a?.tenant)
+        XCTAssertTrue(MemoryManagementTests.Logger.logs[0].contains("Tenant is being deinitialized"))
+
+        a = nil
+        XCTAssertTrue(MemoryManagementTests.Logger.logs[1].contains("Apartment is being deinitialized"))
+
+    }
+
+    /// In this example, a Customer may or may not have a credit card. But a credit card will always
+    /// have a customer.
+    class Customer {
+        let name: String
+        var card: CreditCard?
+
+        init(name: String) {
+            self.name = name
+        }
+        deinit {
+            MemoryManagementTests.Logger.logs.append("Customer is being deinitialized")
+        }
+    }
+
+    class CreditCard {
+        let number: Int
+        unowned let customer: Customer
+
+        init(number: Int, customer: Customer) {
+            self.number = number
+            self.customer = customer
+        }
+        deinit {
+            MemoryManagementTests.Logger.logs.append("CreditCard is being deinitialized")
+        }
+    }
+
+    func testUnownedReferences() {
+
+        MemoryManagementTests.Logger.logs.removeAll()
+
+        var customer: Customer? = Customer(name: "damon")
+        customer!.card = CreditCard(number: 1, customer: customer!)
+
+        // Because CreditCard is not holding a strong reference to Customer, we do not have a reference cycle.
+        // However, we must ensure we set the CreditCard to nil first. It is illegal to have a CreditCard without
+        // a customer. If we set the customer to nil, accessing CreditCard.customer will crash the program.
+
+        customer!.card = nil
+        XCTAssertTrue(MemoryManagementTests.Logger.logs[0].contains("CreditCard is being deinitialized"))
+
+        // Because we have no strong reference back to Customer, we can set customer to nil and it will be deallocated.
+        customer = nil
+        XCTAssertTrue(MemoryManagementTests.Logger.logs[1].contains("Customer is being deinitialized"))
+
+    }
+
+    /// A strong reference cycle can occur when you assign a closure property to a class instance
+    /// and the body of the closure captures the instance (with self).
+    ///
+    /// This strong reference cycle occurs because closures are reference types (like objects).
+    ///
+    /// Swift solves this problem by allowing closure capture lists.
+    func testStrongReferenceCyclesForClosures() {
+
+        class HTMLElement {
+            let name: String
+            let text: String?
+
+            /// Because this property is marked `lazy`, it does not accessed until after initialization.
+            /// Therefore, you can refer to self.
+            ///
+            /// Without the unowned self capture, a strong reference cycle exists between the closure
+            /// and self.
+            ///
+            /// Use unowned when the lifetime of the closure and the instance always refer to each other
+            /// and will be deallocated at the same time. In this case, the closure and the instance
+            /// will be deallocated together.
+            lazy var asHTML: () -> String = { [unowned self /* , weak otherVar... */ ] in
+                if let text = self.text {
+                    return "<\(self.name)>\(text)</\(self.name)>"
+                }
+                else {
+                    return "<\(self.name) />"
+                }
+            }
+
+            /// Capturing a variable as "weak" will capture the reference as an optional.
+            /// Use optional binding to check for nil, act appropriately.
+            ///
+            /// If the object being captured could ever be set to nil (has a shorter lifetime than the closure),
+            /// capture it as weak.
+            ///
+            /// This is here just for an example. In this case, you'd want to use unowned.
+            lazy var asHTMLWeak: () -> String = { [weak self] in
+                guard let strongSelf = self else {
+                    return "Unknown"
+                }
+                if let text = strongSelf.text {
+                    return "<\(strongSelf.name)>\(text)</\(strongSelf.name)>"
+                }
+                else {
+                    return "<\(strongSelf.name) />"
+                }
+            }
+
+            init(name: String, text: String? = nil) {
+                self.name = name
+                self.text = text
+            }
+
+            deinit {
+                MemoryManagementTests.Logger.logs.append("HTMLElement is being deinitialized")
+            }
+        }
+
+        MemoryManagementTests.Logger.logs.removeAll()
+        var h: HTMLElement? = HTMLElement(name: "h1")
+        XCTAssertEqual("<h1 />", h?.asHTML())
+        XCTAssertEqual("<h1 />", h?.asHTMLWeak())
+        h = nil;
+
+        XCTAssertTrue(MemoryManagementTests.Logger.logs[0].contains("HTMLElement is being deinitialized"))
+    }
 }
