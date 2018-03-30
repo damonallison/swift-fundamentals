@@ -253,4 +253,41 @@ class MemoryManagementTests : XCTestCase {
 
         XCTAssertTrue(MemoryManagementTests.Logger.logs.isEmpty)
     }
+
+
+
+    // MARK:- Memory Safety
+
+
+
+
+    /// Memory safety is lost when multiple code contexts have overlapping read and/or write access to the same variable.
+    ///
+    /// Guidelines:
+    ///
+    /// * Avoid `inout` parameters. If you do use them, ensure a function does not try to both read and write
+    ///   to the parameter.
+    ///
+    /// * Think functionally! State is evil. Avoid mutation.
+    ///
+    /// `inout` parameters have write access for the duration of the function.
+    /// Here, `stepSize` is both readable and writable from within `incrementInPlace`.
+    ///
+    /// This test will crash.
+    ///
+    /// Simultaneous accesses to 0x10262b5c0, but modification requires exclusive access.
+    /// Previous access (a modification) started at SwiftFundamentals-Tests`MemoryManagementTests.testMemorySafety() + 123 (0x1069a109b).
+    /// Current access (a read) started at:
+    /// 0    libswiftCore.dylib                 0x0000000106dec650 swift_beginAccess + 511
+    /// 1    SwiftFundamentals-Tests            0x00000001069a10d0 incrementInPlace #1 (_:) in MemoryManagementTests.testMemorySafety() + 76
+//    func testMemorySafety() {
+//
+//        var stepSize = 1
+//        func incrementInPlace(_ number: inout Int) {
+//            number += stepSize
+//        }
+//        incrementInPlace(&stepSize)
+//    }
+
+
 }

@@ -7,6 +7,8 @@
 * Point.swift - verify access modifier explanation.
 * Why does a new Swift file include `import Foundation`?
 * Does `XCTest` run tests serially or in parallel?
+* Memory Management : What is `Thread Sanitizer`?
+> Use Thread Sanitizer to help detect conflicting access across threads.
 
 
 ## Language
