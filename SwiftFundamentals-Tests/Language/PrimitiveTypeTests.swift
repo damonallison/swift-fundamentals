@@ -45,6 +45,52 @@ class PrimitiveTypeTests: XCTestCase {
         XCTAssertTrue(UInt8.min == UInt8(UInt16.min))
     }
 
+    /// Swift does not allow integer overflow by default.
+    func testIntegerOverflowOperators() {
+        var i = Int.max
+
+        // traps - integer overflow
+        // i = i + 1
+
+
+        i = i &+ 1 // overflows
+        XCTAssertEqual(Int.min, i)
+        XCTAssertEqual(Int.max &+ 1, Int.min)
+    }
+
+    func testBitwiseOperator() {
+
+        let bits: UInt8 = 0b00000001
+        let inverted = ~bits
+
+        // Bitwise NOT
+        XCTAssertEqual(0b11111110, inverted)
+
+        // Bitwise OR
+        XCTAssertEqual(0b11111111, bits | inverted)
+
+        // Bitwise AND
+        XCTAssertEqual(0b00000000, bits & inverted)
+
+        // Bitwise XOR
+        XCTAssertEqual(0b11111111, bits ^ inverted)
+
+        // [1] [1][1][1][1][1]][0][0]
+        let minusFour: Int8 = -4
+
+        // [1] [1][1][1][1][1]][1][0]
+        XCTAssertEqual(-2, minusFour >> 1)
+
+        // [1] [1][1][1][1][1]][1][1]
+        XCTAssertEqual(-1, minusFour >> 2)
+
+        // [1] [1][1][1][1][0]][0][0]
+        XCTAssertEqual(-8, minusFour << 1)
+
+        // [1] [1][1][1][0][0]][0][0]
+        XCTAssertEqual(-16, minusFour << 2)
+    }
+
     // MARK:- Floating Points
 
     ///
@@ -64,6 +110,9 @@ class PrimitiveTypeTests: XCTestCase {
         let f = Float(3.0)
         XCTAssertEqual(d as! Double, Double(f), "Implicit floating point type conversion is not allowed - float must be casted")
     }
+
+
+    // MARK:- Tuples
 
 
     /// Tuples are small, flexible, lightweight data structures.
@@ -97,10 +146,9 @@ class PrimitiveTypeTests: XCTestCase {
         assert(firstName == "Damon")
     }
 
-    /**
-     Aliases allow you to provide another name for an existing type which
-     can help increase code readability.
-     */
+
+    /// Type aliases allow you to provide another name for an existing type.
+    /// This can help increase code readability.
     typealias MyInt = Int
 
     func testAliases() {

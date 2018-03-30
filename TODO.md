@@ -9,6 +9,13 @@
 * Does `XCTest` run tests serially or in parallel?
 * Memory Management : What is `Thread Sanitizer`?
 > Use Thread Sanitizer to help detect conflicting access across threads.
+* How does `@testable` work?
+
+
+* In Swift 4.1, what protocols are synthesized by default?
+    > Structures that have only stored properties that conform to `Equatable`.
+    > Enums that have only associated types that conform to `Equatable`.
+    > Enums that have no associated type.
 
 
 ## Language

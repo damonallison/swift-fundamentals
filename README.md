@@ -1,38 +1,30 @@
 # Swift
 
 > "Swift is the first industrial-quality systems programming language that is as expressive and enjoyable as a scripting language." - Apple
+
 > "The syntax and standard library have been designed based on the guiding principle that the obvious way to write your code should also perform the best." - Apple
+
 > "Its combination of safety and speed make Swift an excellent choice for everything from “Hello, world!” to an entire operating system." - Apple
 
-Every programming language has an idiomatic style and set of library features that are "core" to its understanding. To become truly proficient in any language, you must understand these idioms and core libraries.
+This repo contains tests which explain the features of Swift.
 
-This repo will show you this "core" set of swift features. This `README` describes at a very high level the highlights and main points of swift. The source code is laid out in a way that will show a single feature, pattern, or library by itself.
+Swift is a statically typed, compiled lanaguage with a functional / dynamic language feel. It's fast, safe, and modern. Swift follows `go` in continuing the trend of making safe, statically typed language that feels like a dynamic scripting language.
 
 ## Start here
-
-* `Basics.playground` contains a brief overview of swift's main features. For
-  example : classes, generics, optionals, lambdas, and functions.
 
 * Run the tests (Cmd-U) to execute a suite of tests which show various language
   and library features.
 
 ## Required reading
 
-Just like every language has its idioms, it also has its bibles - the sources of
-truth that all programmers agree are seminal. The following sources are "must
-reads" for every swift programmer.
-
+The following resources are required reading for any Swift programmer.
 
 * [swift.org](http://swift.org) : Home of the swift open source project. Start here.
-
-* [Chris Lattner's Homepage](http://www.nondot.org/sabre/): Chris started swift
-  as well as the vast majority of the modern Apple toolchain, including LLVM and
-  the compiler infrastructure.
 
 * [The Swift Programming Language](https://developer.apple.com/library/ios/documentation/Swift/Conceptual/Swift_Programming_Language/) :
   The seminal book describing the swift language.
 
-* [Using Swift with Cocoa and Objective-C (Swift 2.1)](https://developer.apple.com/library/ios/documentation/Swift/Conceptual/BuildingCocoaApps/index.html#//apple_ref/doc/uid/TP40014216)
+* [Chris Lattner's Homepage](http://www.nondot.org/sabre/): Chris started swift as well as the vast majority of the modern Apple toolchain, including LLVM and the compiler infrastructure.
 
 
 ## Swift Overview
@@ -61,8 +53,12 @@ reads" for every swift programmer.
 
 * Defer
   * A better way to clean up resources.
+
 * Error handling
   * Clean, performant in that it doesn't unwind the stack.
+
+* Access control.
+  * Safe by default.
 
 ### Modern
 
@@ -71,8 +67,9 @@ reads" for every swift programmer.
 * String interpolation.
 * Tuples allow for simple data structures and multiple return values.
 * ivars are removed. You cannot define or access a property's ivar directly. Much less error prone.
-
 * var / let : no need for non-mutable and mutable versions of the same classes (e.g. NSString, NSMutableString)
+* Pattern matching and variable capture in `switch`.
+* Flexible `enums` and `structs`.
 
 ### Evolution of Objective-C : "Swift is `Objective-C without the C`"
 
@@ -83,10 +80,11 @@ reads" for every swift programmer.
 
 ### Dislikes
 
-* Swift allows optional parens and semi-colons. It should force one or the other.
 * There is no code-formatter (`go-fmt`).
   * No style consistency between projects.
   * Requires each team to have unproductive "style wars".
+* While memory is *mostly* managed for you, there are still edge cases which require running leak detection before shipping.
+
 
 ## Swift Language
 

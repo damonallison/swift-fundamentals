@@ -16,6 +16,8 @@
 		7A7DD29D206BBDB10024A0B2 /* ProtocolTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A7DD29C206BBDB10024A0B2 /* ProtocolTests.swift */; };
 		7A81F8F41C83CD07008D7F09 /* Superman.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A81F8F31C83CD07008D7F09 /* Superman.swift */; };
 		7A8A3B9D1C740E2C005ADEB1 /* Globals.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A8A3B9C1C740E2C005ADEB1 /* Globals.swift */; };
+		7ACCEBBB206E538600689E1C /* AccessControlTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ACCEBBA206E538600689E1C /* AccessControlTests.swift */; };
+		7ACCEBBD206E6A0300689E1C /* OperatorOverloadTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ACCEBBC206E6A0300689E1C /* OperatorOverloadTests.swift */; };
 		7ADBC0E9206B326800D4BEEB /* TypeCastingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ADBC0E8206B326800D4BEEB /* TypeCastingTests.swift */; };
 		7AEBF7BC205F3D4400A88D92 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AEBF7BB205F3D4400A88D92 /* main.swift */; };
 		7AEC77971D2FE69D0076DFE1 /* FuncQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AEC77961D2FE69D0076DFE1 /* FuncQueue.swift */; };
@@ -67,6 +69,8 @@
 		7A7DD29C206BBDB10024A0B2 /* ProtocolTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProtocolTests.swift; sourceTree = "<group>"; };
 		7A81F8F31C83CD07008D7F09 /* Superman.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Superman.swift; sourceTree = "<group>"; };
 		7A8A3B9C1C740E2C005ADEB1 /* Globals.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Globals.swift; sourceTree = "<group>"; };
+		7ACCEBBA206E538600689E1C /* AccessControlTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessControlTests.swift; sourceTree = "<group>"; };
+		7ACCEBBC206E6A0300689E1C /* OperatorOverloadTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OperatorOverloadTests.swift; sourceTree = "<group>"; };
 		7ADBC0E8206B326800D4BEEB /* TypeCastingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypeCastingTests.swift; sourceTree = "<group>"; };
 		7AEBF7B9205F3D4400A88D92 /* SwiftFundamentals */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = SwiftFundamentals; sourceTree = BUILT_PRODUCTS_DIR; };
 		7AEBF7BB205F3D4400A88D92 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
@@ -189,6 +193,7 @@
 			children = (
 				E52087911C51CD59004AC9AF /* ClassesTests.swift */,
 				E52087961C51CD59004AC9AF /* GenericsTests.swift */,
+				7ACCEBBC206E6A0300689E1C /* OperatorOverloadTests.swift */,
 				E520878B1C51CD4F004AC9AF /* Person.swift */,
 				E520878C1C51CD4F004AC9AF /* Printable.swift */,
 				7A3085001C6A9B0700F35E22 /* Rectangle.swift */,
@@ -202,6 +207,7 @@
 		E52087881C51CD1A004AC9AF /* Language */ = {
 			isa = PBXGroup;
 			children = (
+				7ACCEBBA206E538600689E1C /* AccessControlTests.swift */,
 				E52087921C51CD59004AC9AF /* CommentTests.swift */,
 				E520879B1C51CD59004AC9AF /* ControlFlow.swift */,
 				E5C53CF01C5272BB0068C9EC /* ErrorHandlingTests.swift */,
@@ -330,6 +336,7 @@
 				E52087A21C51CD59004AC9AF /* FunctionsTests.swift in Sources */,
 				E52087A41C51CD59004AC9AF /* MemoryManagementTests.swift in Sources */,
 				E52087A61C51CD59004AC9AF /* OptionalsTests.swift in Sources */,
+				7ACCEBBB206E538600689E1C /* AccessControlTests.swift in Sources */,
 				E520879E1C51CD59004AC9AF /* ClassesTests.swift in Sources */,
 				7A07444D1C6A9DDB00D64D50 /* Square.swift in Sources */,
 				E520879F1C51CD59004AC9AF /* CommentTests.swift in Sources */,
@@ -340,6 +347,7 @@
 				E52087A11C51CD59004AC9AF /* EnumTests.swift in Sources */,
 				7A81F8F41C83CD07008D7F09 /* Superman.swift in Sources */,
 				7AEC82821C696C2100F1DCE3 /* StructuresTests.swift in Sources */,
+				7ACCEBBD206E6A0300689E1C /* OperatorOverloadTests.swift in Sources */,
 				E52087A01C51CD59004AC9AF /* DictionaryTests.swift in Sources */,
 				7AEC82801C69677800F1DCE3 /* Point.swift in Sources */,
 				7A07444F1C6A9EB300D64D50 /* TimesTable.swift in Sources */,
