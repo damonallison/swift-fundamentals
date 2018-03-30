@@ -6,6 +6,7 @@
 * Person.swift - verify access modifier explanation.
 * Point.swift - verify access modifier explanation.
 * Why does a new Swift file include `import Foundation`?
+* Does `XCTest` run tests serially or in parallel?
 
 
 ## Language

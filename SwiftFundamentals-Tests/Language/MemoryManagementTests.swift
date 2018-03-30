@@ -215,4 +215,42 @@ class MemoryManagementTests : XCTestCase {
 
         XCTAssertTrue(MemoryManagementTests.Logger.logs[0].contains("HTMLElement is being deinitialized"))
     }
+
+    /// This test shows a memory leak caused by a cycle.
+    func testStrongReferenceCycleLeak() {
+
+        class HTMLElementLeaky {
+            let name: String
+            let text: String?
+
+            /// asHTML is a property of the object which also captures the object.
+            ///
+            /// This cyclic relationship will cause a memory leak.
+            /// Every instance of this object which uses asHTML will leak.
+            lazy var asHTML: () -> String = {
+                if let text = self.text {
+                    return "<\(self.name)>\(text)</\(self.name)>"
+                }
+                else {
+                    return "<\(self.name) />"
+                }
+            }
+
+            init(name: String, text: String? = nil) {
+                self.name = name
+                self.text = text
+            }
+
+            deinit {
+                MemoryManagementTests.Logger.logs.append("HTMLElement is being deinitialized")
+            }
+        }
+
+        MemoryManagementTests.Logger.logs.removeAll()
+        var h: HTMLElementLeaky? = HTMLElementLeaky(name: "test")
+        let _ = h!.asHTML()
+        h = nil;
+
+        XCTAssertTrue(MemoryManagementTests.Logger.logs.isEmpty)
+    }
 }
