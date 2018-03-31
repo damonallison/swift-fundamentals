@@ -8,26 +8,26 @@
 
 import XCTest
 
-class SetTests : XCTestCase {
-
-    /// Anything stored in a Set must conform to Hashable.
-    class Pair<T: Hashable> : Hashable {
-
-        var one: T
-        var two: T
-        init(one: T, two: T) {
-            self.one = one
-            self.two = two
-        }
-        var hashValue: Int {
-            get {
-                return one.hashValue ^ two.hashValue
-            }
-        }
-        static func ==(lhs: Pair<T>, rhs: Pair<T>) -> Bool {
-            return lhs.hashValue == rhs.hashValue
+/// Anything stored in a Set must conform to Hashable.
+class Pair<T: Hashable> : Hashable {
+    
+    var one: T
+    var two: T
+    init(one: T, two: T) {
+        self.one = one
+        self.two = two
+    }
+    var hashValue: Int {
+        get {
+            return one.hashValue ^ two.hashValue
         }
     }
+    static func ==(lhs: Pair<T>, rhs: Pair<T>) -> Bool {
+        return lhs.hashValue == rhs.hashValue
+    }
+}
+
+class SetTests : XCTestCase {
 
     /// Sets store an unordered, unique collection of values.
     ///

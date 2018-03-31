@@ -1,5 +1,7 @@
 # Swift TODO
 
+* Install `fish` shell.
+
 * Review tests for optionals (chaining).
 * Why did swift decide to use both argument labels and parameter names for function parameters?
 * How to analyze swift for dead code?

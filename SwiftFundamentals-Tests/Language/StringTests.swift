@@ -72,7 +72,7 @@ class StringTests : XCTestCase {
         // countElements will *not* be the same as NSString's [length] property since [NSString length]
         // uses 16 bit code units only, where unicode can use 32 bit characters.
         //
-        XCTAssertEqual(13, "damon allison".count)
+        XCTAssertEqual(13, "damon allison".characters.count)
 
         //
         // NSString bridging.
@@ -91,7 +91,7 @@ class StringTests : XCTestCase {
             "Swift.String has full access to the NSString API")
 
         //        var components = NSURL(fileURLWithPath: "/this/is/a/path.txt").pathComponents
-
+        
         //TODO: - Show unwrapping an optional.
         //        XCTAssertTrue(components.count == 5)
         //        XCTAssertTrue(components[0] == "/")
@@ -111,8 +111,8 @@ class StringTests : XCTestCase {
 
         XCTAssertEqual(s, s2)
         XCTAssertTrue(s == s2)
-        XCTAssertEqual(1, s.count)
-        XCTAssertEqual(1, s2.count)
+        XCTAssertEqual(1, s.characters.count)
+        XCTAssertEqual(1, s2.characters.count)
 
         // Because each character may take up a different amount of memory,
         // you can't directly index a string by position.
@@ -130,18 +130,18 @@ class StringTests : XCTestCase {
     /// as long as a substring exists, the original string must be kept
     /// in memory.
 
+    #if swift(>=4.1)
     func testSubstrings() {
         let s = "damon"
+        
         // using the range operator
         let prefix = s[..<s.index(of: "m")!]
         let prefix2 = s.prefix(upTo: s.index(of: "m")!)
 
         XCTAssertEqual("da", prefix)
         XCTAssertEqual("da", prefix2)
-
-
-
     }
+    #endif
 
 }
 

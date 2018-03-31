@@ -148,6 +148,8 @@ class MemoryManagementTests : XCTestCase {
 
     }
 
+    
+#if swift(>=4.1)
     /// A strong reference cycle can occur when you assign a closure property to a class instance
     /// and the body of the closure captures the instance (with self).
     ///
@@ -255,7 +257,8 @@ class MemoryManagementTests : XCTestCase {
     }
 
 
-
+#endif
+    
     // MARK:- Memory Safety
 
 

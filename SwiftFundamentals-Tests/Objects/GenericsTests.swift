@@ -133,12 +133,15 @@ class GenericsTests: XCTestCase {
         XCTAssertEqual(2, s.count)
         XCTAssertEqual(200, s[1])
 
+        #if swift(>=4.1)
         // Show the suffixable container protocol.
         XCTAssertEqual(1, s.suffix(1).count)
         XCTAssertEqual(200, s.suffix(1)[0])
 
         // Show the Container extension.
         XCTAssertEqual([100], s[[0]])
+        #endif
+        
     }
 }
 
@@ -156,7 +159,12 @@ protocol Container {
     var count: Int { get }
     subscript(i: Int) -> Item { get }
 
+    #if swift(>=4.1)
     associatedtype Iterator: IteratorProtocol where Iterator.Element == Item
+    #else
+    associatedtype Iterator: IteratorProtocol
+    #endif
+    
     func makeIterator() -> Iterator
 }
 
@@ -164,6 +172,8 @@ protocol Container {
 ///
 /// Here, this subscript accepts a sequence of Ints, returning an array of items
 /// at the given indices.
+
+#if swift(>=4.1)
 extension Container {
 
     subscript<Indices: Sequence>(indices: Indices) -> [Item]
@@ -174,8 +184,9 @@ extension Container {
         }
         return result
     }
-
+    
 }
+#endif
 
 
 /// A protocol can appear as part of it's own requirements.
@@ -185,10 +196,13 @@ extension Container {
 /// having items the same type as the Container's item.
 ///
 /// This shows that an associated type can refer to itself.
+
+#if swift(>=4.1)
 protocol SuffixableContainer: Container {
     associatedtype Suffix: SuffixableContainer where Suffix.Item == Item
     func suffix(_ size:Int) -> Suffix
 }
+#endif
 
 
 struct Stack<Element: Hashable> {
@@ -225,6 +239,7 @@ extension Stack: Container {
     }
 }
 
+#if swift(>=4.1)
 extension Stack: SuffixableContainer {
     // Swift infers that SuffixableContainer's "Suffix" type is type Stack<Element>,
     // so this could be omitted.
@@ -238,6 +253,7 @@ extension Stack: SuffixableContainer {
         return result
     }
 }
+#endif
 
 /// Note that when you extend a generic type, you don't provide a type list.
 /// The type parameter list from the original type definition is available
@@ -263,9 +279,12 @@ extension Stack where Element: Hashable  {
 ///
 /// This shows constraining a generic type down to a single type.
 /// It's a very restrictive constraint.
+
+#if swift(>=4.1)
 extension Stack where Element == Double {
     // Add interface here.
 }
+#endif
 
 /// Array naturally conforms to container as defined above.
 ///

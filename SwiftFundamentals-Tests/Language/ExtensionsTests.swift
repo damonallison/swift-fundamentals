@@ -26,7 +26,7 @@ class ExtensionsTests: XCTestCase {
 
     class Person {
         var name = "[unknown]"
-        private var internalOperations = [String]()
+        fileprivate var internalOperations = [String]()
 
         init(name: String) {
             self.name = name

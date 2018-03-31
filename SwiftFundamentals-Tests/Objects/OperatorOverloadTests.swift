@@ -73,6 +73,11 @@ class OperatorOverloadTests: XCTestCase {
     struct Point: Equatable {
         var x = 0.0
         var y = 0.0
+        
+        // In Swift 4.1, this function will be synthesized for you. You don't need to write it.
+        static func ==(lhs: Point, rhs: Point) -> Bool {
+            return lhs.x == rhs.x && lhs.y == rhs.y
+        }
     }
 
     /// Note that #swift(>=4.1) creates (synthesizes) a default implementation

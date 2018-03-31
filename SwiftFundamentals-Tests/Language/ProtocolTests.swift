@@ -90,7 +90,7 @@ class ProtocolTests: XCTestCase {
         ///
         /// Note this is redundant. Named implements Hashable. But this is
         /// for illustration purposes only.
-        func printHashAndName<T: Named & Hashable & TextRepresentable>(param: T) -> String {
+        func printHashAndName<T: Named & Hashable>(param: T) -> String {
             return "\(param.name): \(param.hashValue)"
         }
         let p = Person(firstName: "damon", lastName: "allison")
@@ -154,8 +154,7 @@ class ProtocolTests: XCTestCase {
 /// protocol Names: Equatable, AnyObject
 ///
 /// AnyObject should be used for delegates, which should be a class type.
-protocol Named: Hashable, TextRepresentable {
-
+protocol Named: Hashable {
     /// Protocols can require initializers.
     ///
     /// When implementing the initializer, you must mark the initializer

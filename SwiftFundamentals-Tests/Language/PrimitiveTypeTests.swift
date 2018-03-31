@@ -37,7 +37,11 @@ class PrimitiveTypeTests: XCTestCase {
 
         // Integers in swift are structs. Structs have properties, methods, and class methods.
         XCTAssertEqual("10", u10.description) // property
+        
+        #if swift(>=4.1)
         XCTAssertEqual(UInt8(11), u10.unsafeAdding(1)) // method
+        #endif
+        
         XCTAssertEqual(UInt8.min.advanced(by: 10), UInt8(10)) // class methods
 
         // Shows implicit type conversion is not allowed in swift!
