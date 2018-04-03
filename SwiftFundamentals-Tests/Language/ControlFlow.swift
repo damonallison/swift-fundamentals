@@ -181,7 +181,7 @@ class ControlFlowTests : XCTestCase {
         case (_, 1):
             break
         default:
-            XCTFail()
+            break
         }
     }
 

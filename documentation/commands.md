@@ -18,3 +18,6 @@
 * Open a UI dialog to request automatic installation of the developer tools.
 `$ xcode-select --install`
 
+## xcrun
+
+`xcrun` is used to find and run developer commands from the active developer directory.

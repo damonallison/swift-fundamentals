@@ -57,25 +57,20 @@
 ///   `let` and `var` properties both can be assigned during initialization.
 ///
 /// * The swift compiler enforces that *all* classes must have values assigned
-///   for all non-optional properties.
+///   for all non-optional properties before initialization finished.
 ///
 ///
-/// * Access Control:
+/// * Access Control
 ///
-/// TODO:- Determine if this is still true or not.
-///
-///
-/// * Each Xcode target is a `module`.
-/// * Each source code file can contain multiple types.
-///
-/// * `private` - only accessable within the lexical scope where it's declared (
-/// * `fileprivate`  - all types in this *file* have access. This is the "lowest" access level.
-/// * `internal` - (default) all types in this module have access
+/// * `private` - private to the class and (as of Swift 4.1) any extensions of the class
+///               defined in this file.
+/// * `fileprivate`  - all types in this *file* have access.
+/// * `internal` - (default) all types in this module have access.
 /// * `public`   - visible outside the module. This is the "highest" access level.
 ///
 class Person : Printable {
 
-    /// Stored type properties must have a default value.
+    /// Stored type properties must have a default value or be optional.
     static let defaultName = "Damon"
 
     /// Stored type properties can also have observers.
@@ -88,13 +83,12 @@ class Person : Printable {
         }
     }
 
-    /// Like instance properties, omputed type properties must be declared with `var`,
+    /// Computed type properties must be declared with `var`,
     /// even if they are read only.
     ///
     /// Computed type properties can be defined with "static" or "class".
     /// * static : Cannot be overridden by sublcasses.
     /// * class : Can be overridden by subclasses.
-
     class var defaultFullName : String {
         return "\(defaultName) \(defaultLastName)"
     }
@@ -104,7 +98,6 @@ class Person : Printable {
     /// the getter is `internal` and the setter is `private`.
     fileprivate(set) var lastAccessed = Date()
 
-    ///
     /// A 'lazy' property does not need to be set during initialization.
     /// It will initialize itself when accessed.
     ///
@@ -124,7 +117,6 @@ class Person : Printable {
     ///
     /// * Computing the value is expensive and you want to delay
     ///   computation until it's absolutely needed.
-    ///
     fileprivate lazy var initialName = String()
 
     private var firstNameInternal: String
@@ -161,11 +153,7 @@ class Person : Printable {
     /// Property observers could be useful for :
     ///
     /// * Logging
-    /// * Mocking? - can we dynamically add observers to objects?
-    /// * Validation? - can we prevent a property from being set via an observer?
-    ///   Or would we need to write acustom "computed" property which validates
-    ///   and sets an internal property only when valid?
-    ///
+    /// * Validation
     var address: String {
         willSet {
             print("willSet address to \(newValue)", terminator: "")
@@ -248,8 +236,9 @@ class Person : Printable {
             return firstNameInternal
         }
         set {
-            // TODO: Is this the correct way to get a string length? This doesn't seem correct.
-            firstNameInternal = newValue.utf16.count > 5 ? (newValue as NSString).substring(to: 5) : newValue;
+            // Swift 3.
+            let index: String.Index = newValue.index(newValue.startIndex, offsetBy: min(newValue.characters.count, 5))
+            firstNameInternal = newValue.substring(to: index)
         }
     }
 

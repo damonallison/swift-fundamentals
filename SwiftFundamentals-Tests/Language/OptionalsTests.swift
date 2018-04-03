@@ -8,23 +8,7 @@
 
 import XCTest
 
-/**
- Optionals represents a possible nil value.
- 
- Prior to optioanls, we had multiple sentinal values.
- NSNotFound, -1, nil, 0, IntMax, etc.
- Optionals simplifies code by having a "one true" sentinal value.
- 
- Non-optional types *cannot* be nil. This makes your code safe
- by knowing that you will have a value if you want it.
-
- Optionals are like "nil" in objective-c. The difference in swift is *all*
- types, even "primitives" like Int and Double can be optionals.
- */
-
-/**
- A list-like data structure that allows us to illustrate optional chaining.
- */
+/// A list-like data structure that allows us to illustrate optional chaining.
 class Node<T> {
     var value: T
     var child: Node?
@@ -34,6 +18,18 @@ class Node<T> {
     }
 }
 
+/// Optionals represent a possible nil value.
+///
+/// Prior to optioanls, we had multiple sentinal values.
+/// NSNotFound, -1, nil, 0, IntMax, etc.
+/// Optionals simplifies code by having a "one true" sentinal value.
+///
+/// Non-optional types *cannot* be nil. This makes your code safe
+/// by knowing that you will have a value if you need one. This helps prevent
+/// null reference exceptions.
+///
+/// Optionals are like "nil" in Objective-c. The difference in swift is *all*
+/// types, even "primitives" like Int and Double can be optionals.
 class OptionalsTests : XCTestCase {
 
     func testOptionals() {
@@ -43,7 +39,6 @@ class OptionalsTests : XCTestCase {
         //
         var optionalInt: Int?
         XCTAssertNil(optionalInt)
-        XCTAssertTrue(optionalInt == nil)
 
         //
         // Retrieving a value from an optional requires you to "unwrap" the optional
@@ -65,7 +60,6 @@ class OptionalsTests : XCTestCase {
         //
         // You can bind multiple variables by separating multiple lets with a comma.
         //
-
         let y: Int? = 10
         if let x = optionalInt, let y = y {
             //
@@ -75,7 +69,7 @@ class OptionalsTests : XCTestCase {
             // `y` is rebound to a non-optional `Int` in this block.
             //
             // The pattern of binding the same variable name `let y = y` is a common shorthand
-            // used to reduce the reintroduction of another variable with the same meaning.
+            // used to introduce a nonoptional variable with the same meaning.
             //
             XCTAssertEqual(x, 10)
             XCTAssertEqual(y, 10)
@@ -112,6 +106,8 @@ class OptionalsTests : XCTestCase {
         // and used in if-let bindings.
         implicitlyUnwrapped = nil
 
+        // Be careful here. Trying to access a member of the implicitly unwrapped
+        // optional here, with the optional nil, will cause a crash.
         XCTAssertNil(implicitlyUnwrapped)
 
         if let v = implicitlyUnwrapped {
@@ -184,6 +180,8 @@ class OptionalsTests : XCTestCase {
         //
         // Here, the chain stops at parent.child?
         //
+        // As soon as one member of the optional chain returns nil, the entire expression
+        // returns nil.
         parent.child = nil
         XCTAssertNil(parent.child?.child?.value)
     }
