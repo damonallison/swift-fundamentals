@@ -1,5 +1,9 @@
 # Swift TODO
 
+* Replace `print` statements with logging (to a cloud service? Apple logging infrastructure?)
+
+
+
 * UITextField custom overlay (`cut`, `copy`, `paste`)
 * Library for automatically verifying all `@IBOutlet`s are non-nil.
 * Accessability 
@@ -80,7 +84,8 @@
 ## Tools
 
 * Xcode
-    * What is the difference between `xcodeproj` and `xcworkspace`?
+	* What is the difference between `xcodeproj` and `xcworkspace`?
+	* In the `Identity Inspector` - what are all the values used for?
 
 * Comments (doxygen? `CLANG_WARN_DOCUMENTATION_COMMENTS`)
 * AppCode
