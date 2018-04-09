@@ -186,6 +186,10 @@ class EnumTests : XCTestCase {
         case redirect(URL)
     }
 
+    func generateRedirectResponseWithURL(url: URL) -> APIResponse {
+        return .redirect(url)
+    }
+
     func generateMockResponse(_ err: String? = nil) -> APIResponse {
         if let e = err {
             return APIResponse.failure(path: e)
@@ -201,6 +205,19 @@ class EnumTests : XCTestCase {
         switch self.generateMockResponse("Oops") {
         case let .failure(error):
             XCTAssertEqual(error, "Oops")
+        default:
+            XCTFail()
+        }
+
+        guard let u = URL(string: "http://developer.apple.com") else {
+            XCTFail("Expected a valid URL string")
+            return
+        }
+
+        let response = self.generateRedirectResponseWithURL(url: u)
+        switch(response) {
+        case let .redirect(url):
+            XCTAssertEqual(u, url)
         default:
             XCTFail()
         }
