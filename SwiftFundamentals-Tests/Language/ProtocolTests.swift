@@ -10,7 +10,7 @@ import XCTest
 
 class ProtocolTests: XCTestCase {
 
-    class Person: Named {
+    class Person: Named, TextRepresentable {
         var name: String
 
         // Readonly protocol properties can be implemented with let.
@@ -99,6 +99,7 @@ class ProtocolTests: XCTestCase {
     }
 
     #if swift(>=4.1)
+    
     func testConditionalConformance() {
         let a = [Person(name: "damon"), Person(name: "cole")]
 
@@ -106,8 +107,9 @@ class ProtocolTests: XCTestCase {
         // Array<Person> also conforms to TextRepresentable.
         XCTAssertEqual("Person: damon, Person: cole", a.textDescription)
     }
-    #endif
 
+    #endif
+    
     /// Optional protocol requirements allow you to define "optional" interface
     /// elements as you could in Objective-C. Optional protocol requirements are
     /// available so you can interoperate with Objective-C.
@@ -194,11 +196,11 @@ extension Named {
 /// Conditional conformance allows a type to conform to a protocol under certain conditions,
 /// like when the type of its generic parameter conforms to the protocol.
 
-#if swift(>=4.1)
-
 protocol TextRepresentable {
     var textDescription: String { get }
 }
+
+#if swift(>=4.1)
 
 /// Array conditionally conforms to TextRepresentable.
 ///

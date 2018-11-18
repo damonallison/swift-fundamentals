@@ -72,7 +72,7 @@ class StringTests : XCTestCase {
         // countElements will *not* be the same as NSString's [length] property since [NSString length]
         // uses 16 bit code units only, where unicode can use 32 bit characters.
         //
-        XCTAssertEqual(13, "damon allison".characters.count)
+        XCTAssertEqual(13, "damon allison".count)
 
         //
         // NSString bridging.
@@ -111,8 +111,8 @@ class StringTests : XCTestCase {
 
         XCTAssertEqual(s, s2)
         XCTAssertTrue(s == s2)
-        XCTAssertEqual(1, s.characters.count)
-        XCTAssertEqual(1, s2.characters.count)
+        XCTAssertEqual(1, s.count)
+        XCTAssertEqual(1, s2.count)
 
         // Because each character may take up a different amount of memory,
         // you can't directly index a string by position.

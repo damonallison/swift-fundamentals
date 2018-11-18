@@ -198,9 +198,10 @@ class ControlFlowTests : XCTestCase {
         // In this case, `n` is bound in both patterns. The block will always have a bound `n` constant.
         //
         // The second pattern matches.
-        case let n where n.characters.count == 10, let n where n == "test":
+        case let n where n.count == 10, let n where n == "test":
+            XCTAssertEqual("test", n)
             break
-        case let n where n.characters.count < 5:
+        case let n where n.count < 5:
             // This would have *also* matched, however the first case already matched so this won't execute.
             XCTFail()
         default:

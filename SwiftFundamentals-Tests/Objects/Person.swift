@@ -237,7 +237,7 @@ class Person : Printable {
         }
         set {
             // Swift 3.
-            let index: String.Index = newValue.index(newValue.startIndex, offsetBy: min(newValue.characters.count, 5))
+            let index: String.Index = newValue.index(newValue.startIndex, offsetBy: min(newValue.count, 5))
             firstNameInternal = newValue.substring(to: index)
         }
     }

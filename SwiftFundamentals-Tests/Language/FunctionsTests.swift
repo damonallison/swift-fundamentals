@@ -467,7 +467,7 @@ class FunctionsTests : XCTestCase {
         let name = "Damon"
 
         // Here, we don't need to specify wrap the `count` parameter in a closure.
-        XCTAssertEqual("Damon is 5", testAutoClosure(name, count: name.characters.count))
-        XCTAssertEqual("Damon is 5", testClosure(name, count: { name.characters.count }))
+        XCTAssertEqual("Damon is 5", testAutoClosure(name, count: name.count))
+        XCTAssertEqual("Damon is 5", testClosure(name, count: { name.count }))
     }
 }
