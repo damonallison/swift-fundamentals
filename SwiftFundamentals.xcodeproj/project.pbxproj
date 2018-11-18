@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		210F400F2109F40B00D4D5BB /* SR7874.swift in Sources */ = {isa = PBXBuildFile; fileRef = 210F400E2109F40B00D4D5BB /* SR7874.swift */; };
+		2197BECF210A08740029FDBE /* SR7261.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2197BECE210A08740029FDBE /* SR7261.swift */; };
 		7A07444D1C6A9DDB00D64D50 /* Square.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A07444C1C6A9DDB00D64D50 /* Square.swift */; };
 		7A07444F1C6A9EB300D64D50 /* TimesTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A07444E1C6A9EB300D64D50 /* TimesTable.swift */; };
 		7A3085011C6A9B0700F35E22 /* Rectangle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A3085001C6A9B0700F35E22 /* Rectangle.swift */; };
@@ -56,9 +58,11 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		210F400E2109F40B00D4D5BB /* SR7874.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SR7874.swift; sourceTree = "<group>"; };
 		2149CA0919D8D2F3006E259C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2149CA2019D8D533006E259C /* SwiftFundamentals-Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "SwiftFundamentals-Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		21888B0A194E942D001C6CDB /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		2197BECE210A08740029FDBE /* SR7261.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SR7261.swift; sourceTree = "<group>"; };
 		21ABC499195CFB6F002F8AEB /* SwiftFundamentals-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SwiftFundamentals-Bridging-Header.h"; sourceTree = "<group>"; };
 		7A07444C1C6A9DDB00D64D50 /* Square.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Square.swift; sourceTree = "<group>"; };
 		7A07444E1C6A9EB300D64D50 /* TimesTable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimesTable.swift; sourceTree = "<group>"; };
@@ -117,9 +121,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		210F400D2109F3BA00D4D5BB /* CompilerBugs */ = {
+			isa = PBXGroup;
+			children = (
+				210F400E2109F40B00D4D5BB /* SR7874.swift */,
+				2197BECE210A08740029FDBE /* SR7261.swift */,
+			);
+			path = CompilerBugs;
+			sourceTree = "<group>";
+		};
 		2149CA0719D8D2F3006E259C /* SwiftFundamentals-Tests */ = {
 			isa = PBXGroup;
 			children = (
+				210F400D2109F3BA00D4D5BB /* CompilerBugs */,
 				7AEC77951D2FE6320076DFE1 /* Concurrency */,
 				E52087881C51CD1A004AC9AF /* Language */,
 				E52087891C51CD1F004AC9AF /* Objective-C */,
@@ -353,6 +367,7 @@
 				7AEC82801C69677800F1DCE3 /* Point.swift in Sources */,
 				7A07444F1C6A9EB300D64D50 /* TimesTable.swift in Sources */,
 				E520878E1C51CD4F004AC9AF /* Person.swift in Sources */,
+				210F400F2109F40B00D4D5BB /* SR7874.swift in Sources */,
 				E52087A81C51CD59004AC9AF /* ControlFlow.swift in Sources */,
 				E52087A71C51CD59004AC9AF /* StringTests.swift in Sources */,
 				7A6AD722206BB4D80033FE2E /* NestedTypesTest.swift in Sources */,
@@ -362,6 +377,7 @@
 				E52087AC1C51CD68004AC9AF /* ObjcClass.m in Sources */,
 				7ADBC0E9206B326800D4BEEB /* TypeCastingTests.swift in Sources */,
 				E52087A91C51CD59004AC9AF /* PrimitiveTypeTests.swift in Sources */,
+				2197BECF210A08740029FDBE /* SR7261.swift in Sources */,
 				E5C53CF11C5272BB0068C9EC /* ErrorHandlingTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -395,6 +411,7 @@
 				MTL_ENABLE_DEBUG_INFO = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.damonallison.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
 				SWIFT_VERSION = 4.0;
@@ -415,6 +432,7 @@
 				MTL_ENABLE_DEBUG_INFO = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.damonallison.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
 				SWIFT_VERSION = 4.0;
 			};

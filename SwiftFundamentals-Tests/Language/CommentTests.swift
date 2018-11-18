@@ -21,10 +21,9 @@ import XCTest
 /// `// TODO:` adds a "todo" item in the jump bar.
 /// `// FIXME:` adds a "fixme" item in the jump bar.
 
-// MARK:- Start this file!
-// TODO:- This is a todo
+// MARK:-  Start this file!
+// TODO:-  This is a todo
 // FIXME:- This is a FIXME
-
 
 /// # Swift comment examples
 ///
