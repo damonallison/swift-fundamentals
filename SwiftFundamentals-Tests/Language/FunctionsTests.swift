@@ -55,8 +55,13 @@ class FunctionsTests : XCTestCase {
         func returnUnnamedTuple(a: Int, b: Int) -> (Int, Int) {
             return (a, b)
         }
-        XCTAssertTrue(returnUnnamedTuple(a: 2, b: 2) == (2, 2))
         
+        let unnamed = returnUnnamedTuple(a: 2, b: 4);
+        XCTAssertEqual(2, unnamed.0)
+        XCTAssertEqual(4, unnamed.1)
+        
+        XCTAssertTrue(returnUnnamedTuple(a: 2, b: 2) == (2, 2))
+
         /// It can be helpful (recommended, even ;) to name each tuple value,
         /// which allows the caller the ability to access values by name rather
         /// than the rather meaningless ordinal position. If the function does
@@ -80,8 +85,8 @@ class FunctionsTests : XCTestCase {
 
         XCTAssertNil(returnNamedTuple(a: 0, b: 0))
 
-        let ret = returnNamedTuple(a: 2, b: 2)
-        XCTAssertTrue(ret?.total == 4 && ret?.aboveZero == true)
+        let ret = returnNamedTuple(a: 2, b: 2)!
+        XCTAssertTrue(ret.total == 4 && ret.aboveZero)
 
         if let x = returnNamedTuple(a: 2, b: 2), let y = returnNamedTuple(a: 2, b: 2) {
             XCTAssertTrue(x == y)
@@ -101,7 +106,7 @@ class FunctionsTests : XCTestCase {
     /// 2. Parameter name : The name which is used within the function.
     ///
     /// func add(arg1 name1:Int, arg2 name2:Int) -> Int {
-    ///     return label1 + label2
+    ///     return name1 + name2
     /// }
     ///
     /// XCTAssertEqual(4, add(arg1: 2, arg2: 2)))
@@ -134,9 +139,9 @@ class FunctionsTests : XCTestCase {
         func parameterName(param: Int) -> Int {
             return param
         }
-        XCTAssertEqual(parameterName(param: 10), 10)
+        XCTAssertEqual(10, parameterName(param: 10))
         
-        /// If you want to avoid parameter names all together,
+        /// If you want to avoid having the caller specify parameter names all together,
         /// use a wildcard `_` char for the external name.
         func noParameterNames(_ a: Int, _ b: Int) -> Int {
             return a + b
@@ -214,7 +219,7 @@ class FunctionsTests : XCTestCase {
             return to + x
         }
         
-        func subtract(_ x: Int, from:Int) -> Int {
+        func subtract(_ x: Int, from: Int) -> Int {
             return from - x
         }
         
@@ -224,7 +229,7 @@ class FunctionsTests : XCTestCase {
 
         // Notice that when invoking `op`, you do *not* include argument names.
         // The compiler would have no way of knowing which argument names are valid.
-        var op: (Int, Int) -> Int = add
+        var op: MathematicalOperation = add
         XCTAssertEqual(4, op(2, 2))
         XCTAssertEqual("Result == 4", mathPrinter(op, x:2, y:2))
         
@@ -233,7 +238,7 @@ class FunctionsTests : XCTestCase {
         XCTAssertEqual("Result == 0", mathPrinter(op, x:2, y:2))
         
         func makeFibonacci() -> () -> Int {
-
+            
             func fib(n: Int) -> Int {
                 if n <= 1 {
                     return 1
@@ -242,12 +247,14 @@ class FunctionsTests : XCTestCase {
             }
 
             var iter = 0
+            // Returns an unnamed function with the type: `() -> Int`
             return {
                 let f = fib(n: iter)
                 iter += 1
                 return f
             }
         }
+        
         
         let f = makeFibonacci()
         var fibValues = [Int]()
@@ -392,8 +399,8 @@ class FunctionsTests : XCTestCase {
             return "Math computed : \(res)"
         }
         
-        // Notice here that `formatRules` takes a function as it's last param.
-        // When we invoke `formatRules`, we send the closure as an argument *outside*
+        // Notice here that `formatResult` takes a function as it's last param.
+        // When we invoke `formatResult`, we send the closure as an argument *outside*
         // the parentheses for the function arguments. That argument is the trailing closure.
         let result = formatResult(100, b: 100) {
             $0 + $1
@@ -401,7 +408,7 @@ class FunctionsTests : XCTestCase {
         XCTAssertEqual(result, "Math computed : 200")
         
         // Trailing closures are only really beneficial when the closure is long.
-        // If the closure is short, it's cleaner to use typical parameter syntax.
+        // If the closure is short, it's cleaner to use closure expressions.
         XCTAssertEqual(formatResult(100, b: 100, mathFunc: { $0 - $1 }), "Math computed : 0")
         
         var numberMap = [0: "Zero", 1: "One", 2: "Two", 3: "Three", 4: "Four", 5 : "Five"]
@@ -410,8 +417,11 @@ class FunctionsTests : XCTestCase {
         // If a closure is the *only* parameter to a function, the () can be
         // omitted from the function call all together.
         let strings = numbers.map { number in numberMap[number] ?? "Unknown" }
-        let expected = ["Zero", "Four", "Two", "One", "Three", "Unknown"];
+        let strings2 = numbers.map { numberMap[$0] ?? "Unknown" } // Using shorthand argument names.
+
+        let expected = ["Zero", "Four", "Two", "One", "Three", "Unknown"]
         XCTAssertEqual(strings, expected)
+        XCTAssertEqual(strings2, expected)
     }
 
     /// If you write a function that accepts a closure, you annotate the parameter with `@escape` when the function is called after the function returns.
@@ -450,7 +460,7 @@ class FunctionsTests : XCTestCase {
     /// This is the exact same as if you'd pass in a normal closure.
     /// The difference between a standard closure and an autoclosure is that you don't have to wrap the expression in braces.
     ///
-    /// For example, in the function below, if `count` was not `@autoclosure`, you'd have to call `testAutoClosure(name, count: { name.chacters.count}
+    /// For example, in the function below, if `count` was not `@autoclosure`, you'd have to call `testAutoClosure(name, count: { name.count}
     ///
     /// Autoclosures take no arguments.
     ///

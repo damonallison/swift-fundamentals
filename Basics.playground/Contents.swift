@@ -8,25 +8,6 @@
 
 import Foundation
 
-let x = ["damon", "ryan", "allison"]
-
-print("hello, world!")
-print(x)
-
-debugPrint("hello, world")
-debugPrint(x)
-
-
-/**
-    This is a test
-    ![img](https://developer.apple.com/library/ios/Resources/1163/Images/apple2.png)
-*/
-let fullName = "Damon Allison"
-let iq = 100
-
-print("I'm \(fullName) w/ iq of \(iq)")
-
-
 // Write a function that calculates the average of it's arguments.
 
 func avg(numbers: Int...) -> Double {
@@ -37,7 +18,8 @@ func avg(numbers: Int...) -> Double {
     }
     return sum / Double(numbers.count)
 }
-avg(numbers: 10)
+
+avg(numbers: 10, 20, 30)
 
 //
 //func flip(fname: String, lname: String) -> (fname: String, lname: String) {

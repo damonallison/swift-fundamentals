@@ -66,7 +66,8 @@ class GenericsTests: XCTestCase {
             /// 2. The only element we use on T is Equatable's `==` function. Therefore, we only need to specify
             ///    <T: Equatable> for this function to be usable.
             ///
-            /// The more constrained the type is, the more guar
+            /// The more constrained a parameter is, the more functionality we have available to use on the type,
+            /// but the less "generic" the parameter is.
             static func findIndex<T: Equatable & Hashable & Comparable>(of valueToFind: T, in array: [T]) -> Int? {
                 for (index, value) in array.enumerated() {
                     if value == valueToFind {
@@ -145,12 +146,16 @@ class GenericsTests: XCTestCase {
     }
 }
 
+///
+/// Associated types are generics for protocols.
+///
 /// Associated types allow you to specify a placeholder type that will be
 /// provided by each protocol implementation. Associated types are only available
 /// with protocols.
 ///
 /// You can constrain an associated type in the same fashion as generic type constraints.
 /// Here, we constrain `Item` to Hashable.
+///
 protocol Container {
 
     associatedtype Item
@@ -241,6 +246,7 @@ extension Stack: Container {
 
 #if swift(>=4.1)
 extension Stack: SuffixableContainer {
+    
     // Swift infers that SuffixableContainer's "Suffix" type is type Stack<Element>,
     // so this could be omitted.
     typealias Suffix = Stack<Element>
