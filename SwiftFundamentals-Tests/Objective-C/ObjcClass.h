@@ -7,18 +7,36 @@
 //
 
 ///
-/// Objective-C is a superset of C.
+/// @import vs. #import vs. #include
+///
+///
+/// tl;dr - use @import for frameworks, #import otherwise
 ///
 /// There are multiple ways to make functionality available within a file.
+/// Since Objective-C is a superset of C, Objective-C began with what C provided: #include.
+///
+/// Over time, Objective-C implemented a better version of C's #include called #import. The
+/// clang team introduced modules into the compiler, and thus @import was born.
 ///
 /// #include
+///
+/// #include "MyHeader.h"
 ///
 /// #include was the original C way of importing a header. #include was very naive. It
 /// would simply copy the entire header into your file during compilation. This lead to
 /// problems. If header references were cyclic (A.h includes B.h - B.h includes A.h), you'd
 /// have to write guard statements to prevent recursive importing.
 ///
+/// In order to prevent against cycles, you'd have to write header guards in each .h file.
+///
+/// #ifndef _MY_HEADER_FILE
+/// #define _MY_HEADER_FILE
+/// /* body of header file */
+/// #endif
+///
 /// #import
+///
+/// #import <Foundation/Foundation.h>
 ///
 /// #import is a minor improvement over #include. It still copies header files at compile time,
 /// but cyclic references are avoided. There are still issues with #import - for example, a function
@@ -34,18 +52,34 @@
 /// * Global includes are found somewhere on the import path (see: HEADER_SEARCH_PATHS and
 ///   USER_HEADER_SEARCH_PATHS)
 ///
-/// @import <Foundation/Foundation.h>
+///   #import <Foundation/Foundation.h>
 ///
-/// @import imports a module. Modules do not copy/paste into source code.
+/// @import imports a module. Modules do not copy/paste into source code. There is no need
+/// for the compiler to parse headers.
+///
+/// Modules are precompiled. Linking happens against a compiled version of the module, so
+/// no text replacement is done.
 ///
 /// * Links the module into your application automatically. You don't need to add the framework
 ///   into your project.
+///
+/// * It's
 ///
 /// * Modules allow you to include only a certain portion of the module in your code.
 ///
 ///  @import Foundation.NSString;
 ///
-
+///
+/// Precompiled Headers
+///
+/// Precompiled headers were an attempt to speed up build times. The .pch was compiled only once
+/// and included in each file automatically. .pch did two things:
+///
+/// * Speed up build times.
+/// * Made common functionality available everywhere, without having to manually #import
+///   in each file.
+///
+/// In practice, .pch files were abused. They become a maintenance burden
 @import Foundation.NSString;
 
 
@@ -77,8 +111,8 @@
  
  The NS_ENUM macro create a new type (Gender), assigning it to the underlying storage type (NSInteger).
  This allows the compiler to type check the variable uses and check for `switch` statement completion.
- 
  */
+
 typedef NS_ENUM(NSInteger, Gender) {
     GenderUnknown,  /* Implied == 0 */
     GenderMale,     /* Implied == 1 */
@@ -97,6 +131,8 @@ typedef NS_OPTIONS(NSInteger, Preferences) {
 };
 
 @interface ObjcClass : NSObject
+
+- (nonnull instancetype) initTest;
 
 @property (nonatomic, strong) NSString *firstName;
 @property (nonatomic, strong) NSString *lastName;

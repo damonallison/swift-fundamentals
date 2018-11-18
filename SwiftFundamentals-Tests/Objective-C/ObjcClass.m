@@ -16,6 +16,13 @@
     }
     return self;
 }
+
+- (instancetype) initTest {
+    if (self = [self init]) {
+        
+    }
+    return self;
+}
 - (instancetype) initWithFirstName:(NSString *)firstName lastName:(NSString *)lastName {
     if (self = [super init]) {
         self.firstName = firstName;

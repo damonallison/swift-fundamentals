@@ -16,7 +16,8 @@ class ObjectiveCTests : XCTestCase {
 
     func testObjCInterop() {
 
-        let oc = ObjcClass()
+        let oc = ObjcClass.init(test: ())
+        // let oc = ObjcClass()
         XCTAssertTrue(oc.firstName == nil)
         XCTAssertTrue(oc.lastName == nil)
 
