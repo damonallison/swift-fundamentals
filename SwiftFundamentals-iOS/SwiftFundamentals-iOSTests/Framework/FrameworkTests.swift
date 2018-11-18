@@ -9,11 +9,20 @@
 import XCTest
 
 /**
- * The Calculator.framework is a 
+ * Calculator.framework is a custom framework.
  */
 import Calculator
 
-class CalculatorTests: XCTestCase {
+/**
+ * Creating custom frameworks are trivial.
+ *
+ * Create the project in XCode.
+ * Link the framework from your project's settings.
+ *
+ * In the "General" configuration tab for SwiftFundamentals-iOSTests, notice that
+ * "Calculator.framework" is linked.
+ */
+class FrameworkTests: XCTestCase {
 
     func testCalculator() {
         XCTAssertEqual(4, Calculator.add(x: 2, y: 2))

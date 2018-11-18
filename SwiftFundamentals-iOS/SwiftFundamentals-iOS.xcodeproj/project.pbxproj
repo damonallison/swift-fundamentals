@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2162C84121887A4600C91F5B /* FrameworkTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21D4ED4221864C75003A1B4C /* FrameworkTests.swift */; };
+		2162C84421887A7300C91F5B /* Calculator.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2162C84321887A7300C91F5B /* Calculator.framework */; };
 		21D4ECEE21864C1F003A1B4C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21D4ECED21864C1F003A1B4C /* AppDelegate.swift */; };
 		21D4ECF021864C1F003A1B4C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21D4ECEF21864C1F003A1B4C /* ViewController.swift */; };
 		21D4ECF321864C1F003A1B4C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 21D4ECF121864C1F003A1B4C /* Main.storyboard */; };
@@ -15,7 +17,6 @@
 		21D4ED0E21864C22003A1B4C /* SwiftFundamentals_iOSUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21D4ED0D21864C22003A1B4C /* SwiftFundamentals_iOSUITests.swift */; };
 		21D4ED5721864C94003A1B4C /* Globals.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21D4ED5621864C94003A1B4C /* Globals.swift */; };
 		21D4ED5921864C98003A1B4C /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21D4ED5821864C98003A1B4C /* Environment.swift */; };
-		21D4ED5B21864CB8003A1B4C /* Documentation in Resources */ = {isa = PBXBuildFile; fileRef = 21D4ED5A21864CB8003A1B4C /* Documentation */; };
 		21D4ED5C21864D6C003A1B4C /* SR7874.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21D4ED3F21864C75003A1B4C /* SR7874.swift */; };
 		21D4ED5D21864D6C003A1B4C /* SR7261.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21D4ED4021864C75003A1B4C /* SR7261.swift */; };
 		21D4ED5E21864E65003A1B4C /* FuncQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21D4ED2921864C74003A1B4C /* FuncQueue.swift */; };
@@ -70,6 +71,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2162C84321887A7300C91F5B /* Calculator.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Calculator.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		21D4ECEA21864C1F003A1B4C /* SwiftFundamentals-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "SwiftFundamentals-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		21D4ECED21864C1F003A1B4C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		21D4ECEF21864C1F003A1B4C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -104,7 +106,7 @@
 		21D4ED3D21864C74003A1B4C /* SetTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetTests.swift; sourceTree = "<group>"; };
 		21D4ED3F21864C75003A1B4C /* SR7874.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SR7874.swift; sourceTree = "<group>"; };
 		21D4ED4021864C75003A1B4C /* SR7261.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SR7261.swift; sourceTree = "<group>"; };
-		21D4ED4221864C75003A1B4C /* CalculatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculatorTests.swift; sourceTree = "<group>"; };
+		21D4ED4221864C75003A1B4C /* FrameworkTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrameworkTests.swift; sourceTree = "<group>"; };
 		21D4ED4421864C75003A1B4C /* ObjectiveCInteropTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObjectiveCInteropTests.swift; sourceTree = "<group>"; };
 		21D4ED4521864C75003A1B4C /* ObjcClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ObjcClass.h; sourceTree = "<group>"; };
 		21D4ED4621864C75003A1B4C /* ObjcClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ObjcClass.m; sourceTree = "<group>"; };
@@ -122,7 +124,6 @@
 		21D4ED5421864C76003A1B4C /* TimesTable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimesTable.swift; sourceTree = "<group>"; };
 		21D4ED5621864C94003A1B4C /* Globals.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Globals.swift; sourceTree = "<group>"; };
 		21D4ED5821864C98003A1B4C /* Environment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Environment.swift; sourceTree = "<group>"; };
-		21D4ED5A21864CB8003A1B4C /* Documentation */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Documentation; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -137,6 +138,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2162C84421887A7300C91F5B /* Calculator.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -150,14 +152,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2162C84221887A7300C91F5B /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				2162C84321887A7300C91F5B /* Calculator.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		21D4ECE121864C1F003A1B4C = {
 			isa = PBXGroup;
 			children = (
-				21D4ED5A21864CB8003A1B4C /* Documentation */,
 				21D4ECEC21864C1F003A1B4C /* SwiftFundamentals-iOS */,
 				21D4ED0121864C22003A1B4C /* SwiftFundamentals-iOSTests */,
 				21D4ED0C21864C22003A1B4C /* SwiftFundamentals-iOSUITests */,
 				21D4ECEB21864C1F003A1B4C /* Products */,
+				2162C84221887A7300C91F5B /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -271,7 +281,7 @@
 		21D4ED4321864C75003A1B4C /* Framework */ = {
 			isa = PBXGroup;
 			children = (
-				21D4ED4221864C75003A1B4C /* CalculatorTests.swift */,
+				21D4ED4221864C75003A1B4C /* FrameworkTests.swift */,
 			);
 			path = Framework;
 			sourceTree = "<group>";
@@ -420,7 +430,6 @@
 				21D4ECF821864C22003A1B4C /* LaunchScreen.storyboard in Resources */,
 				21D4ECF521864C22003A1B4C /* Assets.xcassets in Resources */,
 				21D4ECF321864C1F003A1B4C /* Main.storyboard in Resources */,
-				21D4ED5B21864CB8003A1B4C /* Documentation in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -475,6 +484,7 @@
 				21D4ED6B21864E6E003A1B4C /* StringTests.swift in Sources */,
 				21D4ED6C21864E6E003A1B4C /* StructuresTests.swift in Sources */,
 				21D4ED7421864ECA003A1B4C /* OperatorOverloadTests.swift in Sources */,
+				2162C84121887A4600C91F5B /* FrameworkTests.swift in Sources */,
 				21D4ED7D21864ECF003A1B4C /* SetTests.swift in Sources */,
 				21D4ED7A21864ECA003A1B4C /* TimesTable.swift in Sources */,
 				21D4ED6D21864E6E003A1B4C /* TypeCastingTests.swift in Sources */,
@@ -661,7 +671,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.damonallison.swift.SwiftFundamentals-iOS";
+				PRODUCT_BUNDLE_IDENTIFIER = com.damonallison.swift.fundamentals;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -679,7 +689,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.damonallison.swift.SwiftFundamentals-iOS";
+				PRODUCT_BUNDLE_IDENTIFIER = com.damonallison.swift.fundamentals;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
