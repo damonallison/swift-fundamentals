@@ -26,11 +26,9 @@ The following resources are required reading for any Swift programmer.
 
 * [Chris Lattner's Homepage](http://www.nondot.org/sabre/): Chris started swift as well as the vast majority of the modern Apple toolchain, including LLVM and the compiler infrastructure.
 
-
 ## Swift Overview
 
-> "It's designed to scale from "hello, world" to an entire operating system"
-> - The Swift Programming Language
+> "It's designed to scale from "hello, world" to an entire operating system" - The Swift Programming Language
 
 ### Safe
 
