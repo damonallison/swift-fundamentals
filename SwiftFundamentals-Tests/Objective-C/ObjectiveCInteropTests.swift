@@ -8,8 +8,10 @@
 
 import XCTest
 
+///
 /// ObjcClass.h is added to the bridging header, making it available
 /// to swift.
+///
 class ObjectiveCTests : XCTestCase {
 
     func testObjCInterop() {
@@ -21,7 +23,7 @@ class ObjectiveCTests : XCTestCase {
         // Notice that firstName and lastName (NSString) are bridged to String.
         oc.firstName = "Damon"
         oc.lastName = "Allison"
-
+        
         XCTAssertEqual("Damon", oc.firstName)
         XCTAssertEqual("Allison", oc.lastName)
         XCTAssertEqual("Damon Allison", oc.fullName)
