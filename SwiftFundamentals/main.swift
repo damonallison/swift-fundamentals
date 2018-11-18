@@ -6,6 +6,8 @@
 //  Copyright © 2018 Damon Allison. All rights reserved.
 //
 
+import Calculator
+
 print("-------------------------------------------------------------------------------------------")
 print("Welcome to SwiftFundamentals!")
 print("")
@@ -16,3 +18,7 @@ print("TODO:// Figure out how to run the tests from here. This would allow you t
 print("        run Cmd-U to execute the tests or run Cmd-B to have the tests ")
 print("        from this console app.")
 print("-------------------------------------------------------------------------------------------")
+
+let answer = Calculator.add(x: 2, y: 2)
+assert(answer == 4)
+print("Testing Calculator.framework: 2 + 2 = \(answer)")

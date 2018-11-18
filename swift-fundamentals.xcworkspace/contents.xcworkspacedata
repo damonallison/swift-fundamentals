@@ -2,6 +2,9 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:SwiftFundamentals.xcodeproj">
+      location = "group:SwiftFundamentals-iOS/SwiftFundamentals-iOS.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:Calculator/Calculator.xcodeproj">
    </FileRef>
 </Workspace>

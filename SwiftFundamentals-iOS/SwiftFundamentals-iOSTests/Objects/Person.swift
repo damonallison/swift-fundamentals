@@ -68,6 +68,9 @@
 /// * `internal` - (default) all types in this module have access.
 /// * `public`   - visible outside the module. This is the "highest" access level.
 ///
+
+import Foundation
+
 class Person : Printable {
 
     /// Stored type properties must have a default value or be optional.
