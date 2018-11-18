@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		2162C84121887A4600C91F5B /* FrameworkTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21D4ED4221864C75003A1B4C /* FrameworkTests.swift */; };
 		2162C84421887A7300C91F5B /* Calculator.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2162C84321887A7300C91F5B /* Calculator.framework */; };
+		2162C84521887B7C00C91F5B /* ObjectiveCInteropTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21D4ED4421864C75003A1B4C /* ObjectiveCInteropTests.swift */; };
+		2162C84621887B8500C91F5B /* ObjcClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 21D4ED4621864C75003A1B4C /* ObjcClass.m */; };
 		21D4ECEE21864C1F003A1B4C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21D4ECED21864C1F003A1B4C /* AppDelegate.swift */; };
 		21D4ECF021864C1F003A1B4C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21D4ECEF21864C1F003A1B4C /* ViewController.swift */; };
 		21D4ECF321864C1F003A1B4C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 21D4ECF121864C1F003A1B4C /* Main.storyboard */; };
@@ -72,6 +74,7 @@
 
 /* Begin PBXFileReference section */
 		2162C84321887A7300C91F5B /* Calculator.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Calculator.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		2162C84721887C0400C91F5B /* SwiftFundamentals-iOSTests-BridgingHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SwiftFundamentals-iOSTests-BridgingHeader.h"; sourceTree = "<group>"; };
 		21D4ECEA21864C1F003A1B4C /* SwiftFundamentals-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "SwiftFundamentals-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		21D4ECED21864C1F003A1B4C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		21D4ECEF21864C1F003A1B4C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -208,6 +211,7 @@
 				21D4ED5621864C94003A1B4C /* Globals.swift */,
 				21D4ED5821864C98003A1B4C /* Environment.swift */,
 				21D4ED0421864C22003A1B4C /* Info.plist */,
+				2162C84721887C0400C91F5B /* SwiftFundamentals-iOSTests-BridgingHeader.h */,
 			);
 			path = "SwiftFundamentals-iOSTests";
 			sourceTree = "<group>";
@@ -391,6 +395,7 @@
 				TargetAttributes = {
 					21D4ECE921864C1F003A1B4C = {
 						CreatedOnToolsVersion = 10.0;
+						LastSwiftMigration = 1000;
 					};
 					21D4ECFD21864C22003A1B4C = {
 						CreatedOnToolsVersion = 10.0;
@@ -466,12 +471,14 @@
 				21D4ED7821864ECA003A1B4C /* Square.swift in Sources */,
 				21D4ED7321864ECA003A1B4C /* ClassesTests.swift in Sources */,
 				21D4ED5F21864E6E003A1B4C /* AccessControlTests.swift in Sources */,
+				2162C84521887B7C00C91F5B /* ObjectiveCInteropTests.swift in Sources */,
 				21D4ED6021864E6E003A1B4C /* CommentTests.swift in Sources */,
 				21D4ED6121864E6E003A1B4C /* ControlFlow.swift in Sources */,
 				21D4ED6F21864ECA003A1B4C /* GenericsTests.swift in Sources */,
 				21D4ED7221864ECA003A1B4C /* Stack.swift in Sources */,
 				21D4ED6221864E6E003A1B4C /* ErrorHandlingTests.swift in Sources */,
 				21D4ED7621864ECA003A1B4C /* Printable.swift in Sources */,
+				2162C84621887B8500C91F5B /* ObjcClass.m in Sources */,
 				21D4ED6321864E6E003A1B4C /* EnumTests.swift in Sources */,
 				21D4ED6421864E6E003A1B4C /* ExtensionsTests.swift in Sources */,
 				21D4ED6521864E6E003A1B4C /* FunctionsTests.swift in Sources */,
@@ -664,6 +671,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = Q756N68G3Y;
 				INFOPLIST_FILE = "SwiftFundamentals-iOS/Info.plist";
@@ -673,6 +681,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.damonallison.swift.fundamentals;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -682,6 +692,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = Q756N68G3Y;
 				INFOPLIST_FILE = "SwiftFundamentals-iOS/Info.plist";
@@ -691,6 +702,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.damonallison.swift.fundamentals;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -711,6 +723,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.damonallison.swift.SwiftFundamentals-iOSTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "SwiftFundamentals-iOSTests/SwiftFundamentals-iOSTests-BridgingHeader.h";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SwiftFundamentals-iOS.app/SwiftFundamentals-iOS";
@@ -732,6 +745,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.damonallison.swift.SwiftFundamentals-iOSTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "SwiftFundamentals-iOSTests/SwiftFundamentals-iOSTests-BridgingHeader.h";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SwiftFundamentals-iOS.app/SwiftFundamentals-iOS";
