@@ -110,6 +110,8 @@ class GenericsTests: XCTestCase {
         XCTAssertTrue(allItemsMatch(s, rhs: a))
     }
 
+    /// Stack is a generic type, accepting a single type parameter representing the type of elements
+    /// the stack will hold.
     func testGenericType() {
 
         var s = Stack<Int>()
@@ -137,33 +139,13 @@ class GenericsTests: XCTestCase {
         // an "Indices" object and returns all elements within the Indices.
         let indices = s[0...1]
         XCTAssertEqual([1000, 2000], indices)
-    }
-
-
-
-
-    func testAssociatedTypes() {
-
-        // Here, stack conforms to both the Container and SuffixableContainer.
-        // The associated type in both protocol implementations (See the Stack Container / SuffixableContainer extensions below)
-        // is resloved to Int and Stack<Int> respectively by Swift's type inference.
-
-        var s = Stack<Int>()
-        s.append(100)
-        s.append(200)
-
-        // Show the ccontainer protocol
-        XCTAssertEqual(2, s.count)
-        XCTAssertEqual(200, s[1])
-
-        #if swift(>=4.1)
-        // Show the suffixable container protocol.
-        XCTAssertEqual(1, s.suffix(1).count)
-        XCTAssertEqual(200, s.suffix(1)[0])
-
-        // Show the Container extension.
-        XCTAssertEqual([100], s[[0]])
-        #endif
         
+        // Stack conforms to both the Container and SuffixableContainer.
+        // SuffixableContainer has an associatedtype, which returns th
+        
+        // Show the suffixable container protocol.
+        let suffix: Stack<Int> = s.suffix(1)
+        XCTAssertEqual(2000, suffix[0])
+
     }
 }

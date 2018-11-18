@@ -14,7 +14,10 @@
 //
 
 ///
-/// A great explanation of Protocols with Associated Types and their wierdness within Swift.
+/// A lot of the material here was taken from this video.
+/// It's a great explanation of Protocols with Associated Types and their wierdness within Swift.
+/// It dives into FP languages and the research the Swift team *may* have used when implementing
+/// PATs.
 ///
 /// Alexis Gallagher - Protocols with Associated Types
 /// https://www.youtube.com/watch?v=XWoNjiSPqI8
@@ -26,7 +29,7 @@
 ///   * Every single protocol with an associated type cannot be used in Objective-C.
 ///   * Everywhere you wanted to use a protocol, you need a generic.
 ///
-///       ` var delegate: Protocol`
+///       ` var delegate: Protocol` // won't work.
 ///       ` class C<T:Proto> { var delegates:[T] }
 ///
 ///   * It excludes dynamic dispatch! Which is probably why you wanted a protocol to begin with.
@@ -56,12 +59,15 @@ class AssociatedTypesTests : XCTestCase {
     
     ///
     /// Protocols with Associated Types cannot be used in places where you'd typically use a
-    /// regular type (a function parameter or return type. It *must* be used as a generic type
+    /// regular type (a function parameter or return type). It *must* be used as a generic type
     /// constraint.
     ///
     func testAssociatedTypes() {
        
         // A function to total all elements in multiple collections.
+        // The following won't work. You must constrain the type to spedi
+        //
+        // func totalItems(containers: [Container] -> Int
         func totalItems<T: Container>(containers: [T]) -> Int {
             return containers.reduce(0, { (partialResult, container) in
                 partialResult + container.count
@@ -71,12 +77,15 @@ class AssociatedTypesTests : XCTestCase {
         // Write a function which takes an array of Int containers, summing up all elements
         // in all containers.
         
-        func totalElements<T: Container>(containers: [T]) -> Int
+        func totalOfElements<T: Container>(containers: [T]) -> Int
             where T.Item == Int {
-                return 10
-//                return containers.reduce(0, { (result, container) in
-//                    return
-//                })
+                return containers.reduce(0, { (result, container) -> Int in
+                    var total = 0
+                    for i in 0..<container.count {
+                        total = total + container[i]
+                    }
+                    return result + total
+                })
         }
         
         var s1 = Stack<Int>()
@@ -84,10 +93,11 @@ class AssociatedTypesTests : XCTestCase {
         
         for i in 0..<10 {
             s1.append(i)
-            s2.append(1)
+            s2.append(i)
         }
         
         XCTAssertEqual(20, totalItems(containers: [s1, s2]))
+        XCTAssertEqual(90, totalOfElements(containers: [s1, s2]))
         
     }
 }

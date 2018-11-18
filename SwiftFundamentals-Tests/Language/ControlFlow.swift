@@ -43,8 +43,9 @@ class ControlFlowTests : XCTestCase {
         var x: Int? = nil
         // If conditions (separated with `,`) are short circuited.
         if let x2 = x, setExec() {
-            print(x2)
+            print(x2) // this will *not* fire given x2 is null.
         }
+        
         XCTAssertFalse(didExec)
 
         x = 10
@@ -97,13 +98,12 @@ class ControlFlowTests : XCTestCase {
         x = 10
         y = nil
 
+        // Wildcards can be used if you do *not* want to capture the variable.
         guard let _ = x, let _ = y, 1 < 2 else {
             return
         }
         XCTFail("The guard should have been executed.")
     }
-
-
 
     // MARK:- switch
 
@@ -111,19 +111,13 @@ class ControlFlowTests : XCTestCase {
     // * Matched values in a switch can be bound to let/var variables to use within the case's body.
     // * Complex matching conditions can be expressed with a `where` clause for each case.
 
-
-    /**
-     TrainStatus is an example of enum associated values.
-     */
+    // TrainStatus is an example of enum associated values.
     enum TrainStatus {
         case onTime
         case delayed(Int)
 
-        /**
-         `describe` shows `switch`'s ability to pattern match.
-         In this example, we are pattern matching on `Delayed`'s
-         associated value.
-         */
+        // `describe` shows `switch`'s ability to pattern match.
+        // In this example, we are pattern matching on `Delayed`'s associated value.
         func describe() -> String {
             switch self {
             case .onTime:
@@ -167,7 +161,9 @@ class ControlFlowTests : XCTestCase {
 
     /// Swift allows you to match tuples.
     func testSwitchTuple() {
-        var t = (1, 1)
+        
+        let x = 1, y = 1
+        var t = (x, y)
         switch t {
         case (0...1, 0...1):
             break
@@ -175,13 +171,17 @@ class ControlFlowTests : XCTestCase {
             XCTFail()
         }
 
-        // If you don't care about a particular value in the tuple, use the `_` character in it's place.
-        t = (2, 1)
+        // If you don't care about a particular value in the tuple, use the
+        // wildcard `_` character in it's place.
+        
+        var z = 0
+        z = { return z + 1 }() // Mutate the value to prevent a "default will never execute" compiler warning.
+        t = (z, z)
         switch t {
         case (_, 1):
             break
         default:
-            break
+            XCTFail()
         }
     }
 
@@ -198,14 +198,13 @@ class ControlFlowTests : XCTestCase {
         // In this case, `n` is bound in both patterns. The block will always have a bound `n` constant.
         //
         // The second pattern matches.
-        case let n where n.count == 10, let n where n == "test":
+        case let n where n.count == 10 /* doesn't match */, let n where n == "test" /* matches */:
             XCTAssertEqual("test", n)
             break
         case let n where n.count < 5:
-            // This would have *also* matched, however the first case already matched so this won't execute.
-            XCTFail()
+            XCTFail("This would have *also* matched, however the first case already matched so this won't execute.")
         default:
-            XCTFail()
+            XCTFail("Should have matched the first let")
         }
     }
     /**
@@ -221,6 +220,8 @@ class ControlFlowTests : XCTestCase {
         switch p {
         case _ as Employee:
             break
+        case _ as Person:
+            XCTFail("Would have matched, but the first case already mateched.")
         default:
             XCTFail("Should have matched on Employee")
         }
@@ -317,12 +318,15 @@ class ControlFlowTests : XCTestCase {
     /// Shows using both the closed (...) range operator - which includes both the lower and upper bound inclusively.
     /// and the open (..<) range operator - which excludes the upper bound.
     func testRange() {
+        
+        // Closed range (...)
         var total = 0
         for i in 1...5 {
             total += i
         }
         XCTAssertEqual(15, total)
 
+        // Open range (..<)
         total = 0
         for i in 1..<5 {
             total += i
@@ -338,38 +342,4 @@ class ControlFlowTests : XCTestCase {
         } while i < 10
         XCTAssertEqual(10, i)
     }
-
-    // MARK:- API Availability
-
-    /// Swift includes an availability condition to conditionally execute a block of code
-    /// depending on if the current platform is available at runtime.
-    @available(iOS 10, OSX 10.12, *)
-    @available(*, message: "This message is displayed by the compiler when emitting a warning or error about the use of a deprectated or obsolete declaration")
-    func testAPIAvailability() {
-
-//        // You can also check within a function at runtime.
-//        if #available(iOS 10, OSX 10.12, *) {
-//            // This will run on iOS 10 and later, macOS 10.12 or later.
-//            // The last argument (*), which is required, specfies that on any other platform
-//            // the body of the `if` executes on the minimum deploymnet target specified by
-//            // your project's target.
-//        }
-//        else {
-//            // You are running on iOS 9.x or OSX < 10.12.
-//            // Use older API
-//        }
-    }
-
-    // MARK:- Assertions and Preconditions
-
-    /// Assertions are only checked during debug builds.
-    /// Preconditions are checked in debug and release builds.
-
-    func testAssertions() {
-        let x = 10
-        assert(x == 10, "Oops, looks like the equality operator doesn't work.")
-        precondition(x == 10, "Preconditions will run in debug and release builds. Use with caution.")
-
-    }
-
 }
