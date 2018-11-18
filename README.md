@@ -38,7 +38,7 @@ The following resources are required reading for any Swift programmer.
 * Conditionals must be boolean expressions.
 * Switch automatically `break`s.
 
-* Strongly Typed (this will upset the dynamic language people, but it's the right way to build a language)
+* Strongly Typed
   * Explicit type casting required.
   * Generics.
   * Type inference.
@@ -110,6 +110,9 @@ The following resources are required reading for any Swift programmer.
   * Applies to classes and class members only.
   * Allows classes to be subclassed from any module.
 
+* **Only use open when you specifically want to allow external modules the ability to subclass.**
+* If you just want to expose the function publicly, without the ability to override, use `public`.
+
 ### Public
 * `public`
   * The public API for the framework.
@@ -117,7 +120,7 @@ The following resources are required reading for any Swift programmer.
     about what you are doing.
 
 * `@testable` allows a unit test target to access any internal entity within the
-  module being imported.
+  module being imported. You do *not* need to make a member public just to test it.
 
 * You can specify the access level of the getter and setter for a property:
 
