@@ -54,21 +54,25 @@
 ///
 ///   #import <Foundation/Foundation.h>
 ///
-/// @import imports a module. Modules do not copy/paste into source code. There is no need
-/// for the compiler to parse headers.
 ///
-/// Modules are precompiled. Linking happens against a compiled version of the module, so
-/// no text replacement is done.
+/// @import
+///
+/// @import imports a module. Modules do not copy/paste into source code. There is no need
+/// for the compiler to parse headers. When the compiler sees an `@import` module import, it loads
+/// a binary representation of the model, making the entire module API available to the application.
+///
+/// * Modules are precompiled (binary). Linking happens against a compiled version of the module, so
+///   no text replacement is done. The problems with header replacement are avoided.
 ///
 /// * Links the module into your application automatically. You don't need to add the framework
 ///   into your project.
-///
-/// * It's
 ///
 /// * Modules allow you to include only a certain portion of the module in your code.
 ///
 ///  @import Foundation.NSString;
 ///
+/// Modules are part of clang. Read Clang's modules documentation for more information:
+/// https://clang.llvm.org/docs/Modules.html
 ///
 /// Precompiled Headers
 ///
