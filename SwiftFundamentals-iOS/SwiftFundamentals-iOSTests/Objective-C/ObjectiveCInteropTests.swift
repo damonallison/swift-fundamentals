@@ -15,7 +15,6 @@ import XCTest
 class ObjectiveCTests : XCTestCase {
 
     func testObjCInterop() {
-
         let oc = ObjcClass.init(test: ())
         // let oc = ObjcClass()
         XCTAssertTrue(oc.firstName == nil)
@@ -28,6 +27,22 @@ class ObjectiveCTests : XCTestCase {
         XCTAssertEqual("Damon", oc.firstName)
         XCTAssertEqual("Allison", oc.lastName)
         XCTAssertEqual("Damon Allison", oc.fullName)
+    }
+    
+    func testObjcInheritance() {
+        let p = Person(first: "damon", last: "allison")
+        XCTAssertEqual("damon", p.firstName)
+        
+        let b = Batman(firstName: "damon", lastName: "allison", superPower: 99)
+        XCTAssertEqual(99, b.superPower)
+    }
+    
+    /**
+     * Tests that we can invoke category defined methods from swift.
+     */
+    func testObjcCategories() {
+        let x: NSString = "hello"
+        XCTAssertEqual("Damon says: hello", x.dra_CustomFormat())
     }
 }
 

@@ -17,6 +17,13 @@
 #ifndef SwiftFundamentals_iOSTests_BridgingHeader_h
 #define SwiftFundamentals_iOSTests_BridgingHeader_h
 
+#import "NSString+DRAFormatting.h"
+
+#import "Batman.h"
+#import "GCDTest.h"
+#import "Person.h"
 #import "ObjcClass.h"
+#import "ProtocolInheritanceExample.h"
+#import "Runtime.h"
 
 #endif /* SwiftFundamentals_iOSTests_BridgingHeader_h */
