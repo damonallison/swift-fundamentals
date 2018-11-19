@@ -24,7 +24,7 @@
     return self;
 }
 - (instancetype) initWithFirstName:(NSString *)firstName lastName:(NSString *)lastName {
-    if (self = [super init]) {
+    if (self = [self init]) {
         self.firstName = firstName;
         self.lastName = lastName;
     }

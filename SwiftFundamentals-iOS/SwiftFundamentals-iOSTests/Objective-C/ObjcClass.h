@@ -16,7 +16,7 @@
 /// Since Objective-C is a superset of C, Objective-C began with what C provided: #include.
 ///
 /// Over time, Objective-C implemented a better version of C's #include called #import. The
-/// clang team introduced modules into the compiler, and thus @import was born.
+/// clang team then introduced modules into the LLVM compiler, and thus @import was born.
 ///
 /// #include
 ///
@@ -45,15 +45,11 @@
 /// Import has two forms: "Local" and "Global". In general, for files included in your projects,
 /// use the Local form. For files in Frameworks and Libraries, use the Global form.
 ///
-/// * Local includes use double quotes and are relative to the current file.
-///
 ///   #import "MyHeader.h"
 ///
-/// * Global includes are found somewhere on the import path (see: HEADER_SEARCH_PATHS and
-///   USER_HEADER_SEARCH_PATHS)
+/// Global includes are found somewhere on the import path (see: HEADER_SEARCH_PATHS and USER_HEADER_SEARCH_PATHS)
 ///
 ///   #import <Foundation/Foundation.h>
-///
 ///
 /// @import
 ///
@@ -65,7 +61,7 @@
 ///   no text replacement is done. The problems with header replacement are avoided.
 ///
 /// * Links the module into your application automatically. You don't need to add the framework
-///   into your project.
+///   to your project.
 ///
 /// * Modules allow you to include only a certain portion of the module in your code.
 ///
@@ -83,7 +79,10 @@
 /// * Made common functionality available everywhere, without having to manually #import
 ///   in each file.
 ///
-/// In practice, .pch files were abused. They become a maintenance burden
+/// In practice, .pch files were abused. Everything was put into the .pch. While this is
+/// convenient at first, over time it became difficult to understand where classes / functions
+/// are imported from and what functionality is available to each file.
+///
 @import Foundation.NSString;
 
 
