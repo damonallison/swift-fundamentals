@@ -6,9 +6,9 @@
 //  Copyright (c) 2015 Damon Allison. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
+@import Foundation;
+@import ObjectiveC;
 
-#import <objc/objc.h>
 
 /**
  *  Runtime contains examples of working with the Objective-C runtime.
@@ -19,8 +19,8 @@
  *
  *  The definitive resource on the Objective-C runtime are:
  *
- *  The Objective-C Programming Guide:
- *  https://developer.apple.com/library/mac/documentation/Cocoa/Conceptual/ObjCRuntimeGuide/Articles/ocrtInteracting.html#//apple_ref/doc/uid/TP40008048-CH103-SW5
+ *  The Objective-C Programming Guide
+ *  https://developer.apple.com/library/mac/documentation/Cocoa/Conceptual/ObjCRuntimeGuide/Articles/ocrtInteracting.html#//apple_ref/doc/uid/TP40008048-CH103-SW5)
  *
  *  The Objective-C Runtime Reference
  *  https://developer.apple.com/library/mac/documentation/Cocoa/Reference/ObjCRuntimeRef/index.html#//apple_ref/doc/uid/TP40001418-CH1g-126286

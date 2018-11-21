@@ -37,7 +37,7 @@
     }
     NSLog(@"dispatching (%@)", name);
 
-    __weak typeof(self)weakSelf = self;
+    __weak typeof(self) weakSelf = self;
     dispatch_async(self.q, ^{
 
         __strong typeof(weakSelf)strongSelf = weakSelf;

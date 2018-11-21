@@ -10,7 +10,15 @@
 /// @import vs. #import vs. #include
 ///
 ///
-/// tl;dr - use @import for frameworks, #import otherwise
+/// tl;dr -
+/// * Use @import for frameworks
+/// * Use #import for Objective-C and Objective-C++ headers.
+/// * Use #include for C and C++ headers.
+///
+/// The reason we don't use #import for C and C++ headers is because #import prevents future
+/// inclusions. C and C++ code may depend on being included multiple times. Using #import may
+/// lead to hard to track down compilation bugs.
+///
 ///
 /// There are multiple ways to make functionality available within a file.
 /// Since Objective-C is a superset of C, Objective-C began with what C provided: #include.
@@ -70,6 +78,10 @@
 /// Modules are part of clang. Read Clang's modules documentation for more information:
 /// https://clang.llvm.org/docs/Modules.html
 ///
+///
+/// ------------------------------------------------------------------------------------------------
+///
+///
 /// Precompiled Headers
 ///
 /// Precompiled headers were an attempt to speed up build times. The .pch was compiled only once
@@ -83,8 +95,10 @@
 /// convenient at first, over time it became difficult to understand where classes / functions
 /// are imported from and what functionality is available to each file.
 ///
-@import Foundation.NSString;
 
+
+@import Foundation;
+@import CoreGraphics;
 
 /**
  NS_ENUM is the preferred way to create enumerations. Constants without explicit values will
@@ -135,13 +149,21 @@ typedef NS_OPTIONS(NSInteger, Preferences) {
 
 @interface ObjcClass : NSObject
 
-- (nonnull instancetype) initTest;
 
-@property (nonatomic, strong) NSString *firstName;
-@property (nonatomic, strong) NSString *lastName;
+- (nonnull instancetype) initWithFirstName:(nonnull NSString *)firstName lastName:(nonnull NSString *)lastName NS_DESIGNATED_INITIALIZER;
 
-@property (nonatomic, readonly) NSString *fullName;
+@property (nonatomic, strong, nonnull) NSString *firstName;
+@property (nonatomic, strong, nonnull) NSString *lastName;
+
+@property (nonatomic, readonly, nonnull) NSString *fullName;
 @property (nonatomic, assign) Gender gender;
 @property (nonatomic, assign) Preferences preferences;
+
+/**
+ * Returns the number of times `fullName` was called across all instances.
+ *
+ * Demonstrates the use of static variables.
+ */
++ (NSInteger) fullNameCallCount;
 
 @end

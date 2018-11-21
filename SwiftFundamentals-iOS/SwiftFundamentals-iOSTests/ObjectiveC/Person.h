@@ -6,7 +6,7 @@
 //  Copyright (c) 2014 Damon Allison. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
+@import Foundation;
 
 #import "ProtocolInheritanceExample.h"
 
@@ -17,8 +17,10 @@ NS_ASSUME_NONNULL_BEGIN
 - (instancetype)initWithFirstName:(NSString *)firstName
                          lastName:(NSString *)lastName;
 
-@property (nonatomic, readonly) NSString *firstName;
-@property (nonatomic, readonly) NSString *lastName;
+@property (nonatomic, readonly, copy) NSString *firstName;
+@property (nonatomic, readonly, copy) NSString *lastName;
+
+@property (nonatomic, readonly, getter=isOld) bool old;
 
 @end
 

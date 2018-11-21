@@ -24,6 +24,7 @@
 #import "Person.h"
 #import "ObjcClass.h"
 #import "ProtocolInheritanceExample.h"
+#import "Queue.h"
 #import "Runtime.h"
 
 #endif /* SwiftFundamentals_iOSTests_BridgingHeader_h */

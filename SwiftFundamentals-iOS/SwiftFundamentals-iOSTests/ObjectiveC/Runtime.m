@@ -8,9 +8,6 @@
 
 #import "Runtime.h"
 
-#import <objc/runtime.h>
-
-
 /**
  *  <Foundation/NSObjCRuntime.h>
  *
@@ -23,7 +20,6 @@
  *    NSClassFromString(s);
  *
  */
-#import <Foundation/NSObjCRuntime.h>
 
 @implementation Runtime
 

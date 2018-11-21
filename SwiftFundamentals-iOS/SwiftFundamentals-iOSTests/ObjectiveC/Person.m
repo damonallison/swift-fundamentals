@@ -18,9 +18,6 @@
  *
  * * You can only create extensions for classes you have the source code to.
  * * You can add additional instance variables and properties in an extension.
- *
- *
- *
  */
 @interface Person()
 
@@ -38,6 +35,10 @@
         _lastName = [lastName copy];
     }
     return self;
+}
+
+- (bool) isOld {
+    return YES;
 }
 
 #pragma mark - NSObject Overrides
