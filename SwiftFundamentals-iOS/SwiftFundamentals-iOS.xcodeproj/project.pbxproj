@@ -20,6 +20,7 @@
 		2162C84621887B8500C91F5B /* ObjcClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 21D4ED4621864C75003A1B4C /* ObjcClass.m */; };
 		21AD4CD121A59A6E00188B3B /* NSErrorTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 21AD4CD021A59A6E00188B3B /* NSErrorTests.m */; };
 		21AD4CD321A5ABC400188B3B /* GenericsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 21AD4CD221A5ABC400188B3B /* GenericsTests.m */; };
+		21B005E521ACC7C9001D87D5 /* TypesTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 21B005E421ACC7C9001D87D5 /* TypesTests.m */; };
 		21D4ECEE21864C1F003A1B4C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21D4ECED21864C1F003A1B4C /* AppDelegate.swift */; };
 		21D4ECF021864C1F003A1B4C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21D4ECEF21864C1F003A1B4C /* ViewController.swift */; };
 		21D4ECF321864C1F003A1B4C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 21D4ECF121864C1F003A1B4C /* Main.storyboard */; };
@@ -101,6 +102,7 @@
 		2162C84721887C0400C91F5B /* SwiftFundamentals-iOSTests-BridgingHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SwiftFundamentals-iOSTests-BridgingHeader.h"; sourceTree = "<group>"; };
 		21AD4CD021A59A6E00188B3B /* NSErrorTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NSErrorTests.m; sourceTree = "<group>"; };
 		21AD4CD221A5ABC400188B3B /* GenericsTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GenericsTests.m; sourceTree = "<group>"; };
+		21B005E421ACC7C9001D87D5 /* TypesTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TypesTests.m; sourceTree = "<group>"; };
 		21D4ECEA21864C1F003A1B4C /* SwiftFundamentals-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "SwiftFundamentals-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		21D4ECED21864C1F003A1B4C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		21D4ECEF21864C1F003A1B4C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -200,6 +202,7 @@
 				2157F52721A3AB3100E56217 /* BlocksTest.m */,
 				21AD4CD221A5ABC400188B3B /* GenericsTests.m */,
 				21AD4CD021A59A6E00188B3B /* NSErrorTests.m */,
+				21B005E421ACC7C9001D87D5 /* TypesTests.m */,
 			);
 			path = "ObjectiveC-Tests";
 			sourceTree = "<group>";
@@ -539,6 +542,7 @@
 				21D4ED5F21864E6E003A1B4C /* AccessControlTests.swift in Sources */,
 				2162C84521887B7C00C91F5B /* ObjectiveCInteropTests.swift in Sources */,
 				21ECEF3E21A5CB97002D125C /* Constants.m in Sources */,
+				21B005E521ACC7C9001D87D5 /* TypesTests.m in Sources */,
 				21D4ED6021864E6E003A1B4C /* CommentTests.swift in Sources */,
 				21D4ED6121864E6E003A1B4C /* ControlFlow.swift in Sources */,
 				21AD4CD121A59A6E00188B3B /* NSErrorTests.m in Sources */,
