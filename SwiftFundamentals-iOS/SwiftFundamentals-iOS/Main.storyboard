@@ -34,17 +34,14 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Root" id="RbG-Bk-AfR">
-                        <leftBarButtonItems>
-                            <barButtonItem title="Person" id="djO-O0-8kS">
-                                <connections>
-                                    <action selector="showPersonViewControllerWithSender:" destination="EGA-T4-MSX" id="vSF-pE-9yb"/>
-                                </connections>
-                            </barButtonItem>
-                            <barButtonItem title="Item" id="Qc3-pW-mLX" userLabel="Child"/>
-                        </leftBarButtonItems>
-                        <barButtonItem key="rightBarButtonItem" title="Detail" id="UdP-5h-epo">
+                        <barButtonItem key="leftBarButtonItem" title="Person" id="djO-O0-8kS">
                             <connections>
-                                <segue destination="35f-9W-ePx" kind="show" identifier="RootToDetailSegue" id="iSt-DI-Hod"/>
+                                <action selector="showPersonViewControllerWithSender:" destination="EGA-T4-MSX" id="vSF-pE-9yb"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Child" id="Qc3-pW-mLX" userLabel="Child">
+                            <connections>
+                                <action selector="presentChildViewControllerWithSender:" destination="EGA-T4-MSX" id="3cW-Vz-p93"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>

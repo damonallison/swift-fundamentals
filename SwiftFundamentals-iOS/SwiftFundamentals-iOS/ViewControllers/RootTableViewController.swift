@@ -24,8 +24,42 @@ class RootTableViewController : UITableViewController, CompletedDelegate {
         guard let vc = sb.instantiateViewController(withIdentifier: "PersonVC") as? PersonViewController else {
             preconditionFailure("Expected PersonVC to be of type PersonViewController")
         }
+        vc.person = Person(firstName: "Damon", lastName: "Allison")
         vc.delegate = self
         self.navigationController!.pushViewController(vc, animated: true)
+    }
+    
+    /// Loads the child VC and presents it's initial VC modally.
+    ///
+    /// - Parameter sender: The object (UIButton) triggering the action.
+    @IBAction func presentChildViewController(sender: AnyObject) {
+        let sb = UIStoryboard(name: "Child", bundle: nil)
+        guard let vc = sb.instantiateInitialViewController() else {
+            preconditionFailure("Child.storyboard does not have an initial view controller")
+        }
+        guard let tabVC = vc as? UITabBarController else {
+            preconditionFailure("Child.storyboard root view controller should be a UITabBarController")
+        }
+        // The first VC will be the UINavigationController with it's root VC ChildTableViewController.
+        guard let navVC = tabVC.viewControllers?[0] as? UINavigationController,
+              let childVC = navVC.viewControllers[0] as? ChildTableViewController else {
+            preconditionFailure("The first UITabViewController child VC should be a UINavigationController w/ it's first VC a ChildTableViewController")
+        }
+        childVC.delegate = self
+        
+        print("Tab count: \(tabVC.viewControllers?.count ?? 0)")
+        print("Tab item count: \(tabVC.tabBar.items?.count ?? 0)")
+        for i in 0..<(tabVC.tabBar.items?.count ?? 0) {
+            let tabItem = tabVC.tabBar.items![i]
+            tabItem.badgeColor = UIColor.purple
+            tabItem.badgeValue = String(i)
+            tabItem.title = "Damon \(i)"
+            print("tabItem: \(tabItem)")
+        }
+        self.modalPresentationStyle = .fullScreen
+        self.present(tabVC, animated: true) {
+            print("presented tabVC")
+        }
     }
     
     /**
@@ -39,16 +73,18 @@ class RootTableViewController : UITableViewController, CompletedDelegate {
         print("Preparing for segue : \(segue)")
         print("Source VC \(segue.source.restorationIdentifier ?? "nil")")
         print("Dest   VC \(segue.destination.restorationIdentifier ?? "nil")")
-        
-        guard let vc = segue.destination as? DetailViewController else {
-            preconditionFailure("Destination VC should be \(String.init(describing: DetailViewController.self))")
-        }
-        vc.delegate = self
     }
     
     func completed(vc: UIViewController) {
         
         print("VC completed: \(vc)")
+        
+        if vc is ChildTableViewController {
+            self.dismiss(animated: true) {
+                print("Dismissed ChildTableViewController")
+            }
+            return
+        }
 
         //
         // Determine if the personViewController is on the top of the navigation stack.
@@ -59,7 +95,7 @@ class RootTableViewController : UITableViewController, CompletedDelegate {
         guard let tc = nc.topViewController else {
             preconditionFailure("UINavigationController.topViewController should exist")
         }
-        precondition(tc is DetailViewController || tc is PersonViewController, "Expected DetailViewController or PersonViewController")
+        precondition(tc is PersonViewController, "Expected PersonViewController")
         nc.popViewController(animated: true)
     }
 }

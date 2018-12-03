@@ -84,8 +84,10 @@ struct Point : Equatable  {
     }
     
     /// 
-    /// By default, structs and enums are immutable. 
-    /// You can opt into allowing your struct / enum value type to be modified.
+    /// By default, structs and enums are immutable. In general,
+    /// structs should stay immutable and should not be mutated.
+    ///
+    /// You can opt into allowing your struct / enum value type to be mutated.
     ///
     /// `mutating` allows you to mutate `var` struct members.
     ///
