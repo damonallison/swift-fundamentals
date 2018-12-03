@@ -13,6 +13,12 @@
 		2142BE3D218881090062BC16 /* ProtocolInheritanceExample.m in Sources */ = {isa = PBXBuildFile; fileRef = 2142BE3C218881090062BC16 /* ProtocolInheritanceExample.m */; };
 		2142BE402188811D0062BC16 /* Runtime.m in Sources */ = {isa = PBXBuildFile; fileRef = 2142BE3E2188811C0062BC16 /* Runtime.m */; };
 		2142BE432188812C0062BC16 /* GCDTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 2142BE412188812B0062BC16 /* GCDTest.m */; };
+		21465F4921B32C8200040E56 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 21465F4721B32C8200040E56 /* Main.storyboard */; };
+		21465F4A21B32C8200040E56 /* Person.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 21465F4821B32C8200040E56 /* Person.storyboard */; };
+		21465F4E21B32EED00040E56 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21465F4D21B32EED00040E56 /* DetailViewController.swift */; };
+		21465F5021B49D9900040E56 /* RootTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21465F4F21B49D9900040E56 /* RootTableViewController.swift */; };
+		21465F5221B4B0DA00040E56 /* PersonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21465F5121B4B0DA00040E56 /* PersonViewController.swift */; };
+		21465F5421B4B11B00040E56 /* CompletedDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21465F5321B4B11B00040E56 /* CompletedDelegate.swift */; };
 		2157F52821A3AB3100E56217 /* BlocksTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 2157F52721A3AB3100E56217 /* BlocksTest.m */; };
 		2162C84121887A4600C91F5B /* FrameworkTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21D4ED4221864C75003A1B4C /* FrameworkTests.swift */; };
 		2162C84421887A7300C91F5B /* Calculator.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2162C84321887A7300C91F5B /* Calculator.framework */; };
@@ -23,10 +29,8 @@
 		21B005E521ACC7C9001D87D5 /* TypesTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 21B005E421ACC7C9001D87D5 /* TypesTests.m */; };
 		21D4ECEE21864C1F003A1B4C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21D4ECED21864C1F003A1B4C /* AppDelegate.swift */; };
 		21D4ECF021864C1F003A1B4C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21D4ECEF21864C1F003A1B4C /* ViewController.swift */; };
-		21D4ECF321864C1F003A1B4C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 21D4ECF121864C1F003A1B4C /* Main.storyboard */; };
 		21D4ECF521864C22003A1B4C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 21D4ECF421864C22003A1B4C /* Assets.xcassets */; };
 		21D4ECF821864C22003A1B4C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 21D4ECF621864C22003A1B4C /* LaunchScreen.storyboard */; };
-		21D4ED0E21864C22003A1B4C /* SwiftFundamentals_iOSUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21D4ED0D21864C22003A1B4C /* SwiftFundamentals_iOSUITests.swift */; };
 		21D4ED5721864C94003A1B4C /* Globals.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21D4ED5621864C94003A1B4C /* Globals.swift */; };
 		21D4ED5921864C98003A1B4C /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21D4ED5821864C98003A1B4C /* Environment.swift */; };
 		21D4ED5C21864D6C003A1B4C /* SR7874.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21D4ED3F21864C75003A1B4C /* SR7874.swift */; };
@@ -63,19 +67,13 @@
 		21D4ED7C21864ECF003A1B4C /* DictionaryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21D4ED3C21864C74003A1B4C /* DictionaryTests.swift */; };
 		21D4ED7D21864ECF003A1B4C /* SetTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21D4ED3D21864C74003A1B4C /* SetTests.swift */; };
 		21D4ED7E21864ED4003A1B4C /* Point.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21D4ED2721864C74003A1B4C /* Point.swift */; };
+		21DD29B021B4C28C002121A1 /* Child.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 21DD29AF21B4C28C002121A1 /* Child.storyboard */; };
 		21ECEF3B21A5B1C1002D125C /* Queue.m in Sources */ = {isa = PBXBuildFile; fileRef = 21ECEF3A21A5B1C1002D125C /* Queue.m */; };
 		21ECEF3E21A5CB97002D125C /* Constants.m in Sources */ = {isa = PBXBuildFile; fileRef = 21ECEF3D21A5CB97002D125C /* Constants.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
 		21D4ECFF21864C22003A1B4C /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 21D4ECE221864C1F003A1B4C /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 21D4ECE921864C1F003A1B4C;
-			remoteInfo = "SwiftFundamentals-iOS";
-		};
-		21D4ED0A21864C22003A1B4C /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 21D4ECE221864C1F003A1B4C /* Project object */;
 			proxyType = 1;
@@ -97,6 +95,12 @@
 		2142BE3F2188811D0062BC16 /* Runtime.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Runtime.h; sourceTree = "<group>"; };
 		2142BE412188812B0062BC16 /* GCDTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GCDTest.m; sourceTree = "<group>"; };
 		2142BE422188812B0062BC16 /* GCDTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCDTest.h; sourceTree = "<group>"; };
+		21465F4721B32C8200040E56 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		21465F4821B32C8200040E56 /* Person.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Person.storyboard; sourceTree = "<group>"; };
+		21465F4D21B32EED00040E56 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		21465F4F21B49D9900040E56 /* RootTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootTableViewController.swift; sourceTree = "<group>"; };
+		21465F5121B4B0DA00040E56 /* PersonViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonViewController.swift; sourceTree = "<group>"; };
+		21465F5321B4B11B00040E56 /* CompletedDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompletedDelegate.swift; sourceTree = "<group>"; };
 		2157F52721A3AB3100E56217 /* BlocksTest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BlocksTest.m; sourceTree = "<group>"; };
 		2162C84321887A7300C91F5B /* Calculator.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Calculator.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2162C84721887C0400C91F5B /* SwiftFundamentals-iOSTests-BridgingHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SwiftFundamentals-iOSTests-BridgingHeader.h"; sourceTree = "<group>"; };
@@ -106,15 +110,11 @@
 		21D4ECEA21864C1F003A1B4C /* SwiftFundamentals-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "SwiftFundamentals-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		21D4ECED21864C1F003A1B4C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		21D4ECEF21864C1F003A1B4C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		21D4ECF221864C1F003A1B4C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		21D4ECF421864C22003A1B4C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		21D4ECF721864C22003A1B4C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		21D4ECF921864C22003A1B4C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		21D4ECFE21864C22003A1B4C /* SwiftFundamentals-iOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "SwiftFundamentals-iOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		21D4ED0421864C22003A1B4C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		21D4ED0921864C22003A1B4C /* SwiftFundamentals-iOSUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "SwiftFundamentals-iOSUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		21D4ED0D21864C22003A1B4C /* SwiftFundamentals_iOSUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftFundamentals_iOSUITests.swift; sourceTree = "<group>"; };
-		21D4ED0F21864C22003A1B4C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		21D4ED2721864C74003A1B4C /* Point.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Point.swift; sourceTree = "<group>"; };
 		21D4ED2921864C74003A1B4C /* FuncQueue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FuncQueue.swift; sourceTree = "<group>"; };
 		21D4ED2B21864C74003A1B4C /* AccessControlTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessControlTests.swift; sourceTree = "<group>"; };
@@ -155,6 +155,7 @@
 		21D4ED5421864C76003A1B4C /* TimesTable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimesTable.swift; sourceTree = "<group>"; };
 		21D4ED5621864C94003A1B4C /* Globals.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Globals.swift; sourceTree = "<group>"; };
 		21D4ED5821864C98003A1B4C /* Environment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Environment.swift; sourceTree = "<group>"; };
+		21DD29AF21B4C28C002121A1 /* Child.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Child.storyboard; sourceTree = "<group>"; };
 		21ECEF3A21A5B1C1002D125C /* Queue.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Queue.m; sourceTree = "<group>"; };
 		21ECEF3C21A5B1CC002D125C /* Queue.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Queue.h; sourceTree = "<group>"; };
 		21ECEF3D21A5CB97002D125C /* Constants.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Constants.m; sourceTree = "<group>"; };
@@ -177,13 +178,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		21D4ED0621864C22003A1B4C /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -194,6 +188,18 @@
 				213164AC21888395000DA45E /* NSString+DRAFormatting.m */,
 			);
 			path = Categories;
+			sourceTree = "<group>";
+		};
+		21465F4B21B32D1E00040E56 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				21DD29AE21B4C233002121A1 /* Child */,
+				21465F4D21B32EED00040E56 /* DetailViewController.swift */,
+				21465F5121B4B0DA00040E56 /* PersonViewController.swift */,
+				21465F4F21B49D9900040E56 /* RootTableViewController.swift */,
+				21D4ECEF21864C1F003A1B4C /* ViewController.swift */,
+			);
+			path = ViewControllers;
 			sourceTree = "<group>";
 		};
 		2157F52621A3AADA00E56217 /* ObjectiveC-Tests */ = {
@@ -220,7 +226,6 @@
 			children = (
 				21D4ECEC21864C1F003A1B4C /* SwiftFundamentals-iOS */,
 				21D4ED0121864C22003A1B4C /* SwiftFundamentals-iOSTests */,
-				21D4ED0C21864C22003A1B4C /* SwiftFundamentals-iOSUITests */,
 				21D4ECEB21864C1F003A1B4C /* Products */,
 				2162C84221887A7300C91F5B /* Frameworks */,
 			);
@@ -231,7 +236,6 @@
 			children = (
 				21D4ECEA21864C1F003A1B4C /* SwiftFundamentals-iOS.app */,
 				21D4ECFE21864C22003A1B4C /* SwiftFundamentals-iOSTests.xctest */,
-				21D4ED0921864C22003A1B4C /* SwiftFundamentals-iOSUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -239,12 +243,15 @@
 		21D4ECEC21864C1F003A1B4C /* SwiftFundamentals-iOS */ = {
 			isa = PBXGroup;
 			children = (
+				21465F4B21B32D1E00040E56 /* ViewControllers */,
 				21D4ECED21864C1F003A1B4C /* AppDelegate.swift */,
-				21D4ECEF21864C1F003A1B4C /* ViewController.swift */,
-				21D4ECF121864C1F003A1B4C /* Main.storyboard */,
+				21465F5321B4B11B00040E56 /* CompletedDelegate.swift */,
 				21D4ECF421864C22003A1B4C /* Assets.xcassets */,
 				21D4ECF621864C22003A1B4C /* LaunchScreen.storyboard */,
 				21D4ECF921864C22003A1B4C /* Info.plist */,
+				21465F4721B32C8200040E56 /* Main.storyboard */,
+				21465F4821B32C8200040E56 /* Person.storyboard */,
+				21DD29AF21B4C28C002121A1 /* Child.storyboard */,
 			);
 			path = "SwiftFundamentals-iOS";
 			sourceTree = "<group>";
@@ -266,15 +273,6 @@
 				2162C84721887C0400C91F5B /* SwiftFundamentals-iOSTests-BridgingHeader.h */,
 			);
 			path = "SwiftFundamentals-iOSTests";
-			sourceTree = "<group>";
-		};
-		21D4ED0C21864C22003A1B4C /* SwiftFundamentals-iOSUITests */ = {
-			isa = PBXGroup;
-			children = (
-				21D4ED0D21864C22003A1B4C /* SwiftFundamentals_iOSUITests.swift */,
-				21D4ED0F21864C22003A1B4C /* Info.plist */,
-			);
-			path = "SwiftFundamentals-iOSUITests";
 			sourceTree = "<group>";
 		};
 		21D4ED2821864C74003A1B4C /* Structures */ = {
@@ -395,6 +393,13 @@
 			path = Objects;
 			sourceTree = "<group>";
 		};
+		21DD29AE21B4C233002121A1 /* Child */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Child;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -433,24 +438,6 @@
 			productReference = 21D4ECFE21864C22003A1B4C /* SwiftFundamentals-iOSTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		21D4ED0821864C22003A1B4C /* SwiftFundamentals-iOSUITests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 21D4ED1821864C22003A1B4C /* Build configuration list for PBXNativeTarget "SwiftFundamentals-iOSUITests" */;
-			buildPhases = (
-				21D4ED0521864C22003A1B4C /* Sources */,
-				21D4ED0621864C22003A1B4C /* Frameworks */,
-				21D4ED0721864C22003A1B4C /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				21D4ED0B21864C22003A1B4C /* PBXTargetDependency */,
-			);
-			name = "SwiftFundamentals-iOSUITests";
-			productName = "SwiftFundamentals-iOSUITests";
-			productReference = 21D4ED0921864C22003A1B4C /* SwiftFundamentals-iOSUITests.xctest */;
-			productType = "com.apple.product-type.bundle.ui-testing";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -466,10 +453,6 @@
 						LastSwiftMigration = 1000;
 					};
 					21D4ECFD21864C22003A1B4C = {
-						CreatedOnToolsVersion = 10.0;
-						TestTargetID = 21D4ECE921864C1F003A1B4C;
-					};
-					21D4ED0821864C22003A1B4C = {
 						CreatedOnToolsVersion = 10.0;
 						TestTargetID = 21D4ECE921864C1F003A1B4C;
 					};
@@ -490,7 +473,6 @@
 			targets = (
 				21D4ECE921864C1F003A1B4C /* SwiftFundamentals-iOS */,
 				21D4ECFD21864C22003A1B4C /* SwiftFundamentals-iOSTests */,
-				21D4ED0821864C22003A1B4C /* SwiftFundamentals-iOSUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -500,20 +482,15 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				21465F4A21B32C8200040E56 /* Person.storyboard in Resources */,
+				21DD29B021B4C28C002121A1 /* Child.storyboard in Resources */,
+				21465F4921B32C8200040E56 /* Main.storyboard in Resources */,
 				21D4ECF821864C22003A1B4C /* LaunchScreen.storyboard in Resources */,
 				21D4ECF521864C22003A1B4C /* Assets.xcassets in Resources */,
-				21D4ECF321864C1F003A1B4C /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		21D4ECFC21864C22003A1B4C /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		21D4ED0721864C22003A1B4C /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -527,8 +504,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				21465F5221B4B0DA00040E56 /* PersonViewController.swift in Sources */,
+				21465F4E21B32EED00040E56 /* DetailViewController.swift in Sources */,
 				21D4ECF021864C1F003A1B4C /* ViewController.swift in Sources */,
 				21D4ECEE21864C1F003A1B4C /* AppDelegate.swift in Sources */,
+				21465F5021B49D9900040E56 /* RootTableViewController.swift in Sources */,
+				21465F5421B4B11B00040E56 /* CompletedDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -590,14 +571,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		21D4ED0521864C22003A1B4C /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				21D4ED0E21864C22003A1B4C /* SwiftFundamentals_iOSUITests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -606,22 +579,9 @@
 			target = 21D4ECE921864C1F003A1B4C /* SwiftFundamentals-iOS */;
 			targetProxy = 21D4ECFF21864C22003A1B4C /* PBXContainerItemProxy */;
 		};
-		21D4ED0B21864C22003A1B4C /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 21D4ECE921864C1F003A1B4C /* SwiftFundamentals-iOS */;
-			targetProxy = 21D4ED0A21864C22003A1B4C /* PBXContainerItemProxy */;
-		};
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		21D4ECF121864C1F003A1B4C /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				21D4ECF221864C1F003A1B4C /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		21D4ECF621864C22003A1B4C /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -832,46 +792,6 @@
 			};
 			name = Release;
 		};
-		21D4ED1921864C22003A1B4C /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = Q756N68G3Y;
-				INFOPLIST_FILE = "SwiftFundamentals-iOSUITests/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.damonallison.swift.SwiftFundamentals-iOSUITests";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = "SwiftFundamentals-iOS";
-			};
-			name = Debug;
-		};
-		21D4ED1A21864C22003A1B4C /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = Q756N68G3Y;
-				INFOPLIST_FILE = "SwiftFundamentals-iOSUITests/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.damonallison.swift.SwiftFundamentals-iOSUITests";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = "SwiftFundamentals-iOS";
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -898,15 +818,6 @@
 			buildConfigurations = (
 				21D4ED1621864C22003A1B4C /* Debug */,
 				21D4ED1721864C22003A1B4C /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		21D4ED1821864C22003A1B4C /* Build configuration list for PBXNativeTarget "SwiftFundamentals-iOSUITests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				21D4ED1921864C22003A1B4C /* Debug */,
-				21D4ED1A21864C22003A1B4C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

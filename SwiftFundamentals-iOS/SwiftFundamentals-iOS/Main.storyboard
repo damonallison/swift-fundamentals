@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="TRE-dq-v5Q">
+    <device id="retina6_1" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Root-->
+        <scene sceneID="u4d-jC-asg">
+            <objects>
+                <tableViewController storyboardIdentifier="RootVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="EGA-T4-MSX" customClass="RootTableViewController" customModule="SwiftFundamentals_iOS" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="FMN-S5-A1I">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="CAo-90-IJe">
+                                <rect key="frame" x="0.0" y="22" width="414" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="CAo-90-IJe" id="Fo7-vU-0I7">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="EGA-T4-MSX" id="7Tx-JZ-ScQ"/>
+                            <outlet property="delegate" destination="EGA-T4-MSX" id="T7f-bo-Osx"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Root" id="RbG-Bk-AfR">
+                        <leftBarButtonItems>
+                            <barButtonItem title="Person" id="djO-O0-8kS">
+                                <connections>
+                                    <action selector="showPersonViewControllerWithSender:" destination="EGA-T4-MSX" id="vSF-pE-9yb"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem title="Item" id="Qc3-pW-mLX" userLabel="Child"/>
+                        </leftBarButtonItems>
+                        <barButtonItem key="rightBarButtonItem" title="Detail" id="UdP-5h-epo">
+                            <connections>
+                                <segue destination="35f-9W-ePx" kind="show" identifier="RootToDetailSegue" id="iSt-DI-Hod"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="UNW-Ha-LSF" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1377" y="507"/>
+        </scene>
+        <!--Detail View Controller-->
+        <scene sceneID="T8j-Ag-TUy">
+            <objects>
+                <viewController storyboardIdentifier="DetailVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="35f-9W-ePx" customClass="DetailViewController" customModule="SwiftFundamentals_iOS" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="96W-lz-haC"/>
+                        <viewControllerLayoutGuide type="bottom" id="76D-fc-FAr"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="quZ-kH-JYA">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="146-BZ-K1b">
+                                <rect key="frame" x="188.5" y="433" width="37" height="30"/>
+                                <state key="normal" title="Done">
+                                    <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="doneWithSender:" destination="35f-9W-ePx" eventType="touchUpInside" id="4Ge-h1-LNu"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="centerY" secondItem="146-BZ-K1b" secondAttribute="centerY" id="9qP-R5-Z6z"/>
+                            <constraint firstAttribute="centerX" secondItem="146-BZ-K1b" secondAttribute="centerX" id="slo-Ow-SRZ"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="HtG-ib-PCh" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2071" y="507"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="xPC-3G-d0Q">
+            <objects>
+                <navigationController id="TRE-dq-v5Q" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="zGI-At-KlW">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="EGA-T4-MSX" kind="relationship" relationship="rootViewController" id="PDS-mK-0qD"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="1Lh-Ef-qkd" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="473" y="419"/>
+        </scene>
+    </scenes>
+    <color key="tintColor" red="0.68400540856702796" green="0.33180344546028651" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+</document>
