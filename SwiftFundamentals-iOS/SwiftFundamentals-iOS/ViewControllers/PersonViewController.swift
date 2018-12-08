@@ -6,13 +6,11 @@
 //  Copyright © 2018 Damon Allison. All rights reserved.
 //
 
+import UIKit
+
 ///
 /// A simple view controller to show state passing between VCs.
 ///
-
-import UIKit
-
-
 class PersonViewController : UIViewController {
  
     weak var delegate: CompletedDelegate?
@@ -20,7 +18,7 @@ class PersonViewController : UIViewController {
     @IBOutlet weak var firstNameLabel: UILabel!
     @IBOutlet weak var lastNameLabel: UILabel!
     
-    var person: Person!
+    var person: Person?
     
     ///
     /// If the VC is instantiated from a nib or storyboard,
@@ -53,8 +51,8 @@ class PersonViewController : UIViewController {
         super.viewDidLoad()
         print("\(#file)-\(#function) view.bounds == \(self.view.bounds)")
         
-        firstNameLabel.text = self.person.firstName
-        lastNameLabel.text = self.person.lastName
+        firstNameLabel.text = self.person?.firstName ?? "<null>"
+        lastNameLabel.text = self.person?.lastName ?? "<null>"
     }
 
     override func viewWillAppear(_ animated: Bool) {

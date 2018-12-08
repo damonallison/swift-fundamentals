@@ -13,89 +13,77 @@ class RootTableViewController : UITableViewController, CompletedDelegate {
     override func viewDidLoad() {
         assert(self.tableView != nil && self.view == self.tableView)
         self.tableView.backgroundColor = UIColor.red
-    }
-
-    
-    /// Example showing how to load a new storyboard and VC from the storyboard.
-    ///
-    /// - Parameter sender: The object (UIButton) triggering the action.
-    @IBAction func showPersonViewController(sender: AnyObject) {
-        let sb = UIStoryboard(name: "Person", bundle: nil)
-        guard let vc = sb.instantiateViewController(withIdentifier: "PersonVC") as? PersonViewController else {
-            preconditionFailure("Expected PersonVC to be of type PersonViewController")
-        }
-        vc.person = Person(firstName: "Damon", lastName: "Allison")
-        vc.delegate = self
-        self.navigationController!.pushViewController(vc, animated: true)
-    }
-    
-    /// Loads the child VC and presents it's initial VC modally.
-    ///
-    /// - Parameter sender: The object (UIButton) triggering the action.
-    @IBAction func presentChildViewController(sender: AnyObject) {
-        let sb = UIStoryboard(name: "Child", bundle: nil)
-        guard let vc = sb.instantiateInitialViewController() else {
-            preconditionFailure("Child.storyboard does not have an initial view controller")
-        }
-        guard let tabVC = vc as? UITabBarController else {
-            preconditionFailure("Child.storyboard root view controller should be a UITabBarController")
-        }
-        // The first VC will be the UINavigationController with it's root VC ChildTableViewController.
-        guard let navVC = tabVC.viewControllers?[0] as? UINavigationController,
-              let childVC = navVC.viewControllers[0] as? ChildTableViewController else {
-            preconditionFailure("The first UITabViewController child VC should be a UINavigationController w/ it's first VC a ChildTableViewController")
-        }
-        childVC.delegate = self
         
-        print("Tab count: \(tabVC.viewControllers?.count ?? 0)")
-        print("Tab item count: \(tabVC.tabBar.items?.count ?? 0)")
-        for i in 0..<(tabVC.tabBar.items?.count ?? 0) {
+        //
+        // Uses a custom UIView for the title image.
+        //
+        // How can we apply this view to *all* VCs that get pushed on the stack?
+        //
+        // * Do we need a custom base VC that all other VCs inherit from?
+        // * Listen for UINavigationController delegate (willPush..) and
+        //   manually set the titleView on the new VC?
+        //
+        let titleView = UIImageView(image: UIImage(named: "self"))
+        
+        self.navigationController?.navigationBar.tintColor = UIColor.yellow
+        self.navigationController?.navigationBar.barTintColor = UIColor.blue
+        
+        // Create a custom view for displaying in the
+        self.navigationController?.navigationBar.topItem?.titleView = titleView
+        // self.navigationController?.navigationBar.backgroundColor = UIColor.blue
+
+        // Configure tabs
+        guard let tabVC = self.tabBarController else {
+            preconditionFailure("RootTableViewController must be embedded within a UITabBarController")
+        }
+        
+        let count = tabVC.tabBar.items?.count ?? 0
+        print("Tab count: \(count)")
+        for i in 0..<count {
             let tabItem = tabVC.tabBar.items![i]
             tabItem.badgeColor = UIColor.purple
             tabItem.badgeValue = String(i)
             tabItem.title = "Damon \(i)"
             print("tabItem: \(tabItem)")
         }
-        self.modalPresentationStyle = .fullScreen
-        self.present(tabVC, animated: true) {
-            print("presented tabVC")
-        }
     }
-    
+
     /**
      *  prepareForSegue is called when a segue is about to be performed.
      *  The segue has a `destinationViewController` property populated,
      *  allowing you to configure the destination VC before it is presented.
      *
+     *  Segues are created in IB. In order to customize the destination VC
+     *  before it is displayed, you need to determine what segue is being invoked
+     *  by identifier, cast the destination VC appropriately, and assign state.
      *  Typically, the destination's `delegate` is set to the source VC.
      */
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        print("Preparing for segue : \(segue)")
-        print("Source VC \(segue.source.restorationIdentifier ?? "nil")")
-        print("Dest   VC \(segue.destination.restorationIdentifier ?? "nil")")
+        print("\(#file)-\(#function) - segue \(segue)")
+        print("\(#file)-\(#function) - sender \(sender ?? "nil")")
+        
+        // Determine which segue was triggered. This is set from IB.
+        switch(segue.identifier) {
+        case "showPerson":
+            guard let destVC = segue.destination as? PersonViewController else {
+                preconditionFailure("Unexpected DestinationVC \(segue.destination.self)")
+            }
+            destVC.person = Person(firstName: "Damon", lastName: "Allison")
+            destVC.delegate = self
+        default:
+            precondition(segue.identifier == "showPerson", "Invalid segue triggered")
+        }
     }
-    
+
     func completed(vc: UIViewController) {
         
         print("VC completed: \(vc)")
         
-        if vc is ChildTableViewController {
+        if vc is PersonViewController {
             self.dismiss(animated: true) {
-                print("Dismissed ChildTableViewController")
+                print("Dismissed PersonVC")
             }
             return
         }
-
-        //
-        // Determine if the personViewController is on the top of the navigation stack.
-        //
-        guard let nc = self.navigationController else {
-            preconditionFailure("RootTableViewController should be embedded in a UINavigationController")
-        }
-        guard let tc = nc.topViewController else {
-            preconditionFailure("UINavigationController.topViewController should exist")
-        }
-        precondition(tc is PersonViewController, "Expected PersonViewController")
-        nc.popViewController(animated: true)
     }
 }

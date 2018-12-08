@@ -8,14 +8,19 @@
 
 import UIKit
 
+///
+/// The AnyObject requirement limits protocol adoption to class types.
+/// This is required to hold weak references to objects conforming to
+/// a protocol, which is the preferrred way to declare delegates.
+///
+/// Holding a weak reference to the delegate prevents retain cycles.
+///
+/// weak var delegate: CompletedDelegate?
+///
 protocol CompletedDelegate : AnyObject {
     
     
     /// Indicates the view controller has been completed.
-    ///
-    /// The AnyObject requirement limits protocol adoption to class types.
-    /// This is required since we are going to hold weak references to objects
-    /// conforming to this protocol.
     ///
     /// - Parameter vc: The UIViewController that is indicating it is complete.
     func completed(vc: UIViewController)
