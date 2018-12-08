@@ -15,6 +15,7 @@ class PersonViewController : UIViewController {
  
     weak var delegate: CompletedDelegate?
     
+    @IBOutlet weak var navBar: UINavigationBar!
     @IBOutlet weak var firstNameLabel: UILabel!
     @IBOutlet weak var lastNameLabel: UILabel!
     
@@ -53,6 +54,14 @@ class PersonViewController : UIViewController {
         
         firstNameLabel.text = self.person?.firstName ?? "<null>"
         lastNameLabel.text = self.person?.lastName ?? "<null>"
+        
+        self.title = "Person"
+    
+        // Make the UINavigationBar transparent, but keep the bar button items showing.
+        self.navBar.setBackgroundImage(UIImage(), for: .default)
+        self.navBar.shadowImage = UIImage()
+        self.navBar.isTranslucent = true
+        
     }
 
     override func viewWillAppear(_ animated: Bool) {

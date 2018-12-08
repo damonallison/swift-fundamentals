@@ -1,0 +1,22 @@
+# Auto Layout
+
+* To enable safe area, enable "Safe Area Layout Guides" in Interface Builder info tab (Cmd-Opt-1).
+
+## Questions
+
+* What is an intrinsic content size?
+* How to dynamically size controls (labels, table view cells) based on font size, string length?
+* How to display (and test) right to left languages?
+
+## Layout Options
+
+* Programmatic
+* Autoresizing masks (automates *some*)
+* Auto Layout
+
+### Autoresizing Masks
+
+* Only support *some* layouts. Will not handle even mildly complex layouts.
+
+
+
