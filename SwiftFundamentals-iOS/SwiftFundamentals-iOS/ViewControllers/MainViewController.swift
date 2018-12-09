@@ -36,6 +36,9 @@ class MainViewController : UITabBarController {
         let personItem = UITabBarItem(title: "Person", image: nil, selectedImage: nil)
         personVC.tabBarItem = personItem
         self.viewControllers?.append(personVC)
+        
+        // Force the selection...
+        self.selectedIndex = 2
     }
     
     override func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {

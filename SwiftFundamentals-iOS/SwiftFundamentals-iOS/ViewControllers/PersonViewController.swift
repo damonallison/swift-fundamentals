@@ -18,6 +18,8 @@ class PersonViewController : UIViewController {
     @IBOutlet weak var navBar: UINavigationBar!
     @IBOutlet weak var firstNameLabel: UILabel!
     @IBOutlet weak var lastNameLabel: UILabel!
+
+    @IBOutlet weak var random: UILabel!
     
     var person: Person?
     
@@ -62,6 +64,18 @@ class PersonViewController : UIViewController {
         self.navBar.shadowImage = UIImage()
         self.navBar.isTranslucent = true
         
+        
+        print("IC :: \(self.random.intrinsicContentSize)")
+
+        
+//        self.random.text = "This is some long text.  This is some long text.  This is some long text.  This is some long text.  This is some long text.  This is some long text.  This is some long text.  This is some long text.  This is some long text.  This is some long text.  This is some long text.  This is some long text.  This is some long text.  This is some long text.  This is some long text."
+//
+//        self.random.text = "This is some..."
+        
+//        self.random.text = ""
+        print("IC :: \(self.random.intrinsicContentSize)")
+        
+        self.view.setNeedsLayout()
     }
 
     override func viewWillAppear(_ animated: Bool) {
