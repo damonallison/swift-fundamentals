@@ -4,7 +4,22 @@
 
 * To enable safe area, enable "Safe Area Layout Guides" in Interface Builder info tab (Cmd-Opt-1).
 
-* Avoid using "Left" and "Right" Auto Layout Attributes. Use `Leading` and `Trailing` instead.
+* Avoid using "Left" and "Right" Auto Layout Attributes. Use `Leading` and
+  `Trailing` instead.
+
+* Horizontal constraints - typically use a 0 point constraint to the layout
+  margins.
+
+* Vertical constraints
+  * If the view extends under the bars (scroll views) typically constrain to the
+    topMargin / bottomMargin. If you use UIScrollViews, you'll typically have to
+    set `contentInset` and `scrollIndicatorInsets`.
+  * If the view does *not* extend under the bars, constrain to the top/bottom
+    `layoutGuide`.
+
+* When programmatically instantiating views, set
+  `translatesAutoresizingMaskIntoConstraints` to `NO`. When you add your own
+  constraints, they conflict with the autoresizing constraints.
 
 ## Questions
 
