@@ -15,11 +15,13 @@ class PersonViewController : UIViewController {
  
     weak var delegate: CompletedDelegate?
     
-    @IBOutlet weak var navBar: UINavigationBar!
-    @IBOutlet weak var firstNameLabel: UILabel!
-    @IBOutlet weak var lastNameLabel: UILabel!
+    // Optional for testing purposes only. In production code, these should be
+    // unwrapped optionals.
+    @IBOutlet weak var navBar: UINavigationBar?
+    @IBOutlet weak var firstNameLabel: UILabel?
+    @IBOutlet weak var lastNameLabel: UILabel?
 
-    @IBOutlet weak var random: UILabel!
+    @IBOutlet weak var random: UILabel?
     
     var person: Person?
     
@@ -54,28 +56,22 @@ class PersonViewController : UIViewController {
         super.viewDidLoad()
         print("\(#file)-\(#function) view.bounds == \(self.view.bounds)")
         
-        firstNameLabel.text = self.person?.firstName ?? "<null>"
-        lastNameLabel.text = self.person?.lastName ?? "<null>"
-        
         self.title = "Person"
     
-        // Make the UINavigationBar transparent, but keep the bar button items showing.
-        self.navBar.setBackgroundImage(UIImage(), for: .default)
-        self.navBar.shadowImage = UIImage()
-        self.navBar.isTranslucent = true
+        if let navBar = self.navBar {
+            // Make the UINavigationBar transparent, but keep the bar button items showing.
+            navBar.setBackgroundImage(UIImage(), for: .default)
+            navBar.shadowImage = UIImage()
+            navBar.isTranslucent = true
+        }
+        if let firstNameLabel = self.firstNameLabel {
+            firstNameLabel.text = "This is some long text.  This is some long text.  This is some long text.  This is some long text.  This is some long text.  This is some long text.  This is some long text.  This is some long text.  This is some long text.  This is some long text.  This is some long text.  This is some long text.  This is some long text.  This is some long text.  This is some long text.  This is some long text.  This is some long text.  This is some long text.  This is some long text.  This is some long text.  This is some long text.  This is some long text.  This is some long text.  This is some long text.  This is some long text.  This is some long text.  This is some long text.  This is some long text.  This is some long text.  This is some long text.  This is some long text.  This is some long text.  This is some long text.  This is some long text.  This is some long text.  This is some long text.  This is some long text.  This is some long text.  This is some long text.  This is some long text.  This is some long text.  This is some long text.  This is some long text.  This is some long text.  This is some long text.  This is some long text.  This is some long text.  This is some long text.  This is some long text.  This is some long text.  This is some long text.  This is some long text.  This is some long text.  This is some long text.  This is some long text.  This is some long text.  This is some long text.  This is some long text.  This is some long text.  This is some long text.  This is some long text.  This is some long text.  This is some long text.  This is some long text.  This is some long text.  This is some long text.  This is some long text.  This is some long text.  This is some long text.  This is some long text.  This is some long text.  This is some long text.  This is some long text.  This is some long text.  This is some long text.  This is some long text.  This is some long text.  This is some long text.  This is some long text.  This is some long text.  This is some long text.  This is some long text.  This is some long text.  This is some long text.  This is some long text.  This is some long text.  This is some long text.  This is some long text.  This is some long text.  This is some long text.  This is some long text.  This is some long text.  This is some long text.  This is some long text.  This is some long text.  This is some long text."
+        }
         
+        if let random = self.random {
+            random.text = "This is some long text.  This is some long text.  This is some long text.  This is some long text.  This is some long text.  This is some long text.  This is some long text.  This is some long text.  This is some long text.  This is some long text.  This is some long text.  This is some long text.  This is some long text.  This is some long text.  This is some long text."
+        }
         
-        print("IC :: \(self.random.intrinsicContentSize)")
-
-        
-//        self.random.text = "This is some long text.  This is some long text.  This is some long text.  This is some long text.  This is some long text.  This is some long text.  This is some long text.  This is some long text.  This is some long text.  This is some long text.  This is some long text.  This is some long text.  This is some long text.  This is some long text.  This is some long text."
-//
-//        self.random.text = "This is some..."
-        
-//        self.random.text = ""
-        print("IC :: \(self.random.intrinsicContentSize)")
-        
-        self.view.setNeedsLayout()
     }
 
     override func viewWillAppear(_ animated: Bool) {
