@@ -48,12 +48,23 @@ class PersonViewController : UIViewController {
     }
     
     ///
+    /// Called during rotation, or anytime device traits change (i.e., iPad Split View)
+    ///
+    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+
+        print("Display scale: \(self.traitCollection.displayScale)")
+        print("Width size class: \(self.traitCollection.horizontalSizeClass.rawValue)")
+        print("Height size class: \(self.traitCollection.verticalSizeClass.rawValue)")
+    }
+    
+    ///
     /// When `viewDidLoad()` is called, all view objects are instantiated.
     ///
     /// Use this function to further configure your views.
     ///
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         print("\(#file)-\(#function) view.bounds == \(self.view.bounds)")
         
         self.title = "Person"
