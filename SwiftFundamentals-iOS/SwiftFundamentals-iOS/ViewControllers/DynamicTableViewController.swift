@@ -10,12 +10,16 @@ import UIKit
 
 ///
 /// DynamicTableViewController shows how to create a table with dynamically
-/// sized cells.
+/// sized cells. When setting estimatedRowHeight, set it as accurate as possible.
+/// The system calculates scroll bar heights based on these estimates. The more accurate the
+/// estimates, the more seamless the user experience becomes.
+///
+/// https://developer.apple.com/library/archive/documentation/UserExperience/Conceptual/AutolayoutPG/WorkingwithSelf-SizingTableViewCells.html#//apple_ref/doc/uid/TP40010853-CH25-SW1
 ///
 /// To enable self-sizing table cells, you must set:
 ///
 /// self.tableView.rowHeight = UiTableViewAutomaticDimension
-/// self.tableView.estimatedRowHeight = 100 // any number will do.
+/// self.tableView.estimatedRowHeight = 100 // Make as accurate as possible.
 ///
 class DynamicTableViewController : UITableViewController, CompletedDelegate {
 
