@@ -11,7 +11,7 @@ import UIKit
 ///
 /// A simple view controller to show state passing between VCs.
 ///
-class PersonViewController : UIViewController {
+class AutoLayoutViewController : UIViewController {
  
     weak var delegate: CompletedDelegate?
     

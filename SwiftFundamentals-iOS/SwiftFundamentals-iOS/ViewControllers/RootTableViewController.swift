@@ -65,7 +65,7 @@ class RootTableViewController : UITableViewController, CompletedDelegate {
         // Determine which segue was triggered. This is set from IB.
         switch(segue.identifier) {
         case "showPerson":
-            guard let destVC = segue.destination as? PersonViewController else {
+            guard let destVC = segue.destination as? AutoLayoutViewController else {
                 preconditionFailure("Unexpected DestinationVC \(segue.destination.self)")
             }
             destVC.person = Person(firstName: "Damon", lastName: "Allison")
@@ -79,7 +79,7 @@ class RootTableViewController : UITableViewController, CompletedDelegate {
         
         print("VC completed: \(vc)")
         
-        if vc is PersonViewController {
+        if vc is AutoLayoutViewController {
             self.dismiss(animated: true) {
                 print("Dismissed PersonVC")
             }
