@@ -14,13 +14,14 @@
 		2142BE402188811D0062BC16 /* Runtime.m in Sources */ = {isa = PBXBuildFile; fileRef = 2142BE3E2188811C0062BC16 /* Runtime.m */; };
 		2142BE432188812C0062BC16 /* GCDTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 2142BE412188812B0062BC16 /* GCDTest.m */; };
 		21465F4E21B32EED00040E56 /* AutoLayoutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21465F4D21B32EED00040E56 /* AutoLayoutViewController.swift */; };
-		21465F5021B49D9900040E56 /* RootTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21465F4F21B49D9900040E56 /* RootTableViewController.swift */; };
+		21465F5021B49D9900040E56 /* DynamicTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21465F4F21B49D9900040E56 /* DynamicTableViewController.swift */; };
 		21465F5421B4B11B00040E56 /* CompletedDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21465F5321B4B11B00040E56 /* CompletedDelegate.swift */; };
 		2157F52821A3AB3100E56217 /* BlocksTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 2157F52721A3AB3100E56217 /* BlocksTest.m */; };
 		2162C84121887A4600C91F5B /* FrameworkTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21D4ED4221864C75003A1B4C /* FrameworkTests.swift */; };
 		2162C84421887A7300C91F5B /* Calculator.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2162C84321887A7300C91F5B /* Calculator.framework */; };
 		2162C84521887B7C00C91F5B /* ObjectiveCInteropTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21D4ED4421864C75003A1B4C /* ObjectiveCInteropTests.swift */; };
 		2162C84621887B8500C91F5B /* ObjcClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 21D4ED4621864C75003A1B4C /* ObjcClass.m */; };
+		2198B85D21C133EA0025748F /* DynamicTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2198B85C21C133EA0025748F /* DynamicTableViewCell.swift */; };
 		21AD4CD121A59A6E00188B3B /* NSErrorTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 21AD4CD021A59A6E00188B3B /* NSErrorTests.m */; };
 		21AD4CD321A5ABC400188B3B /* GenericsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 21AD4CD221A5ABC400188B3B /* GenericsTests.m */; };
 		21B005E521ACC7C9001D87D5 /* TypesTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 21B005E421ACC7C9001D87D5 /* TypesTests.m */; };
@@ -95,11 +96,12 @@
 		2142BE412188812B0062BC16 /* GCDTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GCDTest.m; sourceTree = "<group>"; };
 		2142BE422188812B0062BC16 /* GCDTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCDTest.h; sourceTree = "<group>"; };
 		21465F4D21B32EED00040E56 /* AutoLayoutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoLayoutViewController.swift; sourceTree = "<group>"; };
-		21465F4F21B49D9900040E56 /* RootTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootTableViewController.swift; sourceTree = "<group>"; };
+		21465F4F21B49D9900040E56 /* DynamicTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DynamicTableViewController.swift; sourceTree = "<group>"; };
 		21465F5321B4B11B00040E56 /* CompletedDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompletedDelegate.swift; sourceTree = "<group>"; };
 		2157F52721A3AB3100E56217 /* BlocksTest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BlocksTest.m; sourceTree = "<group>"; };
 		2162C84321887A7300C91F5B /* Calculator.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Calculator.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2162C84721887C0400C91F5B /* SwiftFundamentals-iOSTests-BridgingHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SwiftFundamentals-iOSTests-BridgingHeader.h"; sourceTree = "<group>"; };
+		2198B85C21C133EA0025748F /* DynamicTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DynamicTableViewCell.swift; sourceTree = "<group>"; };
 		21AD4CD021A59A6E00188B3B /* NSErrorTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NSErrorTests.m; sourceTree = "<group>"; };
 		21AD4CD221A5ABC400188B3B /* GenericsTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GenericsTests.m; sourceTree = "<group>"; };
 		21B005E421ACC7C9001D87D5 /* TypesTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TypesTests.m; sourceTree = "<group>"; };
@@ -191,10 +193,10 @@
 		21465F4B21B32D1E00040E56 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				21BAB09121BC18EA003C194F /* AutoLayout */,
 				21465F4D21B32EED00040E56 /* AutoLayoutViewController.swift */,
-				21465F4F21B49D9900040E56 /* RootTableViewController.swift */,
+				21465F4F21B49D9900040E56 /* DynamicTableViewController.swift */,
 				21BAB09421BC4DAC003C194F /* MainViewController.swift */,
+				2198B85C21C133EA0025748F /* DynamicTableViewCell.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -216,13 +218,6 @@
 				2162C84321887A7300C91F5B /* Calculator.framework */,
 			);
 			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		21BAB09121BC18EA003C194F /* AutoLayout */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = AutoLayout;
 			sourceTree = "<group>";
 		};
 		21D4ECE121864C1F003A1B4C = {
@@ -511,7 +506,8 @@
 				21BAB09521BC4DAC003C194F /* MainViewController.swift in Sources */,
 				21465F4E21B32EED00040E56 /* AutoLayoutViewController.swift in Sources */,
 				21D4ECEE21864C1F003A1B4C /* AppDelegate.swift in Sources */,
-				21465F5021B49D9900040E56 /* RootTableViewController.swift in Sources */,
+				21465F5021B49D9900040E56 /* DynamicTableViewController.swift in Sources */,
+				2198B85D21C133EA0025748F /* DynamicTableViewCell.swift in Sources */,
 				21DD29B521B5BB0E002121A1 /* Person.swift in Sources */,
 				21465F5421B4B11B00040E56 /* CompletedDelegate.swift in Sources */,
 			);

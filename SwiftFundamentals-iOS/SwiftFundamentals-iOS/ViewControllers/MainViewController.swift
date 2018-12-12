@@ -15,18 +15,24 @@ class MainViewController : UITabBarController {
     
         
         //
-        // Programmatically add a UITabBarItem and custom VC.
+        // Programmatically add a VC from another storyboard to the UITabBarController.
+        // Note: This can be accomplished in IB by using storyboard references.
         //
-        let sb = UIStoryboard(name: "AutoLayout", bundle: Bundle.main)
-        guard let vc = sb.instantiateInitialViewController() else {
-            preconditionFailure("AutoLayout.storyboard is missing the initial ViewController")
+//        let sb = UIStoryboard(name: "AutoLayout", bundle: Bundle.main)
+//        guard let vc = sb.instantiateInitialViewController() else {
+//            preconditionFailure("AutoLayout.storyboard is missing the initial ViewController")
+//        }
+        
+//        let item = UITabBarItem(title: "Auto Layout", image: nil, selectedImage: nil)
+//        vc.tabBarItem = item
+//        self.viewControllers?.insert(vc, at: 0)
+        
+        // Because we are adding a VC via a storyboard reference, we need to set the
+        // UITabItem's label property programmatically.
+        guard let vc = self.viewControllers?.first(where: { $0 is AutoLayoutViewController }) else {
+            preconditionFailure("Missing tabItems")
         }
-        
-        let item = UITabBarItem(title: "Auto Layout", image: nil, selectedImage: nil)
-        vc.tabBarItem = item
-        self.viewControllers?.insert(vc, at: 0)
-        
-        self.selectedIndex = 0
+        vc.tabBarItem.title = "Auto Layout"
     }
     
     override func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {

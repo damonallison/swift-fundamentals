@@ -66,9 +66,7 @@ class AutoLayoutViewController : UIViewController {
         super.viewDidLoad()
         
         print("\(#file)-\(#function) view.bounds == \(self.view.bounds)")
-        
-        self.title = "Person"
-    
+            
         if let navBar = self.navBar {
             // Make the UINavigationBar transparent, but keep the bar button items showing.
             navBar.setBackgroundImage(UIImage(), for: .default)
