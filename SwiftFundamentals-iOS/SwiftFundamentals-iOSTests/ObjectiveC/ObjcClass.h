@@ -13,7 +13,7 @@
 /// tl;dr -
 /// * Use @import for frameworks
 /// * Use #import for Objective-C and Objective-C++ headers.
-/// * Use #include for C and C++ headers.
+/// * Use #include for C and C++ headers (for backward compatibility).
 ///
 /// The reason we don't use #import for C and C++ headers is because #import prevents future
 /// inclusions. C and C++ code may depend on being included multiple times. Using #import may

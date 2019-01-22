@@ -159,7 +159,7 @@
 		21ECEF3A21A5B1C1002D125C /* Queue.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Queue.m; sourceTree = "<group>"; };
 		21ECEF3C21A5B1CC002D125C /* Queue.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Queue.h; sourceTree = "<group>"; };
 		21ECEF3D21A5CB97002D125C /* Constants.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Constants.m; sourceTree = "<group>"; };
-		21ECEF3F21A5CBA9002D125C /* Constants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
+		21ECEF3F21A5CBA9002D125C /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
