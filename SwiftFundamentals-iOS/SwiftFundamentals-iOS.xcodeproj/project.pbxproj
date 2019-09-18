@@ -18,13 +18,13 @@
 		21465F5421B4B11B00040E56 /* CompletedDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21465F5321B4B11B00040E56 /* CompletedDelegate.swift */; };
 		2157F52821A3AB3100E56217 /* BlocksTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 2157F52721A3AB3100E56217 /* BlocksTest.m */; };
 		2162C84121887A4600C91F5B /* FrameworkTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21D4ED4221864C75003A1B4C /* FrameworkTests.swift */; };
-		2162C84421887A7300C91F5B /* Calculator.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2162C84321887A7300C91F5B /* Calculator.framework */; };
 		2162C84521887B7C00C91F5B /* ObjectiveCInteropTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21D4ED4421864C75003A1B4C /* ObjectiveCInteropTests.swift */; };
 		2162C84621887B8500C91F5B /* ObjcClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 21D4ED4621864C75003A1B4C /* ObjcClass.m */; };
 		2198B85D21C133EA0025748F /* DynamicTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2198B85C21C133EA0025748F /* DynamicTableViewCell.swift */; };
 		21AD4CD121A59A6E00188B3B /* NSErrorTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 21AD4CD021A59A6E00188B3B /* NSErrorTests.m */; };
 		21AD4CD321A5ABC400188B3B /* GenericsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 21AD4CD221A5ABC400188B3B /* GenericsTests.m */; };
 		21B005E521ACC7C9001D87D5 /* TypesTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 21B005E421ACC7C9001D87D5 /* TypesTests.m */; };
+		21B20A732332557C00F5C4DD /* Calculator.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 21B20A722332557C00F5C4DD /* Calculator.framework */; };
 		21BAB09521BC4DAC003C194F /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21BAB09421BC4DAC003C194F /* MainViewController.swift */; };
 		21BAB09721BC5642003C194F /* AutoLayout.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 21BAB09621BC5642003C194F /* AutoLayout.storyboard */; };
 		21D4ECEE21864C1F003A1B4C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21D4ECED21864C1F003A1B4C /* AppDelegate.swift */; };
@@ -105,6 +105,7 @@
 		21AD4CD021A59A6E00188B3B /* NSErrorTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NSErrorTests.m; sourceTree = "<group>"; };
 		21AD4CD221A5ABC400188B3B /* GenericsTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GenericsTests.m; sourceTree = "<group>"; };
 		21B005E421ACC7C9001D87D5 /* TypesTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TypesTests.m; sourceTree = "<group>"; };
+		21B20A722332557C00F5C4DD /* Calculator.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Calculator.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		21BAB09421BC4DAC003C194F /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		21BAB09621BC5642003C194F /* AutoLayout.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AutoLayout.storyboard; sourceTree = "<group>"; };
 		21D4ECEA21864C1F003A1B4C /* SwiftFundamentals-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "SwiftFundamentals-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -167,6 +168,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				21B20A732332557C00F5C4DD /* Calculator.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -174,7 +176,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2162C84421887A7300C91F5B /* Calculator.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -215,6 +216,7 @@
 		2162C84221887A7300C91F5B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				21B20A722332557C00F5C4DD /* Calculator.framework */,
 				2162C84321887A7300C91F5B /* Calculator.framework */,
 			);
 			name = Frameworks;
@@ -631,7 +633,6 @@
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
-				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PREPROCESSOR_DEFINITIONS = (
@@ -650,6 +651,8 @@
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				VALIDATE_PRODUCT = YES;
 			};
 			name = Debug;
 		};
@@ -703,6 +706,7 @@
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.0;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
@@ -723,7 +727,6 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -743,7 +746,6 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.damonallison.swift.fundamentals;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "";
-				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
@@ -764,7 +766,6 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.damonallison.swift.SwiftFundamentals-iOSTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "SwiftFundamentals-iOSTests/SwiftFundamentals-iOSTests-BridgingHeader.h";
-				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SwiftFundamentals-iOS.app/SwiftFundamentals-iOS";
 			};
@@ -786,7 +787,6 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.damonallison.swift.SwiftFundamentals-iOSTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "SwiftFundamentals-iOSTests/SwiftFundamentals-iOSTests-BridgingHeader.h";
-				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SwiftFundamentals-iOS.app/SwiftFundamentals-iOS";
 			};

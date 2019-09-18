@@ -36,16 +36,18 @@ class PrimitiveTypeTests: XCTestCase {
         XCTAssertEqual("10", String(u10))
 
         // Integers in swift are structs. Structs have properties, methods, and class methods.
-        XCTAssertEqual("10", u10.description) // property
         
-        #if swift(>=4.1)
-        XCTAssertEqual(UInt8(11), u10.unsafeAdding(1)) // method
-        #endif
+        // Property
+        XCTAssertEqual("10", u10.description)
         
-        XCTAssertEqual(UInt8.min.advanced(by: 10), UInt8(10)) // class methods
+        // Method
+        XCTAssertTrue((UInt8(11), false) == u10.addingReportingOverflow(1))
+
+        // Class method
+        XCTAssertEqual(UInt8.min.advanced(by: 10), UInt8(10))
 
         // Shows implicit type conversion is not allowed in swift!
-        // Manual UInt8() conversion is required!
+        // Manual UInt8() conversion is required on the UInt16 value.
         XCTAssertTrue(UInt8.min == UInt8(UInt16.min))
     }
 
@@ -56,6 +58,8 @@ class PrimitiveTypeTests: XCTestCase {
         // traps - integer overflow
         // i = i + 1
 
+        // Does not mutate `i`. Shows overflow.
+        XCTAssertTrue((Int.min, true) == i.addingReportingOverflow(1))
 
         i = i &+ 1 // overflows
         XCTAssertEqual(Int.min, i)
