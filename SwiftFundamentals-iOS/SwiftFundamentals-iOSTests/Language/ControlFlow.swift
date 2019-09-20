@@ -40,42 +40,34 @@ class ControlFlowTests : XCTestCase {
     /// evaluates to false, the whole if statement is false.
     ///
     func testIf() {
+
         var x: Int? = nil
+
+        //
         // If conditions (separated with `,`) are short circuited.
+        //
         if let x2 = x, setExec() {
-            print(x2) // this will *not* fire given x2 is null.
+            XCTFail("x2 should be nil. Actual = \(x2)")
         }
         
-        XCTAssertFalse(didExec)
+        XCTAssertFalse(didExec, "Proves `if let` is short circuited")
 
         x = 10
         if let x2 = x, setExec() {
             XCTAssertEqual(x, x2)
         }
         XCTAssertTrue(didExec)
-
-        if true, true, didExec {
-            // expected
-        }
-        else {
-            XCTFail()
-        }
-
-        if true, true, !didExec {
-            XCTFail()
-        }
     }
 
     // MARK:- guard
 
     ///
-    /// Shows the use of `guard`.
+    /// `guard` allows you to verify a condition is true for the code after the guard statement to eecute.
     ///
-    /// `guard` is a
     /// Guard's benefits
     ///
     /// 1. Ensures a variable is non-nil.
-    /// 2. Unwraps the optional value.
+    /// 2. Any unwrapped optionals (if let) are build for the life of the function.
     /// 3. If the condition fails, the current function must be exited with `return`, `continue`, `break`, or `throw`.
     ///
     func testGuard() {
@@ -155,7 +147,7 @@ class ControlFlowTests : XCTestCase {
         case 5...10:
             break
         default:
-            break
+            XCTFail()
         }
     }
 
@@ -285,6 +277,7 @@ class ControlFlowTests : XCTestCase {
             defer {
                 deferred.append("two")
             }
+            print() // silences "defer at end of block" warning
         }
         XCTAssertEqual(["two", "one"], deferred)
     }
@@ -294,7 +287,11 @@ class ControlFlowTests : XCTestCase {
 
     func testForIn() {
 
-        // looping an array
+        //
+        // Use for/in to loop over a collection. Arrays and sets return a single
+        // value in their iterator, dictionaries return (key, val) tuples
+        // in their iterator.
+        //
         let a = ["this", "is", "a", "test"]
         var b: [String] = []
         for name in a {
@@ -302,6 +299,13 @@ class ControlFlowTests : XCTestCase {
         }
         XCTAssertEqual(a, b)
 
+        //
+        // You can use .enumerated() on an array to get an ordinal position
+        //
+        for (idx, name) in a.enumerated() {
+            XCTAssertTrue(idx >= 0)
+            XCTAssertTrue(a.contains(name))
+        }
         let d = ["damon" : 43, "steve" : 50]
         var e: [String : Int] = [:]
 
@@ -313,6 +317,7 @@ class ControlFlowTests : XCTestCase {
         }
 
         XCTAssertEqual(d, e)
+
     }
 
     /// Shows using both the closed (...) range operator - which includes both the lower and upper bound inclusively.
