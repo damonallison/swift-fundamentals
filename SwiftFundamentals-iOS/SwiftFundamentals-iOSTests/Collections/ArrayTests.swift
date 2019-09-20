@@ -34,11 +34,11 @@ class ArrayTests : XCTestCase {
 
         // [Type] is shorthand for Array<Type>
         
-        let a1 = Array<String>()
+        let a1 = Array<String>() // == [String]()
         
-        XCTAssertTrue(a1.count == 0)
+        XCTAssertEqual(0, a1.count)
         XCTAssertTrue(a1.isEmpty, "isEmpty is a convenience property to test count == 0")
-        XCTAssertTrue(a1.capacity == 0, "capacity tells you how large the array can be without having to reallocate memory")
+        XCTAssertEqual(0, a1.capacity, "capacity tells you how large the array can be without having to reallocate memory")
 
         // Array - [String]
         var shoppingList = ["Eggs", "Milk"] // inferred as [String]
@@ -46,7 +46,7 @@ class ArrayTests : XCTestCase {
         XCTAssertNotEqual(["Milk", "Eggs"], shoppingList, "Arrays should not be equal - they are out of order");
 
         // Array - [MyEnum]
-        var enumList: [MyEnum] = [.one, .two, .three]
+        let enumList: [MyEnum] = [.one, .two, .three]
 
         // Accessing
         XCTAssertTrue(enumList[2] == .three, "Type inference understands what scope you are in. Prevents you from having to type MyEnum. for each member")
@@ -73,8 +73,8 @@ class ArrayTests : XCTestCase {
 
         // Checking existence
         // Determining if an array contains an item
-        XCTAssertTrue(shoppingList.index(of: "Bread") == 3, "find() will return the index of the object if it exists")
-        XCTAssertNil(shoppingList.index(of: "notthere"), "find() will return nil when an item does not exist")
+        XCTAssertEqual(3, shoppingList.firstIndex(of: "Bread"), "firstIndex() will return the index of the object if it exists")
+        XCTAssertNil(shoppingList.firstIndex(of: "notthere"), "firstIndex() will return nil when an item does not exist")
         
         var shoppingList2 = [String]()
         for item in shoppingList {
@@ -118,22 +118,21 @@ class ArrayTests : XCTestCase {
 
     /// Arrays in swift are value types. 
     func testArrayCopying() {
-        var x = [0, 1, 2, 3]
+        let x = [0, 1, 2, 3]
         var y = x // copy!
         var z = y // copy!
         y[0] = 10
         z[0] = 100
         
-        XCTAssertTrue(x[0] == 0)
-        XCTAssertTrue(y[0] == 10)
-        XCTAssertTrue(z[0] == 100)
+        XCTAssertEqual(0, x[0])
+        XCTAssertEqual(10, y[0])
+        XCTAssertEqual(100, z[0])
     }
 
     func testArrayEquality() {
         let a1 = ["test", "array"]
         let a2 = ["test", "array"]
         XCTAssertEqual(a1, a2)
-        XCTAssertTrue(a1 == a2)
 
         let a3 = [a1]
         let a4 = [a2]
@@ -142,11 +141,9 @@ class ArrayTests : XCTestCase {
         //       will conform to Equatable when their element types conform to Equatable.
         //       This is part of Swift's Conditional Conformance.
         //
-        // XCTAssertTrue([a3] == [a4])
+        XCTAssertEqual([a3], [a4])
 
         XCTAssertTrue(a3.elementsEqual(a4) { (s1, s2) -> Bool in
-
-            print("\(s1) == \(s2) \(s1 == s2)")
             return s1 == s2
         })
     }

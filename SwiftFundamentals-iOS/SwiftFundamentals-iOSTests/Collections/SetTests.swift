@@ -17,11 +17,12 @@ class Pair<T: Hashable> : Hashable {
         self.one = one
         self.two = two
     }
-    var hashValue: Int {
-        get {
-            return one.hashValue ^ two.hashValue
-        }
+
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(one)
+        hasher.combine(two)
     }
+
     static func ==(lhs: Pair<T>, rhs: Pair<T>) -> Bool {
         return lhs.hashValue == rhs.hashValue
     }

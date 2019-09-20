@@ -26,10 +26,10 @@ class DictionaryTests : XCTestCase {
 
         // Initializing (empty)
         var words = [String: Int]()
-        var words2 = ["Damon" : 1, "Allison" : 2]
+        let words2 = ["Damon" : 1, "Allison" : 2]
 
         // Accessing
-        XCTAssertTrue(words.count == 0)
+        XCTAssertEqual(0, words.count)
         XCTAssertTrue(words.isEmpty, "isEmpty is a convenience method equal to count == 0")
 
 
@@ -48,9 +48,8 @@ class DictionaryTests : XCTestCase {
 
         // retrieving a value from the dictionary
         if let _ = words["a"] {
-            XCTFail("\"a\" should not exist in the dictionary")
-        }
 
+        }
 
         // Removing - set key == nil
 
@@ -59,7 +58,7 @@ class DictionaryTests : XCTestCase {
 
         words["the"] = 100
         // removeValueForKey will return the previous value, or nil if one didn't exist
-        XCTAssertTrue(words.removeValue(forKey: "the") == 100)
+        XCTAssertEqual(100, words.removeValue(forKey: "the"))
 
         words["damon"] = 10
         words["allison"] = 10
@@ -67,8 +66,8 @@ class DictionaryTests : XCTestCase {
         // Iteration
 
         for (key, val) in words {
-            XCTAssertTrue(["damon", "allison"].index(of: key) != nil)
-            XCTAssertTrue(val == 10)
+            XCTAssertNotNil(["damon", "allison"].firstIndex(of: key))
+            XCTAssertEqual(10, val)
         }
 
         let keys = words.keys.sorted()
