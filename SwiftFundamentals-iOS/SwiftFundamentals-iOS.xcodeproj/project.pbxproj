@@ -266,7 +266,7 @@
 				21D4ED3A21864C74003A1B4C /* Language */,
 				21D4ED4721864C75003A1B4C /* ObjectiveC */,
 				21D4ED5521864C76003A1B4C /* Objects */,
-				21D4ED3E21864C74003A1B4C /* StandardLibrary */,
+				21D4ED3E21864C74003A1B4C /* Collections */,
 				21D4ED2821864C74003A1B4C /* Structures */,
 				21D4ED5621864C94003A1B4C /* Globals.swift */,
 				21D4ED5821864C98003A1B4C /* Environment.swift */,
@@ -314,14 +314,14 @@
 			path = Language;
 			sourceTree = "<group>";
 		};
-		21D4ED3E21864C74003A1B4C /* StandardLibrary */ = {
+		21D4ED3E21864C74003A1B4C /* Collections */ = {
 			isa = PBXGroup;
 			children = (
 				21D4ED3B21864C74003A1B4C /* ArrayTests.swift */,
 				21D4ED3C21864C74003A1B4C /* DictionaryTests.swift */,
 				21D4ED3D21864C74003A1B4C /* SetTests.swift */,
 			);
-			path = StandardLibrary;
+			path = Collections;
 			sourceTree = "<group>";
 		};
 		21D4ED4121864C75003A1B4C /* CompilerBugs */ = {
