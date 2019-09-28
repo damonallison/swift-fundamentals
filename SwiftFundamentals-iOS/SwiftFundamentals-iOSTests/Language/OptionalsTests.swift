@@ -20,16 +20,18 @@ class Node<T> {
 
 /// Optionals represent a possible nil value.
 ///
-/// Prior to optioanls, we had multiple sentinal values.
+/// Prior to optionals, we had multiple sentinal values.
 /// NSNotFound, -1, nil, 0, IntMax, etc.
-/// Optionals simplifies code by having a "one true" sentinal value.
+///
+/// Optionals simplifies code by being a "one true" sentinal value.
 ///
 /// Non-optional types *cannot* be nil. This makes your code safe
 /// by knowing that you will have a value if you need one. This helps prevent
 /// null reference exceptions.
 ///
 /// Optionals are like "nil" in Objective-c. The difference in swift is *all*
-/// types, even "primitives" like Int and Double can be optionals.
+/// types, even "primitives" like Int, Double, Enum, and Struct can be optional.
+
 class OptionalsTests : XCTestCase {
 
     func testOptionals() {
@@ -113,6 +115,31 @@ class OptionalsTests : XCTestCase {
         if let v = implicitlyUnwrapped {
             XCTFail("We should not have a value \(v)")
         }
+    }
+
+    /// When dealing with optional Bool values in a boolean expression, you may
+    /// want to treat `nil` as false. You can't, however, use a Bool? in a
+    /// boolean expression - you must unwrap it first.
+    ///
+    /// Is is natural to want to think of `nil` as being false.
+    ///
+    ///     let b: Bool? = nil;
+    ///     XCTAssert(b == false);
+    ///
+    /// However `nil != false` - therefore, you must unwrap the boolean
+    /// optional before using it in an expression.
+    func testOptionalBool() {
+        let b: Bool? = nil
+
+        // You would typically *want* this to be true, however nil != false
+        XCTAssertFalse(b == false)
+
+        // If you want to treat nil as false, use the nil coalescing operator
+        XCTAssertFalse((b ?? false))
+
+        // This works well when optional chaining is in play
+        let n = Node<String>(value: "damon")
+        XCTAssertFalse(n.child?.value.isEmpty ?? false)
     }
 
     /// Shows a function returning an optional.

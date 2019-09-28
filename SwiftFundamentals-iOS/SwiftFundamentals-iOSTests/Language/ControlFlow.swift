@@ -277,7 +277,8 @@ class ControlFlowTests : XCTestCase {
             defer {
                 deferred.append("two")
             }
-            print() // silences "defer at end of block" warning
+            // Adding a line here to prevent a `defer statement before end of scope always executes immediately` warning
+            deferred = []
         }
         XCTAssertEqual(["two", "one"], deferred)
     }
