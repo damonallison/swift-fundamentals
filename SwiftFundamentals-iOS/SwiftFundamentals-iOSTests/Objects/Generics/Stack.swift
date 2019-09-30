@@ -29,14 +29,20 @@ struct Stack<Element> {
 }
 
 extension Stack: Container {
-    
+
     //
-    // When implementing protocols with associated types, the implementor (Stack) must declare the
-    // actual type
-    // The `Item` type found on these protocol members should equal Stack's `Element` type.
+    // When implementing a protocol with an associated type, the compiler must
+    // be able to infer the type for the protocol's associated type.
+    //
+    // While it's not *required*, using a typealias here which corresponds to
+    // the protocol's associatedtype allows us to directly link the protocol's
+    // implementation (this type) to the protocol definition.
+    //
+    // In this example, we can clearly see that our use of `Item` in this type
+    // corresponds 1:1 to where `Item` is used in the protocol definition.
     //
     typealias Item = Element
-    
+
     mutating func append(_ item: Item) {
         self.push(item)
     }

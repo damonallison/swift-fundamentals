@@ -10,6 +10,7 @@ import XCTest
 
 /// ## Access Control
 ///
+///
 /// ### Goals
 ///
 /// * Safe by design.
@@ -20,53 +21,12 @@ import XCTest
 ///     * Subclasses cannot have a broader access level than it's parent.
 /// * Protocol inheritance cannot elevate the base protocol’s access level.
 /// * e.g., a `public` protocol cannot extend an `internal` protocol.
-/// 
-/// ### Access Control Rules
-///
-/// * Access control is based on modules and source files.
-/// * Each build target (app bundle or framework) is a separate swift `module`.
-/// * Multiple types can be defined per source file.
-///
-/// * Swift will ensure you can’t expose a private type via a public variable, or return a private type from a public function.
-///
-/// * For typical apps, leaving types as `internal` is sufficient.
-/// * You are still encouraged to use `fileprivate` and `private` to encapsulate implementation details.
-/// 
-/// * A unit test target can access any internal entity by:
-///     * `@testable import MyApp`
-///     * Compile the test module with testing enabled. Test targets should already be setup with testing enabled.
-/// 
-/// * The default access level for a type member is the access level of it’s parent.
-/// * `public` is special.  Members of a `public`  type are `internal` by default.
-///
-/// ```
-/// fileprivate class Foo {
-/// // `x` is `fileprivate`, **not** internal
-/// int x = 0
-/// }
-/// ```
-/// 
-/// * Functions and tuples will have a calculated access level based on the types contained in the entity.
-///   If the calculated access level for the tuple / function does not match the calculated value,
-///   you must explicitly declare the entity’s access level
 ///
 ///
-/// ```
-/// // This will not compile.
-/// //
-/// // The default access level for `aFunc` is
-/// // `internal`, however it's calculated access level is
-/// // `private`.
-///
-/// func aFunc() -> (InternalClass, PrivateClass)
-/// 
-/// // You must delcare `aFunc` as `private`
-/// private func aFunc() -> (InternalClass, PrivateClass)
-/// ```
 ///
 ///
 /// ### Access Control Levels
-/// 
+///
 /// * `open`
 ///     * Visible to all code in the module and other modules that import the module.
 ///     * Only applies to classes and class members.
@@ -90,10 +50,70 @@ import XCTest
 ///     * Visible within the entity and extensions to that entity within the same source file.
 ///
 ///
+///
+///
+/// ### Access Control Rules
+///
+/// * Access control is based on modules and source files.
+/// * Each build target (app bundle or framework) is a separate swift `module`.
+/// * Multiple types can be defined per source file.
+///
+/// Access levels in Swift follow an overall guiding principle:
+///
+/// > No entity can be defined in terms of another entity that
+/// > has a lower (more restrictive) access level.
+///
+/// * Swift will ensure you can’t expose a private type via a public variable, or return a private type from a public function.
+///
+/// * For typical apps, leaving types as `internal` is sufficient.
+/// * You are still encouraged to use `fileprivate` and `private` to encapsulate implementation details.
+/// 
+/// * A unit test target can access any internal entity by:
+///     * `@testable import MyApp`
+///     * Compile the test module with testing enabled. Test targets should already be setup with testing enabled.
+/// 
+///
+/// ### Default Type Access Levels
+///
+/// The type's access level becomes the default access level for all members of a type.
+///
+/// For example, if you define a `fileprivate class` class, the default access
+/// level for all members of that type becomes `fileprivate`.
+///
+/// ```
+/// fileprivate class Person {
+///     var firstName: String        // defaults to `fileprivate`
+///     private var lastName: String // allowed - private is more restrictive
+/// }
+/// ```
+///
+/// `public` is special.  Members of a `public`  type are `internal` by default.
+///
+///
+/// * Functions and tuples will have a calculated access level based on the types contained in the entity.
+///   If the calculated access level for the tuple / function does not match the calculated value,
+///   you must explicitly declare the entity’s access level
+///
+///
+/// ```
+/// // This will not compile.
+/// //
+/// // The default access level for `aFunc` is
+/// // `internal`, however it's calculated access level is
+/// // `private`.
+///
+/// func aFunc() -> (InternalClass, PrivateClass)
+/// 
+/// // You must delcare `aFunc` as `private`
+/// private func aFunc() -> (InternalClass, PrivateClass)
+/// ```
+///
+///
+///
 /// ### Subclassing
 ///
-/// * A subclass *can* call a superclass member that has a lower access level - as long as the call
-//    is within an allowed context (i.e., within the same source file for a `fileprivate` member).
+/// A subclass *can* call a superclass member that has a lower access level - as long as the call
+//  is within an allowed context (i.e., within the same source file for a `fileprivate` member).
 ///
 /// ```
 /// public class A {
@@ -151,9 +171,23 @@ import XCTest
 /// * By default, extensions inherit the access level of the extended class.
 /// * You can mark an extension with a lower access level to give a new default to members within the extension.
 ///
-/// * Important: Extensions that are in the same file as the class, enum, or struct being extended
+/// * Important: Extensions that are in the *same file* as the class, enum, or struct being extended
 ///   behave as if the code in the extension had been written as part of the original type's declaration.
-///   Therefore, the extensions can access all private members in the original type.
+///
+///   Therefore, extensions in the same file as the original type can:
+///
+///   * Access all private members in the original type or another extension
+///     in the same file.
+///
+///   * Define new private members that can be used from the original type or
+///     another extension in the same file.
+///
+///
+/// In this example, we show an extension which lowers the default access level
+/// from `fileprivate` to `private`.
+///
+///  By default, the extension would have inherited the `fileprivate` access
+///  level from the `MyClass` type declaration.
 ///
 ///
 /// ```
@@ -166,11 +200,6 @@ import XCTest
 /// func extend() -> (Int, Int)
 /// }
 /// ```
-///
-/// * Private members in extensions.
-/// * You can declare a private member in the original declaration, and access that member from extensions in the same file.
-/// * Declare a `private` member in an extension, access it in another.
-/// * Declare a `private` member in an extension, access it from the original declaration.
 ///
 public class AccessControlTests: XCTestCase {
 
@@ -192,7 +221,7 @@ public class AccessControlTests: XCTestCase {
                 return "lastName"
             }
             set {
-                // something
+                print ("\(newValue)")
             }
         }
 
@@ -224,12 +253,14 @@ public class AccessControlTests: XCTestCase {
         XCTAssertEqual("Person: damon", p.describe())
 
     }
-
-
 }
 
 /// The access level for all protocol members will be the access level of the protocol itself.
 /// In this example, describe() is fileprivate.
+///
+/// You can't set a protocol requirement (member) to a different access level
+/// than the protocol itself. This ensures that all of the protocol's requirements
+/// are visible to any type that adopts the protocol.
 ///
 /// This protocol can obviously only be implemented (and used) by classes in this file.
 fileprivate protocol Descriptive {
