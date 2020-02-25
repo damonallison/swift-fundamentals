@@ -70,6 +70,7 @@
 		21DD29B521B5BB0E002121A1 /* Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21DD29B421B5BB0E002121A1 /* Person.swift */; };
 		21ECEF3B21A5B1C1002D125C /* Queue.m in Sources */ = {isa = PBXBuildFile; fileRef = 21ECEF3A21A5B1C1002D125C /* Queue.m */; };
 		21ECEF3E21A5CB97002D125C /* Constants.m in Sources */ = {isa = PBXBuildFile; fileRef = 21ECEF3D21A5CB97002D125C /* Constants.m */; };
+		E46340942404D3AC00E62E3E /* StackViewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E46340932404D3AC00E62E3E /* StackViewTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -161,6 +162,7 @@
 		21ECEF3C21A5B1CC002D125C /* Queue.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Queue.h; sourceTree = "<group>"; };
 		21ECEF3D21A5CB97002D125C /* Constants.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Constants.m; sourceTree = "<group>"; };
 		21ECEF3F21A5CBA9002D125C /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
+		E46340932404D3AC00E62E3E /* StackViewTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StackViewTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -198,6 +200,7 @@
 				21465F4F21B49D9900040E56 /* DynamicTableViewController.swift */,
 				21BAB09421BC4DAC003C194F /* MainViewController.swift */,
 				2198B85C21C133EA0025748F /* DynamicTableViewCell.swift */,
+				E46340932404D3AC00E62E3E /* StackViewTableViewCell.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -508,6 +511,7 @@
 				21BAB09521BC4DAC003C194F /* MainViewController.swift in Sources */,
 				21465F4E21B32EED00040E56 /* AutoLayoutViewController.swift in Sources */,
 				21D4ECEE21864C1F003A1B4C /* AppDelegate.swift in Sources */,
+				E46340942404D3AC00E62E3E /* StackViewTableViewCell.swift in Sources */,
 				21465F5021B49D9900040E56 /* DynamicTableViewController.swift in Sources */,
 				2198B85D21C133EA0025748F /* DynamicTableViewCell.swift in Sources */,
 				21DD29B521B5BB0E002121A1 /* Person.swift in Sources */,

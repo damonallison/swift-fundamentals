@@ -52,11 +52,10 @@ class DynamicTableViewController : UITableViewController, CompletedDelegate {
         self.navigationController?.navigationBar.tintColor = UIColor.yellow
         self.navigationController?.navigationBar.barTintColor = UIColor.blue
         
-        // Create a custom view for displaying in the
+        // Create a custom view for displaying in the 
         self.navigationController?.navigationBar.topItem?.titleView = titleView
         // self.navigationController?.navigationBar.backgroundColor = UIColor.blue
-        
-        
+
         //
         // Setup self-sizing rows
         //
@@ -112,15 +111,30 @@ extension DynamicTableViewController  {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.content.count
     }
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        var cell = self.tableView.dequeueReusableCell(withIdentifier: "defaultCell")
+        var cell = self.tableView.dequeueReusableCell(withIdentifier: "stackViewCell")
         if cell == nil {
-            cell = DynamicTableViewCell(frame: CGRect.zero)
+            cell = StackViewTableViewCell(frame:CGRect.zero)
         }
-        guard let dynamicCell = cell as? DynamicTableViewCell else {
+        guard let stackViewCell = cell as? StackViewTableViewCell else {
             preconditionFailure("Invalid cell type. Expected DynamicTableViewCell")
         }
-        dynamicCell.valueLabel.text = self.content[indexPath.row]
-        return dynamicCell
+        
+        let c = ConfigData(rows: 10, text: content[4])
+        stackViewCell.configure(config: c)
+        return stackViewCell
     }
+
+//    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+//        var cell = self.tableView.dequeueReusableCell(withIdentifier: "defaultCell")
+//        if cell == nil {
+//            cell = DynamicTableViewCell(frame: CGRect.zero)
+//        }
+//        guard let dynamicCell = cell as? DynamicTableViewCell else {
+//            preconditionFailure("Invalid cell type. Expected DynamicTableViewCell")
+//        }
+//        dynamicCell.valueLabel.text = self.content[indexPath.row]
+//        return dynamicCell
+//    }
 }

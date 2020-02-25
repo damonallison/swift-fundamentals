@@ -1,11 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Jn1-ZE-V4A">
-    <device id="retina4_7" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Jn1-ZE-V4A">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
-        <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -40,18 +37,18 @@
                                 <rect key="frame" x="0.0" y="28" width="375" height="140"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="NbR-lD-efW" id="hL1-oP-wr2">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="139.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="140"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="self" translatesAutoresizingMaskIntoConstraints="NO" id="VML-Tc-8Nm">
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="self" translatesAutoresizingMaskIntoConstraints="NO" id="VML-Tc-8Nm" userLabel="Self Image">
                                             <rect key="frame" x="8" y="8" width="45" height="45"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="45" id="ggY-ey-giM"/>
                                                 <constraint firstAttribute="height" constant="45" id="hP2-Ft-MHL"/>
                                             </constraints>
                                         </imageView>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OLB-gc-Hdn">
-                                            <rect key="frame" x="63" y="8" width="296" height="124"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OLB-gc-Hdn">
+                                            <rect key="frame" x="61" y="8" width="306" height="124"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
@@ -69,6 +66,63 @@
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="valueLabel" destination="OLB-gc-Hdn" id="U6y-4C-Dh8"/>
+                                </connections>
+                            </tableViewCell>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="stackViewCell" id="Fyy-3W-goy" userLabel="Stack View Cell" customClass="StackViewTableViewCell" customModule="SwiftFundamentals_iOS" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="168" width="375" height="116.5"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Fyy-3W-goy" id="KLo-jQ-29L">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="116.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="self" translatesAutoresizingMaskIntoConstraints="NO" id="gma-bM-BRk" userLabel="Self Button">
+                                            <rect key="frame" x="8" y="8" width="45" height="45"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="45" id="M0F-0Q-zCo"/>
+                                                <constraint firstAttribute="width" constant="45" id="QGe-QJ-E4g"/>
+                                            </constraints>
+                                        </imageView>
+                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="EtN-Xw-dye">
+                                            <rect key="frame" x="61" y="8" width="244" height="100.5"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="252" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Dx-hy-gSm">
+                                                    <rect key="frame" x="0.0" y="0.0" width="42" height="20.5"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pF0-BP-wbZ">
+                                                    <rect key="frame" x="0.0" y="20.5" width="42" height="80"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="100" id="cXD-ha-BFu"/>
+                                            </constraints>
+                                        </stackView>
+                                        <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="253" verticalHuggingPriority="253" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5Ul-Ss-iWo">
+                                            <rect key="frame" x="313" y="6" width="46" height="30"/>
+                                            <state key="normal" title="Button"/>
+                                        </button>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="5Ul-Ss-iWo" firstAttribute="leading" secondItem="EtN-Xw-dye" secondAttribute="trailing" constant="8" id="0Sg-7G-Wc7"/>
+                                        <constraint firstAttribute="bottom" secondItem="EtN-Xw-dye" secondAttribute="bottom" constant="8" id="6xC-fV-W6k"/>
+                                        <constraint firstItem="5Ul-Ss-iWo" firstAttribute="top" secondItem="KLo-jQ-29L" secondAttribute="top" constant="6" id="BRd-SV-I7m"/>
+                                        <constraint firstItem="EtN-Xw-dye" firstAttribute="leading" secondItem="gma-bM-BRk" secondAttribute="trailing" constant="8" id="Q90-zv-Bck"/>
+                                        <constraint firstItem="gma-bM-BRk" firstAttribute="top" secondItem="KLo-jQ-29L" secondAttribute="top" constant="8" id="WaE-ui-zJL"/>
+                                        <constraint firstAttribute="trailing" secondItem="5Ul-Ss-iWo" secondAttribute="trailing" constant="16" id="j3P-Aj-kOV"/>
+                                        <constraint firstItem="EtN-Xw-dye" firstAttribute="top" secondItem="KLo-jQ-29L" secondAttribute="top" constant="8" id="kO7-X7-RtO"/>
+                                        <constraint firstItem="gma-bM-BRk" firstAttribute="leading" secondItem="KLo-jQ-29L" secondAttribute="leading" constant="8" id="m51-ls-wCi"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="button" destination="5Ul-Ss-iWo" id="1Kh-gU-eiz"/>
+                                    <outlet property="label" destination="4Dx-hy-gSm" id="UwQ-3N-a22"/>
+                                    <outlet property="leftImage" destination="gma-bM-BRk" id="v2n-BA-GWK"/>
+                                    <outlet property="stackView" destination="EtN-Xw-dye" id="pwq-FL-cZj"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -91,7 +145,7 @@
                 <navigationController id="5p6-I0-clv" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Table" id="WZq-8K-HqT"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="mHj-Qi-4Lm">
-                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
@@ -114,6 +168,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="self" width="42" height="29"/>
+        <image name="self" width="84" height="58"/>
     </resources>
 </document>
