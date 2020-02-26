@@ -71,6 +71,7 @@
 		21ECEF3B21A5B1C1002D125C /* Queue.m in Sources */ = {isa = PBXBuildFile; fileRef = 21ECEF3A21A5B1C1002D125C /* Queue.m */; };
 		21ECEF3E21A5CB97002D125C /* Constants.m in Sources */ = {isa = PBXBuildFile; fileRef = 21ECEF3D21A5CB97002D125C /* Constants.m */; };
 		E46340942404D3AC00E62E3E /* StackViewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E46340932404D3AC00E62E3E /* StackViewTableViewCell.swift */; };
+		E4D46D7624060B2E006D48CF /* StructTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4D46D7524060B2E006D48CF /* StructTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -163,6 +164,7 @@
 		21ECEF3D21A5CB97002D125C /* Constants.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Constants.m; sourceTree = "<group>"; };
 		21ECEF3F21A5CBA9002D125C /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
 		E46340932404D3AC00E62E3E /* StackViewTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StackViewTableViewCell.swift; sourceTree = "<group>"; };
+		E4D46D7524060B2E006D48CF /* StructTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StructTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -283,6 +285,7 @@
 			isa = PBXGroup;
 			children = (
 				21D4ED2721864C74003A1B4C /* Point.swift */,
+				E4D46D7524060B2E006D48CF /* StructTests.swift */,
 			);
 			path = Structures;
 			sourceTree = "<group>";
@@ -535,6 +538,7 @@
 				21AD4CD121A59A6E00188B3B /* NSErrorTests.m in Sources */,
 				21D4ED6F21864ECA003A1B4C /* GenericsTests.swift in Sources */,
 				21D4ED7221864ECA003A1B4C /* Stack.swift in Sources */,
+				E4D46D7624060B2E006D48CF /* StructTests.swift in Sources */,
 				21D4ED6221864E6E003A1B4C /* ErrorHandlingTests.swift in Sources */,
 				2142BE402188811D0062BC16 /* Runtime.m in Sources */,
 				21D4ED7621864ECA003A1B4C /* Printable.swift in Sources */,
