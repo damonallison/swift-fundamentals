@@ -21,6 +21,7 @@
 		2162C84521887B7C00C91F5B /* ObjectiveCInteropTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21D4ED4421864C75003A1B4C /* ObjectiveCInteropTests.swift */; };
 		2162C84621887B8500C91F5B /* ObjcClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 21D4ED4621864C75003A1B4C /* ObjcClass.m */; };
 		2198B85D21C133EA0025748F /* DynamicTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2198B85C21C133EA0025748F /* DynamicTableViewCell.swift */; };
+		21AABB3223FCC150004FCDEF /* JSONTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21AABB3123FCC150004FCDEF /* JSONTests.swift */; };
 		21AD4CD121A59A6E00188B3B /* NSErrorTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 21AD4CD021A59A6E00188B3B /* NSErrorTests.m */; };
 		21AD4CD321A5ABC400188B3B /* GenericsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 21AD4CD221A5ABC400188B3B /* GenericsTests.m */; };
 		21B005E521ACC7C9001D87D5 /* TypesTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 21B005E421ACC7C9001D87D5 /* TypesTests.m */; };
@@ -104,6 +105,7 @@
 		2162C84321887A7300C91F5B /* Calculator.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Calculator.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2162C84721887C0400C91F5B /* SwiftFundamentals-iOSTests-BridgingHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SwiftFundamentals-iOSTests-BridgingHeader.h"; sourceTree = "<group>"; };
 		2198B85C21C133EA0025748F /* DynamicTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DynamicTableViewCell.swift; sourceTree = "<group>"; };
+		21AABB3123FCC150004FCDEF /* JSONTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONTests.swift; sourceTree = "<group>"; };
 		21AD4CD021A59A6E00188B3B /* NSErrorTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NSErrorTests.m; sourceTree = "<group>"; };
 		21AD4CD221A5ABC400188B3B /* GenericsTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GenericsTests.m; sourceTree = "<group>"; };
 		21B005E421ACC7C9001D87D5 /* TypesTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TypesTests.m; sourceTree = "<group>"; };
@@ -343,6 +345,7 @@
 			isa = PBXGroup;
 			children = (
 				21D4ED4221864C75003A1B4C /* FrameworkTests.swift */,
+				21AABB3123FCC150004FCDEF /* JSONTests.swift */,
 			);
 			path = Framework;
 			sourceTree = "<group>";
@@ -550,6 +553,7 @@
 				21D4ED6421864E6E003A1B4C /* ExtensionsTests.swift in Sources */,
 				21D4ED6521864E6E003A1B4C /* FunctionsTests.swift in Sources */,
 				21D4ED6621864E6E003A1B4C /* MemoryManagementTests.swift in Sources */,
+				21AABB3223FCC150004FCDEF /* JSONTests.swift in Sources */,
 				21D4ED6721864E6E003A1B4C /* NestedTypesTest.swift in Sources */,
 				21D4ED6821864E6E003A1B4C /* OptionalsTests.swift in Sources */,
 				21D4ED6921864E6E003A1B4C /* PrimitiveTypeTests.swift in Sources */,
